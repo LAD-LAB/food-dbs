@@ -3700,3 +3700,65 @@ needs_QC,scientific_name,common_name,alternative_names,category,source
 ,Nostoc flagelliforme,fat choy,,,SJ
 ,Medicago sativa,alfalfa,,plant,BN
 ,Cinchona pubescens,red cinchona,,plant,BN
+,Agastache rugosa,korean mint,chinese giant hyssop,plant,https://pfaf.org/user/Plant.aspx?LatinName=Agastache+rugosa
+,Carya hunanensis,hu nan shan he tao,,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=402963
+,Chamaemelum nobile,chamomile,,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=104133
+,Nepeta cataria,catmint,catnip,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=25165
+,Ocimum gratissimum,african basil,clove basil,plant,"https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/ocimum-gratissimum#:~:text=Ocimum%20gratissimum%2C%20popularly%20known%20as,used%20for%20its%20therapeutic%20properties."
+,Ocimum tenuiflorum,sacred basil,"brush leaf tea, holy basil",plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=25491
+,Ocimum x africanum,lemon basil,hoary basil,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=463843
+,Rheum rhaponticum,rhubarb,,plant,https://pfaf.org/User/Plant.aspx?LatinName=Rheum+rhaponticum
+,Rubus alceifolius,giant bramble,,plant,http://www.efloras.org/florataxon.aspx?flora_id=2&taxon_id=242345340
+,Rubus alexeterius,ci e xuan gou zi,,plant, https://pfaf.org/User/Plant.aspx?LatinName=Rubus+alexeterius
+,Rubus arcticus,arctic bramble,"arctic raspberry, dwarf raspberry",plant,https://pfaf.org/User/Plant.aspx?LatinName=Rubus+arcticus
+,Rubus assamensis,assam raspberry,,plant,https://plantmethods.biomedcentral.com/articles/10.1186/s13007-023-01094-y
+,Rubus australis,bush lawyer,swamp lawyer,plant,https://www.nzpcn.org.nz/flora/species/rubus-australis
+,Rubus bambusarum,zhu ye ji zhao cha,,plant,http://www.efloras.org/florataxon.aspx?flora_id=2&taxon_id=200011362
+,Rubus biflorus,two-flower raspberry,,plant,https://pfaf.org/user/plant.aspx?LatinName=Rubus+biflorus
+,Rubus calycinus,wild raspberry,,plant,https://pfaf.org/USER/Plant.aspx?LatinName=Rubus+calycinus
+,Rubus chingii,palm-leaf raspberry,chinese raspberry,plant,http://www.efloras.org/florataxon.aspx?flora_id=2&taxon_id=200011376
+,Rubus corchorifolius,fingerberry,"brombeere, jute-leaved raspberry",plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=32298
+,Rubus coreanus,korean bramble,,plant,https://pfaf.org/User/Plant.aspx?LatinName=Rubus+coreanus
+,Rubus crataegifolius,korean raspberry,,plant,https://pfaf.org/User/Plant.aspx?LatinName=Rubus+crataegifolius
+,Rubus cuneifolius,sand bramble,"american bramble, sand blackberry",plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=32304
+,Rubus ellipticus,yellow himalayan raspberry,golden evergreen raspberry,plant,https://pfaf.org/user/Plant.aspx?LatinName=Rubus+ellipticus
+,Rubus fockeanus,,,plant,https://temperate.theferns.info/plant/Rubus+fockeanus
+,Rubus geoides,,,plant,https://pfaf.org/user/Plant.aspx?LatinName=Rubus+geoides
+,Rubus hawaiensis,hawaiian raspberry,,plant,"https://en.wikipedia.org/wiki/Rubus_hawaiensis#:~:text=The%20fruit%20is%20red%2C%20large,is%20sour%20and%20somewhat%20bitter."
+,Rubus henryi,ronce de henry,ji zhao cha,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+henryi
+,Rubus hirsutus,peng lei,,plant,https://pfaf.org/user/Plant.aspx?LatinName=Rubus+hirsutus
+,Rubus hybrid cultivar,marionberry,,plant,"https://ucanr.edu/blogs/blogcore/postdetail.cfm?postnum=51799#:~:text=Then%20those%20USDA%20breeders%20crossed,top%20blackberry%2Dgrowing%20U.S.%20state."
+,Rubus ichangensis,yi chang xuan gou zi,,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=32347
+,Rubus innominatus,bai ye mei,,plant,https://pfaf.org/user/Plant.aspx?LatinName=Rubus+innominatus
+,Rubus irenaeus,hui mao pao,,plant,http://www.efloras.org/florataxon.aspx?flora_id=2&taxon_id=200011457
+,Rubus lambertianus,gao liang pao,,plant,https://pfaf.org/user/Plant.aspx?LatinName=Rubus+lambertianus
+,Rubus lasiococcus,roughfruit berry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+lasiococcus
+,Rubus lasiostylus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+lasiostylus
+,Rubus lineatus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+lineatus
+,Rubus macilentus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+macilentus
+,Rubus mesogaeus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+mesogaeus
+,Rubus nepalensis,nepalese raspberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+nepalensis
+,Rubus nivalis,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+nivalis
+,Rubus niveus,ceylon raspberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+niveus
+,Rubus odoratus,thimbleberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+odoratus
+,Rubus palmatus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+palmatus
+,Rubus parvifolius,japanese raspberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+parvifolius
+,Rubus pectinellus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+pectinellus
+,Rubus pentagonus,,,plant,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3648497/
+,Rubus pungens,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+pungens
+,Rubus rosifolius,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+pungens
+,Rubus sanctus,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+sanctus
+,Rubus saxatilis,stone bramble,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+saxatilis
+,Rubus setchuenensis,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+setchuenensis
+,Rubus spectabilis,salmonberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+spectabilis
+,Rubus stellatus,nagoon berry,arctic raspberry,plant,https://pfaf.org/User/Plant.aspx?LatinName=Rubus+stellatus
+,Rubus takesimensis,,,plant,https://link.springer.com/article/10.1007/s10722-015-0257-z
+,Rubus tephrodes,,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+tephrodes
+,Rubus tricolor,creeping bramble,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+tricolor
+,Rubus trifidus,,,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=32474
+,Rubus ursinus,pacific dewberry,,plant,https://temperate.theferns.info/viewtropical.php?id=Rubus+ursinus
+,Rubus urticifolius,,,plant,https://tropical.theferns.info/viewtropical.php?id=Rubus+urticifolius
+,Trifolium aureum,large hop clover,large trefoil,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=101725
+,Vigna aconitifolia,mat bean,moth bean,plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=41595
+,Vigna umbellata,rice bean,"climbing mountain bean, mambi bean, oriental bean",plant,https://npgsweb.ars-grin.gov/gringlobal/taxon/taxonomydetail?id=41643
+,Xylopia africana,,,plant,https://www.researchgate.net/publication/353112612_Antibacterial_and_antishigellosis_activity_of_Xylopia_staudtii_engl_diels_Annonaceae
