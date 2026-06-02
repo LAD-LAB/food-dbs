@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FoodSeq Reference Pipeline — Flowchart</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 40px 48px;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .subtitle {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-bottom: 36px;
+    }
+    .mermaid {
+      max-width: 960px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>FoodSeq Reference Database Pipeline</h1>
+<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · Last run May 2026</p>
+
+<div class="mermaid">
+flowchart TD
+
+    HF["human-foods.csv"]
+    PLASTID["RefSeq plastid"]
+    MITO["RefSeq mitochondrial"]
+    SQL[("accessionTaxa.sql")]
+
+    HF -->|SLURM download| PLASTID
+    HF -->|SLURM download| MITO
+    HF -->|prepareDatabase| SQL
+
+    subgraph PA["Part A — trnL · Plants"]
+        PLANTS["plant species list"]
+        PLASTID_SP["plastid genomes"]
+        REFSEQ_A["RefSeq trnL amplicons"]
+        NCBI_A["GenBank trnL sequences"]
+        COMB_A["combined trnL sequences"]
+        TAX_A["trnL + taxonomy"]
+        OUT_A["trnL reference database"]
+    end
+
+    subgraph PB["Part B — 12SV5 · Vertebrates"]
+        ANIMALS["animal species list"]
+        MITO_SP["mitochondrial genomes"]
+        REFSEQ_B["RefSeq 12SV5 amplicons"]
+        NCBI_B["GenBank 12SV5 sequences"]
+        COMB_B["combined 12SV5 sequences"]
+        TAX_B["12SV5 + taxonomy"]
+        OUT_B["12SV5 reference database"]
+    end
+
+    HF -->|filter plants| PLANTS
+    HF -->|filter animals| ANIMALS
+
+    PLASTID -->|filter one per species| PLASTID_SP
+    PLASTID_SP -->|find_primer_pair| REFSEQ_A
+    PLANTS -->|query_ncbi + find_primer_pair| NCBI_A
+    REFSEQ_A --> COMB_A
+    NCBI_A -->|combine + manual additions| COMB_A
+    COMB_A -->|accessionToTaxa| TAX_A
+    SQL --> TAX_A
+    TAX_A -->|curation · QC · orientation · deduplicate| OUT_A
+
+    MITO -->|filter one per species| MITO_SP
+    MITO_SP -->|find_primer_pair| REFSEQ_B
+    ANIMALS -->|query_ncbi + find_primer_pair| NCBI_B
+    REFSEQ_B --> COMB_B
+    NCBI_B -->|combine| COMB_B
+    COMB_B -->|accessionToTaxa| TAX_B
+    SQL --> TAX_B
+    TAX_B -->|QC · orientation · deduplicate| OUT_B
+
+    style PA fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
+    style PB fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#dae8fc',
+      primaryBorderColor: '#6c8ebf',
+      primaryTextColor: '#1a1a1a',
+      edgeLabelBackground: '#ffffff',
+      clusterBkg: '#f0f5ff',
+      clusterBorder: '#9bb5e0',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      fontSize: '14px'
+    },
+    flowchart: {
+      curve: 'linear',
+      padding: 24,
+      nodeSpacing: 50,
+      rankSpacing: 55,
+      htmlLabels: true
+    }
+  });
+</script>
+
+</body>
+</html>

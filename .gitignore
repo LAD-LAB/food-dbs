@@ -10,3 +10,7 @@
 /data/inputs/other-dbs
 /results
 *.html
+!changes-summary.html
+!pipeline-flowchart.html
+
+foodseq_reference_pipeline_May2026Run.Rmd

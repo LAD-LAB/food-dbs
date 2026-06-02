@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FoodSeq food-dbs — Changes Summary</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f0f2f5;
+      padding: 32px 24px;
+      color: #1a1a2e;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      color: #6b7280;
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+    }
+
+    /* ── Legend ─────────────────────────────────────── */
+    .legend {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: #374151;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 7px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .badge-new      { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge-modified { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .badge-archived { background: #f3f4f6; color: #4b5563; border: 1px solid #d1d5db; }
+    .badge-unchanged{ background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+
+    /* ── Main grid ──────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* ── File tree ──────────────────────────────────── */
+    .panel {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .panel-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 14px;
+    }
+
+    .tree { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.8rem; line-height: 1.9; }
+    .tree-row { display: flex; align-items: baseline; gap: 5px; }
+    .connector { color: #d1d5db; white-space: pre; flex-shrink: 0; }
+    .filename { color: #374151; }
+    .filename.new      { color: #065f46; font-weight: 600; }
+    .filename.modified { color: #92400e; font-weight: 600; }
+    .filename.archived { color: #9ca3af; }
+    .filename.folder   { color: #1e40af; font-weight: 600; }
+    .filename.archived-folder { color: #9ca3af; font-weight: 600; }
+    .dot { flex-shrink: 0; }
+
+    /* ── Change cards ───────────────────────────────── */
+    .cards { display: flex; flex-direction: column; gap: 16px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .card-header.new      { background: #f0fdf4; }
+    .card-header.modified { background: #fffbeb; }
+    .card-header.archived { background: #f9fafb; }
+
+    .card-filename {
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      flex: 1;
+    }
+    .card-body { padding: 14px 16px; }
+
+    ul.changes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    ul.changes li {
+      display: flex;
+      gap: 10px;
+      line-height: 1.5;
+      color: #374151;
+      font-size: 0.83rem;
+    }
+    ul.changes li::before {
+      content: "→";
+      color: #9ca3af;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tag {
+      display: inline-block;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      padding: 0 5px;
+      color: #374151;
+      white-space: nowrap;
+    }
+    .reason {
+      color: #6b7280;
+      font-size: 0.78rem;
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* archived list */
+    .archive-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .archive-chip {
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 0.75rem;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 3px 9px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>food-dbs — Changes Summary</h1>
+<p class="subtitle">Changes made to the LAD-LAB food-dbs repository to build and run the FoodSeq reference pipeline — last updated May 2026</p>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><span class="badge badge-new">NEW</span> Created from scratch</div>
+  <div class="legend-item"><span class="badge badge-modified">MODIFIED</span> Existing file edited</div>
+  <div class="legend-item"><span class="badge badge-archived">ARCHIVED</span> Moved to archive/</div>
+  <div class="legend-item"><span class="badge badge-unchanged">UNCHANGED</span> No changes</div>
+</div>
+
+<div class="grid">
+
+  <!-- ── File tree ──────────────────────────────── -->
+  <div class="panel">
+    <div class="panel-title">Repository Structure</div>
+    <div class="tree">
+
+      <div class="tree-row"><span class="filename folder">food-dbs/</span></div>
+
+      <div class="tree-row">
+        <span class="connector">├── </span>
+        <span class="filename new">foodseq_reference_pipeline.Rmd</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">├── </span>
+        <span class="filename new">pipeline-flowchart.html</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">├── </span>
+        <span class="filename new">changes-summary.html</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">├── </span>
+        <span class="filename new">README.md</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">├── </span>
+        <span class="filename">food-dbs.Rproj</span>
+        <span class="badge badge-unchanged">UNCHANGED</span>
+      </div>
+
+      <div class="tree-row" style="margin-top:6px">
+        <span class="connector">├── </span>
+        <span class="filename folder">code/functions/</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename modified">find_primer_pair.R</span>
+        <span class="badge badge-modified">MODIFIED</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename modified">query_ncbi.R</span>
+        <span class="badge badge-modified">MODIFIED</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   └── </span>
+        <span class="filename new">query_ncbi_accession.R</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+
+      <div class="tree-row" style="margin-top:6px">
+        <span class="connector">├── </span>
+        <span class="filename folder">data/inputs/</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename">human-foods.csv</span>
+        <span class="badge badge-unchanged">UNCHANGED</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   └── </span>
+        <span class="filename">Manual renaming.csv</span>
+        <span class="badge badge-unchanged">UNCHANGED</span>
+      </div>
+
+      <div class="tree-row" style="margin-top:6px">
+        <span class="connector">├── </span>
+        <span class="filename folder">data/outputs/</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">dada2-compatible/trnL/*_May2026.*</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">dada2-compatible/12Sv5/*_May2026.*</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">qiime2-compatible/trnL/*_May2026.*</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">qiime2-compatible/12Sv5/*_May2026.*</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">plants_missing_trnL.csv</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   └── </span>
+        <span class="filename new">animals_missing_12SV5.csv</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+
+      <div class="tree-row" style="margin-top:6px">
+        <span class="connector">└── </span>
+        <span class="filename archived-folder">archive/</span>
+        <span class="badge badge-archived">NEW FOLDER</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">    ├── </span>
+        <span class="filename archived">code/trnL-reference.Rmd</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">    ├── </span>
+        <span class="filename archived">code/12SV5-reference.Rmd</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">    ├── </span>
+        <span class="filename archived">code/functions/ (4 files)</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">    └── </span>
+        <span class="filename archived">*.ipynb (2 files)</span>
+      </div>
+
+    </div>
+  </div><!-- /tree panel -->
+
+  <!-- ── Change cards ───────────────────────────── -->
+  <div class="cards">
+
+    <!-- foodseq_reference_pipeline.Rmd -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">foodseq_reference_pipeline.Rmd</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Replaces separate <span class="tag">trnL-reference.Rmd</span> and <span class="tag">12SV5-reference.Rmd</span> with a single document containing unified setup, shared SLURM jobs, and parallel Part A (trnL) / Part B (12SV5) sections
+            </div>
+          </li>
+          <li>
+            <div>
+              SLURM job submission writes scripts with <span class="tag">writeLines()</span> and prints the <span class="tag">sbatch</span> command for manual execution — avoids PATH errors when <span class="tag">system("sbatch")</span> is called from an OOD RStudio session
+            </div>
+          </li>
+          <li>
+            <div>
+              Animal species list read dynamically from <span class="tag">human-foods.csv</span> rather than hardcoded in the script
+            </div>
+          </li>
+          <li>
+            <div>
+              Auto-resolve missing taxonomy IDs: loop over accessions with <span class="tag">NA</span> taxon IDs and call <span class="tag">query_ncbi_accession()</span> to retrieve them from NCBI, covering accessions added after the SQL database was built
+            </div>
+          </li>
+          <li>
+            <div>
+              NCBI API key chunk added; sources all three function files; shared <span class="tag">extract_taxonomy()</span> helper used by both Part A and Part B
+            </div>
+          </li>
+          <li>
+            <div>
+              Manual curation edits from <span class="tag">Manual renaming.csv</span> integrated into pipeline at A5 (manual additions) and A7 (omissions and renamings)
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- query_ncbi.R -->
+    <div class="card">
+      <div class="card-header modified">
+        <span class="badge badge-modified">MODIFIED</span>
+        <span class="card-filename">code/functions/query_ncbi.R</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              <strong>Sequence-length filter</strong> <span class="tag">0:50000[SLEN]</span> added to NCBI search query
+              <span class="reason">Root cause of crashes: chromosomal/scaffold assemblies containing the 12S gene were included in results; these can be megabytes each and push the FASTA payload over R's 2<sup>31</sup>−1 byte string limit. The filter excludes them while retaining all genuine amplicons and gene-level sequences.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Retry logic</strong> (<span class="tag">fetch_with_retry()</span>) wraps every <span class="tag">entrez_fetch()</span> call — retries up to 4 times with a 10 s wait on SSL / network drops instead of aborting the whole query
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong><span class="tag">retmax</span> added to <span class="tag">entrez_fetch()</span></strong> — caps sequences downloaded per chunk as a secondary size guard
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Chunk size reduced</strong> 50 → 5 species per query to reduce per-fetch payload size
+            </div>
+          </li>
+          <li>
+            <div>
+              0.5 s pause between chunks to respect NCBI rate limits; progress messages updated to show chunk N of total
+            </div>
+          </li>
+          <li>
+            <div>
+              Key parameters (<span class="tag">chunk_size</span>, <span class="tag">max_seq_len</span>, <span class="tag">retmax_fetch</span>, <span class="tag">max_tries</span>, <span class="tag">retry_wait</span>) exposed as function arguments for easy tuning
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- find_primer_pair.R -->
+    <div class="card">
+      <div class="card-header modified">
+        <span class="badge badge-modified">MODIFIED</span>
+        <span class="card-filename">code/functions/find_primer_pair.R</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Added <span class="tag">relationship = "many-to-many"</span> to both <span class="tag">inner_join()</span> calls
+              <span class="reason">Newer versions of dplyr warn when a many-to-many join is detected without this argument. Finding multiple primer binding sites per genome sequence is expected behaviour; the argument makes this explicit and silences the warnings. No change to results.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- query_ncbi_accession.R -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-NEW">NEW</span>
+        <span class="card-filename">code/functions/query_ncbi_accession.R</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Added to <span class="tag">code/functions/</span>; called in the taxonomy lookup steps (A6, B6) to resolve accession numbers that are absent from the local taxonomizr SQL database because they were added to NCBI after the database was built
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- README.md -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">README.md</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li><div>Repository structure tree with file descriptions</div></li>
+          <li><div>Pipeline overview: data sources, species lists, taxonomy approach, and numbered processing steps</div></li>
+          <li><div>Primers table (trnL and 12SV5 marker sequences)</div></li>
+          <li><div>Getting started guide: prerequisites, R packages, NCBI API key setup, large file setup table, step-by-step running instructions</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- May 2026 pipeline run -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">data/outputs/ — May 2026 database run</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Pipeline run on Duke HPC cluster (Open OnDemand / SLURM) using the updated <span class="tag">foodseq_reference_pipeline.Rmd</span>. Output files labelled with <span class="tag">_May2026</span> suffix to record when the databases were last compiled.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>trnL (plants):</strong> 1,991 sequences · 1,169 unique taxa · 1,060 / 1,577 food plant species covered (67%)
+              <span class="reason">Unchanged from the 2025 run — RefSeq plastid and GenBank trnL content for these species is stable.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>12SV5 (vertebrates):</strong> 3,390 sequences · 2,337 unique taxa · 1,168 / 2,095 food animal species covered (56%)
+              <span class="reason">+399 sequences and +103 newly covered food species versus the 2025 run, reflecting both new GenBank deposits and improvements to the query and taxonomy-lookup logic.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              Coverage gap lists added: <span class="tag">plants_missing_trnL.csv</span> and <span class="tag">animals_missing_12SV5.csv</span> document the 517 plant and 927 animal species still lacking sequences in the current databases
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top:14px; overflow-x:auto;">
+          <table style="border-collapse:collapse; font-size:0.8rem; width:100%;">
+            <thead>
+              <tr style="background:#f0f2f5;">
+                <th style="text-align:left; padding:6px 10px; border:1px solid #e5e7eb;">Database</th>
+                <th style="padding:6px 10px; border:1px solid #e5e7eb;">Oct 2022</th>
+                <th style="padding:6px 10px; border:1px solid #e5e7eb;">2025</th>
+                <th style="padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">May 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL sequences</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,402</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,991</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,991</td>
+              </tr>
+              <tr style="background:#fafafa;">
+                <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plant coverage</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">716 / 1,577 (45%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,577 (67%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,060 / 1,577 (67%)</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 sequences</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">57 †</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,991</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">3,390</td>
+              </tr>
+              <tr style="background:#fafafa;">
+                <td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 food animal coverage</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,099 / 2,095 (52%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,168 / 2,095 (56%)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">† Oct 2022 12SV5 was a small food-filtered subset of the Schneider et al. database, not a full pipeline run.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archived files -->
+    <div class="card">
+      <div class="card-header archived">
+        <span class="badge badge-archived">ARCHIVED</span>
+        <span class="card-filename">archive/ &nbsp;—&nbsp; superseded files</span>
+      </div>
+      <div class="card-body">
+        <div style="color:#6b7280; font-size:0.82rem; margin-bottom:10px">
+          The following files are no longer needed to run the pipeline and were moved to <span class="tag">archive/</span> for reference:
+        </div>
+        <div class="archive-grid">
+          <span class="archive-chip">trnL-reference.Rmd</span>
+          <span class="archive-chip">12SV5-reference.Rmd</span>
+          <span class="archive-chip">ncbi_to_dada.R</span>
+          <span class="archive-chip">trim_mito_db.R</span>
+          <span class="archive-chip">make_reference.R</span>
+          <span class="archive-chip">species_to_taxonomy.R</span>
+          <span class="archive-chip">trnL_reference_pipeline.ipynb</span>
+          <span class="archive-chip">foodseq_reference_pipeline.ipynb</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cards -->
+</div><!-- /grid -->
+
+</body>
+</html>
