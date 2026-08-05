@@ -1,0 +1,41 @@
+scientific_name,common_name,group,marker,gap_status,hits,sequence_available,source,source_status
+Camelus dromedarius,dromedary camel,camelid,12S,GAP (fully absent),156,TRUE,https://www.fao.org/dairy-production-products/dairy/camels/en,confirmed
+Camelus bactrianus,bactrian camel,camelid,12S,GAP (fully absent),157,TRUE,https://www.fao.org/4/x1700t/x1700t05.htm,confirmed
+Vicugna pacos,alpaca,camelid,12S,GAP (fully absent),18,TRUE,https://www.fao.org/4/x6500e/x6500e21.htm,confirmed
+Lama glama,llama,camelid,12S,GAP (fully absent),4,TRUE,https://www.fao.org/4/x6500e/x6500e21.htm,confirmed
+Lama guanicoe,guanaco,camelid,12S,GAP (fully absent),9,TRUE,https://www.fao.org/4/x6500e/x6500e21.htm,confirmed
+Thryonomys swinderianus,greater cane rat,rodent,12S,GAP (fully absent),195,TRUE,https://www.fao.org/4/U5700T/u5700T0k.htm,confirmed
+Hydrochoerus hydrochaeris,capybara,rodent,12S,GAP (fully absent),9,TRUE,https://pubmed.ncbi.nlm.nih.gov/30015162/,confirmed
+Myocastor coypus,nutria,rodent,12S,GAP (fully absent),8,TRUE,https://academic.oup.com/af/article/4/4/25/4638808,confirmed
+Meleagris gallopavo,domestic turkey,bird,12S,GAP (species absent; genus present),118,TRUE,https://www.fao.org/poultry-production-products/production/poultry-species/en,confirmed
+Numida meleagris,helmeted guineafowl,bird,12S,GAP (fully absent),12,TRUE,https://www.fao.org/poultry-production-products/production/poultry-species/en,confirmed
+Columba livia,domestic pigeon/squab,bird,12S,GAP (fully absent),47,TRUE,https://www.fao.org/poultry-production-products/production/poultry-species/en,confirmed
+Struthio camelus,ostrich,bird,12S,GAP (fully absent),21,TRUE,https://www.fao.org/poultry-production-products/production/poultry-species/en,confirmed
+Phasianus colchicus,ring-necked pheasant,bird,12S,GAP (fully absent),18,TRUE,https://www.fao.org/poultry-production-products/production/poultry-species/en,confirmed
+Rhea americana,greater rhea,bird,12S,GAP (fully absent),17,TRUE,https://academic.oup.com/af/article/4/4/25/4638808,confirmed
+Oryctolagus cuniculus,domestic rabbit,lagomorph,12S,GAP (fully absent),45,TRUE,https://www.fao.org/4/u5700t/u5700t0d.htm,confirmed
+Lepus europaeus,european hare,lagomorph,12S,GAP (fully absent),141,TRUE,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8833328/,confirmed (source names 'hare' at genus level)
+Bos grunniens,yak,bovid,12S,GAP (species absent; genus present),549,TRUE,https://www.fao.org/4/ad347e/ad347e07.htm,confirmed
+Bos frontalis,gayal/mithun,bovid,12S,GAP (species absent; genus present),9,TRUE,https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/mithun,confirmed
+Bos javanicus,banteng,bovid,12S,GAP (species absent; genus present),27,TRUE,https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/mithun,confirmed
+Syncerus caffer,african buffalo,bovid,12S,GAP (fully absent),48,TRUE,https://www.traffic.org/publications/reports/bushmeat-trade-in-urban-centres-in-tanzania-an-analysis-from-dar-es-salaam-morogoro-mbeya-arusha-and-manyara/,confirmed
+Phacochoerus africanus,warthog,suid,12S,GAP (fully absent),27,TRUE,https://www.traffic.org/publications/reports/bushmeat-trade-in-urban-centres-in-tanzania-an-analysis-from-dar-es-salaam-morogoro-mbeya-arusha-and-manyara/,confirmed
+Cervus elaphus,red deer,deer,12S,GAP (species absent; genus present),242,TRUE,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8833328/,confirmed
+Capreolus capreolus,roe deer,deer,12S,GAP (fully absent),40,TRUE,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8833328/,confirmed
+Dama dama,fallow deer,deer,12S,GAP (fully absent),58,TRUE,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8833328/,confirmed
+Crocodylus niloticus,nile crocodile,reptile,12S,GAP (fully absent),38,TRUE,https://www.fao.org/4/t0226e/t0226e19.htm,confirmed
+Lithobates catesbeianus,american bullfrog,amphibian,12S,GAP (fully absent),31,TRUE,FAO Cultured Aquatic Species Fact Sheets (https://www.fao.org/fishery/docs/CDrom/aquaculture/I1129m/file/en/en_americanbullfrog.htm),confirmed (matches existing source vocabulary)
+Salicornia europaea,glasswort/samphire,plant,trnL,GAP (species absent; genus present),28,TRUE,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8069253/,confirmed
+Telfairia occidentalis,fluted pumpkin,plant,trnL,GAP (fully absent),1,TRUE,https://plantuse.plantnet.org/en/Telfairia_occidentalis_(PROTA),confirmed (PROTA)
+Plectranthus rotundifolius,hausa potato,plant,trnL,GAP (species absent; genus present),0,FALSE,https://pfaf.org/user/Plant.aspx?LatinName=Plectranthus+rotundifolius,confirmed (PFAF - matches existing source vocabulary; NO sequence data)
+Bos indicus,zebu,bovid,12S,GAP (species absent; genus present),49,TRUE,,UNSOURCED - also a curation question (often treated as a B. taurus subspecies)
+Ovis canadensis,bighorn sheep,bovid,12S,GAP (species absent; genus present),25,TRUE,,UNSOURCED
+Bison bonasus,european bison,bovid,12S,GAP (species absent; genus present),10,TRUE,,UNSOURCED
+Capra ibex,ibex,bovid,12S,GAP (species absent; genus present),7,TRUE,,UNSOURCED
+Ovibos moschatus,muskox,bovid,12S,GAP (fully absent),6,TRUE,,UNSOURCED
+Cervus nippon,sika deer,deer,12S,GAP (species absent; genus present),44,TRUE,,UNSOURCED
+Muntiacus reevesi,muntjac,deer,12S,GAP (fully absent),21,TRUE,,UNSOURCED
+Odocoileus hemionus,mule deer,deer,12S,GAP (species absent; genus present),4,TRUE,,UNSOURCED
+Lepus americanus,snowshoe hare,lagomorph,12S,GAP (fully absent),6,TRUE,,UNSOURCED
+Perdix perdix,grey partridge,bird,12S,GAP (fully absent),8,TRUE,,UNSOURCED
+Carassius auratus,goldfish,fish,12S,GAP (species absent; genus present),181,TRUE,https://www.fishbase.se/summary/Carassius-auratus.html,REJECTED - FishBase states 'edible but rarely eaten'; my original entry also conflated goldfish (C. auratus) with crucian carp (C. carassius)
