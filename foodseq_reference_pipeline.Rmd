@@ -236,7 +236,13 @@ theme_set(
 ```{r extract_taxonomy_fn}
 # Shared helper: converts a vector of taxon IDs to a full taxonomy data frame
 extract_taxonomy <- function(ids, sql_path) {
-    vars <- c("superkingdom", "phylum", "class", "order",
+    # NCBI reclassified Eukaryota/Bacteria/Archaea from rank "superkingdom" to
+    # rank "domain" (taxonomizr >= 0.11 follows suit). getRawTaxonomy() returns
+    # the top-level rank under whichever name the underlying taxdump used, so we
+    # capture BOTH names here and merge them into "superkingdom" below. Without
+    # this, a database built from a current taxdump yields "domain" and the
+    # requested "superkingdom" column comes back 100% NA.
+    vars <- c("superkingdom", "domain", "phylum", "class", "order",
               "family", "genus", "species", "subspecies", "varietas", "forma")
 
     taxonomy.raw <- getRawTaxonomy(ids, sql_path)
@@ -252,6 +258,11 @@ extract_taxonomy <- function(ids, sql_path) {
         row.i  <- select(row.i, one_of(shared))
         taxonomy <- bind_rows(taxonomy, row.i)
     }
+
+    # Merge "domain" into "superkingdom" so the top-level rank is populated
+    # regardless of which name the taxdump used, then drop the helper column.
+    taxonomy$superkingdom <- coalesce(taxonomy$superkingdom, taxonomy$domain)
+    taxonomy$domain <- NULL
 
     taxonomy$taxid <- names(taxonomy.raw) |> trimws() |> as.integer()
     select(taxonomy, taxid, everything())
@@ -512,7 +523,7 @@ trnL.df <-
 trnL.df |> group_by(type) |> count()
 ```
 
-## A10. Deduplicate and save
+## A10. Deduplicate, add controls, and save
 
 ```{r trnl_dedup}
 trnL.df <-
@@ -525,6 +536,42 @@ trnL.df <-
 
 cat(nrow(trnL.df), "sequences after deduplication\n")
 cat(n_distinct(trnL.df$taxon), "unique taxa\n")
+```
+
+Append the positive-control spike-ins defined in `data/inputs/controls.csv`. These are
+laboratory constructs, not NCBI records, so they never come out of the RefSeq/GenBank
+queries above and must be added here or they are silently absent from every rebuild.
+
+The lab convention repeats the control label across `superkingdom:species` rather than
+placing it at a single rank. That matters for two reasons: DADA2 then reports the label at
+every level and it survives last-common-ancestor condensing, and the genus field stays
+non-`NA`, which keeps the record from being stripped by downstream genus-NA filtering.
+
+```{r trnl_controls}
+controls.trnL <-
+    read_csv(file.path(REPO_DIR, "data", "inputs", "controls.csv"),
+             show_col_types = FALSE) |>
+    filter(marker == "trnL")
+
+if (nrow(controls.trnL) > 0) {
+    control_rows <-
+        controls.trnL |>
+        transmute(superkingdom = label, phylum = label, class = label,
+                  order = label, family = label, genus = label, species = label,
+                  subspecies = NA_character_, varietas = NA_character_,
+                  forma = NA_character_,
+                  taxon = label, seq = sequence, accession = accession) |>
+        # guard against double-adding if this chunk is re-run
+        filter(!(seq %in% trnL.df$seq))
+
+    trnL.df <- bind_rows(trnL.df, control_rows)
+    cat("Added", nrow(control_rows), "positive-control sequence(s):",
+        paste(control_rows$taxon, collapse = ", "), "\n")
+} else {
+    warning("No trnL controls found in controls.csv - reference will have no positive control.")
+}
+
+cat(nrow(trnL.df), "sequences total (including controls)\n")
 ```
 
 ```{r trnl_save}
@@ -710,8 +757,11 @@ r_lines <- c(
     's12v5_primers <- list(V5F, V5R)',
     '',
     '# ── Shared helper: accession IDs to full taxonomy data frame ──────────',
+    '# NCBI reclassified Eukaryota/Bacteria/Archaea from rank "superkingdom" to',
+    '# rank "domain" (taxonomizr >= 0.11 follows suit). Capture both names and',
+    '# merge into "superkingdom" below, or a current taxdump yields 100% NA there.',
     'extract_taxonomy <- function(ids, sql_path) {',
-    '    vars <- c("superkingdom", "phylum", "class", "order",',
+    '    vars <- c("superkingdom", "domain", "phylum", "class", "order",',
     '              "family", "genus", "species", "subspecies", "varietas", "forma")',
     '    taxonomy.raw <- getRawTaxonomy(ids, sql_path)',
     '    taxonomy <- as.data.frame(',
@@ -724,6 +774,8 @@ r_lines <- c(
     '        row.i  <- select(row.i, one_of(shared))',
     '        taxonomy <- bind_rows(taxonomy, row.i)',
     '    }',
+    '    taxonomy$superkingdom <- coalesce(taxonomy$superkingdom, taxonomy$domain)',
+    '    taxonomy$domain <- NULL',
     '    taxonomy$taxid <- names(taxonomy.raw) |> trimws() |> as.integer()',
     '    select(taxonomy, taxid, everything())',
     '}',
@@ -1015,7 +1067,7 @@ s12v5.df <-
 cat("Orientation standardised.\n")
 ```
 
-## B9. Deduplicate and save
+## B9. Deduplicate, add controls, and save
 
 ```{r s12v5_dedup}
 s12v5.df <-
@@ -1028,6 +1080,41 @@ s12v5.df <-
 
 cat(nrow(s12v5.df), "sequences after deduplication\n")
 cat(n_distinct(s12v5.df$taxon), "unique taxa\n")
+```
+
+Append the positive-control spike-ins, exactly as in Part A (see the note at A10). The 12SV5
+control is the same physical construct as the trnL one read to a longer amplicon — the 50 bp
+trnL sequence is an exact prefix of this 100 bp one.
+
+This step is what was missing previously: the 12SV5 reference shipped without its control, so
+spike-in reads were assigned to the nearest real vertebrate (mostly Actinopteri) instead of
+being identified as controls.
+
+```{r s12v5_controls}
+controls.12S <-
+    read_csv(file.path(REPO_DIR, "data", "inputs", "controls.csv"),
+             show_col_types = FALSE) |>
+    filter(marker == "12SV5")
+
+if (nrow(controls.12S) > 0) {
+    control_rows <-
+        controls.12S |>
+        transmute(superkingdom = label, phylum = label, class = label,
+                  order = label, family = label, genus = label, species = label,
+                  subspecies = NA_character_, varietas = NA_character_,
+                  forma = NA_character_,
+                  taxon = label, seq = sequence, accession = accession) |>
+        # guard against double-adding if this chunk is re-run
+        filter(!(seq %in% s12v5.df$seq))
+
+    s12v5.df <- bind_rows(s12v5.df, control_rows)
+    cat("Added", nrow(control_rows), "positive-control sequence(s):",
+        paste(control_rows$taxon, collapse = ", "), "\n")
+} else {
+    warning("No 12SV5 controls found in controls.csv - reference will have no positive control.")
+}
+
+cat(nrow(s12v5.df), "sequences total (including controls)\n")
 ```
 
 ```{r s12v5_save}
