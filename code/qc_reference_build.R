@@ -35,6 +35,20 @@ STAPLES <- list(
 RANKS <- c("superkingdom","phylum","class","order","family",
            "genus","species","subspecies","varietas","forma")
 
+# ---- expected clades per marker (allowlist) --------------------------------
+# Every reference record's PHYLUM should fall inside its marker's allowlist.
+# Anything outside is off-target: bacterial / viral / parasite contamination
+# that leaked in (e.g. the May 2026 12S build carried Pseudomonadota, Bacillota,
+# and several *viricota records that hijacked fish assignments). An allowlist is
+# used deliberately over a denylist so an UNKNOWN future contaminant phylum is
+# still caught. Edible invertebrate phyla are included for 12S so legitimate
+# shellfish / jellyfish are not flagged.
+ALLOWED_PHYLA <- list(
+  trnL  = c("Streptophyta"),
+  `12S` = c("Chordata", "Arthropoda", "Mollusca", "Echinodermata",
+            "Cnidaria", "Annelida", "Porifera")
+)
+
 # ---- helpers ----------------------------------------------------------------
 n_fail <- 0L; n_warn <- 0L
 say  <- function(status, msg) {
@@ -51,7 +65,7 @@ read_headers <- function(path) {
 }
 
 # ---- per-marker checks ------------------------------------------------------
-check_marker <- function(marker, tax_fasta, prev_fasta,
+check_marker <- function(marker, tax_fasta, seq_fasta, prev_fasta,
                          fail_controls, warn_controls, staples, n_fields) {
   cat(sprintf("\n===== %s : %s =====\n", marker, basename(tax_fasta)))
   hdr <- read_headers(tax_fasta)
@@ -132,6 +146,58 @@ check_marker <- function(marker, tax_fasta, prev_fasta,
                             length(lost), paste(head(lost, 5), collapse = ", ")))
     }
   }
+
+  # 7. off-target clade -- every record's phylum must be in the marker's
+  # allowlist. Anything else is bacterial / viral / parasite contamination.
+  # (Catches the cross-kingdom decoys; does NOT catch same-clade mislabels --
+  # that is what check 8 is for.)
+  allowed   <- ALLOWED_PHYLA[[marker]]
+  ph        <- mat[, "phylum"]
+  is_na_ph  <- is.na(ph) | ph == "NA" | ph == ""
+  is_ctl    <- ph %in% fail_controls | grepl("synthetic", ph, ignore.case = TRUE)
+  offtarget <- !is_na_ph & !is_ctl & !(ph %in% allowed)
+  if (!any(offtarget)) {
+    say("PASS", "all records fall within expected clades (no bacterial/viral/parasite phyla)")
+  } else {
+    tab <- sort(table(ph[offtarget]), decreasing = TRUE)
+    say("FAIL", sprintf("%d off-target record(s) with non-target phylum: %s",
+                        sum(offtarget),
+                        paste(sprintf("%s=%d", names(tab), as.integer(tab)), collapse = ", ")))
+  }
+  n_unres <- sum(is_na_ph & !is_ctl)
+  if (n_unres > 0) say("WARN", sprintf("%d record(s) have no phylum (unresolved)", n_unres))
+
+  # 8. accession integrity + queried-vs-resolved genus consistency
+  # The sequence FASTA header is "<accession> <species>". Some 2026 records
+  # carry a bare GENUS name where the accession should be; where that genus does
+  # not match the resolved species' genus, the sequence is mislabelled (e.g.
+  # Esox -> Salmo salar, Engraulis -> Salimicrobium jeotgali). This is the ONLY
+  # check that catches same-clade (fish-for-fish) mislabels, which pass every
+  # taxonomic filter because both organisms are vertebrates.
+  seq_hdr <- read_headers(seq_fasta)
+  if (is.null(seq_hdr)) {
+    say("INFO", sprintf("sequence FASTA not found (%s); skipping accession check",
+                        basename(seq_fasta)))
+  } else {
+    acc_field <- sub("\\s.*$", "", seq_hdr)     # first whitespace-delimited token
+    sp        <- sub("^\\S+\\s*", "", seq_hdr)   # remainder = species name
+    sp_genus  <- sub("\\s.*$", "", sp)
+    bare      <- !grepl("[0-9]", acc_field)      # a real accession contains digits
+    if (!any(bare)) {
+      say("PASS", "all sequence records carry a real accession identifier")
+    } else {
+      say("WARN", sprintf("%d record(s) have a bare genus name where an accession should be",
+                          sum(bare)))
+      mism <- bare & (acc_field != sp_genus)
+      if (!any(mism)) {
+        say("PASS", "every bare-genus record's queried genus matches its resolved species")
+      } else {
+        ex <- head(sprintf("%s->%s", acc_field[mism], sp[mism]), 6)
+        say("FAIL", sprintf("%d record(s) queried-genus != resolved-genus (mislabel): %s",
+                            sum(mism), paste(ex, collapse = "; ")))
+      }
+    }
+  }
 }
 
 # ---- controls.csv sanity ----------------------------------------------------
@@ -149,6 +215,7 @@ cat("========================================================\n")
 check_marker(
   "trnL",
   tax_fasta     = file.path(d2, "trnL", "trnLGH_taxonomy_May2026.fasta"),
+  seq_fasta     = file.path(d2, "trnL", "trnLGH_May2026.fasta"),
   prev_fasta    = file.path(d2, "trnL", "trnLGH_taxonomy.fasta"),
   fail_controls = unique(c(ctl_labels("trnL"), "synthetic trnL ASV")),
   warn_controls = c("Ilex paraguariensis", "Trifolium pratense"),
@@ -158,6 +225,7 @@ check_marker(
 check_marker(
   "12S",
   tax_fasta     = file.path(d2, "12Sv5", "12Sv5_taxonomy_May2026.fasta"),
+  seq_fasta     = file.path(d2, "12Sv5", "12Sv5_May2026.fasta"),
   prev_fasta    = file.path(d2, "12Sv5", "12Sv5_taxonomy.fasta"),
   fail_controls = unique(c(ctl_labels("12SV5"), "synthetic 12S ASV")),
   # positive-control template species named in the wet-lab protocol; not yet in
