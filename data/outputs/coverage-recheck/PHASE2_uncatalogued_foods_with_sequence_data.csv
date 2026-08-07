@@ -1,0 +1,41 @@
+scientific_name,common_name,group,marker,status,hits,sequence_available
+Lithobates catesbeianus,american bullfrog,amphibian,12S,GAP (fully absent),31,TRUE
+Meleagris gallopavo,domestic turkey,bird,12S,GAP (species absent; genus present),118,TRUE
+Columba livia,domestic pigeon/squab,bird,12S,GAP (fully absent),47,TRUE
+Struthio camelus,ostrich,bird,12S,GAP (fully absent),21,TRUE
+Phasianus colchicus,ring-necked pheasant,bird,12S,GAP (fully absent),18,TRUE
+Rhea americana,greater rhea,bird,12S,GAP (fully absent),17,TRUE
+Numida meleagris,helmeted guineafowl,bird,12S,GAP (fully absent),12,TRUE
+Perdix perdix,grey partridge,bird,12S,GAP (fully absent),8,TRUE
+Bos grunniens,yak,bovid,12S,GAP (species absent; genus present),549,TRUE
+Bos indicus,zebu,bovid,12S,GAP (species absent; genus present),49,TRUE
+Syncerus caffer,african buffalo,bovid,12S,GAP (fully absent),48,TRUE
+Bos javanicus,banteng,bovid,12S,GAP (species absent; genus present),27,TRUE
+Ovis canadensis,bighorn sheep,bovid,12S,GAP (species absent; genus present),25,TRUE
+Bison bonasus,european bison,bovid,12S,GAP (species absent; genus present),10,TRUE
+Bos frontalis,gayal/mithun,bovid,12S,GAP (species absent; genus present),9,TRUE
+Capra ibex,ibex,bovid,12S,GAP (species absent; genus present),7,TRUE
+Ovibos moschatus,muskox,bovid,12S,GAP (fully absent),6,TRUE
+Camelus bactrianus,bactrian camel,camelid,12S,GAP (fully absent),157,TRUE
+Camelus dromedarius,dromedary camel,camelid,12S,GAP (fully absent),156,TRUE
+Vicugna pacos,alpaca,camelid,12S,GAP (fully absent),18,TRUE
+Lama guanicoe,guanaco,camelid,12S,GAP (fully absent),9,TRUE
+Lama glama,llama,camelid,12S,GAP (fully absent),4,TRUE
+Cervus elaphus,red deer,deer,12S,GAP (species absent; genus present),242,TRUE
+Dama dama,fallow deer,deer,12S,GAP (fully absent),58,TRUE
+Cervus nippon,sika deer,deer,12S,GAP (species absent; genus present),44,TRUE
+Capreolus capreolus,roe deer,deer,12S,GAP (fully absent),40,TRUE
+Muntiacus reevesi,muntjac,deer,12S,GAP (fully absent),21,TRUE
+Odocoileus hemionus,mule deer,deer,12S,GAP (species absent; genus present),4,TRUE
+Carassius auratus,goldfish/crucian,fish,12S,GAP (species absent; genus present),181,TRUE
+Lepus europaeus,european hare,lagomorph,12S,GAP (fully absent),141,TRUE
+Oryctolagus cuniculus,domestic rabbit,lagomorph,12S,GAP (fully absent),45,TRUE
+Lepus americanus,snowshoe hare,lagomorph,12S,GAP (fully absent),6,TRUE
+Salicornia europaea,glasswort/samphire,plant,trnL,GAP (species absent; genus present),28,TRUE
+Telfairia occidentalis,fluted pumpkin,plant,trnL,GAP (fully absent),1,TRUE
+Crocodylus niloticus,nile crocodile,reptile,12S,GAP (fully absent),38,TRUE
+Thryonomys swinderianus,greater cane rat,rodent,12S,GAP (fully absent),195,TRUE
+Hydrochoerus hydrochaeris,capybara,rodent,12S,GAP (fully absent),9,TRUE
+Myocastor coypus,nutria,rodent,12S,GAP (fully absent),8,TRUE
+Phacochoerus africanus,warthog,suid,12S,GAP (fully absent),27,TRUE
+Plectranthus rotundifolius,hausa potato,plant,trnL,GAP (species absent; genus present),0,FALSE

@@ -1,0 +1,111 @@
+Triticum aestivum|wheat|plant
+Oryza sativa|rice|plant
+Zea mays|maize|plant
+Hordeum vulgare|barley|plant
+Avena sativa|oat|plant
+Secale cereale|rye|plant
+Sorghum bicolor|sorghum|plant
+Eleusine coracana|finger millet|plant
+Setaria italica|foxtail millet|plant
+Fagopyrum esculentum|buckwheat|plant
+Chenopodium quinoa|quinoa|plant
+Glycine max|soybean|plant
+Phaseolus vulgaris|common bean|plant
+Cicer arietinum|chickpea|plant
+Lens culinaris|lentil|plant
+Pisum sativum|pea|plant
+Vigna radiata|mung bean|plant
+Vigna unguiculata|cowpea|plant
+Arachis hypogaea|peanut|plant
+Vicia faba|fava bean|plant
+Cajanus cajan|pigeon pea|plant
+Solanum tuberosum|potato|plant
+Ipomoea batatas|sweet potato|plant
+Manihot esculenta|cassava|plant
+Dioscorea alata|water yam|plant
+Colocasia esculenta|taro|plant
+Daucus carota|carrot|plant
+Beta vulgaris|beet|plant
+Brassica oleracea|cabbage/broccoli|plant
+Brassica rapa|turnip/bok choy|plant
+Brassica napus|canola/rapeseed|plant
+Solanum lycopersicum|tomato|plant
+Solanum melongena|eggplant|plant
+Capsicum annuum|pepper|plant
+Cucumis sativus|cucumber|plant
+Cucumis melo|melon|plant
+Citrullus lanatus|watermelon|plant
+Cucurbita pepo|squash|plant
+Allium cepa|onion|plant
+Allium sativum|garlic|plant
+Lactuca sativa|lettuce|plant
+Spinacia oleracea|spinach|plant
+Apium graveolens|celery|plant
+Asparagus officinalis|asparagus|plant
+Malus domestica|apple|plant
+Musa acuminata|banana|plant
+Citrus sinensis|sweet orange|plant
+Vitis vinifera|grape|plant
+Mangifera indica|mango|plant
+Ananas comosus|pineapple|plant
+Persea americana|avocado|plant
+Prunus persica|peach|plant
+Prunus avium|sweet cherry|plant
+Pyrus communis|pear|plant
+Olea europaea|olive|plant
+Carica papaya|papaya|plant
+Psidium guajava|guava|plant
+Juglans regia|walnut|plant
+Prunus dulcis|almond|plant
+Corylus avellana|hazelnut|plant
+Anacardium occidentale|cashew|plant
+Pistacia vera|pistachio|plant
+Castanea sativa|chestnut|plant
+Bertholletia excelsa|brazil nut|plant
+Carya illinoinensis|pecan|plant
+Coffea arabica|coffee|plant
+Camellia sinensis|tea|plant
+Theobroma cacao|cacao|plant
+Saccharum officinarum|sugarcane|plant
+Cocos nucifera|coconut|plant
+Elaeis guineensis|oil palm|plant
+Helianthus annuus|sunflower|plant
+Sesamum indicum|sesame|plant
+Piper nigrum|black pepper|plant
+Zingiber officinale|ginger|plant
+Curcuma longa|turmeric|plant
+Bos taurus|cattle|vertebrate
+Bos indicus|zebu|vertebrate
+Sus scrofa|pig|vertebrate
+Ovis aries|sheep|vertebrate
+Capra hircus|goat|vertebrate
+Gallus gallus|chicken|vertebrate
+Meleagris gallopavo|turkey|vertebrate
+Anas platyrhynchos|duck|vertebrate
+Anser anser|goose|vertebrate
+Coturnix japonica|quail|vertebrate
+Equus caballus|horse|vertebrate
+Bubalus bubalis|water buffalo|vertebrate
+Bos grunniens|yak|vertebrate
+Camelus dromedarius|dromedary camel|vertebrate
+Lama glama|llama|vertebrate
+Vicugna pacos|alpaca|vertebrate
+Cavia porcellus|guinea pig|vertebrate
+Oryctolagus cuniculus|rabbit|vertebrate
+Struthio camelus|ostrich|vertebrate
+Columba livia|pigeon|vertebrate
+Cervus elaphus|red deer|vertebrate
+Odocoileus virginianus|white-tailed deer|vertebrate
+Rangifer tarandus|reindeer|vertebrate
+Salmo salar|atlantic salmon|vertebrate
+Oncorhynchus mykiss|rainbow trout|vertebrate
+Thunnus albacares|yellowfin tuna|vertebrate
+Gadus morhua|atlantic cod|vertebrate
+Clupea harengus|atlantic herring|vertebrate
+Scomber scombrus|atlantic mackerel|vertebrate
+Oreochromis niloticus|nile tilapia|vertebrate
+Cyprinus carpio|common carp|vertebrate
+Sardina pilchardus|european pilchard|vertebrate
+Engraulis encrasicolus|european anchovy|vertebrate
+Lates niloticus|nile perch|vertebrate
+Dicentrarchus labrax|european seabass|vertebrate

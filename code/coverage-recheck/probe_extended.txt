@@ -1,0 +1,87 @@
+Camelus dromedarius|dromedary camel|camelid
+Camelus bactrianus|bactrian camel|camelid
+Lama glama|llama|camelid
+Lama guanicoe|guanaco|camelid
+Vicugna pacos|alpaca|camelid
+Bos grunniens|yak|bovid
+Bos indicus|zebu|bovid
+Bos javanicus|banteng|bovid
+Bos frontalis|gayal/mithun|bovid
+Bison bison|american bison|bovid
+Bison bonasus|european bison|bovid
+Syncerus caffer|african buffalo|bovid
+Ovibos moschatus|muskox|bovid
+Capra ibex|ibex|bovid
+Ovis canadensis|bighorn sheep|bovid
+Cervus elaphus|red deer|deer
+Cervus nippon|sika deer|deer
+Dama dama|fallow deer|deer
+Capreolus capreolus|roe deer|deer
+Alces alces|moose|deer
+Odocoileus hemionus|mule deer|deer
+Muntiacus reevesi|muntjac|deer
+Oryctolagus cuniculus|domestic rabbit|lagomorph
+Lepus europaeus|european hare|lagomorph
+Lepus americanus|snowshoe hare|lagomorph
+Hydrochoerus hydrochaeris|capybara|rodent
+Myocastor coypus|nutria|rodent
+Thryonomys swinderianus|greater cane rat|rodent
+Meleagris gallopavo|domestic turkey|bird
+Numida meleagris|helmeted guineafowl|bird
+Cairina moschata|muscovy duck|bird
+Columba livia|domestic pigeon/squab|bird
+Phasianus colchicus|ring-necked pheasant|bird
+Perdix perdix|grey partridge|bird
+Struthio camelus|ostrich|bird
+Dromaius novaehollandiae|emu|bird
+Rhea americana|greater rhea|bird
+Phacochoerus africanus|warthog|suid
+Osphranter rufus|red kangaroo|marsupial
+Crocodylus niloticus|nile crocodile|reptile
+Alligator mississippiensis|american alligator|reptile
+Lithobates catesbeianus|american bullfrog|amphibian
+Ctenopharyngodon idella|grass carp|fish
+Hypophthalmichthys molitrix|silver carp|fish
+Hypophthalmichthys nobilis|bighead carp|fish
+Carassius auratus|goldfish/crucian|fish
+Pangasianodon hypophthalmus|striped catfish|fish
+Clarias gariepinus|african sharptooth catfish|fish
+Ictalurus punctatus|channel catfish|fish
+Micropterus salmoides|largemouth bass|fish
+Sander lucioperca|zander|fish
+Esox lucius|northern pike|fish
+Anguilla japonica|japanese eel|fish
+Anguilla anguilla|european eel|fish
+Seriola quinqueradiata|japanese amberjack|fish
+Sparus aurata|gilthead seabream|fish
+Katsuwonus pelamis|skipjack tuna|fish
+Thunnus thynnus|atlantic bluefin tuna|fish
+Xiphias gladius|swordfish|fish
+Hippoglossus hippoglossus|atlantic halibut|fish
+Pleuronectes platessa|european plaice|fish
+Solea solea|common sole|fish
+Mugil cephalus|flathead mullet|fish
+Chanos chanos|milkfish|fish
+Lates calcarifer|barramundi|fish
+Salvelinus alpinus|arctic char|fish
+Acipenser gueldenstaedtii|russian sturgeon|fish
+Amaranthus cruentus|amaranth grain|plant
+Digitaria exilis|fonio|plant
+Eragrostis tef|teff|plant
+Lathyrus sativus|grass pea|plant
+Lupinus albus|white lupin|plant
+Plectranthus rotundifolius|hausa potato|plant
+Ullucus tuberosus|ulluco|plant
+Oxalis tuberosa|oca|plant
+Tropaeolum tuberosum|mashua|plant
+Pachyrhizus erosus|jicama|plant
+Moringa oleifera|moringa|plant
+Telfairia occidentalis|fluted pumpkin|plant
+Gnetum africanum|eru|plant
+Adansonia digitata|baobab|plant
+Ziziphus mauritiana|indian jujube|plant
+Salicornia europaea|glasswort/samphire|plant
+Crithmum maritimum|rock samphire|plant
+Perilla frutescens|perilla/shiso|plant
+Nigella sativa|black cumin|plant
+Trigonella foenum-graecum|fenugreek|plant

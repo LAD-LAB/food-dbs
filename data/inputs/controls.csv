@@ -1,0 +1,3 @@
+marker,accession,label,sequence,notes
+trnL,synthetic_trnL_ASV,synthetic trnL ASV,ATCGCTCGGCCTGCCCCATACAACAAACCTTCACCTCGTCGTGAGGTGAG,"Positive-control spike-in. Label is repeated across superkingdom:species so DADA2 assigns it at every rank and it survives LCA condensing; also keeps the genus field non-NA. Must match control.trnL in mb-pipeline Pipeline-to-Phyloseq.Rmd."
+12SV5,synthetic_12S_ASV,synthetic 12S ASV,ATCGCTCGGCCTGCCCCATACAACAAACCTTCACCTCGTCGTGAGGTGAGTCTCAGTCATACGTAAAAATCTAGCGTCTAGCCTACCTAATATCGGTTTG,"Positive-control spike-in. Same construct as the trnL control read to a longer amplicon - the 50 bp trnL sequence is an exact prefix of this 100 bp one. Must match control.12S in mb-pipeline Pipeline-to-Phyloseq.Rmd."
