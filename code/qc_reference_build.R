@@ -47,8 +47,9 @@ inputs <- file.path(repo_dir, "data", "inputs")
 COUNT_TOLERANCE <- 0.25   # allowed fractional change vs the previous build
 NA_RANK_MAX     <- 0.99   # fail if any rank is >= this fraction NA
 STAPLES <- list(
-  trnL = c("Triticum", "Oryza", "Zea mays", "Solanum", "Brassica"),
-  `12S` = c("Bos taurus", "Gallus gallus", "Sus scrofa", "Salmo", "Oncorhynchus")
+  trnL   = c("Triticum", "Oryza", "Zea mays", "Solanum", "Brassica"),
+  trnLCD = c("Triticum", "Oryza", "Zea mays", "Solanum", "Brassica"),
+  `12S`  = c("Bos taurus", "Gallus gallus", "Sus scrofa", "Salmo", "Oncorhynchus")
 )
 RANKS <- c("superkingdom","phylum","class","order","family",
            "genus","species","subspecies","varietas","forma")
@@ -65,6 +66,7 @@ ALLOWED_PHYLA <- list(
   # and Nostoc flagelliforme (fat choy) are edible cyanobacteria on the food
   # list, and both carry trnL records in the reference.
   trnL  = c("Streptophyta", "Cyanobacteriota"),
+  trnLCD = c("Streptophyta", "Cyanobacteriota"),
   # Chordata only — lab decision 2026-08-13: 12SV5 is a vertebrate marker,
   # and invertebrate reference records proved inert in production data
   # (2 ASVs / 15 reads across 385M reads). Records from builds predating
@@ -91,10 +93,17 @@ read_headers <- function(path) {
 
 # ---- per-marker checks ------------------------------------------------------
 check_marker <- function(marker, tax_fasta, seq_fasta, prev_fasta,
-                         fail_controls, warn_controls, staples, n_fields) {
+                         fail_controls, warn_controls, staples, n_fields,
+                         optional = FALSE) {
   cat(sprintf("\n===== %s : %s =====\n", marker, basename(tax_fasta)))
   hdr <- read_headers(tax_fasta)
-  if (is.null(hdr)) { say("FAIL", paste("taxonomy FASTA not found:", tax_fasta)); return(invisible()) }
+  if (is.null(hdr)) {
+    # optional markers (e.g. trnLCD before its first build) skip quietly;
+    # required markers missing their taxonomy FASTA are a hard failure.
+    if (optional) say("INFO", "not built yet - skipping")
+    else say("FAIL", paste("taxonomy FASTA not found:", tax_fasta))
+    return(invisible())
+  }
 
   n <- length(hdr)
   say("INFO", sprintf("%d records", n))
@@ -248,6 +257,26 @@ check_marker(
   fail_controls = unique(c(ctl_labels("trnL"), "synthetic trnL ASV")),
   warn_controls = c("Ilex paraguariensis", "Trifolium pratense"),
   staples       = STAPLES$trnL, n_fields = 10L
+)
+
+# trnLCD previous-build baseline: fall back to Ashish Subramanian's 2025
+# compilation (built outside this pipeline, ~90% of g/h taxa via annotation-
+# based extraction) when no pipeline-built previous version exists. Expect the
+# first primer-based build to show a large species-dropped WARN against it —
+# that documents the known coverage cost of the find_primer_pair method.
+prev_cd <- file.path(d2, "trnLCD", paste0("trnLCD_taxonomy", prev_sfx, ".fasta"))
+if (!file.exists(prev_cd))
+  prev_cd <- file.path(d2, "miscellaneous", "trnLCD_taxonomy.fasta")
+
+check_marker(
+  "trnLCD",
+  tax_fasta     = file.path(d2, "trnLCD", paste0("trnLCD_taxonomy", cur_sfx, ".fasta")),
+  seq_fasta     = file.path(d2, "trnLCD", paste0("trnLCD", cur_sfx, ".fasta")),
+  prev_fasta    = prev_cd,
+  fail_controls = ctl_labels("trnLCD"),   # none defined yet; auto-promotes when added
+  warn_controls = character(0),
+  staples       = STAPLES$trnLCD, n_fields = 10L,
+  optional      = TRUE
 )
 
 check_marker(
