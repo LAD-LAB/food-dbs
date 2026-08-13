@@ -581,11 +581,23 @@ controls.trnL <-
 if (nrow(controls.trnL) > 0) {
     control_rows <-
         controls.trnL |>
-        transmute(superkingdom = label, phylum = label, class = label,
-                  order = label, family = label, genus = label, species = label,
-                  subspecies = NA_character_, varietas = NA_character_,
-                  forma = NA_character_,
-                  taxon = label, seq = sequence, accession = accession) |>
+        # Two kinds of control: synthetic constructs (empty lineage) get the
+        # label repeated across superkingdom:species, per the lab convention;
+        # real-species controls carry their true lineage from the lineage
+        # column so DADA2 places them correctly.
+        mutate(lineage = ifelse(is.na(lineage) | lineage == "",
+                                sapply(label, function(l)
+                                    paste(c(rep(l, 7), rep("NA", 3)),
+                                          collapse = ";")),
+                                lineage)) |>
+        separate(lineage,
+                 into = c("superkingdom", "phylum", "class", "order", "family",
+                          "genus", "species", "subspecies", "varietas", "forma"),
+                 sep = ";") |>
+        mutate(across(superkingdom:forma, \(x) na_if(x, "NA"))) |>
+        transmute(superkingdom, phylum, class, order, family, genus, species,
+                  subspecies, varietas, forma,
+                  taxon = coalesce(species, label), seq = sequence, accession) |>
         # guard against double-adding if this chunk is re-run
         filter(!(seq %in% trnL.df$seq))
 
@@ -1152,6 +1164,13 @@ This step is what was missing previously: the 12SV5 reference shipped without it
 spike-in reads were assigned to the nearest real vertebrate (mostly Actinopteri) instead of
 being identified as controls.
 
+12SV5 additionally carries a real-species control: *Rhacodactylus leachianus* (New Caledonia
+giant gecko, AF090176.1) — a vertebrate the primers amplify but which never occurs in human
+diet samples (1.05M reads across 45 samples of the 2025 production megaphyloseq). Every
+reference up to 2025 contained it only by inheritance from older broad vertebrate databases;
+now that the pipeline builds strictly from `human-foods.csv`, it must be appended here or the
+control silently breaks.
+
 ```{r s12v5_controls}
 controls.12S <-
     read_csv(file.path(REPO_DIR, "data", "inputs", "controls.csv"),
@@ -1161,11 +1180,23 @@ controls.12S <-
 if (nrow(controls.12S) > 0) {
     control_rows <-
         controls.12S |>
-        transmute(superkingdom = label, phylum = label, class = label,
-                  order = label, family = label, genus = label, species = label,
-                  subspecies = NA_character_, varietas = NA_character_,
-                  forma = NA_character_,
-                  taxon = label, seq = sequence, accession = accession) |>
+        # Two kinds of control: synthetic constructs (empty lineage) get the
+        # label repeated across superkingdom:species, per the lab convention;
+        # real-species controls (e.g. the R. leachianus gecko) carry their true
+        # lineage from the lineage column so DADA2 places them correctly.
+        mutate(lineage = ifelse(is.na(lineage) | lineage == "",
+                                sapply(label, function(l)
+                                    paste(c(rep(l, 7), rep("NA", 3)),
+                                          collapse = ";")),
+                                lineage)) |>
+        separate(lineage,
+                 into = c("superkingdom", "phylum", "class", "order", "family",
+                          "genus", "species", "subspecies", "varietas", "forma"),
+                 sep = ";") |>
+        mutate(across(superkingdom:forma, \(x) na_if(x, "NA"))) |>
+        transmute(superkingdom, phylum, class, order, family, genus, species,
+                  subspecies, varietas, forma,
+                  taxon = coalesce(species, label), seq = sequence, accession) |>
         # guard against double-adding if this chunk is re-run
         filter(!(seq %in% s12v5.df$seq))
 

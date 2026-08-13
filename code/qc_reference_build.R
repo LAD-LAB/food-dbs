@@ -255,11 +255,15 @@ check_marker(
   tax_fasta     = file.path(d2, "12Sv5", paste0("12Sv5_taxonomy", cur_sfx, ".fasta")),
   seq_fasta     = file.path(d2, "12Sv5", paste0("12Sv5", cur_sfx, ".fasta")),
   prev_fasta    = file.path(d2, "12Sv5", paste0("12Sv5_taxonomy", prev_sfx, ".fasta")),
+  # Rhacodactylus leachianus is now in controls.csv (real-lineage control), so
+  # ctl_labels() promotes it to a hard FAIL automatically.
   fail_controls = unique(c(ctl_labels("12SV5"), "synthetic 12S ASV")),
-  # positive-control template species named in the wet-lab protocol; not yet in
-  # controls.csv, so WARN-only until the add-the-geckos decision is made
-  warn_controls = c("Dromaius novaehollandiae", "Correlophus ciliatus",
-                    "Rhacodactylus leachianus"),
+  # Correlophus ciliatus is named in the wet-lab protocol's control vector but
+  # production data (2025 megaphyloseq, 385M reads) shows it was never actually
+  # spiked — all gecko reads are one R. leachianus template — and it has never
+  # had a record in any reference version. WARN-only until the lab removes it
+  # from control.12S in Pipeline-to-Phyloseq.Rmd (or starts using it).
+  warn_controls = c("Dromaius novaehollandiae", "Correlophus ciliatus"),
   staples       = STAPLES$`12S`, n_fields = 10L
 )
 
