@@ -15,7 +15,17 @@ query_ncbi_accession <- function(acc, max_tries = 4, retry_wait = 5){
 
           result <- tryCatch({
 
-               ids <- entrez_search(acc,
+               # [ACCN] restricts the search to the accession field. Without it
+               # this is a free-text search: a real accession still resolves
+               # (unique match), but any non-accession string — e.g. the bare
+               # genus names the May 2026 build carried in its accession column —
+               # matches thousands of records and silently returns the taxid of
+               # whichever was deposited most recently ("Esox" -> a trematode,
+               # at time of testing). With [ACCN] such strings return 0 hits and
+               # the function falls through to NA, which downstream filters
+               # handle. Verified: works for GenBank and RefSeq accessions,
+               # with or without the version suffix.
+               ids <- entrez_search(paste0(acc, '[ACCN]'),
                                     db          = 'nucleotide',
                                     retmax      = 1,
                                     use_history = TRUE)

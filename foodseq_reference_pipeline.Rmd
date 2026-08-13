@@ -300,16 +300,21 @@ head(plants)
 ## A2. Filter RefSeq plastid to one sequence per species
 
 ```{r trnl_refseq_filter}
-plastid_species_path <- file.path(PLASTID_DIR, "refseq_plastid_species.fasta")
+# "_acc" filename: names are "<accession> <Genus species>". Do NOT fall back to
+# an old refseq_plastid_species.fasta cache — its names are species-only, which
+# put a bare genus in the accession field of every RefSeq record (see B2 for the
+# full failure chain this caused in the May 2026 12S build).
+plastid_species_path <- file.path(PLASTID_DIR, "refseq_plastid_species_acc.fasta")
 
 if (!file.exists(plastid_species_path)) {
     cat("Filtering RefSeq plastid to one sequence per species...\n")
     plastid <- readDNAStringSet(file.path(PLASTID_DIR, "refseq_plastid_all.fasta"))
     cat(length(plastid), "total sequences\n")
 
+    accession       <- sub("^(\\S+).*", "\\1", names(plastid))
     species         <- sub("^\\S+\\s+(\\S+\\s+\\S+).*", "\\1", names(plastid))
     plastid_species <- plastid[!duplicated(species)]
-    names(plastid_species) <- species[!duplicated(species)]
+    names(plastid_species) <- paste(accession, species)[!duplicated(species)]
 
     writeXStringSet(plastid_species, plastid_species_path)
     cat(length(plastid_species), "species retained\n")
@@ -440,6 +445,26 @@ cat("Remaining missing IDs:", sum(is.na(trnL_ids)), "\n")
 trnL_taxonomy <- extract_taxonomy(trnL_ids, SQL_PATH)
 trnL.df       <- bind_cols(trnL.df, trnL_taxonomy)
 head(trnL.df)
+```
+
+## A6b. Remove off-target sequences
+
+The GenBank query can return records whose deposited taxonomy is outside the food-plant
+clades entirely (bacterial or viral records co-deposited with plant material). Filter by
+phylum allowlist, mirroring the 12SV5 filter at B6b.
+
+```{r trnl_offtarget_filter}
+# Cyanobacteriota is deliberately allowed: Arthrospira platensis (spirulina)
+# and Nostoc flagelliforme (fat choy) are edible cyanobacteria on the food
+# list with real trnL records. Keep this vector in sync with ALLOWED_PHYLA
+# in code/qc_reference_build.R.
+allowed_phyla_trnL <- c("Streptophyta", "Cyanobacteriota")
+
+n_before_offtarget <- nrow(trnL.df)
+trnL.df <- filter(trnL.df, phylum %in% allowed_phyla_trnL)
+cat("Off-target filter: removed", n_before_offtarget - nrow(trnL.df),
+    "sequences with phylum outside the food-plant allowlist\n")
+cat(nrow(trnL.df), "sequences retained\n")
 ```
 
 ## A7. Manual curation edits
@@ -633,7 +658,10 @@ tail(animals)
 ## B2. Filter RefSeq mitochondrial to one sequence per species
 
 ```{r s12v5_refseq_filter}
-mito_species_path <- file.path(MITO_DIR, "refseq_mito_species.fasta")
+# "_acc" filename: names are "<accession> <Genus species>". Do NOT fall back to
+# an old refseq_mito_species.fasta cache — its names are species-only, which is
+# the bug this replaces (see below).
+mito_species_path <- file.path(MITO_DIR, "refseq_mito_species_acc.fasta")
 
 if (!file.exists(mito_species_path)) {
     cat("Filtering RefSeq mitochondrial to one sequence per species...\n")
@@ -646,9 +674,16 @@ if (!file.exists(mito_species_path)) {
         lapply(`[[`, 1) |>
         unlist()
 
+    # The accession MUST stay in the name: B3 keeps the first token as the
+    # record's accession, and taxonomy lookup depends on it. The May 2026 run
+    # named these by species only, which put a bare GENUS in the accession
+    # column of all 260 RefSeq-sourced records and sent their taxonomy lookups
+    # through the free-text NCBI fallback — 39 came back cross-genus mislabels
+    # (Esox->Salmo salar etc.).
+    accession    <- sub("^(\\S+).*", "\\1", names(mito))
     species      <- sub("^\\S+\\s+(\\S+\\s+\\S+).*", "\\1", names(mito))
     mito_species <- mito[!duplicated(species)]
-    names(mito_species) <- species[!duplicated(species)]
+    names(mito_species) <- paste(accession, species)[!duplicated(species)]
 
     writeXStringSet(mito_species, mito_species_path)
     cat(length(mito_species), "species retained\n")
@@ -1020,6 +1055,33 @@ s12v5.df <-
     select(source, accession, taxon, taxid, superkingdom:forma, seq)
 
 head(s12v5.df)
+```
+
+## B6b. Remove off-target sequences
+
+The GenBank query returns any NCBI record matching the 12SV5 primer pair for a queried
+species — including off-target hits: viruses co-deposited with host records (e.g. avian
+influenza filed under duck species), bacteria from gut-microbiome studies, and synthetic
+constructs. In the May 2026 build, 21 such records carried sequences identical to real
+fish/bird amplicons and collapsed DADA2's bootstrap to full NA for those taxa.
+
+This deliberately narrows scope relative to the 2025 reference, which carried shrimp,
+crab, and jellyfish records: 12SV5 is a vertebrate marker, and those records never
+meaningfully assigned (2 ASVs / 15 reads across 385M production reads).
+
+```{r s12v5_offtarget_filter}
+# Chordata only — lab decision 2026-08-13. 12SV5 is a vertebrate marker;
+# invertebrate reference records proved inert in production data, and edible
+# invertebrates are out of assay scope (they were likewise excluded from the
+# coverage-recheck candidate lists). Keep this vector in sync with
+# ALLOWED_PHYLA in code/qc_reference_build.R.
+allowed_phyla_12S <- c("Chordata")
+
+n_before_offtarget <- nrow(s12v5.df)
+s12v5.df <- filter(s12v5.df, phylum %in% allowed_phyla_12S)
+cat("Off-target filter: removed", n_before_offtarget - nrow(s12v5.df),
+    "sequences with phylum outside the vertebrate-marker scope\n")
+cat(nrow(s12v5.df), "sequences retained\n")
 ```
 
 ---

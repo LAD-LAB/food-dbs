@@ -13,4 +13,7 @@
 !changes-summary.html
 !pipeline-flowchart.html
 
-foodseq_reference_pipeline_May2026Run.Rmd
+# Run copies of the pipeline carry a personal NCBI API key (inline and in the
+# generated SLURM script) — never commit them. The canonical
+# foodseq_reference_pipeline.Rmd keeps a placeholder and IS tracked.
+foodseq_reference_pipeline_*Run.Rmd

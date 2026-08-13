@@ -9,8 +9,19 @@
 # Each check below targets one of those failure modes plus general sanity.
 #
 # Usage:
-#   Rscript code/qc_reference_build.R [REPO_DIR]
+#   Rscript code/qc_reference_build.R [REPO_DIR] [CURRENT_SUFFIX] [PREVIOUS_SUFFIX]
 # If REPO_DIR is omitted, uses the current working directory.
+#
+# CURRENT_SUFFIX / PREVIOUS_SUFFIX select which build to check and which to
+# compare against, as filename suffixes (e.g. "_Aug2026"). Pass "-" for the
+# date-less filenames the pipeline itself writes (trnLGH_taxonomy.fasta etc.).
+# Defaults: CURRENT "_May2026", PREVIOUS "-".
+#
+# NOTE the pipeline OVERWRITES the date-less files in place, so right after a
+# rebuild those hold the NEW build, not the old baseline:
+#   on the cluster, straight after a rebuild:   ... .  -  _May2026
+#   locally, after archiving outputs by date:   ... .  _Aug2026  _May2026
+#
 # Exit code 0 = all checks passed; 1 = one or more FAILs (usable in CI / SLURM).
 # =============================================================================
 
@@ -21,6 +32,13 @@ if (!ok) stop("Biostrings is required. install via BiocManager::install('Biostri
 
 args     <- commandArgs(trailingOnly = TRUE)
 repo_dir <- if (length(args) >= 1) args[[1]] else getwd()
+
+parse_sfx <- function(x) if (x %in% c("-", "")) "" else x
+cur_sfx   <- if (length(args) >= 2) parse_sfx(args[[2]]) else "_May2026"
+prev_sfx  <- if (length(args) >= 3) parse_sfx(args[[3]]) else ""
+if (identical(cur_sfx, prev_sfx))
+  stop("CURRENT_SUFFIX and PREVIOUS_SUFFIX are both '", cur_sfx,
+       "' - a build cannot be compared against itself.")
 
 d2 <- file.path(repo_dir, "data", "outputs", "dada2-compatible")
 inputs <- file.path(repo_dir, "data", "inputs")
@@ -41,12 +59,19 @@ RANKS <- c("superkingdom","phylum","class","order","family",
 # that leaked in (e.g. the May 2026 12S build carried Pseudomonadota, Bacillota,
 # and several *viricota records that hijacked fish assignments). An allowlist is
 # used deliberately over a denylist so an UNKNOWN future contaminant phylum is
-# still caught. Edible invertebrate phyla are included for 12S so legitimate
-# shellfish / jellyfish are not flagged.
+# still caught.
 ALLOWED_PHYLA <- list(
-  trnL  = c("Streptophyta"),
-  `12S` = c("Chordata", "Arthropoda", "Mollusca", "Echinodermata",
-            "Cnidaria", "Annelida", "Porifera")
+  # Cyanobacteriota is legitimate for trnL: Arthrospira platensis (spirulina)
+  # and Nostoc flagelliforme (fat choy) are edible cyanobacteria on the food
+  # list, and both carry trnL records in the reference.
+  trnL  = c("Streptophyta", "Cyanobacteriota"),
+  # Chordata only — lab decision 2026-08-13: 12SV5 is a vertebrate marker,
+  # and invertebrate reference records proved inert in production data
+  # (2 ASVs / 15 reads across 385M reads). Records from builds predating
+  # this decision (2025, May 2026) contain shrimp/crab/jellyfish and will
+  # flag here; that is expected. Keep in sync with allowed_phyla_12S in
+  # foodseq_reference_pipeline.Rmd.
+  `12S` = c("Chordata")
 )
 
 # ---- helpers ----------------------------------------------------------------
@@ -210,13 +235,16 @@ ctl_labels <- function(mk) if (is.null(ctl)) character(0) else ctl$label[ctl$mar
 cat("========================================================\n")
 cat("  FoodSeq reference build QC\n")
 cat("  repo:", repo_dir, "\n")
+cat(sprintf("  current build: '%s'  |  compared against: '%s'\n",
+            if (cur_sfx == "") "(date-less files)" else cur_sfx,
+            if (prev_sfx == "") "(date-less files)" else prev_sfx))
 cat("========================================================\n")
 
 check_marker(
   "trnL",
-  tax_fasta     = file.path(d2, "trnL", "trnLGH_taxonomy_May2026.fasta"),
-  seq_fasta     = file.path(d2, "trnL", "trnLGH_May2026.fasta"),
-  prev_fasta    = file.path(d2, "trnL", "trnLGH_taxonomy.fasta"),
+  tax_fasta     = file.path(d2, "trnL", paste0("trnLGH_taxonomy", cur_sfx, ".fasta")),
+  seq_fasta     = file.path(d2, "trnL", paste0("trnLGH", cur_sfx, ".fasta")),
+  prev_fasta    = file.path(d2, "trnL", paste0("trnLGH_taxonomy", prev_sfx, ".fasta")),
   fail_controls = unique(c(ctl_labels("trnL"), "synthetic trnL ASV")),
   warn_controls = c("Ilex paraguariensis", "Trifolium pratense"),
   staples       = STAPLES$trnL, n_fields = 10L
@@ -224,9 +252,9 @@ check_marker(
 
 check_marker(
   "12S",
-  tax_fasta     = file.path(d2, "12Sv5", "12Sv5_taxonomy_May2026.fasta"),
-  seq_fasta     = file.path(d2, "12Sv5", "12Sv5_May2026.fasta"),
-  prev_fasta    = file.path(d2, "12Sv5", "12Sv5_taxonomy.fasta"),
+  tax_fasta     = file.path(d2, "12Sv5", paste0("12Sv5_taxonomy", cur_sfx, ".fasta")),
+  seq_fasta     = file.path(d2, "12Sv5", paste0("12Sv5", cur_sfx, ".fasta")),
+  prev_fasta    = file.path(d2, "12Sv5", paste0("12Sv5_taxonomy", prev_sfx, ".fasta")),
   fail_controls = unique(c(ctl_labels("12SV5"), "synthetic 12S ASV")),
   # positive-control template species named in the wet-lab protocol; not yet in
   # controls.csv, so WARN-only until the add-the-geckos decision is made
