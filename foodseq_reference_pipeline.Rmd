@@ -358,8 +358,11 @@ cat(length(ncbi.trnL), "sequences returned from NCBI\n")
 
 ```{r trnl_ncbi_pcr}
 # Keep the untrimmed pull for Part A-CD (trnL c/d), which re-extracts a
-# different amplicon from the same records without re-querying NCBI.
+# different amplicon from the same records without re-querying NCBI. Also
+# checkpoint it to scratch so a session restart before Part A-CD does not
+# force repeating the query.
 ncbi.trnL_raw <- ncbi.trnL
+saveRDS(ncbi.trnL_raw, file.path(SCRATCH, "ncbi_trnL_raw.rds"))
 
 ncbi.trnL <- find_primer_pair(ncbi.trnL,
                               fwd = trnL_primers[[1]],
@@ -686,6 +689,12 @@ compilation.
 trnLC <- DNAString("CGAAATCGGTAGACGCTACG")
 trnLD <- DNAString("GGGGATAGAGGGACTTGAAC")
 trnLCD_primers <- list(trnLC, trnLD)
+
+# Fresh-session recovery: the untrimmed A4 pull is checkpointed to scratch.
+# (In a fresh session, first rerun Configuration, Libraries, A1, A2, and
+# define allowed_phyla_trnL as in A6b.)
+if (!exists("ncbi.trnL_raw"))
+    ncbi.trnL_raw <- readRDS(file.path(SCRATCH, "ncbi_trnL_raw.rds"))
 
 # pairwiseAlignment machinery lives in pwalign on Bioconductor >= 3.19 and in
 # Biostrings itself before that; bind whichever this installation provides.
