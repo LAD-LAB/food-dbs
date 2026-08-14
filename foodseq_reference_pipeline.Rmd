@@ -59,10 +59,12 @@ cat("Scratch:", SCRATCH,  "\n")
 Run once on first use; safe to skip on subsequent runs.
 
 ```{r install, eval=FALSE}
-# Bioconductor packages
+# Bioconductor packages. pwalign holds pairwiseAlignment() on Bioconductor
+# >= 3.19 (Part A-CD needs it); on older installations it is part of
+# Biostrings and this install line simply skips it.
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install(c("Biostrings", "ShortRead"), ask = FALSE)
+BiocManager::install(c("Biostrings", "ShortRead", "pwalign"), ask = FALSE)
 
 # CRAN packages
 install.packages(c("taxonomizr", "tidyverse", "rentrez", "remotes"),
@@ -657,66 +659,187 @@ This part reuses Part A's inputs directly — the RefSeq plastome set from A2 an
 untrimmed GenBank pull stashed in A4 (`ncbi.trnL_raw`) — so it adds **no** NCBI queries.
 It must run after Part A (it also reuses `plants` and `allowed_phyla_trnL`).
 
-> **Coverage expectation (assessed 2026-08-13):** requiring both priming sites in-deposit
-> (`find_primer_pair()`, as used throughout this pipeline) recovers c/d for only ~55–60%
-> of the taxa the g/h reference covers — most long GenBank trnL deposits are
-> primer-trimmed introns or trnL-F *spacer* records that carry neither c/d site.
-> Plastome-backed staples are unaffected. An annotation/alignment-based extraction can
-> reach ~90% (see the 2025 `trnLCD.fasta` in `data/outputs/dada2-compatible/miscellaneous/`,
-> built outside this pipeline by Ashish Subramanian); this section deliberately trades
-> that coverage for the pipeline's uniform primer-based method.
+Extraction is **alignment-augmented**, in three tiers:
 
-## CD1. Primers
+1. **Plastome introns** — extracted by primer sites from the RefSeq plastomes (complete
+   genomes always carry the sites). These become reference records AND the alignment panel.
+2. **GenBank primer route** — records that carry both priming sites are extracted directly.
+3. **GenBank alignment rescue** — records without primer sites (most long trnL deposits are
+   primer-trimmed introns) are locally aligned against family-matched plastome introns and
+   the homologous region is extracted.
+
+All records are stored **primer-trimmed and c→d oriented**. That matches how reads are
+processed (primers removed before denoising) and matches the format of the 2025 trnLCD
+compilation.
+
+> **Method basis (validated 2026-08-13):** primer-only extraction reaches ~55–60% of the
+> taxa the g/h reference covers, because most long GenBank trnL deposits carry neither c/d
+> site (primer-trimmed introns and trnL-F spacer records). Alignment localized the intron
+> in 99/100 sampled primer-less taxa, and the 2025 `trnLCD.fasta` in
+> `data/outputs/dada2-compatible/miscellaneous/` (Ashish Subramanian; demonstrated to be
+> annotation/alignment-based, not primer-based) reached ~90% the same way. Expected
+> coverage here: ~90–95% of g/h taxa. The CD8 anchor check guards extraction quality.
+
+## CD1. Primers and alignment setup
 
 ```{r trnlcd_inputs}
 trnLC <- DNAString("CGAAATCGGTAGACGCTACG")
 trnLD <- DNAString("GGGGATAGAGGGACTTGAAC")
 trnLCD_primers <- list(trnLC, trnLD)
+
+# pairwiseAlignment machinery lives in pwalign on Bioconductor >= 3.19 and in
+# Biostrings itself before that; bind whichever this installation provides.
+if (requireNamespace("pwalign", quietly = TRUE)) {
+    pa_align   <- pwalign::pairwiseAlignment
+    pa_nsm     <- pwalign::nucleotideSubstitutionMatrix
+    pa_pid     <- pwalign::pid
+    pa_pattern <- pwalign::pattern
+} else {
+    pa_align   <- Biostrings::pairwiseAlignment
+    pa_nsm     <- Biostrings::nucleotideSubstitutionMatrix
+    pa_pid     <- Biostrings::pid
+    pa_pattern <- Biostrings::pattern
+}
+
+CD_SUB_MAT  <- pa_nsm(match = 1, mismatch = -1, baseOnly = FALSE)
+CD_MIN_PID  <- 60     # min % identity of the best local alignment
+CD_MIN_SPAN <- 150    # min bp extracted (2025 compilation minimum was 152)
+CD_CAND_MIN <- 250    # candidate record length window for alignment rescue
+CD_CAND_MAX <- 20000
+
+# Orient an amplicon so trnL-c is at its 5' end (whichever orientation places
+# it there with fewer edits), then trim both 20 bp primers off.
+orient_and_trim_cd <- function(amps) {
+    fwd_mm <- vapply(seq_along(amps), function(i)
+        neditStartingAt(trnLC, amps[[i]], starting.at = 1), 0L)
+    rev_mm <- vapply(seq_along(amps), function(i)
+        neditStartingAt(trnLC, reverseComplement(amps[[i]]), starting.at = 1), 0L)
+    flip <- rev_mm < fwd_mm
+    amps[flip] <- reverseComplement(amps[flip])
+    subseq(amps, 21L, width(amps) - 20L)
+}
 ```
 
-## CD2. RefSeq: in silico PCR and subset to food plants
+## CD2. Plastome intron panel (reference records + alignment panel)
 
-```{r trnlcd_refseq_pcr}
-refseq.trnLCD <- find_primer_pair(plastid_species,
-                                  fwd = trnLCD_primers[[1]],
-                                  rev = trnLCD_primers[[2]])
-cat(length(refseq.trnLCD), "sequences contain the trnL c/d primer pair\n")
+```{r trnlcd_refseq_panel}
+refseq.ampCD <- find_primer_pair(plastid_species,
+                                 fwd = trnLCD_primers[[1]],
+                                 rev = trnLCD_primers[[2]])
+cat(length(refseq.ampCD), "plastome sequences contain the trnL c/d primer pair\n")
 
-plants.cd.i   <- lapply(plants, grep, x = names(refseq.trnLCD)) |> unlist()
-refseq.trnLCD <- refseq.trnLCD[plants.cd.i]
-cat(length(refseq.trnLCD), "food plant trnL c/d sequences from RefSeq\n")
+plants.cd.i  <- lapply(plants, grep, x = names(refseq.ampCD)) |> unlist() |> unique()
+refseq.ampCD <- refseq.ampCD[plants.cd.i]
+refseq.ampCD <- refseq.ampCD[width(refseq.ampCD) >= 100]
+cat(length(refseq.ampCD), "food plant plastome amplicons\n")
 
-names(refseq.trnLCD) <- gsub(" .*$", "", names(refseq.trnLCD))
-head(names(refseq.trnLCD))
+refseq.intronCD <- orient_and_trim_cd(refseq.ampCD)
+names(refseq.intronCD) <- gsub(" .*$", "", names(refseq.intronCD))
+
+# Family index for family-matched alignment in CD3b
+panel_ids <- accessionToTaxa(names(refseq.intronCD), SQL_PATH)
+panel_fam <- getTaxonomy(panel_ids, SQL_PATH, desiredRanks = "family")[, "family"]
+cat(length(refseq.intronCD), "plastome introns spanning",
+    n_distinct(na.omit(panel_fam)), "families\n")
 ```
 
-## CD3. GenBank: in silico PCR on the A4 pull
+## CD3. GenBank: primer route
 
 ```{r trnlcd_ncbi_pcr}
-ncbi.trnLCD <- find_primer_pair(ncbi.trnL_raw,
-                                fwd = trnLCD_primers[[1]],
-                                rev = trnLCD_primers[[2]])
-cat(length(ncbi.trnLCD), "sequences contain the trnL c/d primer pair\n")
+ncbi.ampCD <- find_primer_pair(ncbi.trnL_raw,
+                               fwd = trnLCD_primers[[1]],
+                               rev = trnLCD_primers[[2]])
+cat(length(ncbi.ampCD), "GenBank records contain the trnL c/d primer pair\n")
 
-n_before    <- length(ncbi.trnLCD)
-ncbi.trnLCD <- ncbi.trnLCD[!grepl("UNVERIFIED", names(ncbi.trnLCD))]
-cat("Removed", n_before - length(ncbi.trnLCD), "unverified sequences\n")
+ncbi.ampCD <- ncbi.ampCD[!grepl("UNVERIFIED", names(ncbi.ampCD))]
+ncbi.ampCD <- ncbi.ampCD[width(ncbi.ampCD) >= 100]
 
-names(ncbi.trnLCD) <-
-    names(ncbi.trnLCD) |>
+ncbi.intronCD <- orient_and_trim_cd(ncbi.ampCD)
+names(ncbi.intronCD) <-
+    names(ncbi.intronCD) |>
     gsub(pattern = " .+$", replacement = "") |>
     gsub(pattern = "^>",   replacement = "")
-head(names(ncbi.trnLCD))
+cat(length(ncbi.intronCD), "primer-extracted GenBank introns\n")
 ```
 
-## CD4. Combine RefSeq and GenBank
+## CD3b. GenBank: alignment rescue
+
+Records without primer sites but long enough to hold the intron are aligned against
+family-matched plastome introns (falling back to a taxonomically spread set when the
+family is unknown or unrepresented), and the homologous region is extracted. Identical
+sequences are aligned once and the result mapped back to every accession sharing them.
+
+```{r trnlcd_align_rescue}
+cand <- ncbi.trnL_raw[!grepl("UNVERIFIED", names(ncbi.trnL_raw))]
+names(cand) <-
+    names(cand) |>
+    gsub(pattern = " .+$", replacement = "") |>
+    gsub(pattern = "^>",   replacement = "")
+cand <- cand[width(cand) >= CD_CAND_MIN & width(cand) <= CD_CAND_MAX]
+cand <- cand[!(names(cand) %in% names(ncbi.intronCD))]
+cat(length(cand), "candidate records for alignment rescue\n")
+
+cand_chr <- as.character(cand)
+uniq_i   <- which(!duplicated(cand_chr))
+uniq     <- cand[uniq_i]
+uniq_ids <- accessionToTaxa(names(uniq), SQL_PATH)
+uniq_fam <- getTaxonomy(uniq_ids, SQL_PATH, desiredRanks = "family")[, "family"]
+cat(length(uniq), "unique candidate sequences\n")
+
+fallback_refs <- refseq.intronCD[head(which(!duplicated(panel_fam) & !is.na(panel_fam)), 8)]
+
+align_extract_cd <- function(s, fam) {
+    refs <- fallback_refs
+    if (!is.na(fam)) {
+        fi <- which(!is.na(panel_fam) & panel_fam == fam)
+        if (length(fi) > 0) refs <- refseq.intronCD[head(fi, 3)]
+    }
+    # orient once against the first reference
+    a_f <- pa_align(s, refs[[1]], type = "local", substitutionMatrix = CD_SUB_MAT,
+                    gapOpening = 2, gapExtension = 0.5)
+    a_r <- pa_align(reverseComplement(s), refs[[1]], type = "local",
+                    substitutionMatrix = CD_SUB_MAT, gapOpening = 2, gapExtension = 0.5)
+    if (score(a_r) > score(a_f)) s <- reverseComplement(s)
+    best <- NULL
+    for (k in seq_along(refs)) {
+        a  <- pa_align(s, refs[[k]], type = "local", substitutionMatrix = CD_SUB_MAT,
+                       gapOpening = 2, gapExtension = 0.5)
+        st <- start(pa_pattern(a)); en <- end(pa_pattern(a))
+        if (is.null(best) || (en - st + 1) > best$span)
+            best <- list(span = en - st + 1, pid = pa_pid(a), st = st, en = en)
+    }
+    if (best$span >= CD_MIN_SPAN && best$pid >= CD_MIN_PID)
+        as.character(subseq(s, best$st, best$en))
+    else NA_character_
+}
+
+uniq_intron <- rep(NA_character_, length(uniq))
+for (i in seq_along(uniq)) {
+    uniq_intron[i] <- align_extract_cd(uniq[[i]], uniq_fam[i])
+    if (i %% 1000 == 0) cat("  aligned", i, "of", length(uniq), "candidates\n")
+}
+cat(sum(!is.na(uniq_intron)), "of", length(uniq),
+    "unique candidates yielded an intron\n")
+
+map          <- match(cand_chr, cand_chr[uniq_i])
+aligned_seqs <- uniq_intron[map]
+keep         <- !is.na(aligned_seqs)
+aligned.df   <- data.frame(source    = "GenBank-aligned",
+                           accession = names(cand)[keep],
+                           seq       = aligned_seqs[keep])
+cat(nrow(aligned.df), "alignment-rescued records\n")
+```
+
+## CD4. Combine all three tiers
 
 ```{r trnlcd_combine}
 trnLCD.df <- bind_rows(
-    data.frame(source = "GenBank", accession = names(ncbi.trnLCD),   seq = as.character(ncbi.trnLCD)),
-    data.frame(source = "RefSeq",  accession = names(refseq.trnLCD), seq = as.character(refseq.trnLCD))
+    data.frame(source = "GenBank", accession = names(ncbi.intronCD),   seq = as.character(ncbi.intronCD)),
+    aligned.df,
+    data.frame(source = "RefSeq",  accession = names(refseq.intronCD), seq = as.character(refseq.intronCD))
 )
 cat(nrow(trnLCD.df), "total sequences\n")
+print(table(trnLCD.df$source))
 ```
 
 ## CD5. Taxonomy lookup
@@ -780,38 +903,23 @@ trnLCD.df <- filter(trnLCD.df, !grepl("[AGCT]*[^AGCT]+", seq))
 cat(nrow(trnLCD.df), "sequences remaining\n")
 ```
 
-## CD9. Standardise orientation
+## CD9. Extraction sanity check
 
-```{r trnlcd_orientation}
-fwd_err_cd <- floor(0.2 * length(trnLC))
-rev_err_cd <- floor(0.2 * length(trnLD))
-ref_cd     <- DNAStringSet(trnLCD.df$seq)
-names(ref_cd) <- paste(trnLCD.df$accession, trnLCD.df$taxon)
+Orientation is standardised at extraction time (all three tiers emit c→d oriented,
+primer-trimmed introns), so no orientation pass is needed. Instead, verify extraction
+quality: the trnL-g primer anneals **inside** the intron, so nearly every true intron
+must contain a g-like site. A low anchor rate means the alignment rescue is extracting
+the wrong region.
 
-fwd_matches_cd <-
-    vmatchPattern(trnLC, ref_cd, max.mismatch = fwd_err_cd, fixed = TRUE) |>
-    as.data.frame() |>
-    filter(start <= 1) |>
-    mutate(type = "forward") |>
-    select(group, type)
-
-rev_matches_cd <-
-    vmatchPattern(trnLD, ref_cd, max.mismatch = rev_err_cd, fixed = TRUE) |>
-    as.data.frame() |>
-    filter(start <= 1) |>
-    mutate(type = "reverse") |>
-    select(group, type)
-
-trnLCD.df <-
-    bind_rows(fwd_matches_cd, rev_matches_cd) |>
-    arrange(group) |>
-    bind_cols(trnLCD.df) |>
-    mutate(seq = ifelse(type == "reverse",
-                        DNAStringSet(seq) |> reverseComplement() |> as.character(),
-                        seq)) |>
-    select(-c(type, group))
-
-cat("Orientation standardised.\n")
+```{r trnlcd_anchor_check}
+g_anchor <- vcountPattern(DNAString("GGGCAATCCTGAGCCAA"),
+                          DNAStringSet(trnLCD.df$seq), max.mismatch = 3) > 0
+cat(sprintf("%.1f%% of records contain the internal trnL-g anchor\n",
+            100 * mean(g_anchor)))
+cat("anchor rate by source tier:\n")
+print(round(100 * tapply(g_anchor, trnLCD.df$source, mean), 1))
+if (mean(g_anchor) < 0.80)
+    warning("Low trnL-g anchor rate - review CD3b extraction thresholds before shipping.")
 ```
 
 ## CD10. Deduplicate, add controls, and save
