@@ -549,16 +549,21 @@ rev_matches <-
     mutate(type = "reverse") |>
     select(group, type)
 
-trnL.df <-
+# Keep the orientation table: the summary below needs `type` after it has been
+# dropped from trnL.df.
+orientation <-
     bind_rows(fwd_matches, rev_matches) |>
-    arrange(group) |>
+    arrange(group)
+
+trnL.df <-
+    orientation |>
     bind_cols(trnL.df) |>
     mutate(seq = ifelse(type == "reverse",
                         DNAStringSet(seq) |> reverseComplement() |> as.character(),
                         seq)) |>
     select(-c(type, group))
 
-trnL.df |> group_by(type) |> count()
+count(orientation, type)
 ```
 
 ## A10. Deduplicate, add controls, and save
