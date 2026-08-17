@@ -209,6 +209,13 @@ library(ShortRead)
 library(taxonomizr)
 library(tidyverse)
 library(rentrez)
+# Used for lowest_level() in A7 / CD7 / B7. Loaded here rather than only
+# called as MButils::lowest_level() so a broken install fails now, at setup,
+# instead of hours into the run. MButils imports dada2, so if this errors with
+# an undefined symbol (e.g. _ZTIN3tbb4taskE), rebuild dada2 from source
+# against the current RcppParallel:
+#   BiocManager::install("dada2", type = "source", force = TRUE)
+library(MButils)
 
 source(file.path(REPO_DIR, "code", "functions", "find_primer_pair.R"))
 source(file.path(REPO_DIR, "code", "functions", "query_ncbi.R"))
