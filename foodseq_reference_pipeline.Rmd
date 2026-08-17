@@ -448,13 +448,15 @@ if (any(is.na(trnL_ids))) {
 
 ```{r trnl_taxonomy_missing}
 # Automatically resolve missing IDs using query_ncbi_accession() for accessions
-# added to NCBI after the SQL database was built
+# added to NCBI after the SQL database was built.
+# Index positionally: as.character() on a DNAStringSet carries names, so
+# data.frame() adopts accessions as row names whenever they are unique, and
+# recovering an index via as.integer(rownames(...)) then yields NA. Assignment
+# to an NA index is a SILENT no-op in R, which discarded the resolved taxid
+# without any error.
 if (any(is.na(trnL_ids))) {
-    missing.df <- trnL.df[is.na(trnL_ids), c("source", "accession")]
-    for (i in seq_len(nrow(missing.df))) {
-        idx         <- as.integer(rownames(missing.df)[i])
-        acc         <- missing.df[i, 2]
-        trnL_ids[idx] <- query_ncbi_accession(acc)
+    for (idx in which(is.na(trnL_ids))) {
+        trnL_ids[idx] <- query_ncbi_accession(trnL.df$accession[idx])
     }
 }
 
@@ -870,12 +872,10 @@ cat("Looking up taxonomy for", nrow(trnLCD.df), "accessions...\n")
 trnLCD_ids <- accessionToTaxa(trnLCD.df$accession, SQL_PATH)
 cat("Missing taxonomy IDs:", sum(is.na(trnLCD_ids)), "\n")
 
+# Index positionally, not via rownames -- see the note in A6.
 if (any(is.na(trnLCD_ids))) {
-    missing.df <- trnLCD.df[is.na(trnLCD_ids), c("source", "accession")]
-    for (i in seq_len(nrow(missing.df))) {
-        idx             <- as.integer(rownames(missing.df)[i])
-        acc             <- missing.df[i, 2]
-        trnLCD_ids[idx] <- query_ncbi_accession(acc)
+    for (idx in which(is.na(trnLCD_ids))) {
+        trnLCD_ids[idx] <- query_ncbi_accession(trnLCD.df$accession[idx])
     }
     cat("Remaining missing IDs:", sum(is.na(trnLCD_ids)), "\n")
 }
@@ -1261,15 +1261,18 @@ r_lines <- c(
     '        s12v5_ids <- readRDS(checkpoint_path)',
     '        cat("Checkpoint loaded:", sum(!is.na(s12v5_ids)), "IDs already resolved\\n")',
     '    }',
-    '    missing.df <- s12v5.df[is.na(s12v5_ids), c("source", "accession")]',
-    '    cat("Resolving", nrow(missing.df), "missing IDs via NCBI API...\\n")',
-    '    for (i in seq_len(nrow(missing.df))) {',
-    '        idx            <- as.integer(rownames(missing.df)[i])',
-    '        acc            <- missing.df[i, 2]',
-    '        s12v5_ids[idx] <- tryCatch(query_ncbi_accession(acc),',
+    '    # Index positionally. as.character() on a DNAStringSet carries names,',
+    '    # so data.frame() adopts accessions as row names when they are unique;',
+    '    # recovering an index via as.integer(rownames(...)) then yields NA, and',
+    '    # assignment to an NA index is a SILENT no-op that discards the taxid.',
+    '    missing_i <- which(is.na(s12v5_ids))',
+    '    cat("Resolving", length(missing_i), "missing IDs via NCBI API...\\n")',
+    '    for (i in seq_along(missing_i)) {',
+    '        idx            <- missing_i[i]',
+    '        s12v5_ids[idx] <- tryCatch(query_ncbi_accession(s12v5.df$accession[idx]),',
     '                                   error = function(e) NA_integer_)',
     '        if (i %% 100 == 0) {',
-    '            cat("  Resolved", i, "of", nrow(missing.df), "missing IDs\\n")',
+    '            cat("  Resolved", i, "of", length(missing_i), "missing IDs\\n")',
     '            saveRDS(s12v5_ids, checkpoint_path)',
     '        }',
     '    }',
@@ -1427,12 +1430,10 @@ if (any(is.na(s12v5_ids))) {
 ```{r s12v5_taxonomy_missing}
 # Automatically resolve missing IDs using query_ncbi_accession() for accessions
 # added to NCBI after the SQL database was built
+# Index positionally, not via rownames -- see the note in A6.
 if (any(is.na(s12v5_ids))) {
-    missing.df <- s12v5.df[is.na(s12v5_ids), c("source", "accession")]
-    for (i in seq_len(nrow(missing.df))) {
-        idx           <- as.integer(rownames(missing.df)[i])
-        acc           <- missing.df[i, 2]
-        s12v5_ids[idx] <- query_ncbi_accession(acc)
+    for (idx in which(is.na(s12v5_ids))) {
+        s12v5_ids[idx] <- query_ncbi_accession(s12v5.df$accession[idx])
     }
 }
 
