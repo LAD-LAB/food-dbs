@@ -31,37 +31,42 @@
 <body>
 
 <h1>FoodSeq Reference Database Pipeline</h1>
-<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · Last run May 2026</p>
+<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · Updated August 2026</p>
 
 <div class="mermaid">
 flowchart TD
 
     HF["human-foods.csv"]
+    CTL["controls.csv"]
+    SETUP["SLURM setup jobs"]
     PLASTID["RefSeq plastid"]
     MITO["RefSeq mitochondrial"]
     SQL[("accessionTaxa.sql")]
+    NCBI_FB["query_ncbi_accession<br/>accessions newer than the SQL build"]
 
-    HF -->|SLURM download| PLASTID
-    HF -->|SLURM download| MITO
-    HF -->|prepareDatabase| SQL
+    SETUP -->|download| PLASTID
+    SETUP -->|download| MITO
+    SETUP -->|prepareDatabase| SQL
 
     subgraph PA["Part A — trnL · Plants"]
         PLANTS["plant species list"]
-        PLASTID_SP["plastid genomes"]
+        PLASTID_SP["plastid genomes<br/>one per species, accession kept"]
         REFSEQ_A["RefSeq trnL amplicons"]
         NCBI_A["GenBank trnL sequences"]
         COMB_A["combined trnL sequences"]
         TAX_A["trnL + taxonomy"]
+        CLEAN_A["on-target trnL"]
         OUT_A["trnL reference database"]
     end
 
     subgraph PB["Part B — 12SV5 · Vertebrates"]
         ANIMALS["animal species list"]
-        MITO_SP["mitochondrial genomes"]
+        MITO_SP["mitochondrial genomes<br/>one per species, accession kept"]
         REFSEQ_B["RefSeq 12SV5 amplicons"]
         NCBI_B["GenBank 12SV5 sequences"]
         COMB_B["combined 12SV5 sequences"]
         TAX_B["12SV5 + taxonomy"]
+        CLEAN_B["on-target 12SV5"]
         OUT_B["12SV5 reference database"]
     end
 
@@ -75,7 +80,10 @@ flowchart TD
     NCBI_A -->|combine + manual additions| COMB_A
     COMB_A -->|accessionToTaxa| TAX_A
     SQL --> TAX_A
-    TAX_A -->|curation · QC · orientation · deduplicate| OUT_A
+    NCBI_FB -.->|fallback for missing IDs| TAX_A
+    TAX_A -->|A6b · phylum allowlist| CLEAN_A
+    CLEAN_A -->|curation · QC · orientation · dedup · add controls| OUT_A
+    CTL -.-> OUT_A
 
     MITO -->|filter one per species| MITO_SP
     MITO_SP -->|find_primer_pair| REFSEQ_B
@@ -84,10 +92,22 @@ flowchart TD
     NCBI_B -->|combine| COMB_B
     COMB_B -->|accessionToTaxa| TAX_B
     SQL --> TAX_B
-    TAX_B -->|QC · orientation · deduplicate| OUT_B
+    NCBI_FB -.->|fallback for missing IDs| TAX_B
+    TAX_B -->|B6b · phylum allowlist| CLEAN_B
+    CLEAN_B -->|QC · orientation · dedup · add controls| OUT_B
+    CTL -.-> OUT_B
+
+    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · count tolerance"}
+    OUT_A --> QC
+    OUT_B --> QC
+    QC -->|pass| SHIP["release"]
+    QC -->|fail, exit 1| BLOCK["do not ship"]
 
     style PA fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
     style PB fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
+    style QC fill:#fff4e6,stroke:#e0a96b,color:#5f3a1e
+    style BLOCK fill:#fde8e6,stroke:#d98b80,color:#5f1e1e
+    style SHIP fill:#eaf5ea,stroke:#8ab88a,color:#1e5f1e
 
 </div>
 
