@@ -216,7 +216,13 @@ check_marker <- function(marker, tax_fasta, seq_fasta, prev_fasta,
     acc_field <- sub("\\s.*$", "", seq_hdr)     # first whitespace-delimited token
     sp        <- sub("^\\S+\\s*", "", seq_hdr)   # remainder = species name
     sp_genus  <- sub("\\s.*$", "", sp)
-    bare      <- !grepl("[0-9]", acc_field)      # a real accession contains digits
+    # Controls are lab constructs, not NCBI records: controls.csv gives them an
+    # identifier like "synthetic_trnL_ASV", which has no digits and so trips the
+    # bare-genus test, and whose first token never equals the label's first word.
+    # Exempt them, as check 7 does. (The 12S control escaped this only by
+    # accident -- "synthetic_12S_ASV" happens to contain digits.)
+    is_ctl_seq <- sp %in% fail_controls | grepl("synthetic", sp, ignore.case = TRUE)
+    bare      <- !grepl("[0-9]", acc_field) & !is_ctl_seq  # a real accession contains digits
     if (!any(bare)) {
       say("PASS", "all sequence records carry a real accession identifier")
     } else {
