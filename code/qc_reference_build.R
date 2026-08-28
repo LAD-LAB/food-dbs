@@ -40,6 +40,17 @@ if (identical(cur_sfx, prev_sfx))
   stop("CURRENT_SUFFIX and PREVIOUS_SUFFIX are both '", cur_sfx,
        "' - a build cannot be compared against itself.")
 
+# Optional 4th argument: comma-separated subset of markers to check. Needed by
+# the extension workflow, which updates one marker at a time - without it, a
+# successful single-marker extension reports FAIL for the markers that have no
+# file under the new suffix, which teaches people to ignore the gate.
+ALL_MARKERS <- c("trnL", "trnLCD", "12S")
+markers <- if (length(args) >= 4) trimws(strsplit(args[[4]], ",")[[1]]) else ALL_MARKERS
+unknown <- setdiff(markers, ALL_MARKERS)
+if (length(unknown))
+  stop("Unknown marker(s): ", paste(unknown, collapse = ", "),
+       ". Valid: ", paste(ALL_MARKERS, collapse = ", "))
+
 d2 <- file.path(repo_dir, "data", "outputs", "dada2-compatible")
 inputs <- file.path(repo_dir, "data", "inputs")
 
@@ -255,7 +266,7 @@ cat(sprintf("  current build: '%s'  |  compared against: '%s'\n",
             if (prev_sfx == "") "(date-less files)" else prev_sfx))
 cat("========================================================\n")
 
-check_marker(
+if ("trnL" %in% markers) check_marker(
   "trnL",
   tax_fasta     = file.path(d2, "trnL", paste0("trnLGH_taxonomy", cur_sfx, ".fasta")),
   seq_fasta     = file.path(d2, "trnL", paste0("trnLGH", cur_sfx, ".fasta")),
@@ -274,7 +285,7 @@ prev_cd <- file.path(d2, "trnLCD", paste0("trnLCD_taxonomy", prev_sfx, ".fasta")
 if (!file.exists(prev_cd))
   prev_cd <- file.path(d2, "miscellaneous", "trnLCD_taxonomy.fasta")
 
-check_marker(
+if ("trnLCD" %in% markers) check_marker(
   "trnLCD",
   tax_fasta     = file.path(d2, "trnLCD", paste0("trnLCD_taxonomy", cur_sfx, ".fasta")),
   seq_fasta     = file.path(d2, "trnLCD", paste0("trnLCD", cur_sfx, ".fasta")),
@@ -285,7 +296,7 @@ check_marker(
   optional      = TRUE
 )
 
-check_marker(
+if ("12S" %in% markers) check_marker(
   "12S",
   tax_fasta     = file.path(d2, "12Sv5", paste0("12Sv5_taxonomy", cur_sfx, ".fasta")),
   seq_fasta     = file.path(d2, "12Sv5", paste0("12Sv5", cur_sfx, ".fasta")),

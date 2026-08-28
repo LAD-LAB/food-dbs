@@ -15,9 +15,10 @@ food-dbs/
 │   ├── functions/                  # Functions sourced by the pipeline
 │   │   ├── find_primer_pair.R      # In silico PCR trimming
 │   │   ├── query_ncbi.R            # Batch NCBI nucleotide queries
-│   │   └── query_ncbi_accession.R  # Resolve accessions to taxon IDs
+│   │   ├── query_ncbi_accession.R  # Resolve accessions to taxon IDs
+│   │   └── fetch_lineage_ncbi.R    # SQL-free taxid -> lineage lookup (used by Extend reference.Rmd)
 │   ├── Descriptive-statistics.Rmd  # Summary statistics for built databases
-│   ├── Extend reference.Rmd        # Add sequences to an existing reference
+│   ├── Extend reference.Rmd        # Add species to an existing reference without a rebuild - see "Extend, or rebuild?" below
 │   ├── Parse ecoPCR.Rmd            # Parse ecoPCR output
 │   ├── SQL to reference.Rmd        # Alternative taxonomy approach
 │   ├── Taxa names.Rmd              # Taxon name handling
@@ -26,7 +27,8 @@ food-dbs/
 ├── data/
 │   ├── inputs/
 │   │   ├── human-foods.csv         # Curated list of food plant and animal species
-│   │   └── Manual renaming.csv     # Manual curation edits (omissions and renamings)
+│   │   ├── Manual renaming.csv     # Manual curation edits (omissions and renamings)
+│   │   └── reference-additions.csv # Species list consumed by Extend reference.Rmd
 │   └── outputs/
 │       ├── dada2-compatible/       # Reference FASTAs for use with DADA2
 │       │   ├── trnL/               # trnL databases (current + dated versions)
@@ -81,6 +83,37 @@ For each marker, the pipeline:
 |--------|---------|---------|
 | trnL (plant) | `GGGCAATCCTGAGCCAA` (trnLg) | `CCATTGAGTCTCTGCACCTATC` (trnLh) |
 | 12SV5 (vertebrate) | `TAGAACAGGCTCCTCTAG` (V5F) | `TTAGATACCCCACTATGC` (V5R) |
+
+---
+
+## Extend, or rebuild?
+
+There are two ways to add sequence data to a reference. Picking the wrong one either wastes a cluster run, or produces an output that looks fine but doesn't actually fix anything.
+
+### Extend (`code/Extend reference.Rmd`)
+
+Adds a handful of newly-available species to an **existing** reference without touching any record already in it. It runs on a laptop in minutes: it queries NCBI directly for both sequences (`query_ncbi()`) and taxonomy (`fetch_lineage_ncbi()`, an e-utils-based lookup), so it doesn't need the cluster or the ~70 GB `accessionTaxa.sql` database the full pipeline depends on.
+
+**Use it when:**
+- New species have shown up at NCBI since the last build for names already in `human-foods.csv`, or you're closing gaps identified by a coverage re-check (`data/outputs/coverage-recheck/CANDIDATES_*.csv` are already in the expected input format — a CSV with a `scientific_name` column)
+- You're adding species that were never on the target list at all (point `ADDITIONS` at any CSV with a `scientific_name` column, e.g. `data/inputs/reference-additions.csv`)
+- The only thing needed is new sequence — nothing about the existing records needs to change
+
+**It can't help with anything that has to change an existing record**, because it only appends:
+- A taxonomy or curation fix, a mislabeled or renamed record
+- A change to the off-target filter, the dedup logic, or any other pipeline step
+- trnLCD — its extraction is alignment-based against a panel of plastome introns, not a single per-species NCBI query, so extending it needs a rebuild
+- A species whose only NCBI record is a complete genome — Extend applies the same 50 kb length cap as the full pipeline (`query_ncbi()`), so a complete plastid/mitochondrial genome comes back empty even though sequence technically exists (see "Remaining gaps" below)
+
+Extend never overwrites the reference it's extending — it always writes a new, separately-suffixed pair of files (e.g. `_Aug2026` → `_Aug2026_ext`), so a bad run is easy to discard and re-run. Before shipping the result, run the QC gate against it with the marker as a 4th argument, e.g.:
+```bash
+Rscript code/qc_reference_build.R . _Aug2026_ext _Aug2026 trnL
+```
+The 4th argument restricts the gate to the marker you actually extended — without it, the gate checks every marker under the new suffix and hard-fails on the ones you didn't touch, which reads as a failure even on a clean run.
+
+### Rebuild (`foodseq_reference_pipeline.Rmd`)
+
+Needed for anything Extend can't do (above), and for periodic full refreshes that pick up whatever new sequence data has accumulated at NCBI more broadly since the last build. Requires the cluster setup described under **Getting started** below.
 
 ---
 

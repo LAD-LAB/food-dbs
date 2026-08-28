@@ -1,0 +1,2 @@
+scientific_name,marker,notes
+Vaccinium myrtillus,trnL,"Example row - this species is already in the reference, so a run with this file unchanged will stop with 'Nothing to add'. Replace with the species you want. Only scientific_name is read; marker and notes are for your own bookkeeping. Species already present, including under a current NCBI name for a synonym you typed, are skipped automatically."

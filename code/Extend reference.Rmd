@@ -1,341 +1,305 @@
 ---
-title: "Extend reference"
-output: html_notebook
+title: "Extend an existing reference database"
+output: html_document
 ---
 
-Can load in middle, no need to query if no updates to inputs!
+Adds sequences for a handful of new species to an **existing** reference
+without a full cluster rebuild. Runs on a laptop in minutes: it queries NCBI
+directly for both sequences and taxonomy, so the ~70 GB `accessionTaxa.sql`
+database the full pipeline needs is not required.
+
+**Use this when the only change is adding newly-available species.** Anything
+that must alter records already in the reference — a taxonomy fix, a filter
+change, a new curation rule — needs a full rebuild, because this notebook only
+appends. See `README.md` ("Extend, or rebuild?").
+
+**What it produces.** Both DADA2 files are written: the sequence FASTA
+(`>accession taxon`) and the taxonomy FASTA (`>` + 10 semicolon-delimited
+ranks). The taxonomy FASTA is the one `assignment_trnL()` / `assignment_12S()`
+actually consume, so writing only the sequence file — as the pre-2023 version
+of this notebook did — silently fails to extend anything.
+
+**Not for trnLCD.** Part A-CD extracts by alignment against plastome introns,
+not by primer match, so extending it needs the panel and belongs in a rebuild.
 
 # Setup
 
-```{r setup, include = FALSE, echo = FALSE}
-require(knitr)
-opts_knit$set(root.dir = file.path(getwd(), '..'))
+```{r setup, include = FALSE}
+# error = FALSE matters here: knitr::knit() defaults to error = TRUE, which
+# records a failed chunk and carries on to the next one. This notebook writes
+# reference files, so a silently-skipped guard can produce a corrupted output
+# that still looks like a clean run. Fail loudly instead.
+knitr::opts_chunk$set(echo = TRUE, message = TRUE, error = FALSE)
+knitr::opts_knit$set(root.dir = file.path(getwd(), '..'))
 ```
 
-```{r}
+```{r libraries, message = FALSE, warning = FALSE}
 library(Biostrings)
 library(here)
 library(rentrez)
 library(tidyverse)
 
 source(here('code', 'functions', 'find_primer_pair.R'))
+source(here('code', 'functions', 'query_ncbi.R'))
+source(here('code', 'functions', 'query_ncbi_accession.R'))
+source(here('code', 'functions', 'fetch_lineage_ncbi.R'))
 ```
 
-```{r}
-# Plotting themes
-theme_set(
-     theme_bw() +
-          theme(
-               axis.text = element_text(size = 12),
-               axis.title.x = ggtext::element_markdown(size = 14),
-               axis.title.y = ggtext::element_markdown(size = 14),
-               legend.title = element_text(size = 12),
-               strip.text = element_text(size = 12)
-          )
+## Configuration
+
+Set the marker, point at the reference you are extending, and name the output.
+The default output path is deliberately *not* the input path: extending writes
+a new versioned pair of files rather than mutating the reference in place.
+
+```{r configuration}
+MARKER <- "trnL"          # "trnL" or "12SV5"
+
+# Species to add, one per line, in a CSV with a `scientific_name` column.
+# `data/outputs/coverage-recheck/CANDIDATES_*.csv` are in this format.
+ADDITIONS <- here('data', 'inputs', 'reference-additions.csv')
+
+IN_SUFFIX  <- "_Aug2026"       # reference being extended
+OUT_SUFFIX <- "_Aug2026_ext"   # what to write
+
+# An NCBI API key lifts the rate limit from 3 to 10 requests/second.
+# rentrez::set_entrez_key("your_key_here")
+
+stopifnot(MARKER %in% c("trnL", "12SV5"))
+
+cfg <- list(
+  trnL = list(
+    dir     = here('data', 'outputs', 'dada2-compatible', 'trnL'),
+    seq     = "trnLGH%s.fasta",
+    tax     = "trnLGH_taxonomy%s.fasta",
+    fwd     = DNAString("GGGCAATCCTGAGCCAA"),
+    rev     = DNAString("CCATTGAGTCTCTGCACCTATC"),
+    query   = "trnL",
+    phyla   = c("Streptophyta", "Cyanobacteriota")
+  ),
+  `12SV5` = list(
+    dir     = here('data', 'outputs', 'dada2-compatible', '12Sv5'),
+    seq     = "12Sv5%s.fasta",
+    tax     = "12Sv5_taxonomy%s.fasta",
+    fwd     = DNAString("TAGAACAGGCTCCTCTAG"),
+    rev     = DNAString("TTAGATACCCCACTATGC"),
+    query   = "12S",
+    phyla   = c("Chordata")
+  )
+)[[MARKER]]
+
+in_seq  <- file.path(cfg$dir, sprintf(cfg$seq, IN_SUFFIX))
+in_tax  <- file.path(cfg$dir, sprintf(cfg$tax, IN_SUFFIX))
+out_seq <- file.path(cfg$dir, sprintf(cfg$seq, OUT_SUFFIX))
+out_tax <- file.path(cfg$dir, sprintf(cfg$tax, OUT_SUFFIX))
+
+stopifnot(file.exists(in_seq), file.exists(in_tax), file.exists(ADDITIONS))
+cat("Extending:", basename(in_seq), "+", basename(in_tax), "\n")
+cat("Writing:  ", basename(out_seq), "+", basename(out_tax), "\n")
+```
+
+# Load the current reference
+
+The two FASTAs are parallel: record *i* of the sequence file is record *i* of
+the taxonomy file. That is checked here, because appending to files that have
+drifted out of step would corrupt the reference silently.
+
+```{r load-current}
+cur_seq <- readDNAStringSet(in_seq)
+cur_tax <- readDNAStringSet(in_tax)
+
+cat(length(cur_seq), "records in the sequence FASTA\n")
+cat(length(cur_tax), "records in the taxonomy FASTA\n")
+stopifnot(length(cur_seq) == length(cur_tax))
+# unname() is required: as.character() on a DNAStringSet keeps the names, and
+# the two files carry different names by design (accession+taxon vs lineage),
+# so comparing them with names attached always reports a spurious mismatch.
+stopifnot(identical(unname(as.character(cur_seq)), unname(as.character(cur_tax))))
+message("Reference files are parallel and consistent.")
+
+current <- tibble(
+  accession = sub("\\s.*$", "", names(cur_seq)),
+  taxon     = sub("^\\S+\\s*", "", names(cur_seq)),
+  lineage   = names(cur_tax),
+  seq       = as.character(cur_seq)
 )
 ```
 
-# Read in data
-```{r}
-# Read in current version of reference
-current <- 
-     here('data', 
-          'outputs', 
-          'dada2-compatible', 
-          'trnL', 
-          'trnLGH.fasta') %>%
-     readDNAStringSet()
+# Read the species to add
 
-current
+```{r read-additions}
+add_list <- read_csv(ADDITIONS, show_col_types = FALSE)
+stopifnot("scientific_name" %in% names(add_list))
+
+species <- add_list$scientific_name |> unique() |> na.omit()
+cat(length(species), "species requested\n")
+
+already <- species[species %in% current$taxon]
+if (length(already) > 0) {
+  message(length(already), " already present, skipping: ",
+          paste(head(already, 5), collapse = ", "))
+  species <- setdiff(species, already)
+}
+cat(length(species), "species to query\n")
+print(species)
 ```
 
-# QC
+# Query NCBI and extract the amplicon
 
-Common errors:
+Same `query_ncbi()` the full pipeline uses, so the same 50 kb length cap
+applies — complete plastid/mitochondrial genomes are excluded. That means a
+species whose only record is a whole genome will come back empty here even
+though sequence exists; those need a rebuild. Empty results are reported at
+the end rather than failing the run.
 
-- Duplicated sequences
-- Sequences with non-AGCT nucleotides
+```{r query-ncbi}
+if (length(species) == 0) {
+  stop("Nothing to add - every requested species is already in the reference.")
+}
 
-```{r}
-# Organize as dataframe for referencing back to accession
-current.df <- 
-     data.frame(
-          name = names(current),
-          seq = current
-     ) 
+raw <- query_ncbi(marker = cfg$query, organisms = species)
+cat(length(raw), "records returned\n")
 
-row.names(current.df) <- NULL
+amp <- find_primer_pair(raw, fwd = cfg$fwd, rev = cfg$rev)
+cat(length(amp), "contain the", MARKER, "primer pair\n")
+
+amp <- amp[!grepl("UNVERIFIED", names(amp))]
+names(amp) <- names(amp) |>
+  gsub(pattern = " .+$", replacement = "") |>
+  gsub(pattern = "^>",   replacement = "")
+cat(length(amp), "after removing UNVERIFIED records\n")
 ```
 
-```{r}
-# Separate accession number from species name
-current.df <- 
-     separate(current.df,
-              name,
-              sep = ' ',
-              into = c('accession', 'species'),
-              extra = 'merge',
-              remove = FALSE)
+# Resolve taxonomy from NCBI
+
+`accession -> taxid -> lineage`, both steps over e-utils. This is the
+SQL-free counterpart to the pipeline's `extract_taxonomy()`; it is much slower
+per record, which is fine for tens of sequences and would not be for tens of
+thousands.
+
+```{r resolve-taxonomy}
+accs <- unique(names(amp))
+cat("Resolving", length(accs), "accessions to taxon IDs...\n")
+
+taxid_map <- vapply(accs, function(a) {
+  id <- query_ncbi_accession(a)
+  if (is.null(id) || length(id) == 0) NA_integer_ else as.integer(id)
+}, integer(1))
+
+cat(sum(is.na(taxid_map)), "accessions did not resolve\n")
+
+lineages <- fetch_lineage_ncbi(taxid_map[names(amp)])
+RANKS <- c("superkingdom","phylum","class","order","family",
+           "genus","species","subspecies","varietas","forma")
+
+# Display name = lowest non-NA rank, matching MButils::lowest_level() in the
+# pipeline. Reimplemented here so the extension has no MButils dependency.
+lowest_level <- function(df) {
+  apply(df[, RANKS], 1, function(r) {
+    v <- r[!is.na(r) & nzchar(r)]
+    if (length(v)) tail(v, 1) else NA_character_
+  })
+}
+
+new <- tibble(
+  accession = names(amp),
+  seq       = as.character(amp)
+) |>
+  bind_cols(lineages[, RANKS]) |>
+  mutate(taxon = lowest_level(pick(all_of(RANKS))))
+
+cat(sum(is.na(new$taxon)), "records have no usable taxonomy\n")
 ```
 
-```{r}
-# Combine species name and sequence to make unique identifier
-current.df <- mutate(current.df,
-                     ID = paste(species, seq))
+# QC the additions
+
+The same gates the pipeline applies, in the same order: drop unresolved
+taxonomy, degenerate bases, off-target phyla (A6b / B6b), then de-duplicate
+against both the additions themselves and the existing reference.
+
+```{r qc-additions}
+n0 <- nrow(new)
+report <- function(step, df) {
+  cat(sprintf("  %-34s %4d -> %4d\n", step, n0, nrow(df)))
+  n0 <<- nrow(df)
+  df
+}
+cat("QC:\n")
+
+new <- report("resolved taxonomy + genus", filter(new, !is.na(taxon), !is.na(genus)))
+new <- report("no degenerate bases",       filter(new, !grepl("[^ACGT]", seq)))
+new <- report("on-target phylum",          filter(new, phylum %in% cfg$phyla))
+new <- report("unique within additions",   distinct(new, taxon, seq, .keep_all = TRUE))
+new <- report("not already in reference",  anti_join(new, current, by = c("taxon", "seq")))
+
+if (nrow(new) == 0) stop("No additions survived QC - nothing to write.")
 ```
 
-Now, check for errors:
+# Merge and save
 
-```{r}
-any(duplicated(current.df$ID))
+```{r merge-save}
+merged <- bind_rows(
+  current |> select(accession, taxon, lineage, seq),
+  new |> transmute(
+    accession, taxon,
+    lineage = apply(pick(all_of(RANKS)), 1,
+                    function(r) paste(ifelse(is.na(r), "NA", r), collapse = ";")),
+    seq)
+) |>
+  arrange(taxon, accession)
+
+cat(nrow(current), "+", nrow(new), "=", nrow(merged), "records\n")
+
+out <- DNAStringSet(merged$seq)
+
+names(out) <- paste(merged$accession, merged$taxon)
+writeXStringSet(out, out_seq)
+
+names(out) <- merged$lineage
+writeXStringSet(out, out_tax)
+
+cat("Wrote:\n  ", out_seq, "\n  ", out_tax, "\n")
 ```
 
-```{r}
-# Check for degenerate nucleotide characters
-grep('[AGCT]*[^AGCT]+', current.df$seq)
+# What was added, and what was not
+
+```{r summary}
+cat("=== added ===\n")
+new |> count(taxon, name = "sequences") |> arrange(desc(sequences)) |> print(n = Inf)
+
+missed <- setdiff(species, new$taxon)
+if (length(missed) > 0) {
+  cat("\n=== requested but not added ===\n")
+  cat("No usable amplicon was recovered for these. Most often the species has\n")
+  cat("no sub-50kb record carrying both primer sites - check whether a complete\n")
+  cat("genome exists, which this path cannot reach.\n\n")
+  print(missed)
+}
 ```
 
-# Add new sequences
+# Verify before shipping
 
-## Pull sequence data
+Run the QC gate against the extended pair. It compares them to the reference
+you extended, so the record count should rise by exactly what was added and
+every other check should pass.
 
-Need to do this so primers are also included.
+The 4th argument restricts the gate to the marker you extended. Without it the
+gate looks for *every* marker under the new suffix and hard-fails on the ones
+you did not touch — a pass that reads as a failure.
 
-```{r}
-fs <- 
-     here('data',
-          'processed',
-          'sql-compatible') %>% 
-     list.files(pattern = 'additions.csv',
-                full.names = TRUE)
-
-basename(fs)
+```{r qc-gate, eval = FALSE}
+# From a shell, at the repo root:
+#   Rscript code/qc_reference_build.R . _Aug2026_ext _Aug2026 trnL
 ```
 
-```{r}
-add <- 
-     sapply(fs, read_csv) %>% 
-     bind_rows()
+```{r qc-gate-run}
+gate_marker <- if (MARKER == "12SV5") "12S" else "trnL"
 
-add
+gate <- system2("Rscript",
+                c(shQuote(here("code", "qc_reference_build.R")), shQuote(here()),
+                  OUT_SUFFIX, IN_SUFFIX, gate_marker),
+                stdout = TRUE, stderr = TRUE)
+cat(gate, sep = "\n")
+
+if (!is.null(attr(gate, "status")) && attr(gate, "status") != 0)
+  warning("QC gate reported failures - do not ship this reference until they are resolved.")
 ```
-Now, can use these accession numbers to query NCBI for sequence data:
-```{r}
-# Search for IDs
-ids <- lapply(add$accession_num, 
-              entrez_search, 
-              db='nucleotide', retmax = 10000, use_history=TRUE)
-
-class(ids)
-str(ids[[1]])
-```
-
-```{r}
-# Formulate this as a new query
-ids <- 
-     lapply(ids, function(x){x$ids}) %>% 
-     unlist()
-
-ids
-```
-
-```{r}
-# Use these IDs to fetch sequence data
-records <- 
-     entrez_fetch(db = 'nucleotide', id = ids, rettype = 'fasta')
-
-# Returns one big character string
-class(records)
-length(records)
-nchar(records)
-```
-
-```{r}
-# Format as a DNA string set
-write(records,
-      here('data', 
-           'processed',
-           'sql-compatible',
-           'fastas',
-           '2021 Manual additions.fasta'))
-
-# Read back in
-records <- 
-     here('data', 
-           'processed',
-           'sql-compatible',
-           'fastas',
-           '2021 Manual additions.fasta') %>% 
-     readDNAStringSet()
-
-records
-```
-
-## Trim primers
-
-```{r}
-trnLG <- DNAString('GGGCAATCCTGAGCCAA')
-trnLH <- DNAString('CCATTGAGTCTCTGCACCTATC')
-
-# Keep defaults: 20% error tolerance, no primer trimming
-records.trim <- find_primer_pair(records,
-                                 trnLG,
-                                 trnLH)
-```
-
-## Rename
-Lots of variation in descriptors.  Try pulling taxon name by NCBI query of accession number
-
-```{r}
-accs <- 
-     names(records.trim) %>% 
-     str_split(pattern = '\\s') %>% 
-     lapply('[[', 1) %>% 
-     unlist()
-
-head(accs)
-```
-
-```{r}
-# Look up accession taxonomy with metacoder package functions
-# Note-- this takes a long time depending on # of sequence IDs
-taxmap <- metacoder::lookup_tax_data(accs, 
-                                     type = 'seq_id')
-```
-
-```{r}
-str(taxmap$data)
-```
-
-```{r}
-# Want to combine these two, to get name for each query id
-# Get query info
-query_names <- 
-     data.frame(acc = taxmap$data$query_data,
-                taxon_id = names(taxmap$data$query_data))
-
-# Join to NCBI names
-ncbi_names <- taxmap$data$tax_data
-
-query_names <- 
-     left_join(query_names, ncbi_names)
-
-query_names
-```
-
-```{r}
-# Any names missing?
-any(is.na(query_names$ncbi_name))
-```
-
-```{r}
-# How complete are entries?
-query_names %>% 
-     group_by(ncbi_rank) %>% 
-     count()
-```
-
-```{r}
-# Hmmm-- what's  no rank?
-query_names %>% 
-     filter(ncbi_rank == 'no rank')
-```
-```{r}
-# Rename sequences
-names(records.trim) <- paste(query_names$acc,
-                             query_names$ncbi_name)
-```
-
-## Combine
-
-Want to synchronize with the database representation of the current reference
-
-```{r}
-head(current.df)
-```
-
-
-```{r}
-# Format as a dataframe
-add.df <- 
-     data.frame(name = names(records.trim),
-                seq = as.character(records.trim)) %>% 
-     separate(name,
-              into = c('accession', 'species'),
-              extra = 'merge', 
-              sep = '\\s') %>% 
-     mutate(ID = paste(species, seq))
-```
-### QC
-#### Duplicates
-```{r}
-# Check for duplicates
-# In this list:
-any(duplicated(add.df$ID))
-
-# Remove
-add.df <- add.df[!duplicated(add.df$ID), ]
-```
-
-```{r}
-# In the existing reference:
-any(add.df$ID %in% current.df$ID)
-
-# Remove
-add.df <- add.df[!(add.df$ID %in% current.df$ID), ]
-```
-
-#### Sequences with Ns
-
-```{r}
-# Remove sequences containing Ns
-any(grepl(pattern = '[AGCT]*[^AGCT]+', add.df$seq))
-
-add.df %>% 
-     filter(grepl(pattern = '[AGCT]*[^AGCT]+', seq)) 
-```
-Ok, basil with an R and D.  Remove:
-
-```{r}
-add.df <- 
-     filter(add.df,
-            !grepl(pattern = '[AGCT]*[^AGCT]+', seq))
-```
-
-```{r}
-update.df <- bind_rows(current.df,
-                        add.df)
-```
-
-## Save
-
-```{r}
-# Sort alphabetically (first by species name, and then accession number)
-update.df <- arrange(update.df, 
-                     species,
-                     accession)
-
-# Convert back to DNAStringSet object
-trnL <- update.df$seq
-names(trnL) <- paste(update.df$accession, update.df$species)
-
-trnL <- DNAStringSet(trnL)
-trnL
-```
-
-```{r}
-# Manual edits:
-# Remove suspected mislabeled curry leaf entry (identical to peanut)
-trnL <- trnL[!(names(trnL) == 'JX390727.1 Murraya koenigii')]
-```
-
-```{r}
-# # Save to file
-# writeXStringSet(trnL,
-#                 here('data',
-#                      'processed',
-#                      'dada2-compatible',
-#                      'trnL',
-#                      '20220214_trnLGH_primers included, additions.fasta'))
-```
-
