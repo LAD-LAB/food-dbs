@@ -3,8 +3,12 @@
 Which food species could be **added** to the trnL / 12SV5 reference databases, and which
 foods are missing from the target species list entirely.
 
-Generated 2026-07-20. Scripts that produce everything here live in
-[`code/coverage-recheck/`](../../../code/coverage-recheck/).
+Generated 2026-07-20. Originally produced by nine standalone scripts; those
+are now archived at
+[`archive/code/coverage-recheck/`](../../../archive/code/coverage-recheck/)
+for provenance. Re-run this with
+[`code/Coverage recheck.Rmd`](../../../code/Coverage%20recheck.Rmd), which
+consolidates them into one notebook with portable paths.
 
 ---
 
@@ -25,14 +29,67 @@ but GenBank grows, so some are now closable. This re-check asks two questions:
 
 | File | Rows | What it is |
 |---|---|---|
-| `CANDIDATES_plants_trnL_available.csv` | 203 | Food plants on the target list, missing from the reference, that **now have trnL records** at NCBI |
-| `CANDIDATES_animals_12SV5_VERTEBRATES.csv` | 209 | Same for 12SV5, **filtered to true vertebrates** (see caveat 2) |
+| `CANDIDATES_plants_trnL_Aug2026.csv` | 203 | **Use this one.** The July plant candidates re-derived against the Aug 2026 build (see below) |
+| `CANDIDATES_animals_12SV5_Aug2026.csv` | 209 | **Use this one.** The July animal candidates re-derived against the Aug 2026 build (see below) |
 | `PHASE2_uncatalogued_foods_SOURCED.csv` | 40 | Foods **absent from `human-foods.csv` entirely**, each with a literature/database source. **Use this one, not the file below** (see caveat 5) |
+
+### Re-derived against the Aug 2026 build (2026-08-25)
+
+The July plant list was checked against the Aug 2026 reference, resolving every
+name to its **current** NCBI name first. That mattered: **82 of the 203 names
+(40%) were outdated** — `Allium porrum` → `Allium ampeloprasum`, `Acacia
+senegal` → `Senegalia senegal`, `Poncirus trifoliata` → `Citrus trifoliata` —
+so a plain name match reports species as missing when they are already present.
+
+| Outcome | n |
+|---|---|
+| Added by the Aug 2026 build | 83 |
+| Queried; no record spans both trnL-g/h primer sites | 71 |
+| Recoverable from a complete plastome, blocked by the 50 kb `SLEN` cap | 41 |
+| Complete plastome exists, but not a land plant (kombu, wakame, nori) | 4 |
+| Complete plastome exists; phylum unresolved, check manually | 3 |
+| No usable trnL record at NCBI | 1 |
+
+Two things follow:
+
+- **`code/Extend reference.Rmd` cannot add any of the remaining 120.** All are
+  on `human-foods.csv`, so the Aug rebuild already queried them through the
+  same code path and got no amplicon. The extension notebook is for species
+  *not* on the food list, or sequences published since the last build.
+- **41 named species are recoverable only by fixing the plastome gap** — the
+  `0:50000[SLEN]` cap in `query_ncbi()` excludes complete chloroplast genomes,
+  and a `trnL` text query would not find them anyway (96% of complete plastomes
+  do not match the term). That is the single highest-yield outstanding fix.
+
+The 209 July **animal** candidates were re-derived the same way. 60 of 209
+(29%) had outdated names (`Trionyx sinensis` → `Pelodiscus sinensis`, `Catla
+catla` → `Labeo catla`, `Manta birostris` → `Mobula birostris`).
+
+| Outcome | n |
+|---|---|
+| Added by the Aug 2026 build | 43 |
+| 12S records exist but none spans both V5 primer sites | 127 |
+| **UNEXPLAINED — mitogenome exists and yields a valid amplicon, yet absent** | **39** |
+
+**12S has neither structural gap that blocks trnL.** Vertebrate mitogenomes are
+~16 kb, so 100% fall inside the 50 kb cap, and 97% match the free-text term
+`12S` (versus 4% of plastomes matching `trnL`). Complete mitogenomes are
+reachable for animals.
+
+Which makes the third row a genuine anomaly, not a known limitation. Spot-checked
+*Dicentrarchus punctatus*, *Dentex dentex*, *Alosa alosa* and *Aetobatus
+narinari*: each is on `human-foods.csv`, each has only 2–4 matching records (so
+the 500-record fetch cap is not implicated), and each mitogenome yields a clean
+135–138 bp V5 amplicon under `find_primer_pair()` on test. *D. punctatus*'s
+amplicon is 1 edit from the *D. labrax* record already in the reference. They
+should be in the build and are not. **Root cause unknown — needs investigation
+before these 39 are written off.**
 
 ## Supporting / reference
 
 | File | Rows | What it is |
 |---|---|---|
+| `SUPERSEDED_plants_trnL_available_Jul2026.csv` | 203 | **Superseded** by `CANDIDATES_plants_trnL_Aug2026.csv`. The original July list. Kept for provenance; do not act on it |
 | `PHASE2_uncatalogued_foods_with_sequence_data.csv` | 39 | **Superseded** by `PHASE2_uncatalogued_foods_SOURCED.csv`. Kept only to document the unsourced starting point — it has no `source` column, so it does not meet the standard every row of `human-foods.csv` is held to. Do not act on it |
 | `EXCLUDED_animals_invertebrates.csv` | 261 | Invertebrates removed from the 12SV5 candidates — documents what was filtered and why |
 | `REVIEW_higher-rank-entries.csv` | 77 | Gap-list entries that are **not species** but genus/family/order names — need a separate decision (see caveat 3) |

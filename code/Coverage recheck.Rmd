@@ -1,0 +1,432 @@
+---
+title: "Reference coverage re-check"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+Checks which food species **could be added** to the trnL / 12SV5
+reference — without downloading any sequence data itself. Two phases:
+
+-   **Part 1** — of the species already on `human-foods.csv` but missing
+    from the current build, which now have marker data at NCBI?
+-   **Part 2** (optional, `RUN_PHASE2`) — which globally significant
+    foods are missing from `human-foods.csv` entirely?
+
+**Run this before `Extend reference.Rmd`.** This notebook only fires
+cheap `esearch` existence checks (no sequence downloads), so it's the
+right tool for triage across \~1,500+ species. `Extend reference.Rmd`
+does the expensive part — actually pulling and primer-testing each
+candidate — so feed it the `CANDIDATES_*` files this notebook writes
+rather than pointing it at every still-missing species blind. See
+`README.md` ("Extend, or rebuild?").
+
+**A hit here is not a confirmed addition.** A hit count \> 0 only means
+NCBI has *some* record mentioning the marker for that species — the
+record may not span the primer sites. `Extend reference.Rmd`'s
+`find_primer_pair()` is the real test; expect attrition between a
+candidate list here and what actually gets added there.
+
+**History.** This consolidates nine standalone scripts that did the same
+thing across separate bash + R files, several with paths hardcoded to
+one person's machine and one specific past session's temp directory.
+Those scripts have been moved to
+`archive/code/coverage-recheck/` (`01_...` through `09_...`) for
+provenance — they are no longer the way to run this; use this notebook
+instead. The probe species lists they used (`probe_staples.txt`,
+`probe_extended.txt`) moved with them and are reused as-is by Part 2
+below.
+
+# Setup
+
+```{r setup, include = FALSE}
+# error = FALSE matters here: knitr::knit() defaults to error = TRUE, which
+# records a failed chunk and carries on. A silently-skipped NCBI query would
+# leave holes in a checkpointed file that look like "not queried yet" rather
+# than "failed" - fail loudly instead.
+knitr::opts_chunk$set(echo = TRUE, message = TRUE, error = FALSE)
+knitr::opts_knit$set(root.dir = file.path(getwd(), '..'))
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(Biostrings)
+library(here)
+library(rentrez)
+library(tidyverse)
+```
+
+## Configuration
+
+```{r configuration}
+RUN_PHASE1 <- TRUE
+RUN_PHASE2 <- TRUE   # FALSE = just re-check known gaps, the routine thing to
+                     # do before an Extend reference.Rmd session. Part 2 is
+                     # more of an occasional audit against a curated food list.
+
+REF_SUFFIX <- "_Aug2026"   # which built reference to check "missing" against
+OUT_SUFFIX <- "_Aug2026"   # suffix for the CSVs this notebook writes
+
+# An NCBI API key lifts the rate limit from 3 to 10 requests/second. Worth
+# setting - Part 1 alone fires two rounds of ~1,500 queries.
+# rentrez::set_entrez_key("your_key_here")
+
+NCBI_EMAIL <- "your_email@example.com"   # NCBI etiquette: identifies who's querying
+NCBI_TOOL  <- "foodseq-coverage-recheck"
+
+OUT_DIR <- here('data', 'outputs', 'coverage-recheck')
+RAW_DIR <- file.path(OUT_DIR, 'raw')
+dir.create(RAW_DIR, showWarnings = FALSE, recursive = TRUE)
+
+foods <- read_csv(here('data', 'inputs', 'human-foods.csv'), show_col_types = FALSE)
+cat(nrow(foods), "species on the target list\n")
+```
+
+# NCBI helpers
+
+```{r ncbi-helpers}
+# Low-level: hit count for an arbitrary esearch term, retmax=0 so NCBI
+# returns just the count. Retried like query_ncbi.R / query_ncbi_accession.R
+# elsewhere in this repo, for the same reason - transient NCBI/network
+# failures are common across a run this long.
+esearch_count <- function(term, max_tries = 3, retry_wait = 2) {
+  for (try in seq_len(max_tries)) {
+    result <- tryCatch(
+      entrez_search(db = "nucleotide", term = term, retmax = 0,
+                    email = NCBI_EMAIL, tool = NCBI_TOOL)$count,
+      error = function(e) NULL)
+    if (!is.null(result)) return(as.integer(result))
+    Sys.sleep(retry_wait)
+  }
+  NA_integer_
+}
+
+marker_hit_count <- function(species, marker)
+  esearch_count(sprintf('"%s"[Organism] AND %s', species, marker))
+
+# [Organism] is hierarchical, so ANDing Vertebrata[Organism] returns 0 for
+# non-vertebrates - resolves vertebrate status in one query rather than a
+# separate taxid lookup. 12SV5 is a vertebrate marker; every animal has *a*
+# 12S gene, so the unfiltered count alone overstates recoverable candidates.
+vertebrate_12S_hits <- function(species)
+  esearch_count(sprintf('"%s"[Organism] AND 12S AND Vertebrata[Organism]', species))
+
+# Current NCBI-accepted name for a species. Searching a synonym in the
+# Taxonomy database still resolves to the accepted taxon (verified live:
+# "Allium porrum" -> "Allium ampeloprasum", taxid 4681) - without this, a
+# plain string match against the reference misreports an already-covered
+# species as missing just because it's listed under an old name.
+resolve_current_name <- function(species, max_tries = 3, retry_wait = 2) {
+  for (try in seq_len(max_tries)) {
+    result <- tryCatch({
+      hit <- entrez_search(db = "taxonomy", term = sprintf('"%s"[All Names]', species),
+                            retmax = 1, email = NCBI_EMAIL, tool = NCBI_TOOL)
+      if (length(hit$ids) == 0) return(NA_character_)
+      entrez_summary(db = "taxonomy", id = hit$ids[1])$scientificname
+    }, error = function(e) NULL)
+    if (!is.null(result)) return(result)
+    Sys.sleep(retry_wait)
+  }
+  NA_character_
+}
+
+# Applies `fun` (species -> single-row tibble) across `species`, checkpointed
+# to out_path: a killed or re-run notebook skips whatever's already recorded
+# rather than re-querying it. Mirrors the resumability of the original
+# 01_ncbi_marker_availability.sh / 02_vertebrate_filter.sh, which mattered
+# for a run this size - Part 1 alone is a multi-hour job unauthenticated.
+checkpointed_map <- function(species, out_path, fun, rate = 0.4) {
+  done <- if (file.exists(out_path)) read_csv(out_path, show_col_types = FALSE) else NULL
+  todo <- if (is.null(done)) species else setdiff(species, done$scientific_name)
+  if (length(todo) == 0) {
+    cat("All", length(species), "species already checkpointed in", basename(out_path), "\n")
+    return(read_csv(out_path, show_col_types = FALSE))
+  }
+  cat("Querying", length(todo), "of", length(species), "species (",
+      length(species) - length(todo), "already checkpointed in", basename(out_path), ")...\n")
+  pb_step <- max(1, round(length(todo) / 20))
+  for (i in seq_along(todo)) {
+    row <- fun(todo[i])
+    write_csv(row, out_path, append = file.exists(out_path))
+    if (i %% pb_step == 0) cat("  ", i, "/", length(todo), "\n")
+    Sys.sleep(rate)
+  }
+  read_csv(out_path, show_col_types = FALSE)
+}
+```
+
+# Part 1 — re-check species already on the target list
+
+## Current reference coverage
+
+Computed fresh from the built reference each run, not from a saved
+"missing species" snapshot - those go stale the moment the reference is
+rebuilt, which is exactly what caused 40% of the saved July 2026
+candidate list to be outdated names by August (see `README.md`,
+"Re-derived against the Aug 2026 build").
+
+```{r phase1-reference, eval = RUN_PHASE1}
+ref_paths <- list(
+  trnL    = here('data', 'outputs', 'dada2-compatible', 'trnL',
+                 paste0('trnLGH_taxonomy', REF_SUFFIX, '.fasta')),
+  `12SV5` = here('data', 'outputs', 'dada2-compatible', '12Sv5',
+                 paste0('12Sv5_taxonomy', REF_SUFFIX, '.fasta'))
+)
+stopifnot(file.exists(ref_paths$trnL), file.exists(ref_paths$`12SV5`))
+
+species_in_ref <- function(path) {
+  tax <- readDNAStringSet(path)
+  sp  <- vapply(strsplit(names(tax), ";"),
+                function(x) if (length(x) >= 7) x[7] else NA_character_,
+                character(1))
+  unique(na.omit(sp))
+}
+
+ref_species <- list(trnL = species_in_ref(ref_paths$trnL),
+                    `12SV5` = species_in_ref(ref_paths$`12SV5`))
+cat("Currently in trnL reference:  ", length(ref_species$trnL), "species\n")
+cat("Currently in 12SV5 reference: ", length(ref_species$`12SV5`), "species\n")
+
+plants_missing  <- setdiff(foods$scientific_name[foods$category == "plant"],
+                           ref_species$trnL)
+animals_missing <- setdiff(foods$scientific_name[foods$category == "animal"],
+                           ref_species$`12SV5`)
+cat(length(plants_missing),  "food plants missing from the trnL reference\n")
+cat(length(animals_missing), "food animals missing from the 12SV5 reference\n")
+```
+
+## Resolve current names, and drop anything that's actually already covered
+
+```{r phase1-resolve, eval = RUN_PHASE1}
+resolve_and_filter <- function(missing_species, ref_sp, group_label) {
+  resolved <- checkpointed_map(
+    missing_species,
+    file.path(RAW_DIR, paste0('name_resolution_', group_label, OUT_SUFFIX, '.csv')),
+    function(sp) tibble(scientific_name = sp, resolved_name = resolve_current_name(sp))
+  )
+  resolved <- resolved %>%
+    mutate(name_changed     = !is.na(resolved_name) & resolved_name != scientific_name,
+           already_in_ref   = coalesce(resolved_name, scientific_name) %in% ref_sp,
+           query_name       = coalesce(resolved_name, scientific_name))
+
+  n_recovered <- sum(resolved$already_in_ref)
+  cat(sprintf("%s: %d/%d resolved names differ from the input; %d were already in the reference under that name (excluded below)\n",
+              group_label, sum(resolved$name_changed, na.rm = TRUE), nrow(resolved), n_recovered))
+
+  resolved
+}
+
+plants_resolved  <- resolve_and_filter(plants_missing,  ref_species$trnL,    "plants")
+animals_resolved <- resolve_and_filter(animals_missing, ref_species$`12SV5`, "animals")
+
+write_csv(filter(plants_resolved, already_in_ref),
+          file.path(OUT_DIR, paste0('ALREADY_COVERED_plants_via_synonym', OUT_SUFFIX, '.csv')))
+write_csv(filter(animals_resolved, already_in_ref),
+          file.path(OUT_DIR, paste0('ALREADY_COVERED_animals_via_synonym', OUT_SUFFIX, '.csv')))
+
+plants_still_missing  <- filter(plants_resolved,  !already_in_ref)
+animals_still_missing <- filter(animals_resolved, !already_in_ref)
+cat("\nGenuinely still missing - plants:", nrow(plants_still_missing),
+    " animals:", nrow(animals_still_missing), "\n")
+```
+
+## Query marker availability at NCBI
+
+```{r phase1-query, eval = RUN_PHASE1}
+plants_recheck <- checkpointed_map(
+  plants_still_missing$query_name,
+  file.path(RAW_DIR, paste0('plants_trnL_recheck', OUT_SUFFIX, '.csv')),
+  function(sp) tibble(scientific_name = sp, ncbi_hits = marker_hit_count(sp, "trnL"))
+)
+
+animals_recheck <- checkpointed_map(
+  animals_still_missing$query_name,
+  file.path(RAW_DIR, paste0('animals_12S_recheck', OUT_SUFFIX, '.csv')),
+  function(sp) tibble(scientific_name = sp, ncbi_hits = marker_hit_count(sp, "12S"))
+)
+
+cat("trnL: ", sum(plants_recheck$ncbi_hits > 0, na.rm = TRUE), "/", nrow(plants_recheck),
+    " now have some marker data\n", sep = "")
+cat("12S:  ", sum(animals_recheck$ncbi_hits > 0, na.rm = TRUE), "/", nrow(animals_recheck),
+    " now have some marker data\n", sep = "")
+```
+
+## Vertebrate filter (12SV5 only)
+
+12SV5 is a vertebrate marker, but every animal has *a* 12S gene, so the
+raw count above overstates recoverable candidates - it will include
+shrimp, crab, and other invertebrates the primers cannot amplify.
+
+```{r phase1-vertebrate, eval = RUN_PHASE1}
+animals_with_hits <- filter(animals_recheck, ncbi_hits > 0)
+
+vert_check <- checkpointed_map(
+  animals_with_hits$scientific_name,
+  file.path(RAW_DIR, paste0('animals_vertebrate_check', OUT_SUFFIX, '.csv')),
+  function(sp) tibble(scientific_name = sp, vert_12S_hits = vertebrate_12S_hits(sp))
+)
+
+animals_vertebrate <- animals_with_hits %>%
+  left_join(vert_check, by = "scientific_name") %>%
+  mutate(is_vertebrate = vert_12S_hits > 0)
+
+cat(sum(animals_vertebrate$is_vertebrate), "/", nrow(animals_vertebrate),
+    " are true vertebrates (12SV5-actionable)\n", sep = "")
+```
+
+## Split out higher-rank entries
+
+Some gap-list entries are genus/family/order names, not binomials
+(`Siluriformes`, `Mentha`) - `[Organism]` searches expand to all
+descendants, so these return large counts that say nothing about
+species-level coverage. They need a curation decision (pick a
+representative species, or keep as a genus-level entry), not a direct
+add.
+
+```{r phase1-rank-split, eval = RUN_PHASE1}
+split_by_rank <- function(df) {
+  df %>% mutate(n_words = str_count(str_trim(scientific_name), "\\s+") + 1,
+                rank_type = if_else(n_words >= 2, "species-level (binomial)",
+                                    "higher rank (genus/family/order)"))
+}
+
+plants_ranked  <- split_by_rank(plants_recheck)
+animals_ranked <- split_by_rank(animals_vertebrate)
+
+higher_rank <- bind_rows(
+  transmute(filter(plants_ranked, rank_type != "species-level (binomial)"),
+            marker = "trnL", scientific_name, ncbi_hits),
+  transmute(filter(animals_ranked, rank_type != "species-level (binomial)"),
+            marker = "12S", scientific_name, ncbi_hits = vert_12S_hits)
+)
+write_csv(higher_rank, file.path(OUT_DIR, paste0('REVIEW_higher-rank-entries', OUT_SUFFIX, '.csv')))
+cat(nrow(higher_rank), "higher-rank entries written for manual review\n")
+```
+
+## Write candidates
+
+```{r phase1-write, eval = RUN_PHASE1}
+plants_candidates <- plants_ranked %>%
+  filter(rank_type == "species-level (binomial)", ncbi_hits > 0) %>%
+  arrange(desc(ncbi_hits))
+write_csv(plants_candidates, file.path(OUT_DIR, paste0('CANDIDATES_plants_trnL', OUT_SUFFIX, '.csv')))
+write_csv(filter(plants_ranked, rank_type == "species-level (binomial)", ncbi_hits == 0),
+          file.path(OUT_DIR, paste0('STILL_missing_plants_trnL', OUT_SUFFIX, '.csv')))
+
+animals_candidates <- animals_ranked %>%
+  filter(rank_type == "species-level (binomial)", is_vertebrate) %>%
+  arrange(desc(vert_12S_hits))
+write_csv(animals_candidates, file.path(OUT_DIR, paste0('CANDIDATES_animals_12SV5', OUT_SUFFIX, '.csv')))
+write_csv(filter(animals_ranked, rank_type == "species-level (binomial)", !is_vertebrate),
+          file.path(OUT_DIR, paste0('EXCLUDED_animals_invertebrates', OUT_SUFFIX, '.csv')))
+write_csv(filter(animals_recheck, ncbi_hits == 0),
+          file.path(OUT_DIR, paste0('STILL_missing_animals_12S', OUT_SUFFIX, '.csv')))
+
+cat("\n=== Part 1 candidates ===\n")
+cat("Plants (trnL): ", nrow(plants_candidates), " -> CANDIDATES_plants_trnL", OUT_SUFFIX, ".csv\n", sep = "")
+cat("Animals (12SV5): ", nrow(animals_candidates), " -> CANDIDATES_animals_12SV5", OUT_SUFFIX, ".csv\n", sep = "")
+cat("\nThese are in the scientific_name-column format code/'Extend reference.Rmd' expects for ADDITIONS.\n")
+```
+
+------------------------------------------------------------------------
+
+# Part 2 — foods missing from the target list entirely (optional)
+
+Checks a curated probe list of globally significant foods
+(`archive/code/coverage-recheck/probe_staples.txt` + `probe_extended.txt`,
+\~199 species weighted toward groups the target list's provenance is
+known to be thin on - non-Western livestock, game, camelids) against
+`human-foods.csv` membership, then against NCBI for whichever are
+absent.
+
+```{r phase2-probe, eval = RUN_PHASE2}
+probe <- bind_rows(
+  read_delim(here('archive', 'code', 'coverage-recheck', 'probe_staples.txt'), delim = "|",
+             col_names = c("scientific_name", "common_name", "group"),
+             show_col_types = FALSE, trim_ws = TRUE),
+  read_delim(here('archive', 'code', 'coverage-recheck', 'probe_extended.txt'), delim = "|",
+             col_names = c("scientific_name", "common_name", "group"),
+             show_col_types = FALSE, trim_ws = TRUE)
+) %>% distinct(scientific_name, .keep_all = TRUE)
+cat(nrow(probe), "species probed\n")
+
+norm <- function(x) x %>% replace_na("") %>% str_to_lower() %>% str_squish()
+sci_set   <- norm(foods$scientific_name)
+genus_set <- word(sci_set, 1)
+hay <- paste(norm(foods$scientific_name), norm(foods$common_name),
+             norm(foods$alternative_names), sep = " | ")
+
+probe_status <- probe %>%
+  mutate(
+    key           = norm(scientific_name),
+    genus         = word(key, 1),
+    exact_sci     = key %in% sci_set,
+    anywhere      = map_lgl(key, ~ any(str_detect(hay, fixed(.x)))),
+    genus_present = genus %in% genus_set,
+    status = case_when(
+      exact_sci     ~ "present (species)",
+      anywhere      ~ "present (synonym/alt name)",
+      genus_present ~ "GAP (species absent; genus present)",
+      TRUE          ~ "GAP (fully absent)"
+    ),
+    marker = if_else(group == "plant", "trnL", "12S")
+  )
+
+cat("\n=== membership status ===\n")
+probe_status %>% count(status, sort = TRUE) %>% print(n = Inf)
+```
+
+## Check NCBI for the gaps
+
+```{r phase2-ncbi, eval = RUN_PHASE2}
+gaps <- filter(probe_status, str_starts(status, "GAP"))
+cat(nrow(gaps), "gap species to check\n")
+
+gap_hits <- checkpointed_map(
+  gaps$scientific_name,
+  file.path(RAW_DIR, paste0('phase2_gap_ncbi', OUT_SUFFIX, '.csv')),
+  function(sp) {
+    row <- gaps[gaps$scientific_name == sp, ][1, ]
+    tibble(scientific_name = sp, ncbi_hits = marker_hit_count(sp, row$marker))
+  }
+)
+
+phase2_result <- gaps %>%
+  left_join(gap_hits, by = "scientific_name") %>%
+  mutate(sequence_available = ncbi_hits > 0) %>%
+  select(scientific_name, common_name, group, marker, status, ncbi_hits, sequence_available) %>%
+  arrange(desc(sequence_available), group, desc(ncbi_hits))
+
+out_path <- file.path(OUT_DIR, paste0('PHASE2_uncatalogued_foods_with_sequence_data', OUT_SUFFIX, '.csv'))
+write_csv(phase2_result, out_path)
+
+cat("\n=== Part 2 result ===\n")
+cat(sum(phase2_result$sequence_available), "/", nrow(phase2_result),
+    " gap species have marker data available -> ", basename(out_path), "\n", sep = "")
+cat("\nNOT ready to add to human-foods.csv yet: every existing row carries a\n")
+cat("literature/database source. Before acting on this file, add `source` and\n")
+cat("`source_status` columns by hand (see PHASE2_uncatalogued_foods_SOURCED.csv\n")
+cat("for the format) and save the sourced version separately - do not point\n")
+cat("Extend reference.Rmd at the unsourced file directly.\n")
+```
+
+------------------------------------------------------------------------
+
+# Summary
+
+```{r summary}
+cat("=== Coverage re-check complete ===\n\n")
+if (RUN_PHASE1) {
+  cat("Part 1 candidates ready for Extend reference.Rmd's ADDITIONS parameter:\n")
+  cat("  ", file.path(OUT_DIR, paste0('CANDIDATES_plants_trnL', OUT_SUFFIX, '.csv')), "\n")
+  cat("  ", file.path(OUT_DIR, paste0('CANDIDATES_animals_12SV5', OUT_SUFFIX, '.csv')), "\n")
+  cat("Review first: REVIEW_higher-rank-entries", OUT_SUFFIX, ".csv (needs a curation decision)\n\n", sep = "")
+}
+if (RUN_PHASE2) {
+  cat("Part 2 needs a manual sourcing pass before anything in it is actionable -\n")
+  cat("see PHASE2_uncatalogued_foods_with_sequence_data", OUT_SUFFIX, ".csv\n\n", sep = "")
+}
+cat("Remember: a hit count here means NCBI has *a* record, not a usable\n")
+cat("amplicon. Extend reference.Rmd's find_primer_pair() is what actually\n")
+cat("confirms recoverability - expect attrition from these candidate counts.\n")
+```

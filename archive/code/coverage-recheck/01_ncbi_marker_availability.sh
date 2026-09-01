@@ -4,7 +4,7 @@
 # Resumable: skips species already present in <out.csv>.
 set -u
 IN="$1"; MARKER="$2"; OUT="$3"
-EMAIL="sarahbrown2648@gmail.com"
+EMAIL="your_email@example.com"   # NCBI etiquette: identifies who's querying
 TOOL="foodseq-coverage-recheck"
 EUTILS="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 

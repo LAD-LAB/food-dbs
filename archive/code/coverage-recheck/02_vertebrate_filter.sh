@@ -4,7 +4,7 @@
 # Usage: vert_check.sh <species_list.txt> <out.csv>   (resumable)
 set -u
 IN="$1"; OUT="$2"
-EMAIL="sarahbrown2648@gmail.com"
+EMAIL="your_email@example.com"   # NCBI etiquette: identifies who's querying
 TOOL="foodseq-vert-check"
 EUTILS="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 
