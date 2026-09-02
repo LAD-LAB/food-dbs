@@ -3,24 +3,13 @@ title: "Extend an existing reference database"
 output: html_document
 ---
 
-Adds sequences for a handful of new species to an **existing** reference
-without a full cluster rebuild. Runs on a laptop in minutes: it queries NCBI
-directly for both sequences and taxonomy, so the ~70 GB `accessionTaxa.sql`
-database the full pipeline needs is not required.
+Adds sequences for a handful of new species to an **existing** reference without a full cluster rebuild. Runs on a laptop in minutes: it queries NCBI directly for both sequences and taxonomy, so the \~70 GB `accessionTaxa.sql` database the full pipeline needs is not required.
 
-**Use this when the only change is adding newly-available species.** Anything
-that must alter records already in the reference — a taxonomy fix, a filter
-change, a new curation rule — needs a full rebuild, because this notebook only
-appends. See `README.md` ("Extend, or rebuild?").
+**Use this when the only change is adding newly-available species.** Anything that must alter records already in the reference — a taxonomy fix, a filter change, a new curation rule — needs a full rebuild, because this notebook only appends. See `README.md` ("Extend, or rebuild?").
 
-**What it produces.** Both DADA2 files are written: the sequence FASTA
-(`>accession taxon`) and the taxonomy FASTA (`>` + 10 semicolon-delimited
-ranks). The taxonomy FASTA is the one `assignment_trnL()` / `assignment_12S()`
-actually consume, so writing only the sequence file — as the pre-2023 version
-of this notebook did — silently fails to extend anything.
+**What it produces.** Both DADA2 files are written: the sequence FASTA (`>accession taxon`) and the taxonomy FASTA (`>` + 10 semicolon-delimited ranks). The taxonomy FASTA is the one `assignment_trnL()` / `assignment_12S()` actually consume, so writing only the sequence file — as the pre-2023 version of this notebook did — silently fails to extend anything.
 
-**Not for trnLCD.** Part A-CD extracts by alignment against plastome introns,
-not by primer match, so extending it needs the panel and belongs in a rebuild.
+**Not for trnLCD.** Part A-CD extracts by alignment against plastome introns, not by primer match, so extending it needs the panel and belongs in a rebuild.
 
 # Setup
 
@@ -47,9 +36,7 @@ source(here('code', 'functions', 'fetch_lineage_ncbi.R'))
 
 ## Configuration
 
-Set the marker, point at the reference you are extending, and name the output.
-The default output path is deliberately *not* the input path: extending writes
-a new versioned pair of files rather than mutating the reference in place.
+Set the marker, point at the reference you are extending, and name the output. The default output path is deliberately *not* the input path: extending writes a new versioned pair of files rather than mutating the reference in place.
 
 ```{r configuration}
 MARKER <- "trnL"          # "trnL" or "12SV5"
@@ -99,9 +86,7 @@ cat("Writing:  ", basename(out_seq), "+", basename(out_tax), "\n")
 
 # Load the current reference
 
-The two FASTAs are parallel: record *i* of the sequence file is record *i* of
-the taxonomy file. That is checked here, because appending to files that have
-drifted out of step would corrupt the reference silently.
+The two FASTAs are parallel: record *i* of the sequence file is record *i* of the taxonomy file. That is checked here, because appending to files that have drifted out of step would corrupt the reference silently.
 
 ```{r load-current}
 cur_seq <- readDNAStringSet(in_seq)
@@ -145,11 +130,7 @@ print(species)
 
 # Query NCBI and extract the amplicon
 
-Same `query_ncbi()` the full pipeline uses, so the same 50 kb length cap
-applies — complete plastid/mitochondrial genomes are excluded. That means a
-species whose only record is a whole genome will come back empty here even
-though sequence exists; those need a rebuild. Empty results are reported at
-the end rather than failing the run.
+Same `query_ncbi()` the full pipeline uses, so the same 50 kb length cap applies — complete plastid/mitochondrial genomes are excluded. That means a species whose only record is a whole genome will come back empty here even though sequence exists; those need a rebuild. Empty results are reported at the end rather than failing the run.
 
 ```{r query-ncbi}
 if (length(species) == 0) {
@@ -171,10 +152,7 @@ cat(length(amp), "after removing UNVERIFIED records\n")
 
 # Resolve taxonomy from NCBI
 
-`accession -> taxid -> lineage`, both steps over e-utils. This is the
-SQL-free counterpart to the pipeline's `extract_taxonomy()`; it is much slower
-per record, which is fine for tens of sequences and would not be for tens of
-thousands.
+`accession -> taxid -> lineage`, both steps over e-utils. This is the SQL-free counterpart to the pipeline's `extract_taxonomy()`; it is much slower per record, which is fine for tens of sequences and would not be for tens of thousands.
 
 ```{r resolve-taxonomy}
 accs <- unique(names(amp))
@@ -212,9 +190,7 @@ cat(sum(is.na(new$taxon)), "records have no usable taxonomy\n")
 
 # QC the additions
 
-The same gates the pipeline applies, in the same order: drop unresolved
-taxonomy, degenerate bases, off-target phyla (A6b / B6b), then de-duplicate
-against both the additions themselves and the existing reference.
+The same gates the pipeline applies, in the same order: drop unresolved taxonomy, degenerate bases, off-target phyla (A6b / B6b), then de-duplicate against both the additions themselves and the existing reference.
 
 ```{r qc-additions}
 n0 <- nrow(new)
@@ -278,13 +254,9 @@ if (length(missed) > 0) {
 
 # Verify before shipping
 
-Run the QC gate against the extended pair. It compares them to the reference
-you extended, so the record count should rise by exactly what was added and
-every other check should pass.
+Run the QC gate against the extended pair. It compares them to the reference you extended, so the record count should rise by exactly what was added and every other check should pass.
 
-The 4th argument restricts the gate to the marker you extended. Without it the
-gate looks for *every* marker under the new suffix and hard-fails on the ones
-you did not touch — a pass that reads as a failure.
+The 4th argument restricts the gate to the marker you extended. Without it the gate looks for *every* marker under the new suffix and hard-fails on the ones you did not touch — a pass that reads as a failure.
 
 ```{r qc-gate, eval = FALSE}
 # From a shell, at the repo root:
