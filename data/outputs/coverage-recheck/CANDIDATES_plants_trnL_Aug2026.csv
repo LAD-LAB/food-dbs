@@ -1,0 +1,204 @@
+requested_name,current_name,renamed,status,reason,n_trnL_records_queried,n_complete_plastomes,on_food_list,genus_in_ref,phylum
+Abutilon indicum,Abutilon indicum,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Acacia senegal,Senegalia senegal,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Allium porrum,Allium ampeloprasum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Aquilegia caerulea,Aquilegia coerulea,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Argania spinosa,Sideroxylon spinosum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Baccaurea edulis,Baccaurea edulis,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Baccaurea macrocarpa,Baccaurea macrocarpa,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Baccaurea motleyana,Baccaurea motleyana,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Brachiaria deflexa,Urochloa deflexa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Carica pubescens,Vasconcellea cundinamarcensis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Carica x heilbornii,Vasconcellea x heilbornii,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Carissa congesta,Carissa spinarum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Cheilocostus speciosus,Hellenia speciosa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Chenopodium bonus-henricus,Blitum bonus-henricus,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Chenopodium capitatum,Blitum capitatum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Chenopodium foliosum,Blitum virgatum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Chrysanthemum morifolium,Chrysanthemum x morifolium,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Cichorium endivia,Cichorium endivia,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Cinnamomum cassia,Neolitsea cassia,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus aurantiifolia,Citrus x aurantiifolia,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus aurantium,Citrus x aurantium,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus latifolia,Citrus x latifolia,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus limon,Citrus x limon,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus paradisi,Citrus x paradisi,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus x limonia,Citrus limonia,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Citrus x taitensis,Citrus jambhiri,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Cleome gynandra,Gynandropsis gynandra,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Coix lachryma-jobi,Coix lacryma-jobi,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Curcuma zanthorrhiza,Curcuma xanthorrhiza,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Cyphomandra betacea,Solanum betaceum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Dialium indum,Dialium indum,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Dianthus barbatus,Dianthus barbatus,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Dioscorea cayennensis,Dioscorea cayenensis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Durio dulcis,Durio dulcis,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Erioglossum rubiginosum,Lepisanthes rubiginosa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Feronia limonia,Limonia acidissima,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Foeniculum vulgare,Anethum foeniculum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Fragaria ananassa,Fragaria x ananassa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Hyptis suaveolens,Mesosphaerum suaveolens,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Inga feuilleei,Inga feuillei,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Iris x germanica,Iris germanica,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Kyllinga brevifolia,Cyperus brevifolius,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Lansium parasiticum,Epicharis parasitica,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Mangifera quadrifida,Mangifera quadrifida,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Marsdenia australis,Leichhardtia australis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Merrillia caloxylon,Merrillia caloxylon,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Morinda officinalis,Gynochthodes officinalis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Myrica rubra,Morella rubra,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Nephelium ramboutan-ake,Nephelium ramboutan-ake,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Nopalea cochenillifera,Opuntia cochenillifera,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Nopalea dejecta,Opuntia dejecta,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Opuntia monacantha,Opuntia monacantha,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Paeonia x suffruticosa,Paeonia suffruticosa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Passiflora pinnatistipula,Passiflora pinnatistipula,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Paullinia cupana,Paullinia cupana,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Pennisetum glaucum,Cenchrus americanus,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Petunia hybrida,Petunia x hybrida,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Phyllanthus acidus,Phyllanthus acidus,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Phyllanthus emblica,Emblica officinalis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Physalis alkekengi,Alkekengi officinarum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Plantago arenaria,Plantago indica,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Plectranthus amboinicus,Coleus amboinicus,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Poncirus trifoliata,Citrus trifoliata,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Proboscidea louisianica,Proboscidea louisianica,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Pseudocydonia sinensis,Pseudocydonia sinensis,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Psidium cattleianum,Psidium cattleyanum,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Pyrus bretschneideri,Pyrus x bretschneideri,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Ribes uva-crispa,Ribes uva-crispa,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Rollinia mucosa,Annona mucosa,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Rosa x hybrida,Rosa hybrid cultivar,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Rubus fruticosus,Rubus fruticosus,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Sauropus androgynus,Breynia androgyna,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Sechium edule,Sicyos edulis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Sechium tacaco,Frantzia tacaco,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Sida rhombifolia,Sida rhombifolia,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Sorbus domestica,Cormus domestica,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Spondias cytherea,Spondias dulcis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Spondias lakonensis,Allospondias lakonensis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Triticum turgidum subsp. dicoccoides,Triticum dicoccoides,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Urena lobata,Urena lobata,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Vaccinium oxycoccos,Vaccinium oxycoccos,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Vasconcellea pubescens,Vasconcellea cundinamarcensis,TRUE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Yucca gigantea,Yucca gigantea,FALSE,closed by the Aug 2026 build,added,NA,NA,TRUE,TRUE,NA
+Wasabia japonica,Japonica,TRUE,still absent,no usable trnL record at NCBI,0,0,TRUE,FALSE,NA
+Acronychia acidula,Acronychia acidula,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Agave tequilana,Agave tequilana,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Alibertia patinoi,Alibertia patinoi,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Aloysia triphylla,Aloysia triphylla,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,6,0,TRUE,FALSE,NA
+Alpinia malaccensis,Alpinia malaccensis,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,5,0,TRUE,TRUE,NA
+Amaranthus thunbergii,Amaranthus thunbergii,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Amomum subulatum,Amomum subulatum,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,3,0,TRUE,FALSE,NA
+Ananas parguazensis,Ananas comosus var. parguazensis,TRUE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Apium prostratum,Apium prostratum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Aponogeton distachyos,Aponogeton distachyos,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Baccaurea angulata,Baccaurea angulata,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Baccaurea dulcis,Baccaurea dulcis,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Baccaurea lanceolata,Baccaurea lanceolata,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Beloperone californica,Justicia californica,TRUE,still absent,queried; no record spans both trnL-g/h primer sites,2,0,TRUE,FALSE,NA
+Brassica juncea var. juncea,Brassica juncea var. juncea,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,3,0,TRUE,TRUE,NA
+Brassica oleracea var. gemmifera,Brassica oleracea var. gemmifera,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,3,0,TRUE,TRUE,NA
+Brassica oleracea var. viridis,Brassica oleracea var. viridis,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Brassica rapa subsp. oleifera,Brassica rapa subsp. oleifera,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Bromelia pinguin,Bromelia pinguin,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Campomanesia guaviroba,Campomanesia guaviroba,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,2,0,TRUE,FALSE,NA
+Canarium schweinfurthii,Canarium schweinfurthii,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Ceratotheca sesamoides,Ceratotheca sesamoides,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,2,0,TRUE,FALSE,NA
+Cola nitida,Cola nitida,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Commelina diffusa,Commelina diffusa,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Cordia africana,Cordia africana,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Costus erythrophyllus,Costus erythrophyllus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Costus productus,Costus productus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Cucurbita pepo subsp. pepo,Cucurbita pepo subsp. pepo,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Curcuma mangga,Curcuma mangga,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Dimocarpus fumatus,Dimocarpus fumatus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,4,0,TRUE,TRUE,NA
+Diospyros discolor,Diospyros discolor,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,3,0,TRUE,TRUE,NA
+Flindersia maculosa,Flindersia maculosa,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Garcinia spicata,Garcinia spicata,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Gladiolus grandiflorus,Gladiolus grandiflorus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Glebionis segetum,Glebionis segetum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,3,0,TRUE,TRUE,NA
+Hibiscus radiatus,Hibiscus radiatus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Hua gaboni,Hua gabonii,TRUE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Ipomoea eriocarpa,Ipomoea eriocarpa,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Irvingia gabonensis,Irvingia gabonensis,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Lycianthes moziniana,Lycianthes moziniana,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,31,0,TRUE,FALSE,NA
+Mangifera kemanga,Mangifera kemanga,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,4,0,TRUE,TRUE,NA
+Manilkara jaimiqui,Manilkara jaimiqui,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Microlaena stipoides,Microlaena stipoides,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,1,0,TRUE,FALSE,NA
+Nephelium cuspidatum,Nephelium cuspidatum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,8,0,TRUE,TRUE,NA
+Nephelium maingayi,Nephelium maingayi,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Ocotea quixos,Mespilodaphne quixos,TRUE,still absent,queried; no record spans both trnL-g/h primer sites,3,0,TRUE,FALSE,NA
+Opuntia boldinghii,Opuntia boldinghii,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Opuntia leucotricha,Opuntia leucotricha,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Opuntia robusta,Opuntia robusta,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Opuntia stricta,Opuntia stricta,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Opuntia undulata,Opuntia undulata,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,6,0,TRUE,TRUE,NA
+Pinus coulteri,Pinus coulteri,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Polystichum munitum,Polystichum munitum,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,15,0,TRUE,FALSE,NA
+Rubus allegheniensis,Rubus allegheniensis,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Rubus laciniatus,Rubus laciniatus,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Salicornia quinqueflora,Salicornia quinqueflora,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Salsola komarovii,Salsola komarovii,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,7,0,TRUE,FALSE,NA
+Scorzonera hispanica,Pseudopodospermum hispanicum,TRUE,still absent,queried; no record spans both trnL-g/h primer sites,3,0,TRUE,FALSE,NA
+Sesamum radiatum,Sesamum radiatum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,4,0,TRUE,TRUE,NA
+Solanum uporo,Solanum uporo,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Sterculia parviflora,Sterculia parviflora,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Telopea speciosissima,Telopea speciosissima,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,3,0,TRUE,FALSE,NA
+Thymus herba-barona,Thymus herba-barona,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,17,0,TRUE,TRUE,NA
+Triticum dicoccon,Triticum turgidum subsp. dicoccum,TRUE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Triticum turgidum subsp. dicoccum,Triticum turgidum subsp. dicoccum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Vaccinium tenellum,Vaccinium tenellum,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Valeriana sambucifolia,Valeriana excelsa subsp. sambucifolia,TRUE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Victoria amazonica,Victoria amazonica,FALSE,still absent,queried; no record spans both trnL-g/h primer sites,2,0,TRUE,FALSE,NA
+Vigna unguiculata subsp. sesquipedalis,Vigna unguiculata subsp. sesquipedalis,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,1,0,TRUE,TRUE,NA
+Xylopia aethiopica,Xylopia aethiopica,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Zanthoxylum capense,Zanthoxylum capense,FALSE,still absent (genus represented),queried; no record spans both trnL-g/h primer sites,2,0,TRUE,TRUE,NA
+Acer ginnala,Acer tataricum subsp. ginnala,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),12,6,TRUE,TRUE,Streptophyta
+Acer nigrum,Acer saccharum subsp. nigrum,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,1,TRUE,TRUE,Streptophyta
+Allium ledebourianum,Allium ledebourianum,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),6,1,TRUE,TRUE,Streptophyta
+Alpinia zerumbet,Alpinia zerumbet,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,2,TRUE,TRUE,Streptophyta
+Amaranthus cruentus,Amaranthus cruentus,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,3,TRUE,TRUE,Streptophyta
+Amaranthus dubius,Amaranthus dubius,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,1,TRUE,TRUE,Streptophyta
+Annona atemoya,Annona x atemoya,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,2,TRUE,TRUE,Streptophyta
+Argyranthemum frutescens,Argyranthemum frutescens,FALSE,still absent,recoverable from a complete plastome (blocked by the 50kb cap),3,1,TRUE,FALSE,Streptophyta
+Begonia cucullata,Begonia cucullata,FALSE,still absent,recoverable from a complete plastome (blocked by the 50kb cap),1,1,TRUE,FALSE,Streptophyta
+Beta vulgaris subsp. vulgaris,Beta vulgaris subsp. vulgaris,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,1,TRUE,TRUE,Streptophyta
+Brassica oleracea var. alboglabra,Brassica oleracea var. alboglabra,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,2,TRUE,TRUE,Streptophyta
+Brassica oleracea var. botrytis,Brassica oleracea var. botrytis,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,4,TRUE,TRUE,Streptophyta
+Brassica oleracea var. capitata f. alba,Brassica oleracea var. capitata,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,3,TRUE,TRUE,Streptophyta
+Brassica oleracea var. gongylodes,Brassica oleracea var. gongylodes,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,1,TRUE,TRUE,Streptophyta
+Brassica oleracea var. italica,Brassica oleracea var. italica,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,3,TRUE,TRUE,Streptophyta
+Brassica rapa subsp. chinensis,Brassica rapa subsp. chinensis,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,13,TRUE,TRUE,Streptophyta
+Brassica rapa subsp. pekinensis,Brassica rapa subsp. pekinensis,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,1,TRUE,TRUE,Streptophyta
+Brassica rapa subsp. rapa,Brassica rapa subsp. rapa,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,2,TRUE,TRUE,Streptophyta
+Brassica rapa var. glabra,Brassica rapa subsp. pekinensis,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),3,1,TRUE,TRUE,Streptophyta
+Citrus unshiu,Citrus unshiu,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),15,4,TRUE,TRUE,Streptophyta
+Dioscorea rotundata,Dioscorea cayenensis subsp. rotundata,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),22,1,TRUE,TRUE,Streptophyta
+Dovyalis caffra,Dovyalis caffra,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,1,TRUE,TRUE,Streptophyta
+Durio graveolens,Durio graveolens,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,3,TRUE,TRUE,Streptophyta
+Durio kutejensis,Durio kutejensis,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,1,TRUE,TRUE,Streptophyta
+Fuchsia x hybrida,Fuchsia x standishii,TRUE,still absent,recoverable from a complete plastome (blocked by the 50kb cap),0,1,TRUE,FALSE,Streptophyta
+Garcinia indica,Garcinia indica,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,2,TRUE,TRUE,Streptophyta
+Garcinia intermedia,Garcinia intermedia,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,2,TRUE,TRUE,Streptophyta
+Garcinia madruno,Garcinia madruno,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,1,TRUE,TRUE,Streptophyta
+Hibiscus sabdariffa,Hibiscus sabdariffa,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),5,3,TRUE,TRUE,Streptophyta
+Hibiscus tiliaceus,Hibiscus tiliaceus,FALSE,still absent (genus represented),complete plastome exists; phylum unresolved - check manually,1,8,TRUE,TRUE,NA
+Laminaria japonica,Saccharina japonica,TRUE,still absent,"complete plastome exists, but outside the trnL allowlist (not a land plant)",39,9,TRUE,FALSE,Ochrophyta (brown alga)
+Lucuma campechiana,Lucuma campechiana,FALSE,still absent,complete plastome exists; phylum unresolved - check manually,1,2,TRUE,FALSE,NA
+Malus turkmenorum,Malus sieversii var. turkmenorum,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),0,2,TRUE,TRUE,Streptophyta
+Manilkara kauki,Manilkara kauki,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,1,TRUE,TRUE,Streptophyta
+Passiflora mollissima,Passiflora tripartita var. mollissima,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),4,1,TRUE,TRUE,Streptophyta
+Pueraria montana var. lobata,Pueraria montana var. lobata,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),10,16,TRUE,TRUE,Streptophyta
+Pyropia tenera,Pyropia tenera,FALSE,still absent,"complete plastome exists, but outside the trnL allowlist (not a land plant)",0,1,TRUE,FALSE,Rhodophyta
+Pyropia yezoensis,Pyropia yezoensis,FALSE,still absent,"complete plastome exists, but outside the trnL allowlist (not a land plant)",0,6,TRUE,FALSE,Rhodophyta
+Rubus hybrid cultivar,Rubus hybrid cultivar,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,2,TRUE,TRUE,Streptophyta
+Tetragonia tetragonioides,Tetragonia tetragonioides,FALSE,still absent (genus represented),complete plastome exists; phylum unresolved - check manually,5,2,TRUE,TRUE,NA
+Triticum araraticum,Triticum timopheevii subsp. araraticum,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),2,1,TRUE,TRUE,Streptophyta
+Triticum boeoticum,Triticum monococcum subsp. aegilopoides,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),5,1,TRUE,TRUE,Streptophyta
+Triticum durum,Triticum turgidum subsp. durum,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,3,TRUE,TRUE,Streptophyta
+Triticum monococcum subsp. aegilopoides,Triticum monococcum subsp. aegilopoides,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),5,1,TRUE,TRUE,Streptophyta
+Triticum turgidum subsp. carthlicum,Triticum carthlicum,TRUE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),0,3,TRUE,TRUE,Streptophyta
+Triticum turgidum subsp. durum,Triticum turgidum subsp. durum,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,3,TRUE,TRUE,Streptophyta
+Undaria pinnatifida,Undaria pinnatifida,FALSE,still absent,"complete plastome exists, but outside the trnL allowlist (not a land plant)",2,6,TRUE,FALSE,Ochrophyta (brown alga)
+Viola odorata,Viola odorata,FALSE,still absent (genus represented),recoverable from a complete plastome (blocked by the 50kb cap),1,1,TRUE,TRUE,Streptophyta
