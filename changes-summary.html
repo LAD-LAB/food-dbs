@@ -23,7 +23,14 @@
     .subtitle {
       color: #6b7280;
       font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .scope-note {
+      color: #6b7280;
+      font-size: 0.8rem;
       margin-bottom: 28px;
+      max-width: 780px;
+      line-height: 1.5;
     }
 
     /* ── Legend ─────────────────────────────────────── */
@@ -56,6 +63,19 @@
     .badge-archived { background: #f3f4f6; color: #4b5563; border: 1px solid #d1d5db; }
     .badge-unchanged{ background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
 
+    /* ── Section headers ────────────────────────────── */
+    .section-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin: 28px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .cards .section-header:first-child { margin-top: 0; }
+
     /* ── Main grid ──────────────────────────────────── */
     .grid {
       display: grid;
@@ -71,6 +91,8 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 20px;
     }
     .panel-title {
       font-size: 0.75rem;
@@ -81,7 +103,7 @@
       margin-bottom: 14px;
     }
 
-    .tree { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.8rem; line-height: 1.9; }
+    .tree { font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 0.78rem; line-height: 1.85; }
     .tree-row { display: flex; align-items: baseline; gap: 5px; }
     .connector { color: #d1d5db; white-space: pre; flex-shrink: 0; }
     .filename { color: #374151; }
@@ -119,6 +141,12 @@
       font-weight: 600;
       color: #1a1a2e;
       flex: 1;
+    }
+    .card-subtitle {
+      font-size: 0.74rem;
+      color: #9ca3af;
+      font-weight: 400;
+      margin-left: 8px;
     }
     .card-body { padding: 14px 16px; }
 
@@ -174,16 +202,34 @@
       padding: 3px 9px;
       color: #6b7280;
     }
+    .archive-subhead {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9ca3af;
+      margin: 12px 0 6px;
+    }
+    .archive-subhead:first-child { margin-top: 0; }
 
     @media (max-width: 800px) {
       .grid { grid-template-columns: 1fr; }
+      .panel { position: static; }
     }
   </style>
 </head>
 <body>
 
 <h1>food-dbs — Changes Summary</h1>
-<p class="subtitle">Changes made to the LAD-LAB food-dbs repository to build and run the FoodSeq reference pipeline — last updated May 2026</p>
+<p class="subtitle">Everything changed in the LAD-LAB food-dbs repository during 2026 — last updated Aug 2026</p>
+<p class="scope-note">
+  Grouped by theme rather than by date. Every card below describes a change relative to the
+  <strong>pre-2026 workflow</strong> (the archived <span class="tag">trnL-reference.Rmd</span> /
+  <span class="tag">12SV5-reference.Rmd</span> pair and its supporting scripts) — the cumulative result of the
+  May 2026 pipeline overhaul plus everything built on top of it through August: reference-integrity fixes,
+  a new trnL c/d marker, a QC gate, and two new laptop-friendly notebooks. Where a file changed more than
+  once across that period, the card describes its current state and calls out what changed when it matters.
+</p>
 
 <!-- Legend -->
 <div class="legend">
@@ -230,21 +276,45 @@
 
       <div class="tree-row" style="margin-top:6px">
         <span class="connector">├── </span>
-        <span class="filename folder">code/functions/</span>
+        <span class="filename folder">code/</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
+        <span class="filename new">Extend reference.Rmd</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">Coverage recheck.Rmd</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">qc_reference_build.R</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename folder">functions/</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   │   ├── </span>
         <span class="filename modified">find_primer_pair.R</span>
         <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
-        <span class="connector">│   ├── </span>
+        <span class="connector">│   │   ├── </span>
         <span class="filename modified">query_ncbi.R</span>
         <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
-        <span class="connector">│   └── </span>
+        <span class="connector">│   │   ├── </span>
         <span class="filename new">query_ncbi_accession.R</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   │   └── </span>
+        <span class="filename new">fetch_lineage_ncbi.R</span>
         <span class="badge badge-new">NEW</span>
       </div>
 
@@ -254,13 +324,23 @@
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename">human-foods.csv</span>
+        <span class="filename modified">human-foods.csv</span>
+        <span class="badge badge-modified">MODIFIED</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename">Manual renaming.csv</span>
         <span class="badge badge-unchanged">UNCHANGED</span>
       </div>
       <div class="tree-row">
+        <span class="connector">│   ├── </span>
+        <span class="filename new">controls.csv</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="tree-row">
         <span class="connector">│   └── </span>
-        <span class="filename">Manual renaming.csv</span>
-        <span class="badge badge-unchanged">UNCHANGED</span>
+        <span class="filename new">reference-additions.csv</span>
+        <span class="badge badge-new">NEW</span>
       </div>
 
       <div class="tree-row" style="margin-top:6px">
@@ -269,22 +349,22 @@
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename new">dada2-compatible/trnL/*_May2026.*</span>
+        <span class="filename new">dada2-, qiime2-compatible/{trnL,12Sv5}/*_May2026.*</span>
         <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename new">dada2-compatible/12Sv5/*_May2026.*</span>
+        <span class="filename new">dada2-, qiime2-compatible/{trnL,12Sv5}/*_Aug2026.*</span>
         <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename new">qiime2-compatible/trnL/*_May2026.*</span>
+        <span class="filename new">dada2-, qiime2-compatible/trnLCD/*_Aug2026.*</span>
         <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename new">qiime2-compatible/12Sv5/*_May2026.*</span>
+        <span class="filename new">coverage-recheck/ (candidates, gap analysis, README)</span>
         <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row">
@@ -316,8 +396,12 @@
         <span class="filename archived">code/functions/ (4 files)</span>
       </div>
       <div class="tree-row">
-        <span class="connector">    └── </span>
+        <span class="connector">    ├── </span>
         <span class="filename archived">*.ipynb (2 files)</span>
+      </div>
+      <div class="tree-row">
+        <span class="connector">    └── </span>
+        <span class="filename archived">code/coverage-recheck/ (9 scripts + 2 lists)</span>
       </div>
 
     </div>
@@ -325,6 +409,8 @@
 
   <!-- ── Change cards ───────────────────────────── -->
   <div class="cards">
+
+    <div class="section-header">Pipeline structure</div>
 
     <!-- foodseq_reference_pipeline.Rmd -->
     <div class="card">
@@ -337,6 +423,11 @@
           <li>
             <div>
               Replaces separate <span class="tag">trnL-reference.Rmd</span> and <span class="tag">12SV5-reference.Rmd</span> with a single document containing unified setup, shared SLURM jobs, and parallel Part A (trnL) / Part B (12SV5) sections
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Part A-CD added later (Aug 2026):</strong> a third section building a trnL c/d reference alongside g/h, sharing Part A's species list and NCBI pull — see the trnLCD card below
             </div>
           </li>
           <li>
@@ -356,12 +447,12 @@
           </li>
           <li>
             <div>
-              NCBI API key chunk added; sources all three function files; shared <span class="tag">extract_taxonomy()</span> helper used by both Part A and Part B
+              NCBI API key chunk added; sources all function files; shared <span class="tag">extract_taxonomy()</span> helper used by both parts
             </div>
           </li>
           <li>
             <div>
-              Manual curation edits from <span class="tag">Manual renaming.csv</span> integrated into pipeline at A5 (manual additions) and A7 (omissions and renamings)
+              Manual curation edits from <span class="tag">Manual renaming.csv</span> integrated into the pipeline at A5 (manual additions) and A7 (omissions and renamings)
             </div>
           </li>
         </ul>
@@ -379,7 +470,7 @@
           <li>
             <div>
               <strong>Sequence-length filter</strong> <span class="tag">0:50000[SLEN]</span> added to NCBI search query
-              <span class="reason">Root cause of crashes: chromosomal/scaffold assemblies containing the 12S gene were included in results; these can be megabytes each and push the FASTA payload over R's 2<sup>31</sup>−1 byte string limit. The filter excludes them while retaining all genuine amplicons and gene-level sequences.</span>
+              <span class="reason">Root cause of crashes: chromosomal/scaffold assemblies containing the 12S gene were included in results; these can be megabytes each and push the FASTA payload over R's 2<sup>31</sup>−1 byte string limit. The filter excludes them while retaining all genuine amplicons and gene-level sequences. Trade-off found later (Aug 2026): the same cap excludes every complete plastid/mitochondrial genome, which blocks ~41 plant species that have no other public trnL record — see "Remaining gaps" in README.md.</span>
             </div>
           </li>
           <li>
@@ -432,7 +523,7 @@
     <!-- query_ncbi_accession.R -->
     <div class="card">
       <div class="card-header new">
-        <span class="badge badge-NEW">NEW</span>
+        <span class="badge badge-new">NEW</span>
         <span class="card-filename">code/functions/query_ncbi_accession.R</span>
       </div>
       <div class="card-body">
@@ -442,9 +533,209 @@
               Added to <span class="tag">code/functions/</span>; called in the taxonomy lookup steps (A6, B6) to resolve accession numbers that are absent from the local taxonomizr SQL database because they were added to NCBI after the database was built
             </div>
           </li>
+          <li>
+            <div>
+              <strong>Fixed (Aug 2026):</strong> now searches <span class="tag">&lt;accession&gt;[ACCN]</span> instead of a free-text <span class="tag">entrez_search</span> on the bare accession string
+              <span class="reason">The free-text search silently mismatched: a bare-genus string like "Esox" (221k unrelated hits) resolved to whatever NCBI record most recently mentioned the word — live-verified to resolve to a trematode, not the fish genus. This was the second half of the bare-genus accession bug (see the Reference-integrity card below); the fix makes a "not found" case return a safe NA instead of a wrong taxon.</span>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
+
+    <div class="section-header">Reference integrity &amp; controls <span style="font-weight:400; text-transform:none; letter-spacing:normal;">— Aug 2026</span></div>
+
+    <!-- controls.csv -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">data/inputs/controls.csv</span>
+        <span class="card-subtitle">92 rows</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              <strong>Positive spike-in controls</strong> (synthetic trnL/12S ASVs, real-species gecko control) — the food-list-driven rebuild dropped these because they are lab constructs or non-food vertebrates never returned by RefSeq/GenBank queries, so every build was silently missing them
+              <span class="reason">Found: 185 synthetic-control 12S ASVs in production data were being reassigned to real fish taxa once the control sequence dropped out of the reference — phantom fish consumption from a QC artifact, not diet.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Host-taxon control: <em>Homo sapiens</em></strong>, 89 records — human mtDNA is ~47% of all 12S dietary reads, but human isn't a food, so the food-list-driven pipeline built a reference with no human record at all, sending 400 ASVs / 14.6M reads into food clades (Artiodactyla, Cervidae) once added
+              <span class="reason">Traced all 89 records to real public NCBI accessions via BLAST (mostly named human mtDNA haplogroups and Sanger BAC/PAC clone records) — they had been carried forward under synthetic placeholder identifiers with no recorded source.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              New <span class="tag">lineage</span> column distinguishes synthetic constructs (label repeated across all ranks) from real-species controls (true taxonomic lineage) — consumed by new pipeline chunks A10 (trnL) and B9 (12S), inserted between dedup and save
+            </div>
+          </li>
+          <li>
+            <div>
+              QC gate hard-fails if a control is missing — see <span class="tag">qc_reference_build.R</span> below
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Off-target and accession integrity -->
+    <div class="card">
+      <div class="card-header modified">
+        <span class="badge badge-modified">MODIFIED</span>
+        <span class="card-filename">foodseq_reference_pipeline.Rmd — off-target &amp; accession fixes</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              <strong>Off-target phylum filter</strong> (chunks A6b / B6b): removes cross-kingdom records that reached the reference despite passing primer/PCR filtering
+              <span class="reason">Found 21 12S records with bacterial/viral/synthetic lineages on sequences byte-identical to real food fish/bird amplicons (e.g. a record labelled <em>Pseudomonas rhodesiae</em> was actually <em>Dicentrarchus labrax</em>, European seabass). Cross-kingdom decoys collapse DADA2's bootstrap classifier at every rank, producing unexplained "lost assignment" ASVs. trnL allowlist is Streptophyta + Cyanobacteriota (keeps edible cyanobacteria like spirulina); 12S allowlist is Chordata-only, an explicit decision after production data showed only 2 ASVs / 15 reads ever hit an invertebrate phylum.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Bare-genus RefSeq accession bug fixed</strong> (chunks A2/B2): RefSeq-sourced records now keep <span class="tag">"&lt;accession&gt; &lt;Genus species&gt;"</span> instead of being renamed to species-only, which had put a bare genus in the accession field of every RefSeq record
+              <span class="reason">A bare genus fed into the old free-text accession lookup (see query_ncbi_accession.R above) and could resolve to the wrong organism entirely — 260 RefSeq-sourced records were affected, several with cross-genus mislabels.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">New marker</div>
+
+    <!-- trnLCD -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">Part A-CD — trnL c/d reference</span>
+        <span class="card-subtitle">4,522 records</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              A third marker alongside trnL g/h and 12SV5, extracting the trnL c/d intron region instead of the g/h P6 loop — useful where g/h degrades but c/d survives (e.g. some processed/degraded DNA contexts)
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Alignment-augmented extraction</strong>, not primer matching: primer-based <span class="tag">find_primer_pair()</span> only recovers c/d sites for ~55–58% of taxa the g/h reference already covers, because c/d deposits are frequently primer-trimmed in GenBank. Three tiers instead — plastome introns via primer sites (also serve as an alignment panel), a GenBank primer route, and a GenBank alignment-rescue route (local alignment against family-matched plastome introns) — recover an estimated ~95%+ of g/h-covered taxa
+            </div>
+          </li>
+          <li>
+            <div>
+              CD9 sanity check: warns if fewer than 80% of extracted introns carry the trnL-g anchor sequence, since g anneals inside the intron and its absence signals a bad extraction
+            </div>
+          </li>
+          <li>
+            <div>
+              No trnLCD-specific positive control exists yet (the synthetic construct has no c/d priming sites); the controls chunk will auto-pick-up a future <span class="tag">marker=trnLCD</span> row in <span class="tag">controls.csv</span> once the wet lab settles on one
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">Quality control</div>
+
+    <!-- qc_reference_build.R -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">code/qc_reference_build.R</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Automated gate run against every built reference: header/rank completeness, no meaningful rank ≥99% NA, required controls present, staple food genera present, clade consistency (no bacterial/viral/parasite phyla), every sequence carries a real accession, and record-count drift vs. the previous build flagged if it exceeds ±25%
+            </div>
+          </li>
+          <li>
+            <div>
+              Takes <span class="tag">[REPO_DIR] [CURRENT_SUFFIX] [PREVIOUS_SUFFIX]</span> so any two dated builds can be diffed, plus an optional 4th argument restricting the check to a marker subset — needed by <span class="tag">Extend reference.Rmd</span>, which only ever touches one marker per run
+            </div>
+          </li>
+          <li>
+            <div>
+              Hard-fails (exit 1) on missing controls or broken rank structure; soft-warns on record-count drift and dropped species, so a WARN-only run still needs a human read before shipping
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">New workflows</div>
+
+    <!-- Extend reference.Rmd -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">code/Extend reference.Rmd</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Adds a handful of newly-available species to an <strong>existing</strong> reference without a full cluster rebuild — runs on a laptop in minutes, querying NCBI directly for both sequence (<span class="tag">query_ncbi()</span>) and taxonomy (<span class="tag">fetch_lineage_ncbi()</span>, new SQL-free e-utils lookup), so neither the cluster nor the ~70 GB <span class="tag">accessionTaxa.sql</span> is required
+            </div>
+          </li>
+          <li>
+            <div>
+              Never overwrites the reference it extends — always writes a new, separately-suffixed output pair (e.g. <span class="tag">_Aug2026</span> → <span class="tag">_Aug2026_ext</span>)
+            </div>
+          </li>
+          <li>
+            <div>
+              Same 50 kb length cap as the full pipeline, so it inherits the same complete-genome blind spot; not usable for trnLCD, whose alignment-based extraction needs the full plastome panel rather than a single per-species query
+            </div>
+          </li>
+          <li>
+            <div>
+              Intended to run <em>after</em> <span class="tag">Coverage recheck.Rmd</span> below — that notebook's <span class="tag">CANDIDATES_*.csv</span> outputs are already in the <span class="tag">scientific_name</span>-column format this one's <span class="tag">ADDITIONS</span> parameter expects
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Coverage recheck.Rmd -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">code/Coverage recheck.Rmd</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              Consolidates nine standalone scripts (bash + R, now in <span class="tag">archive/code/coverage-recheck/</span>) that did the same NCBI-existence-check job across separate files, several with paths hardcoded to one person's machine — into one portable notebook using <span class="tag">here()</span>-relative paths throughout
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Part 1</strong> (routine): checks whether species already on <span class="tag">human-foods.csv</span> but missing from the current build now have marker data at NCBI — computed fresh from the built reference each run, plus a new name-resolution step (species → current NCBI-accepted name) that catches synonym drift, e.g. <em>Allium porrum</em> → <em>Allium ampeloprasum</em>
+              <span class="reason">That resolution step is new: its absence in the original July 2026 run meant 40% of that run's plant candidates were already-covered species listed under an outdated name.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Part 2</strong> (occasional, toggle-able): audits a curated list of ~199 globally significant foods against <span class="tag">human-foods.csv</span> for species missing from the target list entirely, not just missing sequence
+            </div>
+          </li>
+          <li>
+            <div>
+              Checkpointed/resumable NCBI queries, matching the retry conventions already used by <span class="tag">query_ncbi.R</span> / <span class="tag">query_ncbi_accession.R</span> — Part 1 alone is a multi-hour job against ~1,500 species unauthenticated
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">Documentation</div>
 
     <!-- README.md -->
     <div class="card">
@@ -457,39 +748,76 @@
           <li><div>Repository structure tree with file descriptions</div></li>
           <li><div>Pipeline overview: data sources, species lists, taxonomy approach, and numbered processing steps</div></li>
           <li><div>Primers table (trnL and 12SV5 marker sequences)</div></li>
+          <li>
+            <div>
+              <strong>"Extend, or rebuild?" section added (Aug 2026):</strong> when to use the laptop-friendly extension notebook versus a full cluster rebuild, and what it structurally cannot do (existing-record fixes, trnLCD, complete-genome-only species)
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Coverage tables extended through Aug 2026</strong> — see the pipeline-runs card below for the numbers, and a footnote explaining why the raw 12SV5 percentage looks like a regression when it isn't (the target list grew between builds)
+            </div>
+          </li>
           <li><div>Getting started guide: prerequisites, R packages, NCBI API key setup, large file setup table, step-by-step running instructions</div></li>
         </ul>
       </div>
     </div>
 
-    <!-- May 2026 pipeline run -->
+    <!-- pipeline-flowchart.html -->
     <div class="card">
       <div class="card-header new">
         <span class="badge badge-new">NEW</span>
-        <span class="card-filename">data/outputs/ — May 2026 database run</span>
+        <span class="card-filename">pipeline-flowchart.html</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              Pipeline run on Duke HPC cluster (Open OnDemand / SLURM) using the updated <span class="tag">foodseq_reference_pipeline.Rmd</span>. Output files labelled with <span class="tag">_May2026</span> suffix to record when the databases were last compiled.
+              Interactive Mermaid flowchart of the pipeline, originally two side-by-side lanes (Part A / Part B) duplicating nearly every box
             </div>
           </li>
           <li>
             <div>
-              <strong>trnL (plants):</strong> 1,991 sequences · 1,169 unique taxa · 1,060 / 1,577 food plant species covered (67%)
-              <span class="reason">Unchanged from the 2025 run — RefSeq plastid and GenBank trnL content for these species is stable.</span>
+              <strong>Redesigned (Aug 2026) into a single merged chain</strong> — trnL and 12SV5 are the same pipeline run twice with different parameters, not two different pipelines, so the diagram now shows one numbered sequence of steps with a compact comparison table (species list, primers, phylum allowlist, output filenames) for what actually differs between the two runs
             </div>
           </li>
           <li>
             <div>
-              <strong>12SV5 (vertebrates):</strong> 3,390 sequences · 2,337 unique taxa · 1,168 / 2,095 food animal species covered (56%)
-              <span class="reason">+399 sequences and +103 newly covered food species versus the 2025 run, reflecting both new GenBank deposits and improvements to the query and taxonomy-lookup logic.</span>
+              Corrected during review: the food-species-list filter was shown feeding only the GenBank query path; it also gates the RefSeq path, just <em>after</em> in silico PCR rather than before — the diagram now shows both edges into the RefSeq-amplicons step
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-header">Pipeline runs</div>
+
+    <!-- 2026 pipeline runs -->
+    <div class="card">
+      <div class="card-header new">
+        <span class="badge badge-new">NEW</span>
+        <span class="card-filename">data/outputs/ — 2026 database runs</span>
+      </div>
+      <div class="card-body">
+        <ul class="changes">
+          <li>
+            <div>
+              <strong>May 2026:</strong> first run of the newly-consolidated pipeline on Duke HPC (Open OnDemand / SLURM). Output files suffixed <span class="tag">_May2026</span>.
             </div>
           </li>
           <li>
             <div>
-              Coverage gap lists added: <span class="tag">plants_missing_trnL.csv</span> and <span class="tag">animals_missing_12SV5.csv</span> document the 517 plant and 927 animal species still lacking sequences in the current databases
+              <strong>Aug 2026:</strong> re-run after the reference-integrity fixes, controls, and trnLCD above landed. Output files suffixed <span class="tag">_Aug2026</span>; trnLCD is new this run.
+            </div>
+          </li>
+          <li>
+            <div>
+              <span class="tag">human-foods.csv</span> grew from 3,777 → 3,806 species between the two runs (a July 2026 coverage re-check closed 29 gaps), so raw coverage fractions aren't directly comparable across the May/Aug boundary without accounting for the larger denominator — see the note under the table.
+            </div>
+          </li>
+          <li>
+            <div>
+              Coverage gap lists (<span class="tag">plants_missing_trnL.csv</span>, <span class="tag">animals_missing_12SV5.csv</span>) and the new <span class="tag">data/outputs/coverage-recheck/</span> directory (candidates, gap-by-source breakdowns, full method + caveats) document what's still missing and why.
             </div>
           </li>
         </ul>
@@ -501,7 +829,8 @@
                 <th style="text-align:left; padding:6px 10px; border:1px solid #e5e7eb;">Database</th>
                 <th style="padding:6px 10px; border:1px solid #e5e7eb;">Oct 2022</th>
                 <th style="padding:6px 10px; border:1px solid #e5e7eb;">2025</th>
-                <th style="padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">May 2026</th>
+                <th style="padding:6px 10px; border:1px solid #e5e7eb;">May 2026</th>
+                <th style="padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">Aug 2026</th>
               </tr>
             </thead>
             <tbody>
@@ -509,32 +838,50 @@
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL sequences</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,402</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,991</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,991</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,991</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,026</td>
               </tr>
               <tr style="background:#fafafa;">
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plant coverage</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">716 / 1,577 (45%)</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,577 (67%)</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,060 / 1,577 (67%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,577 (67%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,078 / 1,573 (69%)</td>
               </tr>
               <tr>
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 sequences</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">57 †</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,991</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">3,390</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">3,390</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,331</td>
               </tr>
               <tr style="background:#fafafa;">
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 food animal coverage</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,099 / 2,095 (52%)</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,168 / 2,095 (56%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,168 / 2,095 (56%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">950 / 2,121 (45%)</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnLCD sequences</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">4,522 (new)</td>
               </tr>
             </tbody>
           </table>
-          <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">† Oct 2022 12SV5 was a small food-filtered subset of the Schneider et al. database, not a full pipeline run.</p>
+          <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">
+            † Oct 2022 12SV5 was a small food-filtered subset of the Schneider et al. database, not a full pipeline run.
+            The 12SV5 coverage percentage drop (56% → 45%) looks like a regression but isn't: <span class="tag">human-foods.csv</span>
+            grew from 2,095 to 2,121 food-animal species between the two builds. Recomputed against the Aug 2026 list, May 2026
+            actually covers 42% — so Aug 2026 (45%) is a genuine improvement on both markers, not a decline. Full explanation in README.md.
+          </p>
         </div>
       </div>
     </div>
+
+    <div class="section-header">Archived files</div>
 
     <!-- Archived files -->
     <div class="card">
@@ -546,6 +893,8 @@
         <div style="color:#6b7280; font-size:0.82rem; margin-bottom:10px">
           The following files are no longer needed to run the pipeline and were moved to <span class="tag">archive/</span> for reference:
         </div>
+
+        <div class="archive-subhead">Pre-2026 pipeline (May 2026)</div>
         <div class="archive-grid">
           <span class="archive-chip">trnL-reference.Rmd</span>
           <span class="archive-chip">12SV5-reference.Rmd</span>
@@ -555,6 +904,21 @@
           <span class="archive-chip">species_to_taxonomy.R</span>
           <span class="archive-chip">trnL_reference_pipeline.ipynb</span>
           <span class="archive-chip">foodseq_reference_pipeline.ipynb</span>
+        </div>
+
+        <div class="archive-subhead">Coverage re-check scripts (Aug 2026, superseded by Coverage recheck.Rmd)</div>
+        <div class="archive-grid">
+          <span class="archive-chip">01_ncbi_marker_availability.sh</span>
+          <span class="archive-chip">02_vertebrate_filter.sh</span>
+          <span class="archive-chip">03_summarise_recheck.R</span>
+          <span class="archive-chip">04_split_by_taxonomic_rank.R</span>
+          <span class="archive-chip">05_apply_vertebrate_filter.R</span>
+          <span class="archive-chip">06_probe_membership.R</span>
+          <span class="archive-chip">07_probe_uncatalogued.R</span>
+          <span class="archive-chip">08_build_gap_query_list.R</span>
+          <span class="archive-chip">09_report_gaps.R</span>
+          <span class="archive-chip">probe_staples.txt</span>
+          <span class="archive-chip">probe_extended.txt</span>
         </div>
       </div>
     </div>

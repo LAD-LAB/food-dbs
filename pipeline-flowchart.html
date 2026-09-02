@@ -21,17 +21,63 @@
     .subtitle {
       font-size: 0.82rem;
       color: #6b7280;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
+    }
+    .params {
+      max-width: 640px;
+      margin-bottom: 32px;
+      border: 1px solid #C9C9BE;
+      border-radius: 6px;
+      background: #F7F7F2;
+      padding: 14px 18px;
+    }
+    .params-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #3A3A32;
+      margin-bottom: 10px;
+    }
+    .params table {
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      color: #3A3A32;
+    }
+    .params th, .params td {
+      text-align: left;
+      padding: 4px 16px 4px 0;
+      vertical-align: top;
+    }
+    .params th {
+      font-weight: 600;
+      color: #6b6b5e;
+      border-bottom: 1px solid #D8D8CC;
+    }
+    .params td.step {
+      color: #9a9a8c;
+      white-space: nowrap;
     }
     .mermaid {
-      max-width: 960px;
+      max-width: 640px;
     }
   </style>
 </head>
 <body>
 
 <h1>FoodSeq Reference Database Pipeline</h1>
-<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · Updated August 2026</p>
+<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · one pipeline, run once per marker · Updated August 2026</p>
+
+<div class="params">
+  <div class="params-title">Steps ①–⑩ below are one pipeline, run once for trnL and once for 12SV5. Only these differ:</div>
+  <table>
+    <tr><th></th><th>trnL (Part A)</th><th>12SV5 (Part B)</th></tr>
+    <tr><td class="step">① species list</td><td>plants in human-foods.csv</td><td>animals in human-foods.csv</td></tr>
+    <tr><td class="step">② RefSeq genomes</td><td>plastid</td><td>mitochondrial</td></tr>
+    <tr><td class="step">③④ primers</td><td>trnL-g / trnL-h</td><td>V5F / V5R</td></tr>
+    <tr><td class="step">⑦ phylum allowlist</td><td>Streptophyta + Cyanobacteriota</td><td>Chordata</td></tr>
+    <tr><td class="step">⑦b manual curation</td><td>yes — Manual renaming.csv</td><td>n/a</td></tr>
+    <tr><td class="step">⑩ output</td><td>trnLGH*.fasta</td><td>12Sv5*.fasta</td></tr>
+  </table>
+</div>
 
 <div class="mermaid">
 flowchart TD
@@ -39,75 +85,43 @@ flowchart TD
     HF["human-foods.csv"]
     CTL["controls.csv"]
     SETUP["SLURM setup jobs"]
-    PLASTID["RefSeq plastid"]
-    MITO["RefSeq mitochondrial"]
+    REFSEQ_DL["RefSeq plastid + RefSeq mitochondrial"]
     SQL[("accessionTaxa.sql")]
     NCBI_FB["query_ncbi_accession<br/>accessions newer than the SQL build"]
 
-    SETUP -->|download| PLASTID
-    SETUP -->|download| MITO
+    SETUP -->|download| REFSEQ_DL
     SETUP -->|prepareDatabase| SQL
 
-    subgraph PA["Part A — trnL · Plants"]
-        PLANTS["plant species list"]
-        PLASTID_SP["plastid genomes<br/>one per species, accession kept"]
-        REFSEQ_A["RefSeq trnL amplicons"]
-        NCBI_A["GenBank trnL sequences"]
-        COMB_A["combined trnL sequences"]
-        TAX_A["trnL + taxonomy"]
-        CLEAN_A["on-target trnL"]
-        OUT_A["trnL reference database"]
-    end
+    HF -->|filter plants or animals| SPECIES["① species list"]
 
-    subgraph PB["Part B — 12SV5 · Vertebrates"]
-        ANIMALS["animal species list"]
-        MITO_SP["mitochondrial genomes<br/>one per species, accession kept"]
-        REFSEQ_B["RefSeq 12SV5 amplicons"]
-        NCBI_B["GenBank 12SV5 sequences"]
-        COMB_B["combined 12SV5 sequences"]
-        TAX_B["12SV5 + taxonomy"]
-        CLEAN_B["on-target 12SV5"]
-        OUT_B["12SV5 reference database"]
-    end
+    REFSEQ_DL -->|filter one per species · trnL, 12SV5| GENOME_SP["② RefSeq genomes<br/>one per species, accession kept"]
 
-    HF -->|filter plants| PLANTS
-    HF -->|filter animals| ANIMALS
+    GENOME_SP -->|find_primer_pair, all RefSeq species| REFSEQ["③ RefSeq amplicons"]
+    SPECIES -->|subset amplicons to food list, post-PCR| REFSEQ
+    SPECIES -->|query_ncbi + find_primer_pair| NCBI["④ GenBank sequences"]
+    REFSEQ --> COMB["⑤ combined sequences"]
+    NCBI -->|combine · trnL also merges manual additions| COMB
+    COMB -->|accessionToTaxa| TAX["⑥ + taxonomy"]
+    SQL --> TAX
+    NCBI_FB -.->|fallback for missing IDs| TAX
+    TAX -->|A6b/B6b · phylum allowlist| CLEAN["⑦ on-target only"]
 
-    PLASTID -->|filter one per species| PLASTID_SP
-    PLASTID_SP -->|find_primer_pair| REFSEQ_A
-    PLANTS -->|query_ncbi + find_primer_pair| NCBI_A
-    REFSEQ_A --> COMB_A
-    NCBI_A -->|combine + manual additions| COMB_A
-    COMB_A -->|accessionToTaxa| TAX_A
-    SQL --> TAX_A
-    NCBI_FB -.->|fallback for missing IDs| TAX_A
-    TAX_A -->|A6b · phylum allowlist| CLEAN_A
-    CLEAN_A -->|curation · QC · orientation · dedup · add controls| OUT_A
-    CTL -.-> OUT_A
-
-    MITO -->|filter one per species| MITO_SP
-    MITO_SP -->|find_primer_pair| REFSEQ_B
-    ANIMALS -->|query_ncbi + find_primer_pair| NCBI_B
-    REFSEQ_B --> COMB_B
-    NCBI_B -->|combine| COMB_B
-    COMB_B -->|accessionToTaxa| TAX_B
-    SQL --> TAX_B
-    NCBI_FB -.->|fallback for missing IDs| TAX_B
-    TAX_B -->|B6b · phylum allowlist| CLEAN_B
-    CLEAN_B -->|QC · orientation · dedup · add controls| OUT_B
-    CTL -.-> OUT_B
+    CLEAN -->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT["⑩ reference database"]
+    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>Manual renaming.csv"]
+    CUR -.->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT
+    CTL -.->|add controls| OUT
 
     QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · count tolerance"}
-    OUT_A --> QC
-    OUT_B --> QC
+    OUT --> QC
     QC -->|pass| SHIP["release"]
     QC -->|fail, exit 1| BLOCK["do not ship"]
 
-    style PA fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
-    style PB fill:#f0f5ff,stroke:#9bb5e0,color:#1e3a5f
-    style QC fill:#fff4e6,stroke:#e0a96b,color:#5f3a1e
-    style BLOCK fill:#fde8e6,stroke:#d98b80,color:#5f1e1e
-    style SHIP fill:#eaf5ea,stroke:#8ab88a,color:#1e5f1e
+    %% Run once for trnL (with the CUR detour) and once for 12SV5 (without it) -
+    %% see the parameter table above for what else changes between runs.
+    style CUR fill:#F5EEDC,stroke:#C9A96E,color:#5F4A1E
+    style QC fill:#C8E0C9,stroke:#2C5F2D,color:#1E3A1F
+    style BLOCK fill:#F2DCD6,stroke:#BC5138,color:#5F1E1E
+    style SHIP fill:#CDE3CE,stroke:#2C5F2D,color:#1E5F1E
 
 </div>
 
@@ -116,12 +130,15 @@ flowchart TD
     startOnLoad: true,
     theme: 'base',
     themeVariables: {
-      primaryColor: '#dae8fc',
-      primaryBorderColor: '#6c8ebf',
-      primaryTextColor: '#1a1a1a',
+      // Light tint of 2C5F2D, the forest green used for the headers in
+      // FoodSeq_Database_Updates_May-Aug2026.pptx, so the flowchart and the
+      // deck read as one set of materials.
+      primaryColor: '#D9EBDA',
+      primaryBorderColor: '#6E9B70',
+      primaryTextColor: '#1E3A1F',
       edgeLabelBackground: '#ffffff',
-      clusterBkg: '#f0f5ff',
-      clusterBorder: '#9bb5e0',
+      clusterBkg: '#EDF5ED',
+      clusterBorder: '#A8C9A9',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       fontSize: '14px'
     },
