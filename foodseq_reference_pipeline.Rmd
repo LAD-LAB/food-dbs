@@ -37,6 +37,16 @@ SQL_PATH     <- file.path(SCRATCH, "accessionTaxa.sql")   # taxonomizr SQL datab
 PARTITION    <- "general"    # partition/queue name; check with 'sinfo'
 R_MODULE     <- "R/4.3.0"    # R module name; check with 'module avail R'
 
+# ── QC gate ──────────────────────────────────────────────────────────────────
+# Suffix of the last archived build to compare record counts and species lists
+# against (e.g. "_Aug2026") - this pipeline always writes date-less files (see
+# A10/CD10/B9), so it has no memory of its own of what "previous" means; this
+# is the only way the QC gate at the end of the run finds out. Leaving this as
+# "-" is safe, not silent: qc_reference_build.R refuses to compare a build
+# against itself and stops immediately, so an unset value fails loudly rather
+# than comparing against the wrong build.
+QC_PREVIOUS_SUFFIX <- "-"
+
 # ── Output directories ────────────────────────────────────────────────────────
 TRNL_DADA2    <- file.path(REPO_DIR, "data", "outputs", "dada2-compatible", "trnL")
 TRNL_QIIME2   <- file.path(REPO_DIR, "data", "outputs", "qiime2-compatible", "trnL")
@@ -1659,3 +1669,30 @@ cat("   ", file.path(S12V5_DADA2,  "12Sv5_taxonomy.fasta"), "\n")
 cat("   ", file.path(S12V5_QIIME2, "12Sv5-sequences.fasta"), "\n")
 cat("   ", file.path(S12V5_QIIME2, "12Sv5-taxonomy.tsv"), "\n")
 ```
+
+---
+
+# Verify before shipping
+
+Runs the QC gate against everything just built — trnL, trnLCD (if built this
+run), and 12SV5 together, since that is what a plain run of this notebook
+just produced. It compares against `QC_PREVIOUS_SUFFIX` (set in
+Configuration) and hard-fails (exit 1) on a missing control, a rank that went
+almost entirely NA, or an off-target phylum — the three silent failures a
+rebuild has actually shipped with before this gate existed.
+
+```{r qc-gate-run}
+gate <- system2("Rscript",
+                c(shQuote(file.path(REPO_DIR, "code", "qc_reference_build.R")),
+                  shQuote(REPO_DIR), "-", QC_PREVIOUS_SUFFIX),
+                stdout = TRUE, stderr = TRUE)
+cat(gate, sep = "\n")
+
+if (!is.null(attr(gate, "status")) && attr(gate, "status") != 0)
+  warning("QC gate reported failures - do not ship this reference until they are resolved.")
+```
+
+Once this reports 0 FAIL, archive the date-less outputs under a new suffix
+(e.g. `trnLGH.fasta` → `trnLGH_Sep2026.fasta`) before the next rebuild
+overwrites them in place — see the note at the top of
+`code/qc_reference_build.R`.

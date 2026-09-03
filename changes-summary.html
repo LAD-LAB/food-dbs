@@ -455,6 +455,11 @@
               Manual curation edits from <span class="tag">Manual renaming.csv</span> integrated into the pipeline at A5 (manual additions) and A7 (omissions and renamings)
             </div>
           </li>
+          <li>
+            <div>
+              <strong>Closing "Verify before shipping" section added (Aug 2026):</strong> runs <span class="tag">qc_reference_build.R</span> automatically once Part A, Part A-CD, and Part B all finish, against a new <span class="tag">QC_PREVIOUS_SUFFIX</span> config variable — see the QC gate card below
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -662,6 +667,11 @@
           <li>
             <div>
               Hard-fails (exit 1) on missing controls or broken rank structure; soft-warns on record-count drift and dropped species, so a WARN-only run still needs a human read before shipping
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Wired into both pipelines that build a reference (Aug 2026):</strong> a new closing "Verify before shipping" section in <span class="tag">foodseq_reference_pipeline.Rmd</span> runs it automatically once Part A, Part A-CD, and Part B finish — mirroring the same pattern <span class="tag">Extend reference.Rmd</span> already used. Neither pipeline can now finish a build without the gate running; running it is no longer a separate step someone has to remember
             </div>
           </li>
         </ul>

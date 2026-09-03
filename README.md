@@ -178,6 +178,161 @@ described under **Getting started** below.
 
 ------------------------------------------------------------------------
 
+## Getting started
+
+### Prerequisites
+
+**R packages:**
+
+``` r
+# Bioconductor
+BiocManager::install(c("Biostrings", "ShortRead"))
+
+# CRAN
+install.packages(c("taxonomizr", "tidyverse", "rentrez", "remotes"))
+
+# GitHub
+remotes::install_github("ammararuby/MButils")
+```
+
+**NCBI API key** (recommended): Create an NCBI account, go to Account
+Settings → API Key Management, and copy your key. In R, run:
+
+``` r
+rentrez::set_entrez_key("your_key_here")
+```
+
+This increases the NCBI query rate limit from 3 to 10 requests per
+second. NCBI also recommends running large queries on weekends or
+between 9 PM and 5 AM EST on weekdays.
+
+### Large file setup (cluster recommended)
+
+Two large files must be obtained before running the pipeline. These are
+best downloaded on an HPC cluster due to their size and download time:
+
+| File | Size | How to obtain |
+|------------------|------------------|-------------------------------------|
+| RefSeq plastid FASTA | \~15–20 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/plastid/` |
+| RefSeq mitochondrial FASTA | \~5–10 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/mitochondrion/` |
+| `accessionTaxa.sql` | \~70 GB | Built with `taxonomizr::prepareDatabase()` |
+
+SLURM job scripts for all three are generated and submitted
+automatically by the pipeline (sections 2a–2c of the Rmd).
+
+### Running the pipeline
+
+1.  Clone this repository:
+
+    ``` bash
+    git clone https://github.com/LAD-LAB/food-dbs.git
+    ```
+
+2.  Open `foodseq_reference_pipeline.Rmd` in RStudio (or via RStudio
+    Server on Open OnDemand)
+
+3.  Update the paths in the **Configuration** chunk (section 0) to match
+    your environment:
+
+    ``` r
+    SCRATCH  <- "/scratch/your_username"
+    REPO_DIR <- "/path/to/food-dbs"
+    SQL_PATH <- "/path/to/accessionTaxa.sql"
+    QC_PREVIOUS_SUFFIX <- "_Aug2026"   # last archived build, for the QC gate
+    ```
+
+4.  Run the **Install packages** chunk (section 1) once on first use
+
+5.  Submit the three SLURM jobs (sections 2a–2c) and monitor their
+    progress (section 3)
+
+6.  Once jobs are complete, run **Part A** (trnL) and/or **Part B**
+    (12SV5) sequentially
+
+7.  The notebook's final section, **Verify before shipping**, runs the
+    QC gate automatically and prints the result — 0 FAIL means the
+    build is safe to archive. If `QC_PREVIOUS_SUFFIX` was left at its
+    default (`"-"`), this step fails loudly rather than comparing
+    against the wrong build; set it and re-run just that chunk.
+
+Output files are written to `data/outputs/dada2-compatible/` and
+`data/outputs/qiime2-compatible/` as date-less files (`trnLGH.fasta`,
+not `trnLGH_Aug2026.fasta`) — once the QC gate passes, archive them
+under a new suffix before the next rebuild overwrites them in place.
+
+------------------------------------------------------------------------
+
+## Using Extend reference.Rmd and Coverage recheck.Rmd
+
+Together these grow an existing reference from a laptop, without the
+cluster setup above — see "Extend, or rebuild?" for when this is (and
+isn't) the right tool. The usual order is: find candidates, pull
+sequence, verify, promote.
+
+### 1. Find candidates — `code/Coverage recheck.Rmd`
+
+Open in RStudio and run top to bottom. Configuration options:
+
+-   `RUN_PHASE1` (default `TRUE`): re-checks species already on
+    `human-foods.csv` but missing from the current build against NCBI,
+    resolving each name to its current NCBI-accepted synonym first so a
+    renamed species isn't misreported as missing. Writes
+    `data/outputs/coverage-recheck/CANDIDATES_plants_trnL<suffix>.csv`
+    and `CANDIDATES_animals_12SV5<suffix>.csv`. This is the routine
+    thing to run before an Extend session.
+-   `RUN_PHASE2` (default `TRUE`, set `FALSE` to skip): audits a
+    curated list of \~199 globally significant foods against
+    `human-foods.csv` for species missing from the target list
+    entirely, not just missing sequence. An occasional audit rather
+    than something to re-run every time.
+-   `REF_SUFFIX` / `OUT_SUFFIX`: which built reference to check
+    "missing" against, and what to suffix the output CSVs with.
+
+Queries are checkpointed to `data/outputs/coverage-recheck/raw/`, so a
+killed or resumed run doesn't re-query species already recorded — Part
+1 alone is a multi-hour job against \~1,500 species without an NCBI API
+key. A hit means NCBI has *some* record for that species, not a
+confirmed amplicon — `Extend reference.Rmd` is the real test.
+
+### 2. Pull sequence — `code/Extend reference.Rmd`
+
+Point `ADDITIONS` at a `CANDIDATES_*.csv` from step 1 (or any CSV with
+a `scientific_name` column — `data/inputs/reference-additions.csv` is a
+blank template for ad hoc additions):
+
+``` r
+MARKER     <- "trnL"        # or "12SV5" - run once per marker
+ADDITIONS  <- here('data', 'outputs', 'coverage-recheck',
+                    'CANDIDATES_plants_trnL_Aug2026.csv')
+IN_SUFFIX  <- "_Aug2026"    # the reference you're extending
+OUT_SUFFIX <- "_Aug2026_ext" # what to write - never overwrites IN_SUFFIX
+```
+
+Run top to bottom. Species already in the reference are skipped
+automatically; species with no primer-spanning record are reported at
+the end rather than silently dropped.
+
+### 3. Verify before shipping
+
+``` bash
+Rscript code/qc_reference_build.R . _Aug2026_ext _Aug2026 trnL
+```
+
+The same gate the full pipeline uses. The 4th argument restricts it to
+the marker you extended — without it, the gate checks every marker
+under the new suffix and hard-fails on the ones you didn't touch. A
+clean run should show the record count rise by exactly what was added
+and every other check still pass.
+
+### 4. Promote the result
+
+If the QC gate passes, rename the `OUT_SUFFIX` files to whatever the
+new canonical suffix is (e.g. `_Aug2026_ext` → `_Sep2026`) so they
+become what the rest of the repo — and the next `Extend` or
+`Coverage recheck` run — treats as current.
+
+------------------------------------------------------------------------
+
 ## Database coverage
 
 ### Food species list
@@ -279,81 +434,6 @@ Full lists of species without sequence coverage are provided in
 the Aug 2026 build** as of this update; the counts above were computed
 directly from the current `human-foods.csv` and the Aug 2026 reference
 FASTAs, not from those (still May-2026-era) files.
-
-------------------------------------------------------------------------
-
-## Getting started
-
-### Prerequisites
-
-**R packages:**
-
-``` r
-# Bioconductor
-BiocManager::install(c("Biostrings", "ShortRead"))
-
-# CRAN
-install.packages(c("taxonomizr", "tidyverse", "rentrez", "remotes"))
-
-# GitHub
-remotes::install_github("ammararuby/MButils")
-```
-
-**NCBI API key** (recommended): Create an NCBI account, go to Account
-Settings → API Key Management, and copy your key. In R, run:
-
-``` r
-rentrez::set_entrez_key("your_key_here")
-```
-
-This increases the NCBI query rate limit from 3 to 10 requests per
-second. NCBI also recommends running large queries on weekends or
-between 9 PM and 5 AM EST on weekdays.
-
-### Large file setup (cluster recommended)
-
-Two large files must be obtained before running the pipeline. These are
-best downloaded on an HPC cluster due to their size and download time:
-
-| File | Size | How to obtain |
-|------------------|------------------|-------------------------------------|
-| RefSeq plastid FASTA | \~15–20 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/plastid/` |
-| RefSeq mitochondrial FASTA | \~5–10 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/mitochondrion/` |
-| `accessionTaxa.sql` | \~70 GB | Built with `taxonomizr::prepareDatabase()` |
-
-SLURM job scripts for all three are generated and submitted
-automatically by the pipeline (sections 2a–2c of the Rmd).
-
-### Running the pipeline
-
-1.  Clone this repository:
-
-    ``` bash
-    git clone https://github.com/LAD-LAB/food-dbs.git
-    ```
-
-2.  Open `foodseq_reference_pipeline.Rmd` in RStudio (or via RStudio
-    Server on Open OnDemand)
-
-3.  Update the paths in the **Configuration** chunk (section 0) to match
-    your environment:
-
-    ``` r
-    SCRATCH  <- "/scratch/your_username"
-    REPO_DIR <- "/path/to/food-dbs"
-    SQL_PATH <- "/path/to/accessionTaxa.sql"
-    ```
-
-4.  Run the **Install packages** chunk (section 1) once on first use
-
-5.  Submit the three SLURM jobs (sections 2a–2c) and monitor their
-    progress (section 3)
-
-6.  Once jobs are complete, run **Part A** (trnL) and/or **Part B**
-    (12SV5) sequentially
-
-Output files are written to `data/outputs/dada2-compatible/` and
-`data/outputs/qiime2-compatible/`.
 
 ------------------------------------------------------------------------
 
