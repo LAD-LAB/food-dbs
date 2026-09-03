@@ -9,15 +9,15 @@ output:
 
 This notebook builds three reference databases:
 
-- **Part A — trnL g/h**: Plant sequences amplified by the trnLg/trnLh primer pair, combining RefSeq plastid genomes and GenBank
-- **Part A-CD — trnL c/d**: Plant sequences amplified by the trnLc/trnLd primer pair (the full trnL intron), re-extracted from Part A's inputs without additional NCBI queries
-- **Part B — 12SV5**: Vertebrate dietary sequences amplified by the 12SV5 primer pair, combining RefSeq mitochondrial genomes and GenBank
+-   **Part A — trnL g/h**: Plant sequences amplified by the trnLg/trnLh primer pair, combining RefSeq plastid genomes and GenBank
+-   **Part A-CD — trnL c/d**: Plant sequences amplified by the trnLc/trnLd primer pair (the full trnL intron), re-extracted from Part A's inputs without additional NCBI queries
+-   **Part B — 12SV5**: Vertebrate dietary sequences amplified by the 12SV5 primer pair, combining RefSeq mitochondrial genomes and GenBank
 
 Both pipelines share the same setup, SLURM jobs, and taxonomy approach.
 
 **Before running:** update the paths in the Configuration chunk below to match your cluster environment.
 
----
+------------------------------------------------------------------------
 
 # Setup
 
@@ -84,12 +84,11 @@ install.packages(c("taxonomizr", "tidyverse", "rentrez", "remotes"),
 remotes::install_github("ammararuby/MButils")
 ```
 
----
+------------------------------------------------------------------------
 
 # SLURM jobs
 
-Submit all three jobs before proceeding to Part A or B. They run in parallel and
-will each take several hours. Monitor progress in the following section.
+Submit all three jobs before proceeding to Part A or B. They run in parallel and will each take several hours. Monitor progress in the following section.
 
 ## Download RefSeq plastid sequences (for trnL)
 
@@ -178,8 +177,7 @@ cat("  sbatch", tax_sh, "\n")
 
 ## Monitor jobs
 
-Re-run this chunk to check status. Proceed to Part A or B once the relevant jobs
-are no longer shown in the queue.
+Re-run this chunk to check status. Proceed to Part A or B once the relevant jobs are no longer shown in the queue.
 
 ```{r monitor}
 # Check job status from the OOD terminal with: squeue --me
@@ -207,7 +205,7 @@ for (name in names(logs)) {
 }
 ```
 
----
+------------------------------------------------------------------------
 
 # Shared libraries and functions
 
@@ -234,11 +232,7 @@ source(file.path(REPO_DIR, "code", "functions", "query_ncbi_accession.R"))
 
 ## NCBI API key
 
-Setting an API key increases the NCBI e-utils rate limit from 3 to 10 requests per
-second, which significantly speeds up the remote queries in sections A4 and B4.
-Create an NCBI account, go to **Account Settings → API Key Management**, copy your
-key, and paste it below. Also note that NCBI recommends running large queries on
-weekends or between **9 PM and 5 AM EST** on weekdays.
+Setting an API key increases the NCBI e-utils rate limit from 3 to 10 requests per second, which significantly speeds up the remote queries in sections A4 and B4. Create an NCBI account, go to **Account Settings → API Key Management**, copy your key, and paste it below. Also note that NCBI recommends running large queries on weekends or between **9 PM and 5 AM EST** on weekdays.
 
 ```{r ncbi_api_key, eval=FALSE}
 # Paste your NCBI API key here (keep the quotes)
@@ -292,12 +286,11 @@ extract_taxonomy <- function(ids, sql_path) {
 }
 ```
 
----
+------------------------------------------------------------------------
 
 # Part A — trnL Reference Database
 
-Primers: trnLg (`GGGCAATCCTGAGCCAA`) / trnLh (`CCATTGAGTCTCTGCACCTATC`)
-Source organisms: curated food plant list (`human-foods.csv`)
+Primers: trnLg (`GGGCAATCCTGAGCCAA`) / trnLh (`CCATTGAGTCTCTGCACCTATC`) Source organisms: curated food plant list (`human-foods.csv`)
 
 ## A1. Load inputs
 
@@ -481,9 +474,7 @@ head(trnL.df)
 
 ## A6b. Remove off-target sequences
 
-The GenBank query can return records whose deposited taxonomy is outside the food-plant
-clades entirely (bacterial or viral records co-deposited with plant material). Filter by
-phylum allowlist, mirroring the 12SV5 filter at B6b.
+The GenBank query can return records whose deposited taxonomy is outside the food-plant clades entirely (bacterial or viral records co-deposited with plant material). Filter by phylum allowlist, mirroring the 12SV5 filter at B6b.
 
 ```{r trnl_offtarget_filter}
 # Cyanobacteriota is deliberately allowed: Arthrospira platensis (spirulina)
@@ -600,14 +591,9 @@ cat(nrow(trnL.df), "sequences after deduplication\n")
 cat(n_distinct(trnL.df$taxon), "unique taxa\n")
 ```
 
-Append the positive-control spike-ins defined in `data/inputs/controls.csv`. These are
-laboratory constructs, not NCBI records, so they never come out of the RefSeq/GenBank
-queries above and must be added here or they are silently absent from every rebuild.
+Append the positive-control spike-ins defined in `data/inputs/controls.csv`. These are laboratory constructs, not NCBI records, so they never come out of the RefSeq/GenBank queries above and must be added here or they are silently absent from every rebuild.
 
-The lab convention repeats the control label across `superkingdom:species` rather than
-placing it at a single rank. That matters for two reasons: DADA2 then reports the label at
-every level and it survives last-common-ancestor condensing, and the genus field stays
-non-`NA`, which keeps the record from being stripped by downstream genus-NA filtering.
+The lab convention repeats the control label across `superkingdom:species` rather than placing it at a single rank. That matters for two reasons: DADA2 then reports the label at every level and it survives last-common-ancestor condensing, and the genus field stays non-`NA`, which keeps the record from being stripped by downstream genus-NA filtering.
 
 ```{r trnl_controls}
 controls.trnL <-
@@ -674,38 +660,23 @@ cat("\n=== trnL complete:", nrow(trnL.df), "sequences,",
     n_distinct(trnL.df$taxon), "taxa ===\n")
 ```
 
----
+------------------------------------------------------------------------
 
 # Part A-CD — trnL c/d Reference Database
 
-Primers: trnL-c (`CGAAATCGGTAGACGCTACG`) / trnL-d (`GGGGATAGAGGGACTTGAAC`) — the full
-trnL(UAA) intron, a longer amplicon (~300–600 bp) with higher taxonomic resolution than
-the g/h P6 loop.
+Primers: trnL-c (`CGAAATCGGTAGACGCTACG`) / trnL-d (`GGGGATAGAGGGACTTGAAC`) — the full trnL(UAA) intron, a longer amplicon (\~300–600 bp) with higher taxonomic resolution than the g/h P6 loop.
 
-This part reuses Part A's inputs directly — the RefSeq plastome set from A2 and the
-untrimmed GenBank pull stashed in A4 (`ncbi.trnL_raw`) — so it adds **no** NCBI queries.
-It must run after Part A (it also reuses `plants` and `allowed_phyla_trnL`).
+This part reuses Part A's inputs directly — the RefSeq plastome set from A2 and the untrimmed GenBank pull stashed in A4 (`ncbi.trnL_raw`) — so it adds **no** NCBI queries. It must run after Part A (it also reuses `plants` and `allowed_phyla_trnL`).
 
 Extraction is **alignment-augmented**, in three tiers:
 
-1. **Plastome introns** — extracted by primer sites from the RefSeq plastomes (complete
-   genomes always carry the sites). These become reference records AND the alignment panel.
-2. **GenBank primer route** — records that carry both priming sites are extracted directly.
-3. **GenBank alignment rescue** — records without primer sites (most long trnL deposits are
-   primer-trimmed introns) are locally aligned against family-matched plastome introns and
-   the homologous region is extracted.
+1.  **Plastome introns** — extracted by primer sites from the RefSeq plastomes (complete genomes always carry the sites). These become reference records AND the alignment panel.
+2.  **GenBank primer route** — records that carry both priming sites are extracted directly.
+3.  **GenBank alignment rescue** — records without primer sites (most long trnL deposits are primer-trimmed introns) are locally aligned against family-matched plastome introns and the homologous region is extracted.
 
-All records are stored **primer-trimmed and c→d oriented**. That matches how reads are
-processed (primers removed before denoising) and matches the format of the 2025 trnLCD
-compilation.
+All records are stored **primer-trimmed and c→d oriented**. That matches how reads are processed (primers removed before denoising) and matches the format of the 2025 trnLCD compilation.
 
-> **Method basis (validated 2026-08-13):** primer-only extraction reaches ~55–60% of the
-> taxa the g/h reference covers, because most long GenBank trnL deposits carry neither c/d
-> site (primer-trimmed introns and trnL-F spacer records). Alignment localized the intron
-> in 99/100 sampled primer-less taxa, and the 2025 `trnLCD.fasta` in
-> `data/outputs/dada2-compatible/miscellaneous/` (Ashish Subramanian; demonstrated to be
-> annotation/alignment-based, not primer-based) reached ~90% the same way. Expected
-> coverage here: ~90–95% of g/h taxa. The CD8 anchor check guards extraction quality.
+> **Method basis (validated 2026-08-13):** primer-only extraction reaches \~55–60% of the taxa the g/h reference covers, because most long GenBank trnL deposits carry neither c/d site (primer-trimmed introns and trnL-F spacer records). Alignment localized the intron in 99/100 sampled primer-less taxa, and the 2025 `trnLCD.fasta` in `data/outputs/dada2-compatible/miscellaneous/` (Ashish Subramanian; demonstrated to be annotation/alignment-based, not primer-based) reached \~90% the same way. Expected coverage here: \~90–95% of g/h taxa. The CD8 anchor check guards extraction quality.
 
 ## CD1. Primers and alignment setup
 
@@ -797,10 +768,7 @@ cat(length(ncbi.intronCD), "primer-extracted GenBank introns\n")
 
 ## CD3b. GenBank: alignment rescue
 
-Records without primer sites but long enough to hold the intron are aligned against
-family-matched plastome introns (falling back to a taxonomically spread set when the
-family is unknown or unrepresented), and the homologous region is extracted. Identical
-sequences are aligned once and the result mapped back to every accession sharing them.
+Records without primer sites but long enough to hold the intron are aligned against family-matched plastome introns (falling back to a taxonomically spread set when the family is unknown or unrepresented), and the homologous region is extracted. Identical sequences are aligned once and the result mapped back to every accession sharing them.
 
 ```{r trnlcd_align_rescue}
 cand <- ncbi.trnL_raw[!grepl("UNVERIFIED", names(ncbi.trnL_raw))]
@@ -936,11 +904,7 @@ cat(nrow(trnLCD.df), "sequences remaining\n")
 
 ## CD9. Extraction sanity check
 
-Orientation is standardised at extraction time (all three tiers emit c→d oriented,
-primer-trimmed introns), so no orientation pass is needed. Instead, verify extraction
-quality: the trnL-g primer anneals **inside** the intron, so nearly every true intron
-must contain a g-like site. A low anchor rate means the alignment rescue is extracting
-the wrong region.
+Orientation is standardised at extraction time (all three tiers emit c→d oriented, primer-trimmed introns), so no orientation pass is needed. Instead, verify extraction quality: the trnL-g primer anneals **inside** the intron, so nearly every true intron must contain a g-like site. A low anchor rate means the alignment rescue is extracting the wrong region.
 
 ```{r trnlcd_anchor_check}
 g_anchor <- vcountPattern(DNAString("GGGCAATCCTGAGCCAA"),
@@ -1031,16 +995,13 @@ cat("\n=== trnL c/d complete:", nrow(trnLCD.df), "sequences,",
     n_distinct(trnLCD.df$taxon), "taxa ===\n")
 ```
 
----
+------------------------------------------------------------------------
 
 # Part B — 12SV5 Reference Database
 
-Primers: V5F (`TAGAACAGGCTCCTCTAG`) / V5R (`TTAGATACCCCACTATGC`)
-Source organisms: curated list of dietary vertebrates (extend `animals` below as needed)
+Primers: V5F (`TAGAACAGGCTCCTCTAG`) / V5R (`TTAGATACCCCACTATGC`) Source organisms: curated list of dietary vertebrates (extend `animals` below as needed)
 
-> **Note:** The original `acc_to_dada()` function in the repo has incomplete code
-> and a hardcoded legacy path. This pipeline uses the same taxonomizr-based approach
-> as Part A instead, which is more robust and uses the same SQL database.
+> **Note:** The original `acc_to_dada()` function in the repo has incomplete code and a hardcoded legacy path. This pipeline uses the same taxonomizr-based approach as Part A instead, which is more robust and uses the same SQL database.
 
 ## B1. Load inputs
 
@@ -1133,10 +1094,7 @@ cat("Saved refseq.12SV5 and animals to", SCRATCH, "\n")
 
 ## Submit B4–B6 as a SLURM job (recommended)
 
-B4 (NCBI GenBank query) and the missing-ID loop in B6 both make thousands of
-API calls and can take several hours. Run them as a SLURM batch job to avoid
-session timeouts. Once complete, load the results with the chunk below and
-proceed to B7.
+B4 (NCBI GenBank query) and the missing-ID loop in B6 both make thousands of API calls and can take several hours. Run them as a SLURM batch job to avoid session timeouts. Once complete, load the results with the chunk below and proceed to B7.
 
 ```{r submit_b4b6}
 # ── Standalone R script ────────────────────────────────────────────────────
@@ -1379,13 +1337,11 @@ cat(n_distinct(s12v5.df$taxon), "unique taxa\n")
 head(s12v5.df)
 ```
 
----
+------------------------------------------------------------------------
 
 ## B4. NCBI GenBank: remote query *(interactive alternative — see SLURM job above)*
 
-> **Note:** The SLURM submission above is recommended for B4–B6. Run the chunks
-> below only if running interactively; skip straight to B7 if you used the
-> SLURM job.
+> **Note:** The SLURM submission above is recommended for B4–B6. Run the chunks below only if running interactively; skip straight to B7 if you used the SLURM job.
 
 ```{r s12v5_ncbi_query}
 cat("Querying NCBI for 12S sequences... this may take several minutes\n")
@@ -1466,15 +1422,9 @@ head(s12v5.df)
 
 ## B6b. Remove off-target sequences
 
-The GenBank query returns any NCBI record matching the 12SV5 primer pair for a queried
-species — including off-target hits: viruses co-deposited with host records (e.g. avian
-influenza filed under duck species), bacteria from gut-microbiome studies, and synthetic
-constructs. In the May 2026 build, 21 such records carried sequences identical to real
-fish/bird amplicons and collapsed DADA2's bootstrap to full NA for those taxa.
+The GenBank query returns any NCBI record matching the 12SV5 primer pair for a queried species — including off-target hits: viruses co-deposited with host records (e.g. avian influenza filed under duck species), bacteria from gut-microbiome studies, and synthetic constructs. In the May 2026 build, 21 such records carried sequences identical to real fish/bird amplicons and collapsed DADA2's bootstrap to full NA for those taxa.
 
-This deliberately narrows scope relative to the 2025 reference, which carried shrimp,
-crab, and jellyfish records: 12SV5 is a vertebrate marker, and those records never
-meaningfully assigned (2 ASVs / 15 reads across 385M production reads).
+This deliberately narrows scope relative to the 2025 reference, which carried shrimp, crab, and jellyfish records: 12SV5 is a vertebrate marker, and those records never meaningfully assigned (2 ASVs / 15 reads across 385M production reads).
 
 ```{r s12v5_offtarget_filter}
 # Chordata only — lab decision 2026-08-13. 12SV5 is a vertebrate marker;
@@ -1491,7 +1441,7 @@ cat("Off-target filter: removed", n_before_offtarget - nrow(s12v5.df),
 cat(nrow(s12v5.df), "sequences retained\n")
 ```
 
----
+------------------------------------------------------------------------
 
 ## B7. Quality control
 
@@ -1551,20 +1501,11 @@ cat(nrow(s12v5.df), "sequences after deduplication\n")
 cat(n_distinct(s12v5.df$taxon), "unique taxa\n")
 ```
 
-Append the positive-control spike-ins, exactly as in Part A (see the note at A10). The 12SV5
-control is the same physical construct as the trnL one read to a longer amplicon — the 50 bp
-trnL sequence is an exact prefix of this 100 bp one.
+Append the positive-control spike-ins, exactly as in Part A (see the note at A10). The 12SV5 control is the same physical construct as the trnL one read to a longer amplicon — the 50 bp trnL sequence is an exact prefix of this 100 bp one.
 
-This step is what was missing previously: the 12SV5 reference shipped without its control, so
-spike-in reads were assigned to the nearest real vertebrate (mostly Actinopteri) instead of
-being identified as controls.
+This step is what was missing previously: the 12SV5 reference shipped without its control, so spike-in reads were assigned to the nearest real vertebrate (mostly Actinopteri) instead of being identified as controls.
 
-12SV5 additionally carries a real-species control: *Rhacodactylus leachianus* (New Caledonia
-giant gecko, AF090176.1) — a vertebrate the primers amplify but which never occurs in human
-diet samples (1.05M reads across 45 samples of the 2025 production megaphyloseq). Every
-reference up to 2025 contained it only by inheritance from older broad vertebrate databases;
-now that the pipeline builds strictly from `human-foods.csv`, it must be appended here or the
-control silently breaks.
+12SV5 additionally carries a real-species control: *Rhacodactylus leachianus* (New Caledonia giant gecko, AF090176.1) — a vertebrate the primers amplify but which never occurs in human diet samples (1.05M reads across 45 samples of the 2025 production megaphyloseq). Every reference up to 2025 contained it only by inheritance from older broad vertebrate databases; now that the pipeline builds strictly from `human-foods.csv`, it must be appended here or the control silently breaks.
 
 ```{r s12v5_controls}
 controls.12S <-
@@ -1631,7 +1572,7 @@ cat("\n=== 12SV5 complete:", nrow(s12v5.df), "sequences,",
     n_distinct(s12v5.df$taxon), "taxa ===\n")
 ```
 
----
+------------------------------------------------------------------------
 
 # Summary
 
@@ -1670,16 +1611,11 @@ cat("   ", file.path(S12V5_QIIME2, "12Sv5-sequences.fasta"), "\n")
 cat("   ", file.path(S12V5_QIIME2, "12Sv5-taxonomy.tsv"), "\n")
 ```
 
----
+------------------------------------------------------------------------
 
 # Verify before shipping
 
-Runs the QC gate against everything just built — trnL, trnLCD (if built this
-run), and 12SV5 together, since that is what a plain run of this notebook
-just produced. It compares against `QC_PREVIOUS_SUFFIX` (set in
-Configuration) and hard-fails (exit 1) on a missing control, a rank that went
-almost entirely NA, or an off-target phylum — the three silent failures a
-rebuild has actually shipped with before this gate existed.
+Runs the QC gate against everything just built — trnL, trnLCD (if built this run), and 12SV5 together, since that is what a plain run of this notebook just produced. It compares against `QC_PREVIOUS_SUFFIX` (set in Configuration) and hard-fails (exit 1) on a missing control, a rank that went almost entirely NA, or an off-target phylum — the three silent failures a rebuild has actually shipped with before this gate existed.
 
 ```{r qc-gate-run}
 gate <- system2("Rscript",
@@ -1692,7 +1628,4 @@ if (!is.null(attr(gate, "status")) && attr(gate, "status") != 0)
   warning("QC gate reported failures - do not ship this reference until they are resolved.")
 ```
 
-Once this reports 0 FAIL, archive the date-less outputs under a new suffix
-(e.g. `trnLGH.fasta` → `trnLGH_Sep2026.fasta`) before the next rebuild
-overwrites them in place — see the note at the top of
-`code/qc_reference_build.R`.
+Once this reports 0 FAIL, archive the date-less outputs under a new suffix (e.g. `trnLGH.fasta` → `trnLGH_Sep2026.fasta`) before the next rebuild overwrites them in place — see the note at the top of `code/qc_reference_build.R`.
