@@ -118,13 +118,16 @@ output files
 
 ------------------------------------------------------------------------
 
-## Extend, or rebuild?
+## How to run this pipeline
 
-There are two ways to add sequence data to a reference. Picking the
-wrong one either wastes a cluster run, or produces an output that looks
-fine but doesn't actually fix anything.
+There are two ways to run the FoodSeq reference sequence database
+creation yourself: you can either re-create the full database from
+scratch, or you can add reference sequences to an existing version of
+the database.
 
-### Extend (`code/Extend reference.Rmd`)
+### Extend, or rebuild?
+
+#### Extend (`code/Extend reference.Rmd`)
 
 Adds a handful of newly-available species to an **existing** reference
 without touching any record already in it. It runs on a laptop in
@@ -169,7 +172,7 @@ The 4th argument restricts the gate to the marker you actually extended
 hard-fails on the ones you didn't touch, which reads as a failure even
 on a clean run.
 
-### Rebuild (`foodseq_reference_pipeline.Rmd`)
+#### Rebuild (`foodseq_reference_pipeline.Rmd`)
 
 Needed for anything Extend can't do (above), and for periodic full
 refreshes that pick up whatever new sequence data has accumulated at
@@ -178,9 +181,9 @@ described under **Getting started** below.
 
 ------------------------------------------------------------------------
 
-## Getting started
+### Getting started
 
-### Prerequisites
+#### Prerequisites
 
 **R packages:**
 
@@ -206,13 +209,13 @@ This increases the NCBI query rate limit from 3 to 10 requests per
 second. NCBI also recommends running large queries on weekends or
 between 9 PM and 5 AM EST on weekdays.
 
-### Large file setup (cluster recommended)
+#### Large file setup (cluster recommended)
 
 Two large files must be obtained before running the pipeline. These are
 best downloaded on an HPC cluster due to their size and download time:
 
 | File | Size | How to obtain |
-|------------------|------------------|-------------------------------------|
+|------------------|------------------|------------------------------------|
 | RefSeq plastid FASTA | \~15–20 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/plastid/` |
 | RefSeq mitochondrial FASTA | \~5–10 GB uncompressed | NCBI FTP: `ftp://ftp.ncbi.nlm.nih.gov/refseq/release/mitochondrion/` |
 | `accessionTaxa.sql` | \~70 GB | Built with `taxonomizr::prepareDatabase()` |
@@ -220,7 +223,7 @@ best downloaded on an HPC cluster due to their size and download time:
 SLURM job scripts for all three are generated and submitted
 automatically by the pipeline (sections 2a–2c of the Rmd).
 
-### Running the pipeline
+#### Running the pipeline
 
 1.  Clone this repository:
 
@@ -250,10 +253,10 @@ automatically by the pipeline (sections 2a–2c of the Rmd).
     (12SV5) sequentially
 
 7.  The notebook's final section, **Verify before shipping**, runs the
-    QC gate automatically and prints the result — 0 FAIL means the
-    build is safe to archive. If `QC_PREVIOUS_SUFFIX` was left at its
-    default (`"-"`), this step fails loudly rather than comparing
-    against the wrong build; set it and re-run just that chunk.
+    QC gate automatically and prints the result — 0 FAIL means the build
+    is safe to archive. If `QC_PREVIOUS_SUFFIX` was left at its default
+    (`"-"`), this step fails loudly rather than comparing against the
+    wrong build; set it and re-run just that chunk.
 
 Output files are written to `data/outputs/dada2-compatible/` and
 `data/outputs/qiime2-compatible/` as date-less files (`trnLGH.fasta`,
@@ -262,14 +265,14 @@ under a new suffix before the next rebuild overwrites them in place.
 
 ------------------------------------------------------------------------
 
-## Using Extend reference.Rmd and Coverage recheck.Rmd
+### Using Extend reference.Rmd and Coverage recheck.Rmd
 
 Together these grow an existing reference from a laptop, without the
 cluster setup above — see "Extend, or rebuild?" for when this is (and
 isn't) the right tool. The usual order is: find candidates, pull
 sequence, verify, promote.
 
-### 1. Find candidates — `code/Coverage recheck.Rmd`
+#### 1. Find candidates — `code/Coverage recheck.Rmd`
 
 Open in RStudio and run top to bottom. Configuration options:
 
@@ -280,24 +283,24 @@ Open in RStudio and run top to bottom. Configuration options:
     `data/outputs/coverage-recheck/CANDIDATES_plants_trnL<suffix>.csv`
     and `CANDIDATES_animals_12SV5<suffix>.csv`. This is the routine
     thing to run before an Extend session.
--   `RUN_PHASE2` (default `TRUE`, set `FALSE` to skip): audits a
-    curated list of \~199 globally significant foods against
-    `human-foods.csv` for species missing from the target list
-    entirely, not just missing sequence. An occasional audit rather
-    than something to re-run every time.
+-   `RUN_PHASE2` (default `TRUE`, set `FALSE` to skip): audits a curated
+    list of \~199 globally significant foods against `human-foods.csv`
+    for species missing from the target list entirely, not just missing
+    sequence. An occasional audit rather than something to re-run every
+    time.
 -   `REF_SUFFIX` / `OUT_SUFFIX`: which built reference to check
     "missing" against, and what to suffix the output CSVs with.
 
 Queries are checkpointed to `data/outputs/coverage-recheck/raw/`, so a
-killed or resumed run doesn't re-query species already recorded — Part
-1 alone is a multi-hour job against \~1,500 species without an NCBI API
+killed or resumed run doesn't re-query species already recorded — Part 1
+alone is a multi-hour job against \~1,500 species without an NCBI API
 key. A hit means NCBI has *some* record for that species, not a
 confirmed amplicon — `Extend reference.Rmd` is the real test.
 
-### 2. Pull sequence — `code/Extend reference.Rmd`
+#### 2. Pull sequence — `code/Extend reference.Rmd`
 
-Point `ADDITIONS` at a `CANDIDATES_*.csv` from step 1 (or any CSV with
-a `scientific_name` column — `data/inputs/reference-additions.csv` is a
+Point `ADDITIONS` at a `CANDIDATES_*.csv` from step 1 (or any CSV with a
+`scientific_name` column — `data/inputs/reference-additions.csv` is a
 blank template for ad hoc additions):
 
 ``` r
@@ -312,24 +315,24 @@ Run top to bottom. Species already in the reference are skipped
 automatically; species with no primer-spanning record are reported at
 the end rather than silently dropped.
 
-### 3. Verify before shipping
+#### 3. Verify before shipping
 
 ``` bash
 Rscript code/qc_reference_build.R . _Aug2026_ext _Aug2026 trnL
 ```
 
 The same gate the full pipeline uses. The 4th argument restricts it to
-the marker you extended — without it, the gate checks every marker
-under the new suffix and hard-fails on the ones you didn't touch. A
-clean run should show the record count rise by exactly what was added
-and every other check still pass.
+the marker you extended — without it, the gate checks every marker under
+the new suffix and hard-fails on the ones you didn't touch. A clean run
+should show the record count rise by exactly what was added and every
+other check still pass.
 
-### 4. Promote the result
+#### 4. Promote the result
 
-If the QC gate passes, rename the `OUT_SUFFIX` files to whatever the
-new canonical suffix is (e.g. `_Aug2026_ext` → `_Sep2026`) so they
-become what the rest of the repo — and the next `Extend` or
-`Coverage recheck` run — treats as current.
+If the QC gate passes, rename the `OUT_SUFFIX` files to whatever the new
+canonical suffix is (e.g. `_Aug2026_ext` → `_Sep2026`) so they become
+what the rest of the repo — and the next `Extend` or `Coverage recheck`
+run — treats as current.
 
 ------------------------------------------------------------------------
 
@@ -377,7 +380,7 @@ over time" below for how that affects comparisons across builds).
 | Oct 2022 | 57        | —           | —                    | —        |
 | 2025     | 2,991     | 2,112       | 1,099 / 2,095        | 52%      |
 | May 2026 | 3,390     | 2,337       | 1,168 / 2,095        | 56%      |
-| Aug 2026 | 2,331     | 1,678       | 950 / 2,121          | 45%      |
+| Aug 2026 | 2,384     | 1,720       | 981 / 2,121          | 46%      |
 
 > The Oct 2022 12SV5 database was a small food-filtered subset of the
 > Schneider et al. database. The 2025 and May 2026 databases were built
@@ -389,13 +392,28 @@ over time" below for how that affects comparisons across builds).
 > coverage fraction is not directly comparable to earlier rows via raw
 > denominator. Recomputed against the *current* list, May 2026 covers
 > 1,060 / 1,573 (67%) plants and 891 / 2,121 (42%) animals — so Aug 2026
-> is a genuine improvement on both markers (69% and 45%), not the
-> regression the raw 56% → 45% 12SV5 comparison would otherwise suggest.
+> is a genuine improvement on both markers (69% and 46%), not the
+> regression the raw 56% → 46% 12SV5 comparison would otherwise suggest.
 > The Aug 2026 rebuild added a human host-taxon control, fixed 21
 > mislabelled off-target records, fixed a bare-genus accession bug, and
 > closed 43 animal / 83 plant gaps found by the July 2026 coverage
 > re-check — see `data/outputs/coverage-recheck/README.md` for the full
 > account.
+
+> **September 2026 recovery.** The figures above already include a
+> follow-up fix: 51 animal species with a confirmed valid 12SV5 amplicon
+> — present in the May 2026 build, or found by the July coverage
+> re-check — had been silently dropped from the original Aug 2026
+> rebuild. Root cause: `query_ncbi()` queries species in batches of 5
+> joined by `OR`, then fetches only the first 500 combined results
+> (`retmax_fetch`), so a rare species batched with a heavily-sequenced
+> one (chicken, pig) can be crowded out of the fetch entirely with no
+> error. `code/Extend reference.Rmd` was used to re-query and merge
+> these back in (+53 sequences, +42 unique taxa; verified zero
+> regressions against the pre-recovery build via `qc_reference_build.R`).
+> One species (*Acanthurus gahhm*) remains unrecovered despite a
+> confirmed valid amplicon — same unexplained character as the "39
+> unexplained" cases below.
 
 ### Remaining gaps (Aug 2026)
 
@@ -420,17 +438,17 @@ largest sources of missing species (based on those listed in
 | Peters, *Edible Wild Plants of Subsaharan Africa* | 11              |
 | Other sources                                     | 32              |
 
-**Animals without 12SV5 sequences: 1,171 / 2,121 (55%)**
+**Animals without 12SV5 sequences: 1,140 / 2,121 (54%)**
 
 | Source                                   | Missing species |
 |------------------------------------------|-----------------|
-| FDA The Seafood List                     | 942             |
-| SJ (contributor)                         | 66              |
+| FDA The Seafood List                     | 900             |
+| SJ (contributor)                         | 64              |
 | Halloran et al., *Edible Insects* †      | 42              |
-| NOAA Fisheries                           | 30              |
-| FAO Cultured Aquatic Species Fact Sheets | 27              |
-| BP (contributor)                         | 26              |
-| Other sources                            | 38              |
+| NOAA Fisheries                           | 28              |
+| FAO Cultured Aquatic Species Fact Sheets | 26              |
+| BP (contributor)                         | 25              |
+| Other sources                            | 55              |
 
 † Insects are not vertebrates and are therefore not targeted by the
 12SV5 marker; these gaps are expected.

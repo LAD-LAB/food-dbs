@@ -863,14 +863,14 @@
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">57 †</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,991</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">3,390</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,331</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,384</td>
               </tr>
               <tr style="background:#fafafa;">
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 food animal coverage</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">—</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,099 / 2,095 (52%)</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,168 / 2,095 (56%)</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">950 / 2,121 (45%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">981 / 2,121 (46%)</td>
               </tr>
               <tr>
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnLCD sequences</td>
@@ -883,9 +883,15 @@
           </table>
           <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">
             † Oct 2022 12SV5 was a small food-filtered subset of the Schneider et al. database, not a full pipeline run.
-            The 12SV5 coverage percentage drop (56% → 45%) looks like a regression but isn't: <span class="tag">human-foods.csv</span>
+            The 12SV5 coverage percentage drop (56% → 46%) looks like a regression but isn't: <span class="tag">human-foods.csv</span>
             grew from 2,095 to 2,121 food-animal species between the two builds. Recomputed against the Aug 2026 list, May 2026
-            actually covers 42% — so Aug 2026 (45%) is a genuine improvement on both markers, not a decline. Full explanation in README.md.
+            actually covers 42% — so Aug 2026 (46%) is a genuine improvement on both markers, not a decline. Full explanation in README.md.
+          </p>
+          <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">
+            September 2026: a follow-up recovered 51 animal species silently dropped by the original Aug 2026 rebuild
+            (+53 sequences, +42 unique taxa) — root cause was a query-batching bug in <span class="tag">query_ncbi()</span> that
+            can crowd a rare species out of the NCBI fetch entirely when batched with a heavily-sequenced one. Figures above
+            already reflect the recovered build. Full explanation in README.md.
           </p>
           <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">
             trnL plant denominators exclude 7 genus-only entries in <span class="tag">human-foods.csv</span> (<em>Eucheuma, Fragaria,

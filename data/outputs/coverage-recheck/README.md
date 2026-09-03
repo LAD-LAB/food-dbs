@@ -99,6 +99,86 @@ the *D. labrax* record already in the reference. They should be in the
 build and are not. **Root cause unknown — needs investigation before
 these 39 are written off.**
 
+### September 2026 update: the 39, resolved (mostly)
+
+Follow-up investigation, prompted by a second, independent regression:
+50 12SV5 target species that *had* sequence in the May 2026 build lost
+it in the Aug 2026 rebuild. Both symptoms turned out to share
+mechanisms with the 39 unexplained above.
+
+**Root cause #1, confirmed: `query_ncbi()`'s 500-record fetch cap
+applies per query batch, not per species.** Species are queried 5 at a
+time, joined by `OR` into one NCBI search — but `entrez_fetch()` is
+then capped at `retmax_fetch = 500` for the *combined* result, however
+large the actual hit count. A rare species batched alongside a
+heavily-sequenced one (chicken, pig, or just another popular fish) can
+be crowded out of the fetch window entirely, with no error. Verified by
+reproducing each species' actual query batch (same 5-species grouping
+`query_ncbi()` would use, from `human-foods.csv` row order) and
+checking the live combined hit count:
+
+| Species | Batched with | Combined hits (cap: 500) |
+|---|---|---|
+| *Gasterochisma melampus* | *Gallus gallus* (chicken) | 723 |
+| *Strongylura exilis* | *Sus scrofa* (pig) | 1,790 |
+| *Dentex dentex* | — | 1,215 |
+| *Raja stellulata* | — | 791 |
+| *Otolithoides pama* | — | 1,886 |
+| *Equus africanus asinus* | — | 690 |
+
+**Root cause #2: most of the remaining 39 were never actually
+unexplained — they were resolvable by name.** Re-testing the "still
+missing" species by their *current* NCBI name (not the
+`human-foods.csv` literal string) using the same
+`find_primer_pair()`-equivalent check the pipeline uses: 46 of the 174
+species not yet in the Aug 2026 build had a confirmed valid amplicon —
+essentially this table's 39, reproduced independently, including all
+four species spot-checked above (*Dicentrarchus punctatus*, *Dentex
+dentex*, *Alosa alosa*, *Aetobatus narinari*). Of those 46, 4 are the
+chunk-cap cases above; the other 42 pass every check performed
+locally — sequence exists, amplifies cleanly, resolves taxonomy
+correctly on a fresh NCBI query — meaning whatever actually dropped
+them happened during the live Aug 2026 cluster run itself (most likely
+a transient failure in the `accessionToTaxa()`/NCBI-fallback taxonomy
+step) and isn't reproducible after the fact.
+
+**Recovery.** `code/Extend reference.Rmd` — already built for exactly
+this ("add species to an existing reference without a full rebuild")
+— was pointed at the combined list (the 7 May→Aug regressions + the 46
+candidates, 52 unique species after dedup) via
+`data/inputs/reference-additions.csv`. First pass (batches of 5, the
+production default): 53 sequences / 48 unique taxa recovered. A second
+pass with `chunk_size = 1` for the 8 stragglers recovered nothing
+*new* — 7 of the 8 turned out to already be in the first pass under
+their current NCBI name (`Catla catla` → `Labeo catla`, `Kyphosus
+sectator` → `Kyphosus sectatrix`, `Epinephelus niveatus` →
+`Hyporthodus niveatus`, `Otolithoides pama` → `Pama pama`, `Pangasius
+gigas` → `Pangasianodon gigas`, `Liza grandisquamis` → `Parachelon
+grandisquamis`, `Caelorinchus fasciatus` → `Coelorinchus fasciatus`) —
+a false alarm from checking the literal requested name rather than the
+resolved one, not a real gap.
+
+**Net: 51 of 52 species recovered.** `qc_reference_build.R` confirms
+zero regressions against the pre-recovery build. `Acanthurus gahhm` is
+the one genuine holdout — confirmed valid amplicon at `KU244257.1`,
+still absent after both a batched and a solo query. Same unexplained
+character as the rest of this section; not pursued further. The
+`12Sv5_Aug2026.fasta` / `12Sv5_taxonomy_Aug2026.fasta` files (and their
+QIIME2 equivalents) now reflect the recovered build; the pre-recovery
+versions are archived at
+`data/outputs/dada2-compatible/archive/aug2026-pre-recovery/` and
+`data/outputs/qiime2-compatible/archive/aug2026-pre-recovery/`.
+`data/inputs/reference-additions.csv` carries the full per-species
+disposition for provenance.
+
+**Still open:** the `retmax_fetch = 500` per-batch cap in
+`code/functions/query_ncbi.R` is a real, unfixed defect — it will
+silently drop species again on the next full rebuild if a target
+happens to batch alongside a heavily-sequenced one. Options: query
+one species at a time (slower, ~5x more NCBI calls), raise
+`retmax_fetch` substantially, or paginate properly instead of
+truncating. Not fixed as part of this update.
+
 ## Supporting / reference
 
 | File | Rows | What it is |
