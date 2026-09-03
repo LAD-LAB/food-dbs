@@ -853,9 +853,9 @@
               </tr>
               <tr style="background:#fafafa;">
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plant coverage</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">716 / 1,577 (45%)</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,577 (67%)</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,577 (67%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">716 / 1,570 (46%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,570 (68%)</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,060 / 1,570 (68%)</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,078 / 1,573 (69%)</td>
               </tr>
               <tr>
@@ -886,6 +886,11 @@
             The 12SV5 coverage percentage drop (56% → 45%) looks like a regression but isn't: <span class="tag">human-foods.csv</span>
             grew from 2,095 to 2,121 food-animal species between the two builds. Recomputed against the Aug 2026 list, May 2026
             actually covers 42% — so Aug 2026 (45%) is a genuine improvement on both markers, not a decline. Full explanation in README.md.
+          </p>
+          <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">
+            trnL plant denominators exclude 7 genus-only entries in <span class="tag">human-foods.csv</span> (<em>Eucheuma, Fragaria,
+            Gelidium, Gracilaria, Gurania, Mentha, Xanthosoma</em>) that aren't species-level binomials, applied consistently across
+            all four columns — the same way the 12SV5 row excludes non-vertebrates.
           </p>
         </div>
       </div>

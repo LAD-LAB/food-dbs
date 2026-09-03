@@ -358,10 +358,17 @@ over time" below for how that affects comparisons across builds).
 
 | Version  | Sequences | Unique taxa | Food plants covered | Coverage |
 |----------|-----------|-------------|---------------------|----------|
-| Oct 2022 | 1,402     | 807         | 716 / 1,577         | 45%      |
-| 2025     | 1,991     | 1,169       | 1,060 / 1,577       | 67%      |
-| May 2026 | 1,991     | 1,169       | 1,060 / 1,577       | 67%      |
+| Oct 2022 | 1,402     | 807         | 716 / 1,570         | 46%      |
+| 2025     | 1,991     | 1,169       | 1,060 / 1,570       | 68%      |
+| May 2026 | 1,991     | 1,169       | 1,060 / 1,570       | 68%      |
 | Aug 2026 | 2,026     | 1,195       | 1,078 / 1,573       | 69%      |
+
+> Plant denominators exclude 7 genus-only entries in `human-foods.csv`
+> (*Eucheuma, Fragaria, Gelidium, Gracilaria, Gurania, Mentha,
+> Xanthosoma*) that aren't species-level binomials and can't be matched
+> against a species-level reference — applied consistently across all
+> four rows above, the same way the 12SV5 table below excludes
+> non-vertebrates from every row.
 
 **12SV5 (vertebrates)**
 
@@ -377,7 +384,7 @@ over time" below for how that affects comparisons across builds).
 > from scratch using the full pipeline.
 
 > **Reading the Aug 2026 row:** `human-foods.csv` grew between the May
-> and Aug 2026 builds (2,095 → 2,121 food-animal species, 1,577 → 1,573
+> and Aug 2026 builds (2,095 → 2,121 food-animal species, 1,570 → 1,573
 > food-plant species — see "Food species list" above), so the Aug 2026
 > coverage fraction is not directly comparable to earlier rows via raw
 > denominator. Recomputed against the *current* list, May 2026 covers
