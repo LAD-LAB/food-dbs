@@ -769,6 +769,16 @@
             </div>
           </li>
           <li><div>Getting started guide: prerequisites, R packages, NCBI API key setup, large file setup table, step-by-step running instructions</div></li>
+          <li>
+            <div>
+              <strong>Pipeline flowchart embedded (Sep 2026):</strong> the Mermaid diagram from <span class="tag">pipeline-flowchart.html</span> is now inline at the end of "How the pipeline works" as a GitHub-native code block, plus the "Data sources" and "Processing steps" text now spells out the same RefSeq-filters-after / GenBank-filters-during distinction the diagram shows
+            </div>
+          </li>
+          <li>
+            <div>
+              Removed a stray RStudio <span class="tag">editor_options: markdown: wrap: 72</span> YAML front-matter block that GitHub was rendering as a metadata box at the top of the file, and re-flowed several bullet/numbered lists that the same wrap setting had collapsed into unbroken paragraphs (list markers ended up mid-sentence instead of at the start of a line, so they weren't rendering as lists at all)
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -794,6 +804,17 @@
           <li>
             <div>
               Corrected during review: the food-species-list filter was shown feeding only the GenBank query path; it also gates the RefSeq path, just <em>after</em> in silico PCR rather than before — the diagram now shows both edges into the RefSeq-amplicons step
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Restructured (Sep 2026):</strong> the GenBank path now shows a <span class="tag">plants or animals from human-foods.csv</span> box feeding directly into the query (<span class="tag">query_ncbi()</span> takes the species list as its search input, so there's nothing to filter afterward) — the RefSeq path is unchanged, still filtering to food species <em>after</em> amplification via its own <span class="tag">RefSeq food amplicons</span> box, since that side genuinely does generate amplicons for every RefSeq species before subsetting
+              <span class="reason">The previous single "① species list → filter" diagram implied both paths worked the same way; they don't — GenBank is pre-filtered by construction, RefSeq is post-filtered. Same distinction is now spelled out in README.md's "Data sources" section.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              This diagram is now also embedded directly in <span class="tag">README.md</span> (end of "How the pipeline works") as a GitHub-native Mermaid code block, not just this standalone file
             </div>
           </li>
         </ul>

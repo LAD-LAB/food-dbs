@@ -70,7 +70,7 @@
   <div class="params-title">Steps ①–⑩ below are one pipeline, run once for trnL and once for 12SV5. Only these differ:</div>
   <table>
     <tr><th></th><th>trnL (Part A)</th><th>12SV5 (Part B)</th></tr>
-    <tr><td class="step">① species list</td><td>plants in human-foods.csv</td><td>animals in human-foods.csv</td></tr>
+    <tr><td class="step">① food species list</td><td>plants in human-foods.csv</td><td>animals in human-foods.csv</td></tr>
     <tr><td class="step">② RefSeq genomes</td><td>plastid</td><td>mitochondrial</td></tr>
     <tr><td class="step">③④ primers</td><td>trnL-g / trnL-h</td><td>V5F / V5R</td></tr>
     <tr><td class="step">⑦ phylum allowlist</td><td>Streptophyta + Cyanobacteriota</td><td>Chordata</td></tr>
@@ -82,7 +82,6 @@
 <div class="mermaid">
 flowchart TD
 
-    HF["human-foods.csv"]
     CTL["controls.csv"]
     SETUP["SLURM setup jobs"]
     REFSEQ_DL["RefSeq plastid + RefSeq mitochondrial"]
@@ -92,14 +91,14 @@ flowchart TD
     SETUP -->|download| REFSEQ_DL
     SETUP -->|prepareDatabase| SQL
 
-    HF -->|filter plants or animals| SPECIES["① species list"]
-
     REFSEQ_DL -->|filter one per species · trnL, 12SV5| GENOME_SP["② RefSeq genomes<br/>one per species, accession kept"]
 
     GENOME_SP -->|find_primer_pair, all RefSeq species| REFSEQ["③ RefSeq amplicons"]
-    SPECIES -->|subset amplicons to food list, post-PCR| REFSEQ
-    SPECIES -->|query_ncbi + find_primer_pair| NCBI["④ GenBank sequences"]
-    REFSEQ --> COMB["⑤ combined sequences"]
+    NCBI_SPECIES["① plants or animals from human-foods.csv"] -->|query_ncbi + find_primer_pair| NCBI["④ GenBank sequences"]
+
+    REFSEQ -->|"① Use plants or animals from human-foods.csv to filter amplicons"| REFSEQ_FOOD["RefSeq food amplicons"]
+
+    REFSEQ_FOOD --> COMB["⑤ combined sequences"]
     NCBI -->|combine · trnL also merges manual additions| COMB
     COMB -->|accessionToTaxa| TAX["⑥ + taxonomy"]
     SQL --> TAX
