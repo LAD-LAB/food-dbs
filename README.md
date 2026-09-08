@@ -320,7 +320,7 @@ The pipeline targets all species in `human-foods.csv`, a curated list of 3,806 f
 | Oct 2022 | 1,402     | 807         | 716 / 1,570         | 46%      |
 | 2025     | 1,991     | 1,169       | 1,060 / 1,570       | 68%      |
 | May 2026 | 1,991     | 1,169       | 1,060 / 1,570       | 68%      |
-| Aug 2026 | 2,026     | 1,195       | 1,078 / 1,573       | 69%      |
+| Aug 2026 | 2,027     | 1,196       | 1,078 / 1,573       | 69%      |
 
 > Plant denominators exclude 7 genus-only entries in `human-foods.csv` (*Eucheuma, Fragaria, Gelidium, Gracilaria, Gurania, Mentha, Xanthosoma*) that aren't species-level binomials and can't be matched against a species-level reference — applied consistently across all four rows above, the same way the 12SV5 table below excludes non-vertebrates from every row.
 
@@ -338,6 +338,8 @@ The pipeline targets all species in `human-foods.csv`, a curated list of 3,806 f
 > **Reading the Aug 2026 row:** `human-foods.csv` grew between the May and Aug 2026 builds (2,095 → 2,121 food-animal species, 1,570 → 1,573 food-plant species — see "Food species list" above), so the Aug 2026 coverage fraction is not directly comparable to earlier rows via raw denominator. Recomputed against the *current* list, May 2026 covers 1,060 / 1,573 (67%) plants and 891 / 2,121 (42%) animals — so Aug 2026 is a genuine improvement on both markers (69% and 46%), not the regression the raw 56% → 46% 12SV5 comparison would otherwise suggest. The Aug 2026 rebuild added a human host-taxon control, fixed 21 mislabelled off-target records, fixed a bare-genus accession bug, and closed 43 animal / 83 plant gaps found by the July 2026 coverage re-check — see `data/outputs/coverage-recheck/README.md` for the full account.
 
 > **September 2026 recovery.** The figures above already include a follow-up fix: 51 animal species with a confirmed valid 12SV5 amplicon — present in the May 2026 build, or found by the July coverage re-check — had been silently dropped from the original Aug 2026 rebuild. Root cause: `query_ncbi()` queries species in batches of 5 joined by `OR`, then fetches only the first 500 combined results (`retmax_fetch`), so a rare species batched with a heavily-sequenced one (chicken, pig) can be crowded out of the fetch entirely with no error. `code/Extend reference.Rmd` was used to re-query and merge these back in (+53 sequences, +42 unique taxa; verified zero regressions against the pre-recovery build via `qc_reference_build.R`). One species (*Acanthurus gahhm*) remains unrecovered despite a confirmed valid amplicon — same unexplained character as the "39 unexplained" cases below.
+
+> **September 2026 trnL control.** The trnL row above gained one sequence (2,026 → 2,027; 1,195 → 1,196 taxa) for the same reason the human and gecko 12SV5 controls were added: *Nicotiana tabacum* (tobacco) reaches dietary samples as exposure or contamination rather than as food, so it is correctly absent from `human-foods.csv` — and was therefore dropped silently when the pipeline became food-list-driven. Comparing the megaphyloseq across both reference vintages found 600,342 reads across 334 of 21,488 samples that went from a confident tobacco call to no assignment at all. It is now a real-species control in `data/inputs/controls.csv`, so every future rebuild includes it and the QC gate hard-fails if it goes missing again. Coverage percentages are unaffected — tobacco is not a food plant and does not enter the denominator.
 
 ### Remaining gaps (Aug 2026)
 

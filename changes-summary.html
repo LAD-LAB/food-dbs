@@ -578,6 +578,12 @@
           </li>
           <li>
             <div>
+              <strong>Non-food taxon control: <em>Nicotiana tabacum</em> (tobacco), added Sep 2026</strong> — the trnL-side equivalent of the human host-taxon gap, and found the same way: comparing the megaphyloseq against both reference vintages. Tobacco reaches dietary samples as exposure/contamination rather than as food, so it is correctly absent from <span class="tag">human-foods.csv</span> — which meant the food-list-driven rebuild dropped it with nothing to catch the loss
+              <span class="reason">600,342 reads across 334 of 21,488 samples (0.124% of all trnL reads) went from a confident <em>Nicotiana tabacum</em> call under the 2025 reference to no assignment at all under Aug 2026. Amplicon verified as an exact single-copy match at position 49415 of NC_001879.2 (Nicotiana tabacum plastid, complete genome, taxid 4097) before being adopted as a control.</span>
+            </div>
+          </li>
+          <li>
+            <div>
               QC gate hard-fails if a control is missing — see <span class="tag">qc_reference_build.R</span> below
             </div>
           </li>
@@ -870,7 +876,7 @@
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,402</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,991</td>
                 <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,991</td>
-                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,026</td>
+                <td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,027</td>
               </tr>
               <tr style="background:#fafafa;">
                 <td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plant coverage</td>
