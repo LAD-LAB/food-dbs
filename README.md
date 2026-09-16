@@ -55,7 +55,7 @@ food-dbs/
 
 ## Acquiring FoodSeq reference databases
 
-This repository contains the latest FoodSeq reference databases for use with the Edible Atlas FoodSeq Handbook. FASTA files containing reference sequences can be downloaded from this repository by going to data/outputs/ and selecting either dada2-compatible or qiime2-compatible FASTA files.
+This repository contains the latest FoodSeq reference databases for use with the Edible Atlas FoodSeq Handbook. FASTA files containing reference sequences can be downloaded from this repository by going to data/outputs/ and selecting either dada2-compatible or qiime2-compatible FASTA files. Alternatively, the latest version of the reference database is available at <https://doi.org/10.5281/zenodo.22756737>
 
 ## How the pipeline works
 
@@ -377,6 +377,6 @@ Full lists of species without sequence coverage are provided in `data/outputs/pl
 
 ------------------------------------------------------------------------
 
-## Reference
+## Citation
 
-WEPSR: World Economic Plants: A Standard Reference, by John H. Wiersema and Blanca Leon.
+The latest version of this database (2026.08) can be cited using the following: Brown, S., Petrone, B., Subramanian, A., Aqeel, A., Jiang, S., Superdock, D., & David, L. (2026). FoodSeq Reference Database (Version 2026.08) [Dataset]. Zenodo. <https://doi.org/10.5281/zenodo.22756737>
