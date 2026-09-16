@@ -40,6 +40,7 @@ food-dbs/
 │       ├── qiime2-compatible/      # Reference FASTAs and TSVs for use with QIIME2
 │       │   ├── trnL/
 │       │   └── 12Sv5/
+│       ├── common-names/           # trnL and 12S ASV common names CSVs, built against a pre-Aug 2026 reference
 │       ├── plants_missing_trnL.csv    # Food plants without trnL coverage (current run)
 │       └── animals_missing_12SV5.csv  # Food animals without 12SV5 coverage (current run)
 │
