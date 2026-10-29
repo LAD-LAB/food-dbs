@@ -423,6 +423,6 @@ Full lists of species without sequence coverage are in `data/outputs/plants_miss
 
 ## Citation
 
-The latest version of this database (2026.08) can be cited using the following: Brown, S., Petrone, B., Subramanian, A., Aqeel, A., Jiang, S., Superdock, D., & David, L. (2026). FoodSeq Reference Database (Version 2026.08) [Dataset]. Zenodo. <https://doi.org/10.5281/zenodo.22756737>
+The latest version of this database (2026.10) can be cited using the following: Brown, S., Petrone, B., Subramanian, A., Aqeel, A., Jiang, S., Superdock, D., & David, L. (2026). FoodSeq Reference Database (Version 2026.10) [Dataset]. Zenodo. <https://doi.org/10.5281/zenodo.23772049>
 
-The files in this repository are release 2026.10, which has not yet been deposited on Zenodo; until it is, the DOI above resolves to the 2026.08 release (kept here in `archive/aug2026/`).
+The files in this repository are release 2026.10, deposited on Zenodo at <https://zenodo.org/records/23772049>. To cite the database without specifying a version, use the concept DOI <https://doi.org/10.5281/zenodo.22756736>, which always resolves to the latest version. The previous release, 2026.08 (<https://doi.org/10.5281/zenodo.22756737>), is kept here in `archive/aug2026/`; it contains reverse-oriented 12SV5 records and two mislabelled trnL c/d records, corrected in 2026.10, so please cite and use 2026.10 instead.
