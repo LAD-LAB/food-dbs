@@ -1,0 +1,9 @@
+# Reference databases are LF on every platform.
+#
+# Git already stores these files as LF. This makes Windows checkouts write LF too
+# (with core.autocrlf=true they would otherwise be CRLF), so a clone matches the
+# released bytes and the Zenodo SHA-256 checksums, and a CRLF file written by R on
+# Windows is committed as LF. Only FASTA and TSV are covered; CSV, R, Rmd, md and
+# html files are left as they are.
+*.fasta text eol=lf
+*.tsv   text eol=lf
