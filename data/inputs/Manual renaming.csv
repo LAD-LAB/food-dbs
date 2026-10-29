@@ -1,9 +1,4 @@
 ﻿type,accession,name_initial,name_update,sequence,date,by,notes
-rename,LR031876.1,Brassica oleracea,Brassica oleracea var. italica,,1/4/23,BP,Identified to variety level in cited reference for accession
-rename,AB213010.1,Brassica oleracea,Brassica oleracea var. capitata,,1/7/23,BP,Identified to variety level in cited reference for accession
-rename,AC183493.1,Brassica oleracea,Brassica oleracea var. alboglabra,,1/7/23,BP,Identified to variety level in cited reference for accession
-rename,LR031874.1,Brassica oleracea,Brassica oleracea var. italica,,1/7/23,BP,Identified to variety level in cited reference for accession
-rename,LR031875.1,Brassica oleracea,Brassica oleracea var. italica,,,,
 omit,JX390727.1,Murraya koenigii,,GGGTAATCCTGAGCCAAATCCCGTTTTCGGAAAGGAAATAAACATTAAGAAAGCGAGAATAAAAAAGGGATAGGTGCAGAGACTCAATGG,2/11/22,BP,"Suspected misannotation: by BLAST, multiple matches to peanut accessions; does not match any other curry accessions"
 omit,KF550171.1,Allium schoenoprasum,,GGGCAATCCTGAGCCAAATCTTTATTTTTTGAAAAACAAAGGAAAACTTCCAAATTCAGAGAAACCCTGGAACTAAAAATGGGCAATCCTGAGCCAAATCTTTATTTTTTGAAAAACAAGGGTTTAAAAAAGAGAATAAAAAAGGATAGGTGCAGAGACTCAATGG,2/17/22,BP,Suspected sequencing error: nearly double the length of other Allium accessions
 omit,GU595140.1,Secale cereale,,GGGCAATCCTGAGCCAAATCCATGTTTTGAGAAAACAAGCGGTTCTCGAACTAGAACCCAAAGGAAAAGGATAGGTGCAGAGACTCAATGG,5/20/22,BP,"Suspected misannotation: by BLAST, multiple matches to rice accessions; does not match any other rye accessions"
@@ -21,8 +16,6 @@ add,OP764691.1,Fragaria x ananassa,,,,,
 add,CP023761.1,Solanum lycopersicum,,,,,
 add,NC_047211.1,Rubus amabilis,,,,,Note this is one nucleotide off from a Fragaria x ananassa sequence 
 add,KX668086.1,Anthemis arvensis,,,,,
-add,CP018165.1,Oryza sativa Indica group,,,,,
-add,AP014965.1,Oryza sativa Japonica group,,,,,
 add,CP018165.1,Oryza sativa Indica group,,,,,
 add,AP014965.1,Oryza sativa Japonica group,,,,,
 add,AP014968.1,Oryza sativa Japonica group,,,,,

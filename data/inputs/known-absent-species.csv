@@ -1,0 +1,7 @@
+"marker","species","reason","date_checked"
+"trnL","Amaranthus thunbergii","Not recoverable under current rules: every g/h amplicon NCBI holds for this species (2 records, 112 bp) contains ambiguity codes (N), and the build drops sequences with non-ACGT bases.","2026-10-27"
+"trnL","Arthrospira platensis","No NCBI trnL record found for this species.","2026-10-22"
+"trnL","Cordia africana","Not recoverable under current rules: the only g/h amplicon NCBI holds (KF158213.1, 83 bp) contains an ambiguity code (K), and the build drops sequences with non-ACGT bases.","2026-10-27"
+"trnL","Costus erythrophyllus","Not recoverable under current rules: the only g/h amplicon NCBI holds (KJ011315.1, 86 bp) contains ambiguity codes (K, S), and the build drops sequences with non-ACGT bases.","2026-10-27"
+"trnL","Vaccinium tenellum","Not recoverable under current rules: the only g/h amplicon NCBI holds (AF271699.1, 83 bp) contains an ambiguity code (R), and the build drops sequences with non-ACGT bases.","2026-10-27"
+"trnL","Victoria amazonica","Not recoverable under current rules: the only g/h amplicon NCBI holds (HF968678.1, 93 bp) contains an ambiguity code (N), and the build drops sequences with non-ACGT bases.","2026-10-27"

@@ -1,0 +1,1249 @@
+scientific_name,common_name,category,marker,outcome,ncbi_records,records_fetched,with_primer_pair,verified,clean_acgt,ambiguous,median_amplicon_bp,ncbi_label_of_amplicon,example_accession,source
+Cherax cainii,smooth marron,animal,12SV5,"clean amplicon, but off-target phylum",3,3,2,2,2,0,114,Cherax cainii,NC_022936.1,"Newton, ""The Oldest Foods on Earth"""
+Cherax quadricarinatus,crawfish,animal,12SV5,"clean amplicon, but off-target phylum",12,12,9,9,9,0,114,Cherax quadricarinatus,OQ915513.1,"FDA The Seafood List, 2023/07/21"
+Cherax tenuimanus,crawfish,animal,12SV5,"clean amplicon, but off-target phylum",7,7,2,2,2,0,114,Cherax tenuimanus,NC_026559.1,"FDA The Seafood List, 2023/07/21"
+Metanephrops thomsoni,lobsterette,animal,12SV5,"clean amplicon, but off-target phylum",6,6,3,3,3,0,117,Metanephrops thomsoni,NC_027608.1,"FDA The Seafood List, 2023/07/21"
+Munida gregaria,langostino,animal,12SV5,"clean amplicon, but off-target phylum",2,2,2,2,2,0,114,Grimothea gregaria,NC_030255.1,"FDA The Seafood List, 2023/07/21"
+Pacifastacus leniusculus,crayfish,animal,12SV5,"clean amplicon, but off-target phylum",15,15,1,1,1,0,115,Pacifastacus leniusculus,PV231285.1,"FDA The Seafood List, 2023/07/21"
+Pandalus borealis,northern prawn,animal,12SV5,"clean amplicon, but off-target phylum",4,4,1,1,1,0,114,Pandalus borealis,MK471277.1,SJ
+Pandalus platyceros,shrimp,animal,12SV5,"clean amplicon, but off-target phylum",1,1,1,1,1,0,114,Pandalus platyceros,MK471284.1,"FDA The Seafood List, 2023/07/21"
+Scyllarides nodifer,slipper lobster,animal,12SV5,"clean amplicon, but off-target phylum",1,1,1,1,1,0,124,Scyllarides nodifer,KF827852.1,"FDA The Seafood List, 2023/07/21"
+Stomolophus meleagris,jellyfish,animal,12SV5,"clean amplicon, but off-target phylum",20,20,19,19,19,0,135,Stomolophus meleagris,KC879598.1,"FDA The Seafood List, 2023/07/21"
+Thenus orientalis,slipper lobster,animal,12SV5,"clean amplicon, but off-target phylum",2,2,1,1,1,0,116,Thenus orientalis,KF827854.1,"FDA The Seafood List, 2023/07/21"
+Clarias gariepinus x Clarias macrocephalus,clarias fish,animal,12SV5,hybrid - not mapped to one parent,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus fucoglottus x Epinephelus lanceolatus,grouper,animal,12SV5,hybrid - not mapped to one parent,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Heterobranchus longifilis x Clarias gariepinus,claresse,animal,12SV5,hybrid - not mapped to one parent,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Acipenser multiscutatus,sturgeon,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Ailichthys punctatus,kajuli,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Alectis indicus,jack,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Anacridium melanorhodon melanorhodon,tree locust,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Anadara baughmani,arkshell,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Anadara subcrenata,arkshell,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Anchoviella perfasciata,anchovy,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Argopecten aequisulcatus,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Argopecten lineolaris,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Aspongopus nepalensis,stink bug,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Bathycongrus aequoreus,conger eel,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Batocera roylei,beetle,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Cancer anthonyi,yellow rock crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Carcinus aestuari,mediterranean green crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Cerax quadricarinatus,red claw crayfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,FAO Cultured Aquatic Species Fact Sheets
+Chaceon afiinis,deep sea crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chaceon fenneri,golden crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chaoborus edulis,glass worm,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Chascanopsetta crumenalis,flounder,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Cheilopogon heterurus hubbsi,flyingfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chione californiensis,venus clam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys circularis aequisculata,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys opercularis,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys patagonica,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys purpurata,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Conger cinereus marginatus,conger eel,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Coregonus alpenae,cisco,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Corvula batabana,croaker,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea gigas kumamoto,oyster,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea glomerata,oyster,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea skiamea,oyster,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Cyclochila virens,northern greengrocer,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Cypselurus comatus,flyingfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Cypselurus simus,flyingfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Decapterus koheru,scad,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Decapterus scombrinus,scad,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Donax texasianus,coquina,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Echidna peli,moray eel,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Encosternum delegorguei,edible stink bug,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Epigonus crassicaudus,cardinalfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus timorensis,yellowspotted grouper,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Euvola diegensis,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Glycymeris laticostata,bittersweet,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Glycymeris violacescens,cockle,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Goniistius spectabilis,morwong,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Gymnothorax mareei,moray eel,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Haustellum brandaris,merex,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Hemijana variegata,edible caterpillar,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Heterocarpus vicarius,northern nylon shrimp,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Hoplostethus mediterraneus mediterraneus,silver roughy,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Huso huso (fem) x Acipenser ruthenus (male),sturgeon,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Ilisha fuerthii,herring,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Imbrasia belina,mopane caterpillar,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Iphigenia brasiliana,false coquina,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Jacquinotia edwardsii,spider crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Lepidopsetta billineta,southern rock sole,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,NOAA Fisheries
+Lithodes antarcticus,centolla crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Loligo vulgaris reynaudi,squid,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Lutjanus jordani,snapper,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mactrellona alata,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mactromeris catilliformis,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mactromeris hemphillii,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mactrotoma californica,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mactrotoma nasuta,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Manta hamiltoni,manta,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mercluccius productus,pacific whiting,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,NOAA Fisheries
+Meuschenia galii,leatherjacket,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Monochamus versteegi,beetle,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Mugil gaimardianus,mullet,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mugiloides fasciatus,sandperch,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Mytilus galloprovincalis,mediterranean mussel,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,FAO Cultured Aquatic Species Fact Sheets
+Navodon australis,triggerfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Nemadactylus carponotatus,morwong,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Neotropius acutirostris,batashi,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Netuma thalassinus,giant whiskered fish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Orcynopsis unicolor,bonito,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Osphronemus goramyÂ,gourami,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Ostorhinchus maculiferus,cardinalfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Panopea bitruncata,geoduck clam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Parupenaeus cilatus,goatfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Pecten meridionalis,scallop,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Plicofollis crossocheilos,roughback whiskered fish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Polyprion yanezi,sea bass,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Pontinus khulii,rockfish,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Portunus puber,swimming crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Probarbus jullien,barb,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Protrachypene precipua,shrimp,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Pterygotrigla picta,searobin,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Rastrineobola argenta,silver cyprinid,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Scleropages legendrei,arowana,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Scyllarides aequinoctialis,slipper lobster,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Siliqua costata,razor clam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Simomactra dolabriformis,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Simomactra falcata,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Simomactra planulata,surfclam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Solen rostriformis,razor clam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Solen viridis,razor clam,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Tibicen pruinosus,cicada,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Tiostrea lutaria,oyster,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Ucides cordates,fiddler crab,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Zidona dufresnei,snail,animal,12SV5,name not recognised by NCBI taxonomy,,,,,,,,,,"FDA The Seafood List, 2023/07/21"
+Acanthistius brasilianus,sea bass,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Acanthocardia aculeata,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Acanthocardia tuberculata,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Actinopyga mauritiana,surf redfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Australian Fisheries Management Authority
+Alosa agone,shad,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ameiurus platycephalus,bullhead,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Amphilophus alfari,cichlid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Amphilophus longimanus,cichlid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Anaphe panda,silk worm,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Anchoa compressa,anchovy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Anisotremus davidsonii,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Anisotremus taeniatus,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Apsilus fuscus,snapper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arca imbricata,arkshell,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arca noae,arkshell,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arca zebra,arkshell,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arctogadus borisovi,cod,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ardeotis australis,australian bustard,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Argentina elongata,argentine,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arnoglossus scapha,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Atrina serrata,penshell,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Aulacomya ater,mussel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Austrovenus stutchburyi,venus clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Barbatia cancellaria,arkshell,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Basilichthys australis,silverside,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Bathyraja trachura,skate,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Batrachoides surinamensis,toadfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Bodianus scrofa,hogfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Brama australis,pomfret,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Brotula clarkae,brotula,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Busycotypus spiratus,whelk,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Callinectes amnicola,swimming crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cancer borealis,jonah crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Cancer irroratus,atlantic rock crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Cancer productus,rock crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Carebara vidua,black ant,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Caulolatilus chrysops,tilefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Caulolatilus princeps,tilefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Centropristis ocyurus,sea bass,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cervimunida johni,squat lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Cetengraulis mysticetus,anchovy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chaceon maritae,red crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chaceon quinquedens,red crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chaetodipterus zonatus,spadefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cheilodactylus spectabilis,morwong,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cheilotrema saturnum,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chione undatella,venus clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chionista fluctifraga,venus clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chionoecetes angulatus,snow crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chionoecetes tanneri,snow crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chirostoma jordani,charal,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys albida,scallop,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys vitrea,scallop,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chloroscombrus orqueta,bumper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlorurus perspicillatus,parrotfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cichla orinocensis,cichlid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ciliata septentrionalis,rockling,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cilus gilberti,corvina,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Clarias anguillaris,clarias fish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Clinocardium californiense,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Clinocardium nuttallii,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Coilia ramcarati,anchovy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Colistium guntheri,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Conger oligoporus,conger eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Congiopodus leucopaecilus,racehorse,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Coregonus albula,vendace,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Coregonus kiyi,chub,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Coregonus pidschian,whitefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Coregonus reighardi,cisco,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Corvula sanctaeluciae,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crangon franciscorum,california shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crangon septemspinosa,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea chilensis,oyster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea virginica,american cupped oyster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Cynoscion acoupa,weakfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cynoscion othonopterus,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cynoscion virescens,weakfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cyriopagopus albostriatus,thailand zebra leg tarantula,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Cyrtodaria siliqua,propeller clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Diagramma labiosum,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Dinocardium robustum,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Diodora aspera,limpet,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Diplodus argenteus,porgy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Dipturus olseni,skate,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Donax variabilis,coquina,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Doryteuthis pealeii,longfin inshore squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Encrasicholina purpurea,anchovy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Endoxyla leucomochla,witchetty grub,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Engraulis anchoita,argentine anchovy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Ensis ensis,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ensis macha,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus trophis,plump grouper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Eptatretus stoutii,hagfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Erimacrus isenbeckii,korean variety crabmeat,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Evechinus chloroticus,kina (new zealand urchin),animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Exocoetus obtusirostris,flyingfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Farfantepenaeus subtilis,brown shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Fissurella limbata,limpet,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Fissurella maxima,limpet,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Fodiator acutus,flyingfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Formica rufa,red wood ant,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Gari solida,pacific clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Genyagnus monopterygius,stargazer,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Genypterus chilensis,kingklip,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Genypterus maculatus,kingklip,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Glycymeris decussata,bittersweet,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Glycymeris glycymeris,dog cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Glycymeris pilosa,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Gnathophis cinctus,conger eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Gobionotothen marionensis,icefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Grammatorcynus bicarinatus,mackerel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haemulon melanurum,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haemulon scudderii,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haemulon steindachneri,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis assimilis,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis australis,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis corrugata,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis kamtschatkana,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis pourtalesii,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis walallensis,abalone,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliporoides sibogae,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliporoides triarthrus,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Harengula thrissina,herring,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Heterobranchus longifilis,sampa,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Heterocarpus laevigatus,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hippoglossina stomata,sole,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Holothuria mexicana,sea cucumber,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Holothuria tubulosa,sea cucumber,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hoplunnis diomediana,pike-conger eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hoplunnis macrura,pike-conger eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hyas araneus,spider crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hydrolagus novaezealandiae,chimaera,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hyperoglyphe bythites,driftfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hyperoglyphe perciformis,driftfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hyperoglyphe pringlei,butterfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hypoderma tarandi,caribou warble fly,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Ictalurus punctatus x Ictalurus furcatus,catfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ilisha megaloptera,herring,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Illex illecebrosus,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Isopisthus remifer,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Jasus lalandii,rock lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Jasus paulensis,rock lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Johnius dussumieri,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Kathetostoma giganteum,stargazer,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Kryptopterus limpok,sheatfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lasius fuliginosus,jet ant,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Latridopsis ciliaris,trumpeter,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lepidorhynchus denticulatus,grenadier,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lepidotrigla argus,searobin,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lepophidium brevibarbe,cusk-eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lepophidium jeannae,cusk-eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lethrinus variegatus,emperor,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Leukoma staminea,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Marty Smith
+Lithodes couesi,scarlet crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lithodes murrayi,murray crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Litopenaeus occidentalis,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Litopenaeus schmitti,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loligo gahi,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loligo media,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loligo ocula,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loligo plei,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lolliguncula panamensis,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lotella rhacina,morid cod,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loxorhynchus grandis,sheep crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lutjanus agennes,snapper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lutjanus inermis,snapper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macoma nasuta,bentnose clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrobrachium acanthurus,freshwater shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrobrachium carcinus,freshwater shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrobrachium ohione,freshwater shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrocallista maculata,calico clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrocallista nimbosa,venus clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrotermes bellicosus,winged termite,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Mactromeris polynyma,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mactrotoma fragilis,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Maja squinado,spider crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Malacoraja senta,skate,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Megabalanus psittacus,barnacle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Meganyctiphanes norvegica,krill,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Melophorus bagoti,red honey ant,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Menticirrhus undulatus,kingfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mercenaria campechiensis,clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metacarcinus edwardsii,rock crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metanephrops binghami,lobsterette,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metanephrops challengeri,lobsterette,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metapenaeus dobsoni,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metapenaeus endeavouri,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metapenaeus monoceros,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Microcosmus sabatieri,sea fig,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Micromesistius australis,blue whiting,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Micropterus notius,bass,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Morone chrysops x Morone saxatilis,striped bass hybrid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Morone mississippiensis,bass,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Morone saxatilis x Morone chrysops,bass,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mugil gyrans,mullet,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mugiloides chilensis,sandperch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mulinia edulis,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Muraena melanotis,moray eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Muraena robusta,moray eel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mustelus antarcticus,dogfish shark,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mustelus californicus,shark,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mustelus lenticulatus,dogfish shark,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Myleus pacu,pacu,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Myliobatis goodei,eagle ray,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mytilus galloprovicialis x Mytilus edulis,mussel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nebris microps,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nemadactylus douglasii,morwong,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nemadactylus macropterus,tarakihi,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nematalosa vlaminghi,gizzard shad,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nemipterus mesoprion,threadfin bream,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Neolithodes brodiei,lithodes crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nototodarus sloanii,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ocenebra japonica,snail,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Octopus insularis,octopus,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Octopus membranaceus,octopus,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Odontesthes regia,silverside,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Oecophylla smaragdina,asian weaver ant,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Opisthonema libertate,thread herring,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Oreochromis mossambicus x Oreochromis niloticus,red tilapia,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Orycteo rhinoceros,rhinoceros beetle larvae,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Oryctes boas,rhinoceros beetle larvae,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Ostrea conchaphila,oyster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Otolithoides biauritus,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palaemonetes vulgaris,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palinurus delagoae,spiny lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palinurus gilchristi,spiny lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pandalopsis dispar,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pandalus goniurus,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pandalus jordani,ocean (coldwater) shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Marty Smith
+Panulirus gracilis,spiny lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus laevicauda,spiny lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paphies australis,wedge clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paphies subtriangulata,wedge clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paphies ventricosa,wedge clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralichthys aestuarius,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralichthys microps,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralonchurus peruanus,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parambassis baculis,chanda,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parapenaeopsis sculptilis,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parapenaeopsis stylifera,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parapercis colias,sandperch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paratrachichthys trailli,roughy,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paristiopterus labiosus,boarfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parona signata,argentine queenfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Peprilus simillimus,butterfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Percophis brasiliensis,duckbill,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Platycephalus longispinis,flathead,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Platyrhinoidis triseriata,guitarfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Plebidonax deltoides,pipi,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Plesionika martia,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pleuroncodes monodon,red squat lobster,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Pleuroncodes planipes,pelagic red crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Pleuronichthys ritteri,turbot,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pleuroploca gigantea,conch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Polinices heros,moonsnail,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pomadasys crocro,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pomadasys panamensis,grunt,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Portunus reticulatus,swimming crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Portunus segnis,swimming crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Portunus tuberculosus,swimming crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Procambarus zonangulus,white river crawfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Prognichthys gibbifrons,flyingfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Prolatilus jugularis,tilefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Protothaca staminea,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Protothaca tenerrima,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Protothaca thaca,hardshell clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudeutropius atherinoides,potasi,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudolais micronemus,shortbarbel pangasius,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudopercis semifasciata,sandperch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudophycis bachus,morid cod,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudophycis barbata,morid cod,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pseudupeneus grandisquamis,goatfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ptychocheilus grandis,carp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rangia cuneata,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhacochilus toxotes,surfperch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhinobatos productus,guitarfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhombosolea plebeia,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhombosolea retiaria,flounder,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Romaleon antennarium,rock crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Roncador stearnsii,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ruspolia differens,longhorn grasshopper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Salanx prognathus,noodlefish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Salilota australis,morid cod,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sanguinolaria sanguinolenta,sanguin clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sarda australis,bonito,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sardinops neopilchardus,pilchard,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sarotherodon galilaeus galilaeus,tilapia,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Saurida filamentosa,lizardfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Saxidomus gigantea,butter clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Saxidomus nuttalli,butter clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Schedophilus ovalis,imperial blackfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scomberomorus lineolatus,streaked spanish mackerel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Scorpaena cardinalis,rockfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scorpaena dispar,scorpionfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scorpaena guttata,scorpionfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scorpaena papillosa,rockfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastolobus altivelis,thornyhead,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepioteuthis sepioidea,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Seriolella caerulea,warehou,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Seriphus politus,drum,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Serripes groenlandicus,cockle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sicyonia brevirostris,brown rock shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Siliqua alta,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Siliqua patula,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Marty Smith
+Sillago bassensis,whiting,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sillago robusta,whiting,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Spaerechinus granularis,sea urchin,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sphoeroides lobatus,puffer,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sphyraena argentea,barracuda,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Spisula solida,surf clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Spisula solidissima,atlantic surf clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Marty Smith
+Strombus alatus,conch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Strombus costatus,conch,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Synclidopus macleayanus,sole,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tagelus californianus,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tagelus dombeii,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tagelus plebeius,razor clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tapes rhomboides,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tapes variegata,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Thysanoessa inermis,krill,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tivela stultorum,pismo clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Todarodes angolensis,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Todarodes sagittatus,squid,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Torpedo californica,electric ray,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trachinotus africanus,southern pompano,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,SJ
+Trachinotus kennedyi,pompano,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trachinotus rhodopus,pompano,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trachurus declivis,jack mackerel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trachurus novaezelandiae,jack mackerel,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tresus capax,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tresus nuttallii,surfclam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Triportheus albus,hatchetfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ucides occidentalis,pacific mangrove ghost crab,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Umbrina cirrosa,drum,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Umbrina coroides,drum,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Umbrina roncador,croaker,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Upeneichthys lineatus,goatfish,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Urophycis cirrata,hake,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Venerupis aurea,littleneck clam,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Xenobrama microlepis,pomfret,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Xiphopenaeus kroyeri,shrimp,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Xylotrupes gideon,brown rhinoceros beetle,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Zonocerus variegatus,painted grasshopper,animal,12SV5,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Carcharhinus porosus,shark,animal,12SV5,primer pair only on sequences with ambiguity codes,11,11,1,1,0,1,134,,,"FDA The Seafood List, 2023/07/21"
+Acanthurus gahhm,surgeonfish,animal,12SV5,primer pair only on UNVERIFIED records,1,1,1,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Acanthopagrus berda,porgy,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Acetes japonicus,shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Achatina fulica,snail,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Acheta domesticus,house cricket,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Aequipecten glyptus,scallop,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Aliger gigas,queen conch,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Allosmerus elongatus,smelt,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Alphitobius diaperinus,lesser mealworm,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Ambloplites cavifrons,bass,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Amphioctopus fangsiao,webfoot octopus,animal,12SV5,"records, but none carries the primer pair",21,21,0,0,0,0,,,,SJ
+Amusium japonicum,scallop,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Amusium papyraceum,scallop,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Amusium pleuronectes,scallop,animal,12SV5,"records, but none carries the primer pair",18,18,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Anisotremus interruptus,grunt,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Apis cerana,eastern honey bee,animal,12SV5,"records, but none carries the primer pair",28,28,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Apis dorsata,giant honey bee,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Apis mellifera,honeybee,animal,12SV5,"records, but none carries the primer pair",222,222,0,0,0,0,,,,JL
+Apocryptes bato,chiring,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Apostichopus japonicus,japanese sea cucumber,animal,12SV5,"records, but none carries the primer pair",18,18,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Apsilus dentatus,snapper,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arca granosa,cockle,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arctica islandica,ocean quahog,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,Marty Smith
+Argopecten gibbus,calico scallop,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Argopecten irradians,atlantic bay scallop,animal,12SV5,"records, but none carries the primer pair",9,9,0,0,0,0,,,,SJ
+Argopecten nucleus,scallop,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Argopecten purpuratus,scallop,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Argopecten ventricosus,calico scallop,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Aristaeomorpha foliacea,shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Aristaeopsis edwardsiana,shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Atractoscion nobilis,seabass,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Atrina pectinata,pen shell,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Austroglossus microlepis,sole,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Austroglossus pectoralis,sole,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Babylonia areolata,whelk,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Bathynomus giganteus,isopod,animal,12SV5,"records, but none carries the primer pair",205,205,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Berryteuthis magister,squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Bombyx mori,silkworm,animal,12SV5,"records, but none carries the primer pair",1176,500,0,0,0,0,,,,SJ
+Brama brama,pomfret,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Busycotypus canaliculatus,whelk,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Calamus arctifrons,porgy,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Callinectes arcuatus,swimming crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Callinectes bellicosus,swimming crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Callinectes rathbunae,swimming crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Callinectes sapidus,atlantic blue crab,animal,12SV5,"records, but none carries the primer pair",33,33,0,0,0,0,,,,BP
+Callinectes toxotes,swimming crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cancer magister,dungeness crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,JL
+Cancer pagurus,rock crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Carcharhinus altimus,shark,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Carcharhinus isodon,shark,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Carcharhinus signatus,shark,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Carcinus maenas,swimming crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cardisoma armatum,land crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cellana denticulata,limpet,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Centroberyx affinis,alfonsino,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Centrolophus niger,black ruff,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Centropomus mexicanus,snook,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cephenemyia trompe,caribou nose bot fly,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Cerastoderma edule,common cockle,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,SJ
+Cheilopogon exsiliens,flyingfish,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chelidonichthys lucernus,searobin,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cherax destructor,common yabby,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Chionoecetes bairdi,snow crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,SJ
+Chionoecetes japonicus,beni-zuwai crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chionoecetes opilio,snow crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Chironemus marmoratus,kelpfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys farreri,scallop,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys hastata,scallop,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys islandica,scallop,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlamys rubida,scallop,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chlorurus gibbus,parrotfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Chondracris rosea,grasshopper,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Cipangopaludina chinensis,snail,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Citharichthys sordidus,sanddab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cleisthenes pinetorum,flounder,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Concholepas concholepas,loco,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,JL
+Corica soborna,sprat,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crangon crangon,shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea angulata,oyster,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crassostrea gigas,pacific cupped oyster,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,BP
+Crepidula fornicata,slipperysnail,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Crocothemis servilia,scarlet skimmer dragonfly,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,BP
+Cyclopsetta chittendeni,flounder,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cymbium olla,volute,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cynoscion parvipinnis,croaker,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Cyttus novaezealandiae,dory,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Doryteuthis opalescens,squid,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Dosidicus gigas,giant calamari,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Echinus esculentus,sea urchin,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Elops affinis,ladyfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ensis arcuatus,razor clam,animal,12SV5,"records, but none carries the primer pair",13,13,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ensis directus,razor clam,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ensis siliqua,razor clam,animal,12SV5,"records, but none carries the primer pair",17,17,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Enteroctopus dofleini,giant pacific octopus,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,SJ
+Epigonus telescopus,cardinalfish,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus analogus,cabrilla,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus diacanthus,grouper,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus heniochus,grouper,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Epinephelus mystacinus,grouper,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Eriocheir sinensis,chinese mitten crab,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Euastacus armatus,crawfish,animal,12SV5,"records, but none carries the primer pair",45,45,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Eucidaris tribuloides,slate pencil urchin,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,BP
+Euvola ziczac,scallop,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Exopalaemon styliferus,shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Farfantepenaeus aztecus,northern brown shrimp,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,SJ
+Farfantepenaeus brasiliensis,shrimp,animal,12SV5,"records, but none carries the primer pair",27,27,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Farfantepenaeus duorarum,northern pink shrimp,animal,12SV5,"records, but none carries the primer pair",26,26,0,0,0,0,,,,SJ
+Farfantepenaeus notialis,southern pink shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Fenneropenaeus chinensis,chinese white shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Fenneropenaeus indicus,indian prawn,animal,12SV5,"records, but none carries the primer pair",15,15,0,0,0,0,,,,SJ
+Fenneropenaeus merguiensis,shrimp,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Fenneropenaeus penicillatus,shrimp,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Genypterus capensis,kingklip,animal,12SV5,"records, but none carries the primer pair",13,13,0,0,0,0,,,,SJ
+Geothelphusa dehaani,japanese crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Gryllodes sigillatus,tropical house cricket,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Gymnachirus melas,sole,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis fulgens,abalone,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis gigantea,abalone,animal,12SV5,"records, but none carries the primer pair",40,40,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis iris,abalone,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis laevigata,abalone,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis roei,abalone,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis rubra,abalone,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis rufescens,abalone,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Haliotis tuberculata,abalone,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Helix pomatia,escargot,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,BP
+Hexagrammos octogrammus,greenling,animal,12SV5,"records, but none carries the primer pair",47,47,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Holothuria fuscogilva,white teatfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Australian Fisheries Management Authority
+Holothuria poli,sea cucumber,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Holothuria whitmaei,black teatfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Australian Fisheries Management Authority
+Homarus americanus,lobster,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,BP
+Homarus gammarus,lobster,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hoplopagrus guentherii,pargo,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Hoplostethus atlanticus,orange roughy,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,JL
+Hypsophrys nicaraguensis,cichlid,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ibacus ciliatus,slipper lobster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Illex argentinus,squid,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Illex coindetii,squid,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Isostichopus badionotus,sea cucumber,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Jasus edwardsii,southern rock lobster,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Jasus frontalis,rock lobster,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lambis lambis,conch,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lampris immaculatus,southern opah,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Latris lineata,trumpeter,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lethocerus indicus,giant water bug,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Limanda punctatissima,flounder,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lithodes aequispinus,golden king crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lithodes santolla,santolla crab,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Litopenaeus setiferus,atlantic white shrimp,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,SJ
+Litopenaeus stylirostris,shrimp,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Litopenaeus vannamei,whiteleg shrimp,animal,12SV5,"records, but none carries the primer pair",31,31,0,0,0,0,,,,BP
+Littorina littorea,periwinkle,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,JL
+Littorina sitkana,periwinkle,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Loligo forbesii,veined squid,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Loligo vulgaris,european squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,SJ
+Loliolus beka,squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lolliguncula brevis,squid,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lopholithodes foraminatus,brown box crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lottia gigantea,limpet,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Lutjanus aratus,snapper,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Macrobrachium rosenbergii,giant river prawn,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Macrotermes subhyalinus,winged termite,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Macruronus magellanicus,grenadier,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mactra sachalinensis,surfclam,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Magallana gigas,pacific cupped oyster,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Marsupenaeus japonicus,kurama shrimp,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,SJ
+Melicertus kerathurus,striped prawn,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Melicertus latisulcatus,shrimp,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Melicertus plebejus,eastern king prawn,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Menippe adina,stone crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Menippe mercenaria,stone crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mercenaria mercenaria,northern quahog,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Meretrix lyrata,white hard clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Merluccius paradoxus,deep-water cape hake,animal,12SV5,"records, but none carries the primer pair",14,14,0,0,0,0,,,,SJ
+Mesocentrotus franciscanus,red sea urchin,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,BP
+Metacarcinus magister,dungeness crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,JL
+Metanephrops rubellus,lobsterette,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metapenaeus affinis,shrimp,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Metapenaeus ensis,shrimp,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Micropterus treculii,bass,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mimachlamys varia,scallop,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mizuhopecten yessoensis,yesso scallop,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Modiolus barbatus,mussel,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Modiolus modiolus,mussel,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Monodonta turbinata,top shell,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Monomia haanii,swimming crab,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mora moro,morid cod,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mulloidichthys dentatus,goatfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mullus barbatus,mullet,animal,12SV5,"records, but none carries the primer pair",17,17,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mya arenaria,soft-shell clam,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,SJ
+Mycteroperca jordani,grouper,animal,12SV5,"records, but none carries the primer pair",9,9,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mycteroperca phenax,grouper,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mytilus californianus,mussel,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mytilus chilensis,mussel,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Mytilus edulis,blue mussel,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,BP
+Mytilus galloprovincialis,mussel,animal,12SV5,"records, but none carries the primer pair",34,34,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Myxine glutinosa,hagfish,animal,12SV5,"records, but none carries the primer pair",15,15,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nephrops norvegicus,norway lobster,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Nephropsis aculeata,lobsterette,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Nezara viridula,southern green stink bug,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Octopus minor,long arm octopus,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Octopus vulgaris,octopus,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ommastrephes bartramii,squid,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ophichthus rex,snake eel,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Opsanus pardus,toadfish,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ostrea edulis,european flat oyster,animal,12SV5,"records, but none carries the primer pair",18,18,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Ostrea lurida,oyster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ovalipes punctatus,swimming crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palaemon serratus,shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palinurus elephas,spiny lobster,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Palinurus mauritanicus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pandalus hypsinotus,shrimp,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panopea abrupta,geoduck clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panopea generosa,geoduck,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,SJ
+Panulirus argus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus cygnus,western rock lobster,animal,12SV5,"records, but none carries the primer pair",54,54,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Panulirus homarus,scalloped spiny lobster,animal,12SV5,"records, but none carries the primer pair",9,9,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Panulirus inflatus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus interruptus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus japonicus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",50,50,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus marginatus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus ornatus,tropical rock lobster,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,Australian Fisheries Management Authority
+Panulirus penicillatus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",45,45,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus polyphagus,spiny lobster,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus regius,spiny lobster,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Panulirus versicolor,spiny lobster,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paracentrotus lividus,atlantic purple sea urchin,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,BP
+Parachanna obscura,channa,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralichthys patagonicus,flounder,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralithodes brevipes,king crab,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paralithodes camtschaticus,red king crab,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Paralithodes platypus,blue king crab,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,SJ
+Paralomis granulosa,deepsea crab,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parancistrus aurantiacus,pleco,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Paranotothenia magellanica,cod,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parapenaeus longirostris,shrimp,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Parupeneus cyclostomus,goatfish,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Patella caerulea,limpet,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Patinopecten caurinus,scallop,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Patinopecten yessoensis,scallop,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pecten albicans,scallop,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pecten jacobaeus,scallop,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pecten maximus,scallop,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pecten novaezelandiae,scallop,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Penaeus esculentus,brown tiger prawn,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,SJ
+Penaeus indicus,indian white prawn,animal,12SV5,"records, but none carries the primer pair",15,15,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Penaeus monodon,black tiger shrimp,animal,12SV5,"records, but none carries the primer pair",125,125,0,0,0,0,,,,BP
+Penaeus semisulcatus,green tiger prawn,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,SJ
+Penaeus setiferus,white shrimp,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,BP
+Penaeus vannamei,whiteleg shrimp,animal,12SV5,"records, but none carries the primer pair",31,31,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Perna canaliculus,new zealand mussel,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Placopecten magellanicus,atlantic deep-sea scallop,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,SJ
+Pleoticus muelleri,shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pleoticus robustus,royal shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pleuronichthys decurrens,sole,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pollicipes pollicipes,barnacle,animal,12SV5,"records, but none carries the primer pair",328,328,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pollicipes polymerus,barnacle,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Portunus armatus,blue swimmer crab,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,SJ
+Portunus pelagicus,flower crab,animal,12SV5,"records, but none carries the primer pair",21,21,0,0,0,0,,,,SJ
+Portunus sanguinolentus,swimming crab,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Portunus trituberculatus,swimming crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pristipomoides flavipinnis,jobfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Procambarus acutus,crawfish,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Procambarus clarkii,red swamp crawfish,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Pseudacanthotermes militaris,termite,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Pseudacanthotermes spiniger,termite,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Pseudapocryptes elongatus,goby,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Pterogymnus laniarius,porgy,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Puntius chola,punti,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Raja inornata,skate,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Raja texana,skate,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ranina ranina,spanner crab,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,SJ
+Rapana venosa,whelk,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhinobatos lentiginosus,guitarfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhombosolea leporina,flounder,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhombosolea tapirina,flounder,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Rhynchophorus phoenicis,african palm weevil,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Rossia macrosoma,squid,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Ruditapes decussatus,grooved carpet shell,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Ruditapes philippinarum,japanese carpet shell,animal,12SV5,"records, but none carries the primer pair",46,46,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Ruspolia nitidula,senene,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Saccostrea cuccullata,oyster,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Saccostrea glomerata,sydney cupped oyster,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Sagmariasus verreauxi,rock lobster,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Samariscus triocellatus,flounder,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sarda chiliensis,bonito,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sardinella fimbriata,sardine,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sardinops ocellatus,pilchard,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Schistocerca gregaria,desert locust,animal,12SV5,"records, but none carries the primer pair",22,22,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Sciades parkeri,gilleybaka,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scomberomorus regalis,spanish mackerel,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scophthalmus rhombus,brill,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,JL
+Scylla olivacea,swimming crab,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scylla paramamosain,swimming crab,animal,12SV5,"records, but none carries the primer pair",21,21,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scylla serrata,indo-pacific swamp crab,animal,12SV5,"records, but none carries the primer pair",17,17,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Scylla tranquebarica,swimming crab,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scyllarides brasiliensis,slipper lobster,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Scyllarides squammosus,slipper lobster,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes atrovirens,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes borealis,rockfish,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes capensis,scorpionfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes chlorostictus,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes chrysomelas,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes ensifer,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes gilli,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes lentiginosus,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes levis,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes melanosema,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes phillipsi,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes rastrelliger,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes rufinanus,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes serranoides,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sebastes serriceps,rockfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepia esculenta,cuttlefish,animal,12SV5,"records, but none carries the primer pair",10,10,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepia lycidas,cuttlefish,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepiola rondeletii,squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepioteuthis australis,squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sepioteuthis lessoniana,squid,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sergia lucens,shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Seriolella brama,warehou,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Seriolella punctata,warehou,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Serranus atricauda,bass,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sillago domina,whiting,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sinotaia quadrata,snail,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Solen grandis,razor clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Solen marginatus,razor clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Solenocera agassizii,shrimp,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Solenocera melantho,shrimp,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sphenarium purpurascens,grasshopper,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Sphyraena ensis,barracuda,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sphyrna tudes,shark,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Spirinchus starksi,smelt,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Spisula sachalinensis,surf clam,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Squilla mantis,mantis shrimp,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Sthenoteuthis oualaniensis,squid,animal,12SV5,"records, but none carries the primer pair",12,12,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Stromateus brasiliensis,butterfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Strombus gigas,conch,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Strombus pugilis,conch,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Strongylocentrotus droebachiensis,green sea urchin,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,BP
+Strongylocentrotus purpuratus,pacific purple sea urchin,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,BP
+Styela clava,sea squirt,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Styela plicata,sea squirt,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Symphorichthys spilurus,snapper,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tectura testudinalis,limpet,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Tegillarca granosa,blood cockle,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,SJ
+Tenebrio molitor,yellow mealworm beetle,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Tessaratoma quadrata,stink bug,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Thelenota ananas,prickly redfish,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,Australian Fisheries Management Authority
+Tilapia rendalli,tilapia,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Todarodes pacificus,japanese flying squid,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,SJ
+Tonna galea,tun,animal,12SV5,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trachysalambria curvirostris,shrimp,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Triportheus elongatus,hatchetfish,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Trophon geversianus,sea snail,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Turbo cornutus,top shell,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Upeneus parvus,goatfish,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Uroteuthis chinensis,squid,animal,12SV5,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Uroteuthis duvauceli,squid,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Varanus giganteus,perentie,animal,12SV5,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Venerupis aspera,littleneck clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Venerupis decussata,littleneck clam,animal,12SV5,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Venerupis philippinarum,japanese littleneck,animal,12SV5,"records, but none carries the primer pair",46,46,0,0,0,0,,,,BP
+Vespa orientalis,oriental hornet,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"Halloran, Flore, Vantomme, Roos, ""Edible Insects in Sustainable Food Systems"""
+Vespa velutina,asian hornet,animal,12SV5,"records, but none carries the primer pair",11,11,0,0,0,0,,,,BP
+Watasenia scintillans,squid,animal,12SV5,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Zeus capensis,cape dory,animal,12SV5,"records, but none carries the primer pair",7,7,0,0,0,0,,,,SJ
+Zygochlamys delicatula,scallop,animal,12SV5,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Zygochlamys patagonica,scallop,animal,12SV5,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"FDA The Seafood List, 2023/07/21"
+Arripis georgianus,kahawai,animal,12SV5,RECOVERABLE but labelled with a different name,2,2,1,1,1,0,135,Arripis georgiana,OZ541178.1,"FDA The Seafood List, 2023/07/21"
+Crenimugil crenilabis,mullet,animal,12SV5,RECOVERABLE but labelled with a different name,6,6,4,4,4,0,135,Moolgarda crenilabis,NC_017884.1,"FDA The Seafood List, 2023/07/21"
+Cypselurus agoo,flyingfish,animal,12SV5,RECOVERABLE but labelled with a different name,5,5,2,2,2,0,135,Cheilopogon agoo,NC_036720.1,"FDA The Seafood List, 2023/07/21"
+Meuschenia scaber,triggerfish,animal,12SV5,RECOVERABLE but labelled with a different name,1,1,1,1,1,0,134,Meuschenia scabra,OZ556217.1,"FDA The Seafood List, 2023/07/21"
+Torpedo nobiliana,torpedo,animal,12SV5,RECOVERABLE but labelled with a different name,1,1,1,1,1,0,132,Tetronarce nobiliana,PX963075.1,"FDA The Seafood List, 2023/07/21"
+Allothunnus fallai,tuna,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Allothunnus fallai,OZ556010.1,"FDA The Seafood List, 2023/07/21"
+Argyrosomus hololepidotus,croaker,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Argyrosomus hololepidotus,OZ541390.1,"FDA The Seafood List, 2023/07/21"
+Argyrosomus regius,meagre,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Argyrosomus regius,PP467820.1,FAO Cultured Aquatic Species Fact Sheets
+Bagarius bagarius,goonch,animal,12SV5,RECOVERABLE under the queried name,2,2,2,1,1,0,133,Bagarius bagarius,PX725397.1,"FDA The Seafood List, 2023/07/21"
+Bos grunniens,yak,animal,12SV5,RECOVERABLE under the queried name,591,500,458,458,458,0,136,Bos grunniens,OP380876.1,https://www.fao.org/4/ad347e/ad347e07.htm
+Bothus ocellatus,flounder,animal,12SV5,RECOVERABLE under the queried name,4,4,2,2,2,0,135,Bothus ocellatus,QB058405.1,"FDA The Seafood List, 2023/07/21"
+Calamus leucosteus,porgy,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Calamus leucosteus,QB059689.1,"FDA The Seafood List, 2023/07/21"
+Carangoides otrynter,threadfin,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Carangoides otrynter,PV814453.1,"FDA The Seafood List, 2023/07/21"
+Carangoides ruber,jack,animal,12SV5,RECOVERABLE under the queried name,3,3,3,3,3,0,135,Carangoides ruber,QB069592.1,"FDA The Seafood List, 2023/07/21"
+Caranx caninus,jack,animal,12SV5,RECOVERABLE under the queried name,5,5,4,4,4,0,135,Caranx caninus,PV814458.1,"FDA The Seafood List, 2023/07/21"
+Caulolatilus affinis,tilefish,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,136,Caulolatilus affinis,QB058410.1,"FDA The Seafood List, 2023/07/21"
+Centroberyx gerrardi,alfonsino,animal,12SV5,RECOVERABLE under the queried name,6,6,3,3,3,0,134,Centroberyx gerrardi,OZ556047.1,"FDA The Seafood List, 2023/07/21"
+Centropomus armatus,snook,animal,12SV5,RECOVERABLE under the queried name,2,2,2,2,2,0,136,Centropomus armatus,PV814464.1,"FDA The Seafood List, 2023/07/21"
+Cheilopogon furcatus,flyingfish,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Cheilopogon furcatus,BK063454.1,"FDA The Seafood List, 2023/07/21"
+Cheilopogon melanurus,flyingfish,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Cheilopogon melanurus,PZ319382.1,"FDA The Seafood List, 2023/07/21"
+Cybiosarda elegans,bonito,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Cybiosarda elegans,OZ555934.1,"FDA The Seafood List, 2023/07/21"
+Decapterus kurroides,scad,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Decapterus kurroides,PX430019.1,"FDA The Seafood List, 2023/07/21"
+Diagramma melanacrum,grunt,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Diagramma melanacrum,PZ253509.1,"FDA The Seafood List, 2023/07/21"
+Engraulis australis,anchovy,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Engraulis australis,OZ556151.1,"FDA The Seafood List, 2023/07/21"
+Epinephelus poecilonotus,grouper,animal,12SV5,RECOVERABLE under the queried name,4,4,1,1,1,0,135,Epinephelus poecilonotus,OZ556066.1,"FDA The Seafood List, 2023/07/21"
+Goniistius gibbosus,morwong,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Goniistius gibbosus,OZ555982.1,"FDA The Seafood List, 2023/07/21"
+Haemulon bonariense,grunt,animal,12SV5,RECOVERABLE under the queried name,5,5,5,5,5,0,134,Haemulon bonariense,PZ319368.1,"FDA The Seafood List, 2023/07/21"
+Haemulon sciurus,grunt,animal,12SV5,RECOVERABLE under the queried name,3,3,3,3,3,0,134,Haemulon sciurus,PZ310910.1,"FDA The Seafood List, 2023/07/21"
+Holocentrus rufus,squirrelfish,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,134,Holocentrus rufus,PZ310803.1,"FDA The Seafood List, 2023/07/21"
+Kuhlia marginata,aholehole,animal,12SV5,RECOVERABLE under the queried name,4,4,1,1,1,0,135,Kuhlia marginata,LC946651.1,"FDA The Seafood List, 2023/07/21"
+Lama glama,llama,animal,12SV5,RECOVERABLE under the queried name,4,4,3,3,3,0,135,Lama glama,NC_012102.1,https://www.fao.org/4/x6500e/x6500e21.htm
+Lama guanicoe,guanaco,animal,12SV5,RECOVERABLE under the queried name,9,9,6,6,6,0,135,Lama guanicoe,NC_011822.1,https://www.fao.org/4/x6500e/x6500e21.htm
+Lethrinus miniatus,emperor,animal,12SV5,RECOVERABLE under the queried name,5,5,4,4,4,0,135,Lethrinus miniatus,OZ556855.1,"FDA The Seafood List, 2023/07/21"
+Lutjanus argentiventris,snapper,animal,12SV5,RECOVERABLE under the queried name,4,4,1,1,1,0,135,Lutjanus argentiventris,PV814556.1,"FDA The Seafood List, 2023/07/21"
+Lutjanus cyanopterus,snapper,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Lutjanus cyanopterus,PV814560.1,"FDA The Seafood List, 2023/07/21"
+Lutjanus novemfasciatus,snapper,animal,12SV5,RECOVERABLE under the queried name,4,4,1,1,1,0,135,Lutjanus novemfasciatus,PV814561.1,"FDA The Seafood List, 2023/07/21"
+Lutjanus purpureus,snapper,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Lutjanus purpureus,QB069791.1,"FDA The Seafood List, 2023/07/21"
+Muraena retifera,moray eel,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,136,Muraena retifera,PZ284729.1,"FDA The Seafood List, 2023/07/21"
+Oligoplites saurus,jack,animal,12SV5,RECOVERABLE under the queried name,9,9,1,1,1,0,125,Oligoplites saurus,QB069671.1,"FDA The Seafood List, 2023/07/21"
+Paracaesio kusakarii,snapper,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Paracaesio kusakarii,PZ310923.1,"FDA The Seafood List, 2023/07/21"
+Paranthias furcifer,sea bass,animal,12SV5,RECOVERABLE under the queried name,3,3,1,1,1,0,135,Paranthias furcifer,PZ315213.1,"FDA The Seafood List, 2023/07/21"
+Platycephalus conatus,flathead,animal,12SV5,RECOVERABLE under the queried name,2,2,2,2,2,0,135,Platycephalus conatus,OZ556844.1,"FDA The Seafood List, 2023/07/21"
+Prionotus stephanophrys,searobin,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Prionotus stephanophrys,QB069672.1,"FDA The Seafood List, 2023/07/21"
+Pristipomoides typus,jobfish,animal,12SV5,RECOVERABLE under the queried name,4,4,3,2,2,0,135,Pristipomoides typus,OZ541371.1,"FDA The Seafood List, 2023/07/21"
+Pseudophycis breviuscula,morid cod,animal,12SV5,RECOVERABLE under the queried name,2,2,4,4,4,0,285.5,Pseudophycis breviuscula,OZ556161.1,"FDA The Seafood List, 2023/07/21"
+Pseudorhombus jenynsii,flounder,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,129,Pseudorhombus jenynsii,OZ541352.1,"FDA The Seafood List, 2023/07/21"
+Rhynchoconger gracilior,conger eel,animal,12SV5,RECOVERABLE under the queried name,2,2,2,2,2,0,135,Rhynchoconger gracilior,PZ091035.1,"FDA The Seafood List, 2023/07/21"
+Scomberesox saurus,saury,animal,12SV5,RECOVERABLE under the queried name,6,6,4,4,4,0,135,Scomberesox saurus,PP467801.1,"FDA The Seafood List, 2023/07/21"
+Sebastes aurora,rockfish,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Sebastes aurora,PX724978.1,"FDA The Seafood List, 2023/07/21"
+Sebastes hopkinsi,rockfish,animal,12SV5,RECOVERABLE under the queried name,2,2,1,1,1,0,135,Sebastes hopkinsi,PX724970.1,"FDA The Seafood List, 2023/07/21"
+Sebastes umbrosus,rockfish,animal,12SV5,RECOVERABLE under the queried name,6,6,4,4,4,0,135,Sebastes umbrosus,PZ044199.1,"FDA The Seafood List, 2023/07/21"
+Selene peruviana,jack,animal,12SV5,RECOVERABLE under the queried name,2,2,2,2,2,0,135,Selene peruviana,PZ310835.1,"FDA The Seafood List, 2023/07/21"
+Siganus javus,spinefoot,animal,12SV5,RECOVERABLE under the queried name,6,6,1,1,1,0,135,Siganus javus,PZ226884.1,"FDA The Seafood List, 2023/07/21"
+Squalus suckleyi,pacific spiny dogfish,animal,12SV5,RECOVERABLE under the queried name,3,3,1,1,1,0,134,Squalus suckleyi,PZ086324.1,NOAA Fisheries
+Stenotomus caprinus,porgy,animal,12SV5,RECOVERABLE under the queried name,6,6,2,2,2,0,135,Stenotomus caprinus,QB069606.1,"FDA The Seafood List, 2023/07/21"
+Symphorus nematophorus,snapper,animal,12SV5,RECOVERABLE under the queried name,4,4,3,3,3,0,135,Symphorus nematophorus,OZ555986.1,"FDA The Seafood List, 2023/07/21"
+Trachinotus paitensis,pompano,animal,12SV5,RECOVERABLE under the queried name,1,1,1,1,1,0,135,Trachinotus paitensis,PV814592.1,"FDA The Seafood List, 2023/07/21"
+Trachurus picturatus,scad,animal,12SV5,RECOVERABLE under the queried name,2,2,2,2,2,0,135,Trachurus picturatus,PP467791.1,"FDA The Seafood List, 2023/07/21"
+Acacia pennata,cha-om,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Aframomum laurentii,bongongoo,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Aloe cooperi,cooper's aloe,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Alpinia globosa,round chinese cardamom,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Apium carvi,caraway,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Brassica oleracea var. capitata f. acuta,cone cabbage,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica oleracea var. capitata f. rubra,red cabbage,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica oleracea var. capitata f. sabauda,savoy cabbage,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica oleracea var. italica x alboglabra,broccolini,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica oleracea var. longata,jersey cabbage,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica rapa subsp. parachinensis,choy sum,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica rapa subsp. perviridis,komatsuna,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Brassica rapa var. rapifera,rapini,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Calathea allouia,guinea arrowroot,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Carica pentagona,babaco,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Carica x pentagona,babaco,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Carum roxburghianum,radhuni,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Cinamommum burmannii,indonesian cinnamon,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Cinamommum citriodorum,malabar cinnamon,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Cinamommum loureiroi,saigon cinnamon,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Citrus limettioides,Palestinian sweet lime,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Blancke 2016
+Citrus mitis,calamansi,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Cucurbita pepo var. turbinata,acorn squash,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,BP
+Durio testudinarum,durian kura-kura,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Entada phaseolides,st thomas bean,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ipomoea mammosa,ipomoea genus,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Juglans honorei,colombian walnut,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Lippia adoensis,koseret,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Melilotus macrorhizus,tall melilot,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Mucuna pachylobia,fleshy pod bean,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Nymphaea x rubra,red water lily,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Omphalea megacarpa,hunter nut,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Oxalis deppei,iron cross plant,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Pithecellobium jiringa,jenkol,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Polygala butyracea,black beniseed,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Polygonum maximowiczii,water pepper,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Ribes x nidigrolaria,jostaberry,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Rollinia dolabripetala,lancewood,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Rolliniopsis discreta,monkey fruit,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Rubus brasiliensis,amorinha verde,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Rubus ursinus x idaeus,boysenberry,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Solanum betaceam,tamarillo,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Solanum duplosinuatum,bussu,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Solanum viride,cannibals tomato,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Syzygium formosum,phul jamb,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,Milla 2020 Crop Origins
+Talisia olivaeformis,honeyberry,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Sterling, ""Yucatan"""
+Triticum vavilovii,spelt,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,GRIN Taxonomy for Plants
+Tulip gesneriana,garden tulip,plant,trnL,name not recognised by NCBI taxonomy,,,,,,,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Agathosma betulina,buchu,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"van Wyk, ""Food Plants of the World"""
+Alpinia conchigera,lesser alpinia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Alpinia latilabris,shell ginger,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ammi majus,bishops weed,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Amomum aromaticum,nepal cardamon,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Amomum longiligulare,hainan amomum,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Amomum verum,cambodian cardamom,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Ancylobothrys petersiana,climbing milk-apricot,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Aneilema aequinoctiale,clinging aneilema,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Angelica japonica,ma qing,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Annona diversifolia,ilama,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Annona scleroderma,cawesh,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Anonidium mannii,bobo,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Anredera baselloides,anredera genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Arachis villosulicarpa,perennial peanut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Archidendron bigeminum,kalitiya,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Archidendron bubalinum,kerdas,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Archidendron jiringa,djenkol tree,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Baccaurea racemosa,kapundung,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Bactris guineensis,prickly pole,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Blancke 2016
+Bambusa horsfieldii,bambu napap,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Banksia integrifolia,coast banksia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Barringtonia novae-hiberniae,pau nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Barringtonia procera,pau nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Barringtonia scortechinii,putat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Begonia x tuberhybrida,tuberous begonia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Beta palonga,beta genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Billardiera scandens,apple berry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Brachiaria ramosa,browntop millet,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Brassica oleracea var. botrytis x italica,broccoflower,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Bromus mango,mango,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Buchanania obovata,green plum,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Bunchosia costaricensis,cereza,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Bunium bulbocastanum,pig nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Campomanesia lineatifolia,chamba,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Canavalia plagiosperma,oblique seed jackbean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Capparis arborea,native pomegranate,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Capparis mitchellii,wild orange,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Caryocar nuciferum,pekea nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Cenchrus biflorus,indian sandbur,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Cereus hexagonus,cirio,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Cereus repandus,peruvian apple cactus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Chaerophyllum bulbosum,turnip rooted chervil,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Chionachne gigantea,chionachne genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Chondrus crispus,carageenan,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Chrysophyllum africanum,african star apple,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Cinnamomum loureiroi,saigon cinnamon,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Citrus amblycarpa,nasnaran,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Citrus meyeri,meyer lemon,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Citrus x floridana,limequat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Claytonia perfoliata,indian lettuce,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Cordia dodecandra,ciricote,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Sterling, ""Yucatan"""
+Cordyline fruticosa,ti plant,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Crambe maritima,seacale,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Crataegus orientalis,oriental hawthorn,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Crotalaria longirostrata,longbeak rattlebox,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Curcuma pierreana,curcuma genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Cynometra cauliflora,nam-nam,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Digitaria iburua,fonio,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Dillenia serrata,dongi,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Dioscorea flabellifolia,fanleaf yam,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Diospyros major,mapa,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Diuris semilunulata,late leopard orchid,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Durio kinabaluensis,durian kinabalu,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Elaeagnus multiflora,goumi,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Elaeocarpus floribundus,indian olive,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Eleiodoxa conferta,asam kelubi,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Enydra fluctuans,buffalo spinach,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Etlingera hemisphaerica,helani tulip ginger,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Exocarpos cupressiformis,native cherry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Ficus aspera,mosaic fig,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ficus copiosa,plentiful fig,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Ficus coronata,sandpaper fig,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Ficus dammaropsis,kapiak,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ficus rubiginosa,rusty fig,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Flacourtia inermis,lovi-lovi,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Freesia leichtlinii,freesia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Fuchsia x hybrida,fuchsia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia atroviridis,asam gelugor,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia cochinchinensis,false mangosteen,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Garcinia cowa,cowa fruit,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia dulcis,mundu,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia forbesii,rose kandis,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia hombroniana,seashore mangosteen,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia humilis,achacha,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia livingstonei,african mangosteen,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia macrophylla,big leaf garcinia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia multiflora,doc,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Garcinia nervosa,pear mangosteen,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia nitida,kandis hutan,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia parvifolia,kundong,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia prainiana,button mangosteen,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia schomburgkiana,ma dan,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Gnetum buchholzianum,jointfir,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Grewia asiatica,phalsa,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Hibiscus schizopetalus,fringed rose mallow,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Horsfieldia australiana,cape nutmeg,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Hydrolea zeylanica,leheti bon,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Iva annua,sumpweed,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Jacaratia mexicana,wild papaya,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Sterling, ""Yucatan"""
+Kunzea pomifera,muntries,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Landolphia dulcis,landolphia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Lanxangia tsaoko,tsaoko amomum,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Launaea taraxacifolia,african lettuce,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Lavandula stoechas,spanish lavender,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Lepisanthes fruticosa,luna nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Levisticum officinale,lovage,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Lippia graveolens,mexican oregano,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Sterling, ""Yucatan"""
+Litsea calophylla,tagutugan,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Litsea garciae,engkala (common name),plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Lupinus tauris,tauri,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Macadamia tetraphylla,macadamia nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Malpighia urens,cowhage,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Malus turkmenorum,jablonja turkmenskaja,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Malvaviscus arboreus,wax mallow,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Mammea americana,mamey,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Mangifera caesia,binjai,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Mangifera pajang,wild mango,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Metroxylon sagu,sago palm,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,FAO major crops 2019
+Michelia mediocris,michelia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Mirabilis expansa,mauka,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Myrciaria dubia,camu-camu,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Myristica fatua,wild nutmeg,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Nephelium mutabile,pulasan,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia crystalenia,nopal cristal,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia elatior,red flower prickly pear,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Oxypolis filiformis,water cowbane,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pachyrhizus ahipa,ahipa,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pachyrhizus tuberosus,jicama,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Pandanus brosimos,wild karuka,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Pandanus julianettii,karuka nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pangium edule,pangi,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pentaspadon motleyi,pelong,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Phaleria capitata,ongael,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Phaseolus dumosus,year long bean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Phaseolus ritensis,santa rita mountain bean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Phoenix atlantica,cape verde island date palm,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Phoenix sylvestris,wild date plum,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Phyllanthus distichus,otaheite gooseberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Pinus cembroides,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus culminicola,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus edulis,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus johannis,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus orizabensis,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus quadrifolia,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus remota,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pinus sabiniana,pine nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Planchonia careya,cocky apple,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Platostoma palustre,chinese mestoma,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Plectranthus rotundifolius,hausa potato,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,https://pfaf.org/user/Plant.aspx?LatinName=Plectranthus+rotundifolius
+Polianthes tuberosa,tuberose,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Polygonum odoratum,vietnamese coriander,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Porphyra umbilicalis,laver,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Knorr, ""Future 50 Foods"""
+Pourouma cecropiifolia,amazon grape,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pouteria lucuma,lucumo,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Pouteria procera,macarandiba,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Pouteria sapota,mamey sapote,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Sterling, ""Yucatan"""
+Pouteria viridis,green sapote,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Primula x polyantha,polyanthus primrose,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Psidium acutangulum,para guava,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Psidium friedrichsthalianum,costa rican guava,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Psidium guineense,brazilian guava,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Psophocarpus scandens,tropical african winged bean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Pterostylis curta,blunt greenhood,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pterostylis pedunculata,maroonhood,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Pyropia tenera,nori,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Pyropia yezoensis,nori,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Pyrus x sinkiangensis,xinjiang pear,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Quararibea cordata,south american sapote,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ribes cynosbati,dogberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Ribes divaricatum,coast gooseberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Ribes hirtellum,american gooseberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Ribes lobbii,gummy gooseberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Ribes longiracemosum,ribes genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Ribes oxyacanthoides subsp. irriguum,idaho gooseberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Ribes petraeum,rock red currant,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Ribes spicatum,nordic currant,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Rosa x rugosa,rugosa rose,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Rubus glaucus,andean raspberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Milla, ""CropOrigins and PhyloFood"""
+Rubus loganobaccus,boysenberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Rubus x loganobaccus,loganberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Sagittaria sagittifolia,arrow head,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Salacca affinis,red salak,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Salacca glabrescens,jungle salak,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Salacca magnifica,greater salak,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Salacca wallichiana,rakum palm,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Salsola soda,saltwort,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,JL
+Sandoricum koetjape,santol,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Sarcotheca diversifolia,jungle belimbing,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Scaphium macropodum,malva nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Scorodocarpus borneensis,garlic nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Secale cereale x Triticum aestivum,triticale,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Senna timoriensis,limestone cassia,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Sesbania javanica,marsh sesbania,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Smilax glyciphylla,sweet sarsaparilla,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Solanum curtilobum,papa rucki,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Solanum stenostomum,pitiquiña,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Sphenostylis stenocarpa,african yam bean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Spilanthes acmella,paracress,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Syzygium anisatum,aniseed myrtle,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Syzygium luehmannii,riberry,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Syzygium polycephalum,gowok,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Syzygium smithii,lilly pilly,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Syzygium suborbiculare,red bush apple,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Tagetes lucida,sweet scent marigold,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Tagetes tenuifolia,signet marigold,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Talisia esculenta,pitomba,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Taraxacum campylodes,dandelion,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Terminalia cunninghamii,pindan walnut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Terminalia ferdinandiana,kakadu plum,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Terminalia kaernbachii,okari nut,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Theobroma microcarpum,cacao de monte,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Trichosanthes japonica,kikarasu uri,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Triticum aestivum subsp. compactum,club wheat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,GRIN Taxonomy for Plants
+Triticum carthlicum,persian wheat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Triticum turgidum subsp. carthlicum,persian wheat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,GRIN Taxonomy for Plants
+Triticum turgidum subsp. polonicum,polish wheat,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,GRIN Taxonomy for Plants
+Tropaeolum leptophyllum,tropaeolum genus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Tropaeolum tuberosum,mashua,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ullucus tuberosus,ullucus,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,BP
+Vanilla tahitensis,tahitian vanilla,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Vicia articulata,black lentil,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Vicia graminea,vicia chica,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Vigna lanceolata,native bean,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Viola hederacea,australian violet,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Viola x wittrockiana,garden pansy,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Willughbeia angustifolia,gerit-gerit,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Xanthophyllum amoenum,langgir,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Xanthosoma belophyllum,chou blanc,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Xanthosoma brasiliense,calalou,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Xanthosoma caracu,yautia horqueta,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Xanthosoma poeppigii,amankani,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Xanthosoma undipes,choux caraibe,plant,trnL,no NCBI records for the marker (<=50 kb),0,0,0,0,0,0,,,,Milla 2020 Crop Origins
+Amaranthus cruentus,red amaranth,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,2,2,0,2,112,,,BP
+Amaranthus dubius,red spinach,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,2,2,0,2,112,,,BP
+Amaranthus thunbergii,thunberg's amaranthus,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,2,2,0,2,112,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Cordia africana,sudan teak,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,1,1,0,1,83,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Costus erythrophyllus,violet spiral flag,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,1,1,0,1,86,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Vaccinium tenellum,southern blueberry,plant,trnL,primer pair only on sequences with ambiguity codes,1,1,1,1,0,1,83,,,BP
+Victoria amazonica,uape jacana,plant,trnL,primer pair only on sequences with ambiguity codes,2,2,1,1,0,1,93,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ceratotheca sesamoides,false sesame,plant,trnL,primer pair only on UNVERIFIED records,2,2,1,0,0,0,,,,Milla 2020 Crop Origins
+Sesamum radiatum,benniseed,plant,trnL,primer pair only on UNVERIFIED records,4,4,4,0,0,0,,,,Milla 2020 Crop Origins
+Acmella oleracea,toothache plant,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Acronychia acidula,lemon aspen,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Agave tequilana,tequila plant,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"van Wyk, ""Food Plants of the World"""
+Alibertia patinoi,borojó,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,Blancke 2016
+Allium ledebourianum,wild onion,plant,trnL,"records, but none carries the primer pair",6,6,0,0,0,0,,,,Milla 2020 Crop Origins
+Aloysia triphylla,lemon verbena,plant,trnL,"records, but none carries the primer pair",6,6,0,0,0,0,,,,"van Wyk, ""Food Plants of the World"""
+Alpinia malaccensis,malacca ginger,plant,trnL,"records, but none carries the primer pair",5,5,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Alpinia officinarum,lesser galangal,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,BP
+Alpinia zerumbet,shell ginger,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Amomum subulatum,black cardamom,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,BP
+Annona atemoya,atemoya,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Apium prostratum,sea celery,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Aponogeton distachyos,cape pondweed,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"van Wyk, ""Food Plants of the World"""
+Argyranthemum frutescens,paris daisy,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Baccaurea angulata,belimbing hutan,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Baccaurea dulcis,ketupa,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Baccaurea lanceolata,lampaong,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Begonia cucullata,wax begonia,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Beloperone californica,chuparosa,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Facciola, ""Cornucopia"""
+Bromelia pinguin,wild pineapple,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,BP
+Campomanesia guaviroba,guabiroba,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,Milla 2020 Crop Origins
+Canarium schweinfurthii,african elemi,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Kuete, ""Medicinal Spices and Vegetables from Africa"""
+Citrus unshiu,satsuma mandarin,plant,trnL,"records, but none carries the primer pair",15,15,0,0,0,0,,,,SJ
+Cola nitida,kola nut,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Commelina diffusa,climbing dayflower,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Peters, ""Edible Wild Plants of Subsaharan Africa"""
+Costus productus,orange tulip ginger,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Curcuma mangga,mango ginger,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Dimocarpus fumatus,green mata kucing,plant,trnL,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Diospyros discolor,velvet apple,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,Milla 2020 Crop Origins
+Dovyalis caffra,aberia caffra,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Durio graveolens,red-fleshed durian,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Durio kutejensis,durian pulu,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Flindersia maculosa,leopardwood,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Garcinia indica,goa butter,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Garcinia intermedia,lemon drop mangosteen,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia madruno,charichuela,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Garcinia spicata,gamboge tree,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Gladiolus grandiflorus,gladiolus,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Glebionis segetum,corn marigold,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,Milla 2020 Crop Origins
+Hibiscus radiatus,monarch rosemallow,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,Milla 2020 Crop Origins
+Hibiscus sabdariffa,roselle,plant,trnL,"records, but none carries the primer pair",5,5,0,0,0,0,,,,BP
+Hua gaboni,tropical garlic,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,BP
+Ipomoea eriocarpa,morning glory,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Irvingia gabonensis,bush mango,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,BP
+Laminaria japonica,japanese kelp,plant,trnL,"records, but none carries the primer pair",39,39,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Lycianthes moziniana,tlanoxtle,plant,trnL,"records, but none carries the primer pair",31,31,0,0,0,0,,,,Milla 2020 Crop Origins
+Mangifera kemanga,kemang,plant,trnL,"records, but none carries the primer pair",4,4,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Manilkara jaimiqui,wild dilly,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Manilkara kauki,caqui,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Microlaena stipoides,alpine rice,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Nephelium cuspidatum,giant rambutan,plant,trnL,"records, but none carries the primer pair",8,8,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Nephelium maingayi,serait,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Ocotea quixos,canela de ceilan,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia boldinghii,opuntia genus,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia leucotricha,arborescent pricklypear,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia robusta,wheel cactus,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Opuntia stricta,erect prickly pear,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Opuntia undulata,cactus jungle,plant,trnL,"records, but none carries the primer pair",6,6,0,0,0,0,,,,Milla 2020 Crop Origins
+Pinus coulteri,pine nut,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,BP
+Polystichum munitum,fiddleheads,plant,trnL,"records, but none carries the primer pair",15,15,0,0,0,0,,,,JL
+Rubus allegheniensis,common blackberry,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"van Wyk, ""Food Plants of the World"""
+Rubus hybrid cultivar,marionberry,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"https://ucanr.edu/blogs/blogcore/postdetail.cfm?postnum=51799#:~:text=Then%20those%20USDA%20breeders%20crossed,top%20blackberry%2Dgrowing%20U.S.%20state."
+Rubus laciniatus,evergreen blackberry,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Milla, ""CropOrigins and PhyloFood"""
+Salicornia quinqueflora,beaded samphire,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Newton, ""The Oldest Foods on Earth"""
+Salsola komarovii,land seaweed,plant,trnL,"records, but none carries the primer pair",7,7,0,0,0,0,,,,Milla 2020 Crop Origins
+Scorzonera hispanica,black salsify,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,JL
+Solanum uporo,poro poro,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,Milla 2020 Crop Origins
+Sterculia parviflora,common sterculia,plant,trnL,"records, but none carries the primer pair",1,1,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Telopea speciosissima,new south wales waratah,plant,trnL,"records, but none carries the primer pair",3,3,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Thymus herba-barona,caraway thyme,plant,trnL,"records, but none carries the primer pair",17,17,0,0,0,0,,,,Milla 2020 Crop Origins
+Undaria pinnatifida,wakame,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,FAO Cultured Aquatic Species Fact Sheets
+Viola odorata,wood violet,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Lim, ""Edible Medicinal and Non-Medicinal Plants"""
+Xylopia aethiopica,grains of selim,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Kuete, ""Medicinal Spices and Vegetables from Africa"""
+Zanthoxylum capense,small knobwood,plant,trnL,"records, but none carries the primer pair",2,2,0,0,0,0,,,,"Kuete, ""Medicinal Spices and Vegetables from Africa"""
