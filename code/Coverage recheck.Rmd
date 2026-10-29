@@ -64,8 +64,8 @@ RUN_PHASE2 <- TRUE   # FALSE = just re-check known gaps, the routine thing to
                      # do before an Extend reference.Rmd session. Part 2 is
                      # more of an occasional audit against a curated food list.
 
-REF_SUFFIX <- "_Aug2026"   # which built reference to check "missing" against
-OUT_SUFFIX <- "_Aug2026"   # suffix for the CSVs this notebook writes
+REF_SUFFIX <- "_v2026.10"  # which built reference to check "missing" against
+OUT_SUFFIX <- "_v2026.10"  # suffix for the CSVs this notebook writes
 
 # An NCBI API key lifts the rate limit from 3 to 10 requests/second. Worth
 # setting - Part 1 alone fires two rounds of ~1,500 queries.

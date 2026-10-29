@@ -30,6 +30,7 @@ library(tidyverse)
 
 source(here('code', 'functions', 'find_primer_pair.R'))
 source(here('code', 'functions', 'query_ncbi.R'))
+source(here('code', 'functions', 'query_ncbi_plastome.R'))
 source(here('code', 'functions', 'query_ncbi_accession.R'))
 source(here('code', 'functions', 'fetch_lineage_ncbi.R'))
 ```
@@ -41,17 +42,30 @@ Set the marker, point at the reference you are extending, and name the output. T
 ```{r configuration}
 MARKER <- "trnL"          # "trnL" or "12SV5"
 
+# Where the sequences come from.
+#   "marker"   - NCBI records that name the marker and are under 50 kb (the
+#                same query the full pipeline's GenBank step uses).
+#   "plastome" - complete chloroplast genomes, found by organism and title,
+#                with the amplicon cut out by primer matching. trnL only. This
+#                reaches plants whose sole trnL sequence is inside a plastome,
+#                which the "marker" path cannot see (50 kb cap, and plastome
+#                titles never name the gene).
+SOURCE <- "marker"
+
 # Species to add, one per line, in a CSV with a `scientific_name` column.
 # `data/outputs/coverage-recheck/CANDIDATES_*.csv` are in this format.
 ADDITIONS <- here('data', 'inputs', 'reference-additions.csv')
 
-IN_SUFFIX  <- "_Aug2026"       # reference being extended
-OUT_SUFFIX <- "_Aug2026_ext"   # what to write
+IN_SUFFIX  <- "_v2026.10"      # reference being extended
+OUT_SUFFIX <- "_v2026.10_ext"  # what to write
 
 # An NCBI API key lifts the rate limit from 3 to 10 requests/second.
 # rentrez::set_entrez_key("your_key_here")
 
 stopifnot(MARKER %in% c("trnL", "12SV5"))
+stopifnot(SOURCE %in% c("marker", "plastome"))
+if (SOURCE == "plastome" && MARKER != "trnL")
+  stop('SOURCE = "plastome" applies to trnL only (vertebrate 12S comes from mitochondrial records, which the marker path already reaches).')
 
 cfg <- list(
   trnL = list(
@@ -137,13 +151,33 @@ if (length(species) == 0) {
   stop("Nothing to add - every requested species is already in the reference.")
 }
 
-raw <- query_ncbi(marker = cfg$query, organisms = species)
+raw <- if (SOURCE == "plastome") {
+  query_ncbi_plastome(organisms = species)
+} else {
+  query_ncbi(marker = cfg$query, organisms = species)
+}
 cat(length(raw), "records returned\n")
 
 amp <- find_primer_pair(raw, fwd = cfg$fwd, rev = cfg$rev)
 cat(length(amp), "contain the", MARKER, "primer pair\n")
 
 amp <- amp[!grepl("UNVERIFIED", names(amp))]
+
+# Orientation: store every amplicon forward-primer-first, exactly as the full
+# pipeline does (A9 / B8, same 20% mismatch tolerance). find_primer_pair()
+# returns an amplicon in the record's own orientation, so a minus-strand GenBank
+# record comes back reverse-complemented. This step was missing from the first
+# versions of this notebook: ~350 12SV5 records went into the reference backwards,
+# and DADA2's assignTaxonomy() (forward strand only by default) could not match
+# reads to those species. The QC gate now fails on it (check 9).
+starts_with <- function(p) {
+  m <- vmatchPattern(p, amp, max.mismatch = floor(0.2 * length(p)), fixed = TRUE)
+  vapply(startIndex(m), function(s) length(s) > 0 && min(s) <= 1, logical(1))
+}
+rev_first <- starts_with(cfg$rev) & !starts_with(cfg$fwd)
+amp[rev_first] <- reverseComplement(amp[rev_first])
+cat(sum(rev_first), "amplicons were reverse-complemented to forward-primer-first\n")
+
 names(amp) <- names(amp) |>
   gsub(pattern = " .+$", replacement = "") |>
   gsub(pattern = "^>",   replacement = "")
@@ -203,6 +237,12 @@ cat("QC:\n")
 
 new <- report("resolved taxonomy + genus", filter(new, !is.na(taxon), !is.na(genus)))
 new <- report("no degenerate bases",       filter(new, !grepl("[^ACGT]", seq)))
+# An amplicon far outside the range the reference already holds is not this
+# marker: e.g. two 437 bp "12SV5" amplicons (reference range 71-180 bp) from a
+# genome with a long insertion between the primer sites.
+ref_len <- range(nchar(current$seq))
+new <- report("length within reference range", filter(new, nchar(seq) >= floor(0.9 * ref_len[1]),
+                                                         nchar(seq) <= ceiling(1.1 * ref_len[2])))
 new <- report("on-target phylum",          filter(new, phylum %in% cfg$phyla))
 new <- report("unique within additions",   distinct(new, taxon, seq, .keep_all = TRUE))
 new <- report("not already in reference",  anti_join(new, current, by = c("taxon", "seq")))
@@ -227,11 +267,21 @@ cat(nrow(current), "+", nrow(new), "=", nrow(merged), "records\n")
 
 out <- DNAStringSet(merged$seq)
 
+# writeXStringSet() writes the platform's line ending, so on Windows it produces
+# CRLF. The cluster-built references are LF, and a stray CR can be read as part of
+# the sequence by strict FASTA parsers. Write, then strip the CRs in binary.
+write_fasta_lf <- function(x, path) {
+  tmp <- tempfile()
+  writeXStringSet(x, tmp)
+  b <- readBin(tmp, "raw", file.size(tmp))
+  writeBin(b[b != as.raw(13)], path)
+}
+
 names(out) <- paste(merged$accession, merged$taxon)
-writeXStringSet(out, out_seq)
+write_fasta_lf(out, out_seq)
 
 names(out) <- merged$lineage
-writeXStringSet(out, out_tax)
+write_fasta_lf(out, out_tax)
 
 cat("Wrote:\n  ", out_seq, "\n  ", out_tax, "\n")
 ```
@@ -245,9 +295,10 @@ new |> count(taxon, name = "sequences") |> arrange(desc(sequences)) |> print(n =
 missed <- setdiff(species, new$taxon)
 if (length(missed) > 0) {
   cat("\n=== requested but not added ===\n")
-  cat("No usable amplicon was recovered for these. Most often the species has\n")
-  cat("no sub-50kb record carrying both primer sites - check whether a complete\n")
-  cat("genome exists, which this path cannot reach.\n\n")
+  cat("No usable amplicon was recovered for these. Either the species has no\n")
+  cat("record of the kind this SOURCE searches (try the other SOURCE), or its\n")
+  cat("records lack one of the primer sites, or the amplicon contains ambiguity\n")
+  cat("codes or an UNVERIFIED flag, or NCBI files it under a different name.\n\n")
   print(missed)
 }
 ```
@@ -260,7 +311,7 @@ The 4th argument restricts the gate to the marker you extended. Without it the g
 
 ```{r qc-gate, eval = FALSE}
 # From a shell, at the repo root:
-#   Rscript code/qc_reference_build.R . _Aug2026_ext _Aug2026 trnL
+#   Rscript code/qc_reference_build.R . _v2026.10_ext _v2026.10 trnL
 ```
 
 ```{r qc-gate-run}

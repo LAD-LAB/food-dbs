@@ -39,7 +39,7 @@ R_MODULE     <- "R/4.3.0"    # R module name; check with 'module avail R'
 
 # ── QC gate ──────────────────────────────────────────────────────────────────
 # Suffix of the last archived build to compare record counts and species lists
-# against (e.g. "_Aug2026") - this pipeline always writes date-less files (see
+# against (e.g. "_v2026.10") - this pipeline always writes date-less files (see
 # A10/CD10/B9), so it has no memory of its own of what "previous" means; this
 # is the only way the QC gate at the end of the run finds out. Leaving this as
 # "-" is safe, not silent: qc_reference_build.R refuses to compare a build
@@ -498,7 +498,10 @@ omit    <- filter(edits, type == "omit")
 trnL.df <- filter(trnL.df, !(accession %in% omit$accession & seq %in% omit$sequence))
 cat("After omissions:", nrow(trnL.df), "sequences\n")
 
-# Brassica oleracea subspecies renamings
+# Brassica oleracea variety renamings. Deliberately hard-coded: Manual renaming.csv
+# holds only "add" and "omit" rows, and these five are NOT read from it. Source
+# (BP, Jan 2023): each accession is identified to variety level in its cited
+# reference. CD7 below applies the same five to the c/d database.
 trnL.df$varietas[trnL.df$accession == "AB213010.1"] <- "Brassica oleracea var. capitata"
 trnL.df$varietas[trnL.df$accession == "AC183493.1"] <- "Brassica oleracea var. alboglabra"
 trnL.df$varietas[trnL.df$accession == "LR031874.1"] <- "Brassica oleracea var. italica"
@@ -876,9 +879,23 @@ cat(nrow(trnLCD.df), "sequences retained\n")
 ## CD7. Naming
 
 ```{r trnlcd_naming}
+# Omissions. A7's omit rows in Manual renaming.csv are keyed to g/h amplicon
+# SEQUENCES and can never match a c/d record, so the c/d records that must go are
+# listed here by accession. Both were checked against the c/d database itself
+# (Oct 2026), and both were still in the released 2026.08 database:
+#   JX390727.1  labelled Murraya koenigii: 99-100% identical to peanut (Arachis
+#               hypogaea) c/d records, 74.5% to other Murraya
+#   GU595140.1  labelled Secale cereale: 98.7-99.8% identical to rice (Oryza)
+#               records, 92.2% to other Secale
+# KF550171.1 (Allium schoenoprasum) is omitted from g/h for a doubled-length
+# amplicon, but its c/d region is normal (301 bp, 99.7% identical to other
+# Allium), so it is deliberately kept here.
+trnLCD_omit <- c("JX390727.1", "GU595140.1")
+trnLCD.df   <- filter(trnLCD.df, !(accession %in% trnLCD_omit))
+cat("After c/d omissions:", nrow(trnLCD.df), "sequences\n")
+
 # Brassica oleracea subspecies renamings — same source records as A7, applied
-# when those accessions yield a c/d amplicon. (A7's omission edits are keyed to
-# g/h amplicon sequences and cannot match here, so they are not repeated.)
+# when those accessions yield a c/d amplicon.
 trnLCD.df$varietas[trnLCD.df$accession == "AB213010.1"] <- "Brassica oleracea var. capitata"
 trnLCD.df$varietas[trnLCD.df$accession == "AC183493.1"] <- "Brassica oleracea var. alboglabra"
 trnLCD.df$varietas[trnLCD.df$accession == "LR031874.1"] <- "Brassica oleracea var. italica"

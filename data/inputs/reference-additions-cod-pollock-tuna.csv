@@ -1,0 +1,11 @@
+scientific_name,marker,notes
+Gadus macrocephalus,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Lost to query_ncbi() 500-record cap: its 5-species batch (with Gadus morhua) matched 564 NCBI records."
+Gadus ogac,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Lost to query_ncbi() 500-record cap (same batch as Gadus macrocephalus)."
+Pollachius virens,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Pollachius pollachius,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Thunnus orientalis,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Thunnus tonggol,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Thunnus atlanticus,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Merluccius capensis,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Merluccius hubbsi,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."
+Euthynnus lineatus,12SV5,"Recovered 2026-10-22. Present in 2025 12S reference but absent from Aug 2026. Cause not established: batch was under the 500 cap and amplicons exist at NCBI."

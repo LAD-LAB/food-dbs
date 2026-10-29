@@ -57,14 +57,16 @@
       white-space: nowrap;
     }
     .mermaid {
-      max-width: 640px;
+      /* wider than the parameter table above: the c/d and extend branches add a
+         second column, and at 640px the node text becomes unreadably small */
+      max-width: 1000px;
     }
   </style>
 </head>
 <body>
 
 <h1>FoodSeq Reference Database Pipeline</h1>
-<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · one pipeline, run once per marker · Updated August 2026</p>
+<p class="subtitle">trnL (plant) and 12SV5 (vertebrate) reference databases for dietary metabarcoding · one pipeline, run once per marker · Updated October 2026 (release 2026.10)</p>
 
 <div class="params">
   <div class="params-title">Steps ①–⑩ below are one pipeline, run once for trnL and once for 12SV5. Only these differ:</div>
@@ -74,9 +76,10 @@
     <tr><td class="step">② RefSeq genomes</td><td>plastid</td><td>mitochondrial</td></tr>
     <tr><td class="step">③④ primers</td><td>trnL-g / trnL-h</td><td>V5F / V5R</td></tr>
     <tr><td class="step">⑦ phylum allowlist</td><td>Streptophyta + Cyanobacteriota</td><td>Chordata</td></tr>
-    <tr><td class="step">⑦b manual curation</td><td>yes — Manual renaming.csv</td><td>n/a</td></tr>
+    <tr><td class="step">⑦b manual curation</td><td>yes — omissions (Manual renaming.csv) + variety renamings</td><td>n/a</td></tr>
     <tr><td class="step">⑩ output</td><td>trnLGH*.fasta</td><td>12Sv5*.fasta</td></tr>
   </table>
+  <p style="font-size:0.76rem; color:#6b6b5e; margin:10px 0 0;">A third variant, <strong>trnL c/d (Part A-CD)</strong>, shares Part A's species list and NCBI pull but extracts the full intron by alignment rather than by primer matching; it is the dashed blue branch below. After a release, the dashed purple branch is how gaps are closed without a cluster rebuild.</p>
 </div>
 
 <div class="mermaid">
@@ -106,14 +109,23 @@ flowchart TD
     TAX -->|A6b/B6b · phylum allowlist| CLEAN["⑦ on-target only"]
 
     CLEAN -->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT["⑩ reference database"]
-    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>Manual renaming.csv"]
+    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>omissions from Manual renaming.csv<br/>+ hard-coded variety renamings"]
     CUR -.->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT
     CTL -.->|add controls| OUT
 
-    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · count tolerance"}
+    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · orientation · count tolerance<br/>coverage ratchet vs the 2025 reference<br/>(known-absent-species.csv · build_name)"}
     OUT --> QC
-    QC -->|pass| SHIP["release"]
+    QC -->|pass| SHIP["release<br/>files named _vYYYY.MM · previous release moved to archive/"]
     QC -->|fail, exit 1| BLOCK["do not ship"]
+
+    NCBI_SPECIES -.->|trnL only · same species list and NCBI pull| CD["Part A-CD · trnL c/d<br/>alignment-augmented extraction:<br/>plastome introns · GenBank primers · GenBank alignment rescue"]
+    GENOME_SP -.->|trnL only · plastome introns are the alignment panel| CD
+    CD -.->|⑧ QC · ⑩ dedup · add controls| OUTCD["trnLCD reference database"]
+    OUTCD -.-> QC
+
+    SHIP -.->|after a release: species still missing| RECHECK["Coverage recheck.Rmd<br/>which missing species now have data at NCBI?"]
+    RECHECK -.-> EXT["Extend reference.Rmd · laptop, no cluster<br/>SOURCE marker: NCBI records under 50 kb<br/>SOURCE plastome (trnL): complete chloroplast genomes<br/>forward-orients amplicons · rejects out-of-range lengths"]
+    EXT -.->|new suffixed pair · gate again| QC
 
     %% Run once for trnL (with the CUR detour) and once for 12SV5 (without it) -
     %% see the parameter table above for what else changes between runs.
@@ -121,6 +133,10 @@ flowchart TD
     style QC fill:#C8E0C9,stroke:#2C5F2D,color:#1E3A1F
     style BLOCK fill:#F2DCD6,stroke:#BC5138,color:#5F1E1E
     style SHIP fill:#CDE3CE,stroke:#2C5F2D,color:#1E5F1E
+    style CD fill:#E6EDF7,stroke:#7A93BC,color:#1E2F4F
+    style OUTCD fill:#E6EDF7,stroke:#7A93BC,color:#1E2F4F
+    style RECHECK fill:#EEE8F5,stroke:#9A82B8,color:#3A2A55
+    style EXT fill:#EEE8F5,stroke:#9A82B8,color:#3A2A55
 
 </div>
 
