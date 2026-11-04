@@ -219,14 +219,14 @@
   </style>
 </head>
 <body>
-<h1>food-dbs — Changes in release 2026.10</h1>
-<p class="subtitle">Only what changed since release 2026.08 — last updated Oct 2026</p>
+<h1>food-dbs — Changes in release 2026.11</h1>
+<p class="subtitle">Only what changed since release 2026.10 — last updated Nov 2026</p>
 <p class="scope-note">
-  This page covers the changes made <strong>since the previous release, 2026.08</strong> (pipeline commit <span class="tag">e2c5aa2</span>, Zenodo 10.5281/zenodo.22756737). It does not repeat earlier work: for what changed up to 2026.08, see the earlier versions of this page in the git history (for example at commit <span class="tag">e2c5aa2</span>) or the notes for the earlier release. The most important item is the first card — a defect found in release 2026.08 itself.
+  This page covers the changes made <strong>since the previous release, 2026.10</strong> (pipeline commit <span class="tag">fb143e0</span>, Zenodo 10.5281/zenodo.23772049). It does not repeat earlier work: for what changed up to 2026.10, see the earlier versions of this page in the git history (for example at commit <span class="tag">fb143e0</span>) or the notes for the earlier release.
 </p>
 
 <div class="legend">
-  <div class="legend-item"><span class="badge badge-new">NEW</span> Created since 2026.08</div>
+  <div class="legend-item"><span class="badge badge-new">NEW</span> Created since 2026.10</div>
   <div class="legend-item"><span class="badge badge-modified">MODIFIED</span> Existing file edited</div>
   <div class="legend-item"><span class="badge badge-archived">ARCHIVED</span> Moved to archive/</div>
 </div>
@@ -234,8 +234,8 @@
 <div class="grid">
 
   <!-- ── File tree ──────────────────────────────── -->
-  <div class="panel">
-    <div class="panel-title">Files changed since 2026.08</div>
+<div class="panel">
+    <div class="panel-title">Files changed since 2026.10</div>
     <div class="tree">
 
       <div class="tree-row">
@@ -244,7 +244,7 @@
       </div>
       <div class="tree-row">
         <span class="connector">├── </span>
-        <span class="filename modified">README.md</span>
+        <span class="filename modified">README.md (release note, coverage, citation-ready)</span>
         <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
@@ -259,13 +259,8 @@
       </div>
       <div class="tree-row">
         <span class="connector">├── </span>
-        <span class="filename modified">foodseq_reference_pipeline.Rmd (c/d omissions, comments)</span>
+        <span class="filename modified">foodseq_reference_pipeline.Rmd (A7, CD7, B5 omissions)</span>
         <span class="badge badge-modified">MODIFIED</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">├── </span>
-        <span class="filename new">LICENSE</span>
-        <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row" style="margin-top:6px">
         <span class="connector">├── </span>
@@ -273,7 +268,7 @@
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename modified">qc_reference_build.R</span>
+        <span class="filename modified">qc_reference_build.R (check 11)</span>
         <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
@@ -282,14 +277,9 @@
         <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
-        <span class="connector">│   ├── </span>
+        <span class="connector">│   └── </span>
         <span class="filename modified">Coverage recheck.Rmd (suffix defaults)</span>
         <span class="badge badge-modified">MODIFIED</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">│   └── </span>
-        <span class="filename new">functions/query_ncbi_plastome.R</span>
-        <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row" style="margin-top:6px">
         <span class="connector">├── </span>
@@ -297,23 +287,13 @@
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename modified">human-foods.csv</span>
-        <span class="badge badge-modified">MODIFIED</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">│   ├── </span>
-        <span class="filename modified">Manual renaming.csv</span>
-        <span class="badge badge-modified">MODIFIED</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">│   ├── </span>
-        <span class="filename new">known-absent-species.csv</span>
+        <span class="filename new">omit-accessions.csv</span>
         <span class="badge badge-new">NEW</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   └── </span>
-        <span class="filename new">reference-additions-*.csv (7 lists)</span>
-        <span class="badge badge-new">NEW</span>
+        <span class="filename modified">known-absent-species.csv (+ Peperomia pellucida)</span>
+        <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row" style="margin-top:6px">
         <span class="connector">├── </span>
@@ -321,41 +301,23 @@
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename new">dada2-, qiime2-compatible/{trnL,12Sv5,trnLCD}/*_v2026.10.*</span>
-        <span class="badge badge-new">NEW</span>
+        <span class="filename modified">plants_missing_trnL.csv (271 → 272)</span>
+        <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename archived">…/archive/aug2026/ (the released v2026.08 files)</span>
-        <span class="badge badge-archived">ARCHIVED</span>
+        <span class="filename modified">{dada2,qiime2}-compatible/{trnL,trnLCD}/ (_v2026.11)</span>
+        <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   ├── </span>
-        <span class="filename archived">…/archive/aug2026-pre-* (6 working snapshots)</span>
-        <span class="badge badge-archived">ARCHIVED</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">│   ├── </span>
-        <span class="filename new">common-names/ (collaborators; already committed)</span>
-        <span class="badge badge-new">NEW</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">│   ├── </span>
-        <span class="filename new">coverage-recheck/ GAP_check, NAMES_resolution, ORIENTATION_fix, SYNONYM_pass, LEGACY_losses</span>
-        <span class="badge badge-new">NEW</span>
+        <span class="filename modified">{dada2,qiime2}-compatible/12Sv5/ (_v2026.11, unchanged content)</span>
+        <span class="badge badge-modified">MODIFIED</span>
       </div>
       <div class="tree-row">
         <span class="connector">│   └── </span>
-        <span class="filename modified">plants_missing_trnL.csv, animals_missing_12SV5.csv</span>
-        <span class="badge badge-modified">MODIFIED</span>
-      </div>
-      <div class="tree-row" style="margin-top:6px">
-        <span class="connector">└── </span>
-        <span class="filename archived-folder">archive/code/</span>
-      </div>
-      <div class="tree-row">
-        <span class="connector">    └── </span>
-        <span class="filename archived">trnLcd-reference.Rmd + README.md</span>
+        <span class="filename archived">{dada2,qiime2}-compatible/archive/oct2026/</span>
+        <span class="badge badge-archived">ARCHIVED</span>
       </div>
 
     </div>
@@ -364,30 +326,39 @@
   <!-- ── Change cards ───────────────────────────── -->
   <div class="cards">
 
-    <div class="section-header">Corrections to release 2026.08</div>
+    <div class="section-header">Corrections to releases 2026.08 and 2026.10</div>
 
     <div class="card">
       <div class="card-header modified">
         <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">Extend reference.Rmd &amp; qc_reference_build.R — orientation fix</span>
-        <span class="card-subtitle">defect in the deposited release</span>
+        <span class="card-filename">trnL g/h and c/d — eight mislabelled records omitted</span>
+        <span class="card-subtitle">2,116 → 2,109 (g/h), 4,520 → 4,515 (c/d)</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              <strong>The defect:</strong> the full pipeline stores every amplicon forward-primer-first (steps A9 / B8), but <span class="tag">Extend reference.Rmd</span> had no such step, so any record taken from a minus-strand GenBank entry went into the reference reverse-complemented. The deposited 2026.08 12SV5 file contains <strong>52</strong> such records, all from the September recovery. The October recoveries raised the count to 355 12SV5 and 12 trnL records before it was caught
-              <span class="reason">DADA2's assignTaxonomy() matches the forward strand only by default, so reads from those species could not be assigned to them. Noticed because the 12SV5 maximum amplicon length had jumped to 437 bp while preparing the new Zenodo upload.</span>
+              <strong>How it was found:</strong> a downstream wastewater dataset re-assigned with v2026.10 lost its most abundant lettuce ASV (50 bp, over 160,000 reads) to class level. The g/h record <span class="tag">PP081760.1</span>, labelled <em>Lonicera japonica</em> (Caprifoliaceae), carries a lettuce-type sequence, so lettuce reads matched records from two families and the assignment collapsed. <span class="reason">It arrived with the Aug 2026 build and is in the deposited 2026.08 and 2026.10 releases.</span>
             </div>
           </li>
           <li>
             <div>
-              <strong>The fix:</strong> Extend now orients every amplicon and rejects lengths outside the reference's range (two 437 bp <em>Pseudophycis breviuscula</em> records were dropped); the QC gate has a new check that fails on any reverse-first record; every affected record in 2026.10 was reverse-complemented and 20 exact duplicates this exposed were removed. <span class="tag">coverage-recheck/ORIENTATION_fix_Oct2026.csv</span> lists each record and whether it was in the deposited release
+              <strong>What was checked:</strong> the amplicon between the primer sites was compared across all g/h records. Seven groups of records from different families have identical sequence. Seven of the eight records below are in those groups; the eighth, <span class="tag">PP081791.1</span>, comes from the same submission. Each was compared with its own species, genus and family and BLASTed against NCBI. <span class="reason">None was checked against a physical voucher.</span>
             </div>
           </li>
           <li>
             <div>
-              <strong>Also corrected:</strong> the 2026.08 README said the trnL g/h and 12SV5 sequences exclude the priming sites. They include them; only trnL c/d is primer-trimmed.
+              <strong>New in the Aug 2026 release (3):</strong> <span class="tag">PP081760.1</span> <em>Lonicera japonica</em> (lettuce-type); <span class="tag">PP081769.1</span> <em>Coix lacryma-jobi</em> (identical to the ginger-family <em>Zingiber mioga</em>; 13+ edits from every other <em>Coix</em>); <span class="tag">PP081791.1</span> <em>Aloe vera</em> (100% identical to <em>Rorippa cantoniensis</em>, mustard family, including another record from the same submission).
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Present since at least the 2025 reference (5):</strong> <span class="tag">GU134556.1</span> <em>Elaeis guineensis</em> (identical to 13 Asteraceae records); <span class="tag">KX667944.1</span> <em>Sambucus nigra</em> (identical to <em>Lathyrus sylvestris</em>); <span class="tag">MK797493.1</span> <em>Peperomia pellucida</em> (identical to dozens of Moraceae records); <span class="tag">DQ221163.1</span> <em>Sesamum indicum</em> (identical to Apocynaceae records); <span class="tag">NC_057307.1</span> <em>Eugenia brasiliensis</em> (next card). All five were also flagged by the September 2026 label audit, and are in trnL c/d as well.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Effect:</strong> g/h loses one species, <em>Peperomia pellucida</em>, which has no other usable g/h record (now in <span class="tag">known-absent-species.csv</span>). c/d loses <em>Eugenia brasiliensis</em>. 12SV5 is unchanged. <span class="reason">The evidence for each omission is in data/inputs/omit-accessions.csv.</span>
             </div>
           </li>
         </ul>
@@ -397,71 +368,29 @@
     <div class="card">
       <div class="card-header modified">
         <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">foodseq_reference_pipeline.Rmd &amp; trnLCD — two mislabelled records</span>
-        <span class="card-subtitle">4,522 → 4,520</span>
+        <span class="card-filename">NC_057307.1 — the RefSeq <em>Eugenia brasiliensis</em> plastome is not a <em>Eugenia</em> genome</span>
+        <span class="card-subtitle">replaced by MN095407.1 in g/h</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              <strong>The records:</strong> <span class="tag">JX390727.1</span>, labelled <em>Murraya koenigii</em>, is a peanut (<em>Arachis hypogaea</em>) sequence — 99–100% identical to peanut c/d records and 74.5% to other <em>Murraya</em>; <span class="tag">GU595140.1</span>, labelled <em>Secale cereale</em>, is a rice (<em>Oryza</em>) sequence — 98.7–99.8% identical to rice and 92.2% to other <em>Secale</em>. Both were in the deposited 2026.08 trnLCD and are removed from 2026.10; each species keeps its other records, so no coverage is lost
-              <span class="reason">Both had already been omitted from trnL g/h through Manual renaming.csv, but those omit rows are keyed to the g/h amplicon sequence and can never match a c/d record. A third g/h omission, KF550171.1 (<em>Allium schoenoprasum</em>), was checked and is normal in c/d (301 bp, 99.7% identical to other <em>Allium</em>), so it is kept.</span>
+              <strong>The record:</strong> a RefSeq complete chloroplast genome (160,802 bp), marked PROVISIONAL and identical to GenBank <span class="tag">MT900596.1</span> (Yunnan Institute of Tropical Crops, submitted Aug 2020). Neither record carries a voucher, isolate or publication.
             </div>
           </li>
           <li>
             <div>
-              <strong>The fix in the pipeline:</strong> step CD7 now omits the two accessions explicitly (<span class="tag">trnLCD_omit</span>), with the evidence in a comment, so a rebuild cannot bring them back
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header modified">
-        <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">database files — line endings</span>
-        <span class="card-subtitle">CRLF → LF</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              The 2026.08 trnL g/h and 12SV5 FASTA files use Windows (CRLF) line endings, because the laptop Extend workflow wrote them; the cluster-built files, including trnL c/d, use LF. Every file in 2026.10 uses LF
-              <span class="reason">Strict FASTA parsers can read a stray carriage return as part of the sequence or header. Found when the generator that rebuilds the QIIME2 files failed to reproduce the released trnLCD file byte for byte: Windows R's writeXStringSet() writes CRLF.</span>
+              <strong>Evidence it is Malpighiaceae:</strong> its rbcL is 99–100% identical to Malpighiaceae (<em>Aspidopterys</em>, <em>Malpighia</em>, <em>Hiptage</em>) in BLAST with no Myrtaceae in the top 30 hits; its matK is 99% identical to <em>Aspidopterys concava</em>. <span class="reason">The genus within Malpighiaceae was not determined.</span>
             </div>
           </li>
           <li>
             <div>
-              Extend now strips the carriage returns it would write, and the QC gate has a new line-ending check (10) that fails on any CR. Run against the released 2026.08 12SV5 files it fails, as it should
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section-header">Release naming &amp; archive</div>
-
-    <div class="card">
-      <div class="card-header modified">
-        <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">data/outputs/ — release 2026.10</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              All databases are named <span class="tag">_v2026.10</span> (dada2- and qiime2-compatible; trnL, 12Sv5, trnLCD) so file names match the Zenodo version numbering. 12SV5 grew 2,384 → 2,684 sequences and trnL 2,027 → 2,116; trnLCD 4,522 → 4,520 (two mislabelled records removed)
+              <strong>Evidence from other <em>E. brasiliensis</em> records:</strong> the independent plastome <span class="tag">MN095407.1</span> (Rodrigues et al. 2020) is only 94% identical to it in rbcL and 84% in matK, while 11 other <em>E. brasiliensis</em> records from at least four submissions (vouchers ICN 167416 and Lucas 126, isolate VCS35082) match MN095407.1 at 99.2–100%.
             </div>
           </li>
           <li>
             <div>
-              The files released as 2026.08 are kept in <span class="tag">archive/aug2026/</span>, identical in content to the deposited files but stored with LF line endings (the deposited 12SV5 and trnL g/h files are CRLF); the six <span class="tag">aug2026-pre-*</span> folders are working snapshots from the recovery steps, not releases. <span class="tag">archive/README.md</span> explains the layout
-            </div>
-          </li>
-          <li>
-            <div>
-              A <span class="tag">zenodo-upload-v2026.10/</span> folder and zip were built, with a rewritten README that opens with a "Corrections to 2026.08" section, plus SHA-256 checksums. The release was deposited on Zenodo as version 2026.10 (10.5281/zenodo.23772049), and the README citation points to it
+              <strong>The fix:</strong> <span class="tag">MN095407.1</span> is the <em>E. brasiliensis</em> g/h record (98 bp, forward-primer-first, identical to <em>E. stipitata</em> and <em>E. uniflora</em> in that region). <span class="reason">c/d is built by alignment, not primer matching, so E. brasiliensis leaves c/d until a rebuild. MN095407.1's own GenBank record has no voucher either; its support is the paper and the agreement above.</span>
             </div>
           </li>
         </ul>
@@ -471,106 +400,25 @@
     <div class="section-header">Database content</div>
 
     <div class="card">
-      <div class="card-header new">
-        <span class="badge badge-new">NEW</span>
-        <span class="card-filename">Coverage since 2026.08</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              The exact-name figure counts a food species only when the reference holds a species of that name. The synonym figure also counts species held under another name recorded in build_name. Both use the same denominators (1,573 plants, 2,121 animals)
-            </div>
-          </li>
-          <li>
-            <div>
-              <table style="border-collapse:collapse; font-size:0.8rem; width:100%;"><thead><tr style="background:#f0f2f5;"><th style="text-align:left; padding:6px 10px; border:1px solid #e5e7eb;">Database</th><th style="padding:6px 10px; border:1px solid #e5e7eb;">2026.08</th><th style="padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2026.10</th></tr></thead><tbody>
-<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,027</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,116</td></tr>
-<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plants covered — exact name</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,078 / 1,573 (69%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,137 / 1,573 (72%)</td></tr>
-<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plants covered — incl. synonyms</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,225 / 1,573 (78%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,302 / 1,573 (83%)</td></tr>
-<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,384</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">2,684</td></tr>
-<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 food animals covered — exact name</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">982 / 2,121 (46%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,238 / 2,121 (58%)</td></tr>
-<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 food animals covered — incl. synonyms</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,042 / 2,121 (49%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">1,307 / 2,121 (62%)</td></tr>
-<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnLCD sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">4,522</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb; background:#f0fdf4;">4,520 (2 removed)</td></tr>
-</tbody></table>
-<p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">The 2026.08 column is the deposited release recomputed against the current species list, and it includes 52 reverse-oriented 12SV5 records (see the first card). The 2026.10 column is the repaired build.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header new">
-        <span class="badge badge-new">NEW</span>
-        <span class="card-filename">Recoveries and additions after the cluster build</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              <strong>202 animals restored.</strong> A new comparison against the 2025 reference found 202 food-list animal species that it held and 2026.08 lacked (cod, pollock and tuna among them). Each has a valid V5 amplicon at NCBI. The cause of the loss is known for two of the first ten (the 500-result fetch cap per batch of five species) and not established for the rest
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>58 more animals</strong> (yak, llama, guanaco among them) were found by checking every food species missing from the build against NCBI — one row per species in <span class="tag">coverage-recheck/GAP_check_Oct2026.csv</span>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>73 plants through the new plastome path</strong>, added as 83 sequences covering 76 taxa (see the workflows section)
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Dropped:</strong> two out-of-range <em>Pseudophycis breviuscula</em> amplicons and 20 exact duplicates exposed by the orientation fix
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section-header">Food list &amp; synonyms</div>
-
-    <div class="card">
       <div class="card-header modified">
         <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">data/inputs/human-foods.csv</span>
-        <span class="card-subtitle">234 build_name entries</span>
+        <span class="card-filename">Reference databases — 2026.10 vs 2026.11</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              New <span class="tag">build_name</span> column: the name(s) the reference uses for an entry when NCBI files its sequences under a different taxon — a rename (<em>Pisum sativum</em> → <em>Lathyrus oleraceus</em>), a spelling variant, or an infraspecific name NCBI does not recognise. <span class="tag">scientific_name</span> is never changed by it, so coverage denominators are unchanged. 165 plants and 69 animals; read by the QC gate
-              <span class="reason">Without it, every species NCBI files under another name looked missing even when covered, and comparisons with the 2025 reference reported them as losses.</span>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Name review of 149 names NCBI Taxonomy did not recognise</strong> (checked against GBIF and NCBI): 15 misspellings corrected in place with the original kept in <span class="tag">notes</span>, 31 names mapped through <span class="tag">build_name</span>, and 10 doubtful GBIF synonymies (e.g. <em>Melilotus macrorhizus</em>, <em>Polyprion yanezi</em>) left unapplied. Five mapped rows duplicate a correctly spelled row already on the list — flagged, not deleted. One row per name in <span class="tag">coverage-recheck/NAMES_resolution_Oct2026.csv</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header new">
-        <span class="badge badge-new">NEW</span>
-        <span class="card-filename">known-absent-species.csv &amp; reference-additions-*.csv</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              <span class="tag">known-absent-species.csv</span>: food-list species deliberately absent from a build, with the reason (for example an amplicon that contains ambiguity codes, which the build drops). Read by the coverage ratchet; the gate prints a prune notice when a listed species becomes present. 6 rows
-            </div>
-          </li>
-          <li>
-            <div>
-              <span class="tag">reference-additions-*.csv</span>: the species list used for each Extend run (cod/pollock/tuna, legacy-losses-191, Sander, gap-check-58, name review for 12S and trnL, plastome), each with a <span class="tag">notes</span> column recording why — a provenance trail for what was added after the cluster build
+              <table style="border-collapse:collapse; font-size:0.8rem; width:100%;"><thead><tr style="background:#f0f2f5;"><th style="text-align:left; padding:6px 10px; border:1px solid #e5e7eb;">Database</th><th style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2026.10</th><th style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2026.11</th></tr></thead><tbody>
+<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL g/h sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,116</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,109</td></tr>
+<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL g/h taxa</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,272</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,271</td></tr>
+<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plants covered — exact name</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,137 / 1,573 (72%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,136 / 1,573 (72%)</td></tr>
+<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL food plants covered — incl. synonyms</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,302 / 1,573 (83%)</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,301 / 1,573 (83%)</td></tr>
+<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL c/d sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">4,520</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">4,515</td></tr>
+<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">trnL c/d taxa</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,173</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,172</td></tr>
+<tr><td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 sequences</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,684</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">2,684</td></tr>
+<tr style="background:#fafafa;"><td style="padding:6px 10px; border:1px solid #e5e7eb;">12SV5 taxa</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,984</td><td style="text-align:center; padding:6px 10px; border:1px solid #e5e7eb;">1,984</td></tr>
+</tbody></table>
+              <p style="font-size:0.74rem; color:#9ca3af; margin-top:6px;">Coverage uses the same method and denominators as the README tables, recomputed for 2026.10 first to confirm it reproduces the published figures.</p>
             </div>
           </li>
         </ul>
@@ -582,29 +430,28 @@
     <div class="card">
       <div class="card-header modified">
         <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">code/qc_reference_build.R</span>
+        <span class="card-filename">qc_reference_build.R — check 11: cross-family identical amplicons</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              <strong>Coverage ratchet (check 6b):</strong> pins trnL and 12S to a fixed legacy baseline (the 2025 reference) instead of "the previous build" — every food-list species it held must still be present, directly or through <span class="tag">build_name</span>, unless <span class="tag">known-absent-species.csv</span> documents why. An undocumented loss is a FAIL
-              <span class="reason">The earlier gate compared each build only with its predecessor, so ~200 species vanished unnoticed: each build was compared with one that had already lost them. The ratchet found 202 animal losses and none for plants.</span>
+              <strong>The check:</strong> the gate now fails when a record that is new since the previous build has the same primer-trimmed amplicon as a record from a different family, and warns about groups that already existed. Applies to the markers with primer sites (g/h and 12SV5). <span class="reason">Such a record makes every read of that sequence unassignable below class, and one of the two is almost always mislabelled.</span>
             </div>
           </li>
           <li>
             <div>
-              <strong>Orientation (check 9):</strong> FAILs on any record that starts with the reverse primer — the same rule and mismatch tolerance as pipeline steps A9 / B8
+              <strong>Tested against the bad data:</strong> run on the v2026.10 g/h files against May 2026 it fails on <span class="tag">PP081760.1</span> and <span class="tag">PP081769.1</span> (and on the correct <em>Cichorium endivia</em> record that sits in the same group as the mislabelled <em>Elaeis</em>). On v2026.11 it passes: no two families share an amplicon.
             </div>
           </li>
           <li>
             <div>
-              <strong>Finds an archived previous build:</strong> if the previous-suffix file is not beside the current one, it looks in <span class="tag">archive/&lt;suffix&gt;/</span> (e.g. <span class="tag">_Aug2026</span> → <span class="tag">archive/aug2026/</span>), so archiving a release does not turn the record-count and species-drop checks into a skipped WARN
+              <strong>Still open:</strong> on 12SV5 it warns about six pre-existing groups. Two contain records the September audit already flagged (<span class="tag">AM931025.1</span> <em>Epinephelus marginatus</em> with five Sciaenidae; <span class="tag">NC_022490.1</span> <em>Nesiarchus nasutus</em> with four flatfish). They have not been reviewed and are not changed in this release.
             </div>
           </li>
           <li>
             <div>
-              <strong>Line endings (check 10):</strong> FAILs on any carriage return in a database FASTA, so a Windows-written CRLF file cannot ship again
+              <strong>Result for v2026.11:</strong> 0 FAIL, 4 WARN (<em>Peperomia pellucida</em> and <em>Eugenia brasiliensis</em> dropped from g/h and c/d respectively, the known <em>Correlophus ciliatus</em> control, and the 12SV5 groups).
             </div>
           </li>
         </ul>
@@ -616,74 +463,47 @@
     <div class="card">
       <div class="card-header new">
         <span class="badge badge-new">NEW</span>
-        <span class="card-filename">code/functions/query_ncbi_plastome.R</span>
-        <span class="card-subtitle">plastome path for trnL</span>
+        <span class="card-filename">data/inputs/omit-accessions.csv</span>
+        <span class="card-subtitle">11 rows</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              Finds complete chloroplast genomes by <em>organism</em> and title (<span class="tag">chloroplast[TITL] OR plastid[TITL]</span>, 50,001–400,000 bp) and fetches them one record per request, returning the same shape as <span class="tag">query_ncbi()</span> so <span class="tag">find_primer_pair()</span> and the rest of Extend work unchanged
-              <span class="reason">A plant whose only trnL sequence sits in a GenBank plastome was invisible to every earlier path: the 50 kb cap removes the genome, and plastome titles never name the gene, so the marker search misses ~96% of them.</span>
+              A single list of known-mislabelled accessions with, for each, the markers it applies to, what the sequence actually is, the evidence and the date. It replaces the hard-coded c/d vector (<span class="tag">trnLCD_omit</span>) in step CD7.
             </div>
           </li>
           <li>
             <div>
-              Run over the 344 plants still missing: <strong>73 had a clean amplicon</strong> (70–117 bp, the same range as the existing records), added as 83 sequences covering 76 taxa; 6 algae have a plastome without the trnL g/h sites; 257 have no plastome either. 15 of the 73 are filed by NCBI under another name and mapped with build_name (e.g. <em>Polianthes tuberosa</em> is <em>Agave amica</em>)
-            </div>
-          </li>
-          <li>
-            <div>
-              Bug fixed during the first run: <span class="tag">paste0()</span> renders 400000 as <em>4e+05</em>, which NCBI read as a malformed length range and answered with zero hits for every species. Now <span class="tag">sprintf("%d")</span>.
+              <strong>Read by:</strong> the pipeline (steps A7, CD7 and B5), <span class="tag">Extend reference.Rmd</span> (so a plastome or marker query cannot bring a listed record back; a plastome query for <em>E. brasiliensis</em> returns NC_057307.1) and the documentation. Includes <span class="tag">MT900596.1</span>, the GenBank twin of NC_057307.1.
             </div>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header modified">
-        <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">code/Extend reference.Rmd &amp; Coverage recheck.Rmd</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              <span class="tag">SOURCE &lt;- &quot;plastome&quot;</span> (trnL only) searches complete chloroplast genomes instead of marker records under 50 kb, closing the complete-genome blind spot for plants. Still not usable for trnLCD
-            </div>
-          </li>
-          <li>
-            <div>
-              Every amplicon is now stored forward-primer-first, and amplicons far outside the reference's length range are rejected (see the first card)
-            </div>
-          </li>
-          <li>
-            <div>
-              Default suffixes moved to <span class="tag">_v2026.10</span> in both notebooks (Extend: <span class="tag">_v2026.10</span> → <span class="tag">_v2026.10_ext</span>)
-            </div>
-          </li>
-          <li>
-            <div>
-              Output FASTAs are written with LF line endings even on Windows (the carriage returns writeXStringSet() adds are stripped)
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <div class="section-header">Release naming &amp; archive</div>
 
     <div class="card">
       <div class="card-header modified">
         <span class="badge badge-modified">MODIFIED</span>
-        <span class="card-filename">data/inputs/Manual renaming.csv</span>
-        <span class="card-subtitle">30 → 23 rows</span>
+        <span class="card-filename">Files renamed _v2026.11; the 2026.10 release is archived</span>
       </div>
       <div class="card-body">
         <ul class="changes">
           <li>
             <div>
-              Removed the 5 <span class="tag">rename</span> rows and 2 exact-duplicate <span class="tag">add</span> rows. The file now holds only what the pipeline reads: 20 <span class="tag">add</span> rows (mostly whole-genome records beyond the 50 kb query cap, merged in at step A5) and 3 <span class="tag">omit</span> rows (step A7)
-              <span class="reason">The rename rows were never read: the pipeline hard-codes the same five Brassica oleracea variety renamings in A7 and CD7. The hard-coded version is kept, and a comment in A7 now records its source (BP, Jan 2023: identified to variety level in the cited reference).</span>
+              All databases are named <span class="tag">_v2026.11</span> (dada2- and qiime2-compatible; trnL, 12Sv5, trnLCD) to match the Zenodo version. The released 2026.10 files are in <span class="tag">archive/oct2026/</span> under <span class="tag">_Oct2026</span> names, which is where the QC gate looks for the previous build (<span class="tag">qc_reference_build.R . _v2026.11 _Oct2026</span>).
+            </div>
+          </li>
+          <li>
+            <div>
+              The 12SV5 files are unchanged in content and renamed so the release is a consistent set. The QIIME 2 files were regenerated from the DADA2 files after first confirming the generator reproduces the released 2026.10 QIIME 2 pairs byte for byte. All files are LF.
+            </div>
+          </li>
+          <li>
+            <div>
+              A <span class="tag">zenodo-upload-v2026.11/</span> folder and zip were built with a README that opens with a 'Corrections to 2026.10 and 2026.08' section, plus SHA-256 checksums. <span class="reason">The pipeline commit hash and the new DOI are placeholders until the branch is merged and the record is created.</span>
             </div>
           </li>
         </ul>
@@ -701,41 +521,12 @@
         <ul class="changes">
           <li>
             <div>
-              README: new <em>release 2026.10</em> note and "Remaining gaps (v2026.10)" section built from a per-species check of every uncovered species; coverage tables gain exact-name and including-synonym columns; Extend section documents <span class="tag">SOURCE</span> and the orientation step; Manual renaming.csv is now described accurately
+              README: v2026.11 release note, coverage tables, remaining-gaps counts (plants 271 → 272), file tree and the Extend and QC instructions now use _v2026.11 / _Oct2026.
             </div>
           </li>
           <li>
             <div>
-              Flowchart: adds the <strong>trnL c/d branch</strong> (Part A-CD — left out earlier because it had no validated output), a QC node that lists orientation and the coverage ratchet, and a dashed post-release lane (Coverage recheck → Extend, <span class="tag">SOURCE</span> marker or plastome → gate again). The README's embedded diagram is kept identical; the chart's page width was raised to 1000 px because the extra branches made the text unreadable at 640 px
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>This page</strong> now describes one release at a time: only the changes since the previous release. Earlier versions, which were cumulative since the pre-2026 workflow, are in the git history.
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section-header">Collaborator updates <span style="font-weight:400; text-transform:none; letter-spacing:normal;">— already committed to GitHub</span></div>
-
-    <div class="card">
-      <div class="card-header new">
-        <span class="badge badge-new">NEW</span>
-        <span class="card-filename">LICENSE, README citation, common-names CSVs</span>
-      </div>
-      <div class="card-body">
-        <ul class="changes">
-          <li>
-            <div>
-              <strong>LICENSE</strong> (CC BY 4.0) added (Sarah Brown, 10 Sep). The README's citation now points to the Zenodo record for 2026.08 (16 Sep)
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong><span class="tag">data/outputs/common-names/</span></strong>: the trnL and 12S ASV common-name tables, moved here from the mb-pipeline repository (Dorothy Superdock, PR #8, 16–21 Sep). The 12S table's stray "Claude" column was removed (Ashish Subramanian, 21 Sep) and a file broken by that edit was repaired (Dorothy Superdock, 23 Sep)
-              <span class="reason">Note: these tables were built against a pre-Aug 2026 reference and have not been regenerated for 2026.10.</span>
+              Flowchart (and the README copy): the QC node lists check 11, and the curation node mentions the accession omit list.
             </div>
           </li>
         </ul>
@@ -747,25 +538,13 @@
     <div class="card">
       <div class="card-header archived">
         <span class="badge badge-archived">ARCHIVED</span>
-        <span class="card-filename">archive/ &nbsp;—&nbsp; superseded since 2026.08</span>
+        <span class="card-filename">archive/ &nbsp;—&nbsp; superseded since 2026.10</span>
       </div>
       <div class="card-body">
-        <div class="archive-subhead">Releases and snapshots</div>
+        <div class="archive-subhead">Releases</div>
         <div class="archive-grid">
-          <span class="archive-chip">data/outputs/{dada2,qiime2}-compatible/archive/aug2026/ (the released 2026.08 files)</span>
-          <span class="archive-chip">aug2026-pre-recovery</span>
-          <span class="archive-chip">aug2026-pre-legacy-191</span>
-          <span class="archive-chip">aug2026-pre-cod-pollock-tuna</span>
-          <span class="archive-chip">aug2026-pre-sander</span>
-          <span class="archive-chip">aug2026-pre-gapcheck58</span>
-          <span class="archive-chip">aug2026-pre-names-plastome</span>
+          <span class="archive-chip">data/outputs/{dada2,qiime2}-compatible/archive/oct2026/ (the released 2026.10 files, with eight mislabelled trnL records)</span>
         </div>
-        <div class="archive-subhead">Code</div>
-        <div class="archive-grid">
-          <span class="archive-chip">archive/code/trnLcd-reference.Rmd</span>
-          <span class="archive-chip">archive/code/README.md</span>
-        </div>
-        <div style="color:#6b7280; font-size:0.82rem; margin-top:10px">trnLcd-reference.Rmd is an earlier, primer-based trnL c/d build by Ashish Subramanian (Nov 2024). It is not the code behind the 2025 trnLCD compilation; the README beside it explains why.</div>
       </div>
     </div>
 
