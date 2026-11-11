@@ -73,13 +73,34 @@ This repository contains the latest FoodSeq reference databases for use with the
 | `asv` | Reference ASV sequence. |
 | `name` | Lowest common taxon the ASV resolves to. |
 | `taxon` | Every taxon the ASV matches, separated by `; `. Blank for rows with no reference taxon (controls, human, house mouse, and a few others). |
-| `common_name` | Vernacular names for the taxa in `taxon`, as found. Often more specific than needed (e.g. *Canis lupus* → "wolf"), and blank for 848 of 2,169 12S rows, including all rows with a blank `taxon`. For reference only. |
-| `conventional_name` | The curated grouping name used for analysis and plotting (e.g. *Canis lupus* → "dog"; *Plectropomus leopardus* → "coral trout"). Control sequences are labeled here, e.g. "synthetic 12S ASV (control)" and "New Caledonia giant gecko (control)". Blank where no food name has been curated. |
+| `common_name` | Names for every taxon in `taxon`. Often more specific than needed (e.g. *Canis lupus* → "wolf"). Blank for 848 of 2,169 12S rows, including all rows with a blank `taxon`. Not used by `assign_common_names()`. |
+| `conventional_name` | The curated shorthand grouping name used for analysis and plotting (e.g. *Canis lupus* → "dog"; *Plectropomus leopardus* → "coral trout"). Blank where no food name has been curated. |
 | `family` | Family of the matched taxa. |
 
-`foodseq.tools::assign_common_names()` reads `conventional_name`, not `common_name`. It writes the `conventional_name` values into a column named `common_name` in the phyloseq tax table. The CSV `common_name` column is not used.
+### How `assign_common_names()` uses these columns
 
-To drop controls and non-dietary animals before agglomerating by name, filter on the phyloseq `common_name` column (which holds `conventional_name` values), for example `"synthetic 12S ASV (control)"`, `"New Caledonia giant gecko (control)"`, `"human"`, `"house mouse"`, `"dog"`, `"cat"`, `"rat"` and `"emu"`.
+`foodseq.tools::assign_common_names()` reads `conventional_name`, not `common_name`. It writes the `conventional_name` values into a column named `common_name` in the phyloseq tax table. The CSV `common_name` column is not read. A phyloseq processed with this function therefore has no column named `conventional_name`, but its `common_name` column holds the `conventional_name` values.
+
+### Controls and non-dietary animals
+
+Controls, human and house mouse have a blank `taxon`, so their CSV `common_name` is also blank. They are labeled only in `conventional_name`:
+
+-   "synthetic 12S ASV (control)"
+-   "New Caledonia giant gecko (control)"
+-   "human" (16 rows)
+-   "house mouse"
+
+Rat, cat and emu are labeled in both columns ("rat", "cat", "emu"). Dog differs between columns: *Canis lupus* is "wolf" in `common_name` and "dog" in `conventional_name`.
+
+To remove controls and non-dietary animals before agglomerating by name (for example, before aFR assignment), filter on the phyloseq `common_name` column, which holds the `conventional_name` values above. For example:
+
+``` r
+excluded <- c("synthetic 12S ASV (control)", "New Caledonia giant gecko (control)",
+              "human", "house mouse", "dog", "cat", "rat", "emu")
+
+ps_12S <- ps_12S %>%
+  phyloseq::subset_taxa(!(common_name %in% excluded))
+```
 
 ## How the pipeline works
 
