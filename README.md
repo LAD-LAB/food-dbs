@@ -64,6 +64,23 @@ food-dbs/
 
 This repository contains the latest FoodSeq reference databases for use with the Edible Atlas FoodSeq Handbook. FASTA files containing reference sequences can be downloaded from this repository by going to data/outputs/ and selecting either dada2-compatible or qiime2-compatible FASTA files. File names carry the release version (`_v2026.10`), matching the Zenodo version numbering; earlier releases are kept in each folder's `archive/`. Alternatively, the latest version of the reference database is available at <https://doi.org/10.5281/zenodo.22756737>
 
+## Common names files
+
+`data/outputs/common-names/` holds one CSV per marker (`12S common names.csv`, `trnL common names.csv`). Each row is one reference ASV. The columns are:
+
+| Column | Contents |
+|---|---|
+| `asv` | Reference ASV sequence. |
+| `name` | Lowest common taxon the ASV resolves to. |
+| `taxon` | Every taxon the ASV matches, separated by `; `. Blank for rows with no reference taxon (controls, human, house mouse, and a few others). |
+| `common_name` | Vernacular names for the taxa in `taxon`, as found. Often more specific than needed (e.g. *Canis lupus* → "wolf"), and blank for 848 of 2,169 12S rows, including all rows with a blank `taxon`. For reference only. |
+| `conventional_name` | The curated grouping name used for analysis and plotting (e.g. *Canis lupus* → "dog"; *Plectropomus leopardus* → "coral trout"). Control sequences are labeled here, e.g. "synthetic 12S ASV (control)" and "New Caledonia giant gecko (control)". Blank where no food name has been curated. |
+| `family` | Family of the matched taxa. |
+
+`foodseq.tools::assign_common_names()` reads `conventional_name`, not `common_name`. It writes the `conventional_name` values into a column named `common_name` in the phyloseq tax table. The CSV `common_name` column is not used.
+
+To drop controls and non-dietary animals before agglomerating by name, filter on the phyloseq `common_name` column (which holds `conventional_name` values), for example `"synthetic 12S ASV (control)"`, `"New Caledonia giant gecko (control)"`, `"human"`, `"house mouse"`, `"dog"`, `"cat"`, `"rat"` and `"emu"`.
+
 ## How the pipeline works
 
 The pipeline builds two reference databases in parallel, following the same steps for each:
