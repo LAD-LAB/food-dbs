@@ -56,8 +56,8 @@ SOURCE <- "marker"
 # `data/outputs/coverage-recheck/CANDIDATES_*.csv` are in this format.
 ADDITIONS <- here('data', 'inputs', 'reference-additions.csv')
 
-IN_SUFFIX  <- "_v2026.10"      # reference being extended
-OUT_SUFFIX <- "_v2026.10_ext"  # what to write
+IN_SUFFIX  <- "_v2026.11"      # reference being extended
+OUT_SUFFIX <- "_v2026.11_ext"  # what to write
 
 # An NCBI API key lifts the rate limit from 3 to 10 requests/second.
 # rentrez::set_entrez_key("your_key_here")
@@ -157,6 +157,15 @@ raw <- if (SOURCE == "plastome") {
   query_ncbi(marker = cfg$query, organisms = species)
 }
 cat(length(raw), "records returned\n")
+
+# Known mislabels (data/inputs/omit-accessions.csv) must not come back in. The RefSeq
+# Eugenia brasiliensis plastome NC_057307.1, for one, is a Malpighiaceae genome and a
+# plastome query for that species returns it.
+omit_acc <- read_csv(here('data', 'inputs', 'omit-accessions.csv'), show_col_types = FALSE) |>
+  filter(grepl(if (MARKER == "12SV5") "12SV5" else "trnLGH", markers)) |> pull(accession)
+raw_acc  <- sub("\\s.*$", "", names(raw))
+cat(sum(raw_acc %in% omit_acc), "record(s) dropped because they are listed in omit-accessions.csv\n")
+raw <- raw[!(raw_acc %in% omit_acc)]
 
 amp <- find_primer_pair(raw, fwd = cfg$fwd, rev = cfg$rev)
 cat(length(amp), "contain the", MARKER, "primer pair\n")
@@ -311,7 +320,7 @@ The 4th argument restricts the gate to the marker you extended. Without it the g
 
 ```{r qc-gate, eval = FALSE}
 # From a shell, at the repo root:
-#   Rscript code/qc_reference_build.R . _v2026.10_ext _v2026.10 trnL
+#   Rscript code/qc_reference_build.R . _v2026.11_ext _v2026.11 trnL
 ```
 
 ```{r qc-gate-run}

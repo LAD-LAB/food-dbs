@@ -13,16 +13,16 @@
 # If REPO_DIR is omitted, uses the current working directory.
 #
 # CURRENT_SUFFIX / PREVIOUS_SUFFIX select which build to check and which to
-# compare against, as filename suffixes (e.g. "_v2026.10"). Pass "-" for the
+# compare against, as filename suffixes (e.g. "_v2026.11"). Pass "-" for the
 # date-less filenames the pipeline itself writes (trnLGH_taxonomy.fasta etc.).
 # Defaults: CURRENT "_May2026", PREVIOUS "-".
 #
 # NOTE the pipeline OVERWRITES the date-less files in place, so right after a
 # rebuild those hold the NEW build, not the old baseline:
 #   on the cluster, straight after a rebuild:   ... .  -  _May2026
-#   locally, after archiving outputs by date:   ... .  _v2026.10  _Aug2026
+#   locally, after archiving outputs by date:   ... .  _v2026.11  _Oct2026
 #   (a previous build that has been archived is found in archive/<suffix>/,
-#    e.g. archive/aug2026/)
+#    e.g. archive/oct2026/)
 #
 # Coverage ratchet (check 6b): pins trnL and 12S to a FIXED legacy baseline
 # (archive/dateless/*_taxonomy.fasta) rather than "the previous build". Any
@@ -360,6 +360,50 @@ check_marker <- function(marker, tax_fasta, seq_fasta, prev_fasta,
   } else {
     say("FAIL", sprintf("carriage returns (CRLF line endings) in: %s",
                         paste(basename(names(n_cr)[n_cr > 0]), collapse = ", ")))
+  }
+
+  # 11. cross-family identical amplicon cores
+  # Two records from different FAMILIES with the same primer-trimmed amplicon make
+  # every read of that sequence unassignable below class (the LCA collapses), and one
+  # of the two is almost always a mislabelled record. PP081760.1 (labelled Lonicera,
+  # actually lettuce-type) went into 2026.08 and 2026.10 unnoticed and broke the main
+  # lettuce ASV in a downstream dataset. FAIL when a record that is NEW since the
+  # previous build sits in such a group (check it, then list it in
+  # data/inputs/omit-accessions.csv); WARN for groups that already existed.
+  if (!is.null(primers) && file.exists(seq_fasta)) {
+    sq <- Biostrings::readDNAStringSet(seq_fasta)
+    if (length(sq) != length(hdr)) {
+      say("WARN", "cross-family check skipped: accession and taxonomy FASTAs differ in length")
+    } else {
+      acc  <- sub("[[:space:]].*$", "", names(sq))
+      fam  <- vapply(strsplit(hdr, ";", fixed = TRUE), function(x) if (length(x) >= 5) x[5] else NA_character_, "")
+      spp  <- vapply(strsplit(hdr, ";", fixed = TRUE), function(x) if (length(x) >= 7) x[7] else NA_character_, "")
+      s    <- as.character(sq)
+      lf   <- nchar(primers$fwd); lr <- nchar(primers$rev)
+      core <- ifelse(nchar(s) - lf - lr > 30, substr(s, lf + 1, nchar(s) - lr), NA_character_)
+      prev_seq <- sub("_taxonomy", "", prev_fasta, fixed = TRUE)
+      prev_acc <- if (file.exists(prev_seq)) {
+        h <- readLines(prev_seq, warn = FALSE); sub("[[:space:]].*$", "", sub("^>", "", h[startsWith(h, ">")]))
+      } else NULL
+      is_new <- if (is.null(prev_acc)) rep(FALSE, length(acc)) else !(acc %in% prev_acc)
+      grp <- split(seq_along(core), core)
+      bad <- Filter(function(ix) length(ix) > 1 && length(unique(stats::na.omit(fam[ix]))) > 1, grp)
+      desc <- function(ix) paste0(acc[ix][1], " (", spp[ix][1], ", ", fam[ix][1], ") vs ", paste(unique(fam[ix][-1][fam[ix][-1] != fam[ix][1]]), collapse = "/"))
+      if (!length(bad)) {
+        say("PASS", sprintf("cross-family: no two families share an identical primer-trimmed amplicon (%d records checked)", sum(!is.na(core))))
+      } else {
+        newg <- Filter(function(ix) any(is_new[ix]), bad)
+        if (length(newg)) {
+          say("FAIL", sprintf("%d cross-family identical-amplicon group(s) include a record new since the previous build: %s",
+                              length(newg), paste(vapply(head(newg, 4), function(ix) paste(acc[ix][is_new[ix]], collapse = "/"), ""), collapse = ", ")))
+        }
+        old <- setdiff(names(bad), names(newg))
+        if (length(old)) {
+          say("WARN", sprintf("%d cross-family identical-amplicon group(s) already existed in the previous build, e.g. %s",
+                              length(old), paste(vapply(head(bad[old], 3), desc, ""), collapse = "; ")))
+        }
+      }
+    }
   }
 }
 

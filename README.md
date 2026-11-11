@@ -32,16 +32,17 @@ food-dbs/
 │   │   ├── Manual renaming.csv     # Manual additions (merged in at step 1) and omissions (step 6) for trnL; the Brassica variety renamings are hard-coded in the pipeline, not read from here
 │   │   ├── reference-additions.csv # Species list consumed by Extend reference.Rmd (blank template)
 │   │   ├── reference-additions-*.csv # The lists used for past Extend runs, kept as a record of what was added and why
+│   │   ├── omit-accessions.csv     # Records known to be mislabelled, dropped by the pipeline, Extend and the QC gate (what each sequence actually is, and the evidence)
 │   │   └── known-absent-species.csv # Food-list species deliberately absent from a build, with the reason (read by the QC coverage ratchet)
 │   └── outputs/
 │       ├── dada2-compatible/       # Reference FASTAs for use with DADA2
-│       │   ├── trnL/               # trnL database, current release (_v2026.10)
-│       │   ├── 12Sv5/              # 12SV5 database, current release (_v2026.10)
-│       │   ├── trnLCD/             # trnL c/d database, current release (_v2026.10)
+│       │   ├── trnL/               # trnL database, current release (_v2026.11)
+│       │   ├── 12Sv5/              # 12SV5 database, current release (_v2026.11)
+│       │   ├── trnLCD/             # trnL c/d database, current release (_v2026.11)
 │       │   ├── miscellaneous/      # Other marker databases
-│       │   └── archive/            # Superseded releases (aug2026 = Zenodo v2026.08, may2026, 2022) and recovery snapshots
+│       │   └── archive/            # Superseded releases (oct2026 = Zenodo v2026.10, aug2026 = Zenodo v2026.08, may2026, 2022) and recovery snapshots
 │       ├── qiime2-compatible/      # Reference FASTAs and TSVs for use with QIIME2
-│       │   ├── trnL/               # _v2026.10
+│       │   ├── trnL/               # _v2026.11
 │       │   ├── 12Sv5/
 │       │   ├── trnLCD/
 │       │   └── archive/            # superseded releases, as above
@@ -94,7 +95,7 @@ For each marker, the pipeline:
 3.  Subsets the RefSeq amplicons down to the food species list (GenBank needs no equivalent step — see "Data sources" above)
 4.  Removes unverified sequences and sequences with degenerate nucleotides
 5.  Looks up full taxonomy for all accessions
-6.  Applies manual curation (trnL only): omits the records listed as `omit` in `Manual renaming.csv`, and applies a few hard-coded *Brassica oleracea* variety renamings. The file's `add` rows, mostly whole-genome records that the 50 kb query cap cannot reach, are merged in earlier, alongside the GenBank sequences
+6.  Applies manual curation (trnL only): omits the records listed as `omit` in `Manual renaming.csv` and the mislabelled accessions listed in `omit-accessions.csv`, and applies a few hard-coded *Brassica oleracea* variety renamings. The file's `add` rows, mostly whole-genome records that the 50 kb query cap cannot reach, are merged in earlier, alongside the GenBank sequences
 7.  Standardises sequence orientation
 8.  Deduplicates (identical sequences from the same taxon collapsed to one, with RefSeq accessions preferred)
 9.  Saves DADA2- and QIIME2-compatible output files
@@ -137,11 +138,11 @@ flowchart TD
     TAX -->|A6b/B6b · phylum allowlist| CLEAN["⑦ on-target only"]
 
     CLEAN -->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT["⑩ reference database"]
-    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>omissions from Manual renaming.csv<br/>+ hard-coded variety renamings"]
+    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>omissions from Manual renaming.csv<br/>and omit-accessions.csv<br/>+ hard-coded variety renamings"]
     CUR -.->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT
     CTL -.->|add controls| OUT
 
-    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · orientation · count tolerance<br/>coverage ratchet vs the 2025 reference<br/>(known-absent-species.csv · build_name)"}
+    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · orientation · count tolerance<br/>cross-family identity · coverage ratchet vs the 2025 reference<br/>(known-absent-species.csv · build_name)"}
     OUT --> QC
     QC -->|pass| SHIP["release<br/>files named _vYYYY.MM · previous release moved to archive/"]
     QC -->|fail, exit 1| BLOCK["do not ship"]
@@ -190,10 +191,10 @@ Adds a handful of newly-available species to an **existing** reference without t
 -   trnLCD — its extraction is alignment-based against a panel of plastome introns, not a single per-species NCBI query, so extending it needs a rebuild
 -   A species whose only NCBI record is a complete genome — by default Extend applies the same 50 kb length cap as the full pipeline (`query_ncbi()`), so a complete plastid genome comes back empty even though sequence technically exists. For plants this is solved by setting `SOURCE <- "plastome"` (trnL only): it searches complete chloroplast genomes by organism and title, fetches them one at a time, and cuts the amplicon out by primer matching, with the same QC as the default path. Complete vertebrate mitogenomes (~16 kb) are already under the cap, so 12SV5 needs no equivalent
 
-Extend never overwrites the reference it's extending — it always writes a new, separately-suffixed pair of files (e.g. `_v2026.10` → `_v2026.10_ext`), so a bad run is easy to discard and re-run. Like the full pipeline, it stores every amplicon forward-primer-first and rejects amplicons far outside the reference's length range; the QC gate fails on any record that starts with the reverse primer. Before shipping the result, run the QC gate against it with the marker as a 4th argument, e.g.:
+Extend never overwrites the reference it's extending — it always writes a new, separately-suffixed pair of files (e.g. `_v2026.11` → `_v2026.11_ext`), so a bad run is easy to discard and re-run. Like the full pipeline, it stores every amplicon forward-primer-first and rejects amplicons far outside the reference's length range; the QC gate fails on any record that starts with the reverse primer. Before shipping the result, run the QC gate against it with the marker as a 4th argument, e.g.:
 
 ``` bash
-Rscript code/qc_reference_build.R . _v2026.10_ext _v2026.10 trnL
+Rscript code/qc_reference_build.R . _v2026.11_ext _v2026.11 trnL
 ```
 
 The 4th argument restricts the gate to the marker you actually extended — without it, the gate checks every marker under the new suffix and hard-fails on the ones you didn't touch, which reads as a failure even on a clean run.
@@ -257,7 +258,7 @@ SLURM job scripts for all three are generated and submitted automatically by the
     SCRATCH  <- "/scratch/your_username"
     REPO_DIR <- "/path/to/food-dbs"
     SQL_PATH <- "/path/to/accessionTaxa.sql"
-    QC_PREVIOUS_SUFFIX <- "_v2026.10"  # last archived build, for the QC gate
+    QC_PREVIOUS_SUFFIX <- "_Oct2026"  # last archived build, for the QC gate
     ```
 
 4.  Run the **Install packages** chunk (section 1) once on first use
@@ -268,7 +269,7 @@ SLURM job scripts for all three are generated and submitted automatically by the
 
 7.  The notebook's final section, **Verify before shipping**, runs the QC gate automatically and prints the result — 0 FAIL means the build is safe to archive. If `QC_PREVIOUS_SUFFIX` was left at its default (`"-"`), this step fails loudly rather than comparing against the wrong build; set it and re-run just that chunk.
 
-Output files are written to `data/outputs/dada2-compatible/` and `data/outputs/qiime2-compatible/` as date-less files (`trnLGH.fasta`, not `trnLGH_v2026.10.fasta`) — once the QC gate passes, archive them under a new suffix before the next rebuild overwrites them in place.
+Output files are written to `data/outputs/dada2-compatible/` and `data/outputs/qiime2-compatible/` as date-less files (`trnLGH.fasta`, not `trnLGH_v2026.11.fasta`) — once the QC gate passes, archive them under a new suffix before the next rebuild overwrites them in place.
 
 ------------------------------------------------------------------------
 
@@ -295,8 +296,8 @@ MARKER     <- "trnL"        # or "12SV5" - run once per marker
 ADDITIONS  <- here('data', 'outputs', 'coverage-recheck',
                     'CANDIDATES_plants_trnL_Aug2026.csv')
 SOURCE     <- "marker"      # or "plastome" (trnL only): complete chloroplast genomes
-IN_SUFFIX  <- "_v2026.10"   # the reference you're extending
-OUT_SUFFIX <- "_v2026.10_ext" # what to write - never overwrites IN_SUFFIX
+IN_SUFFIX  <- "_v2026.11"   # the reference you're extending
+OUT_SUFFIX <- "_v2026.11_ext" # what to write - never overwrites IN_SUFFIX
 ```
 
 Run top to bottom. Species already in the reference are skipped automatically; species with no primer-spanning record are reported at the end rather than silently dropped.
@@ -304,14 +305,14 @@ Run top to bottom. Species already in the reference are skipped automatically; s
 #### 3. Verify before shipping
 
 ``` bash
-Rscript code/qc_reference_build.R . _v2026.10_ext _v2026.10 trnL
+Rscript code/qc_reference_build.R . _v2026.11_ext _v2026.11 trnL
 ```
 
 The same gate the full pipeline uses. The 4th argument restricts it to the marker you extended — without it, the gate checks every marker under the new suffix and hard-fails on the ones you didn't touch. A clean run should show the record count rise by exactly what was added and every other check still pass.
 
 #### 4. Promote the result
 
-If the QC gate passes, rename the `OUT_SUFFIX` files to whatever the new canonical suffix is (e.g. `_v2026.10_ext` → `_v2026.11`) so they become what the rest of the repo — and the next `Extend` or `Coverage recheck` run — treats as current.
+If the QC gate passes, rename the `OUT_SUFFIX` files to whatever the new canonical suffix is (e.g. `_v2026.11_ext` → `_v2026.12`) so they become what the rest of the repo — and the next `Extend` or `Coverage recheck` run — treats as current.
 
 ------------------------------------------------------------------------
 
@@ -344,6 +345,7 @@ The pipeline targets all species in `human-foods.csv`, a curated list of 3,806 f
 | May 2026 | 1,991     | 1,169       | 1,060 / 1,570                    | 68%      | —               | —        |
 | Aug 2026 (Zenodo v2026.08) | 2,027 | 1,196 | 1,078 / 1,573             | 69%      | 1,225 / 1,573   | 78%      |
 | v2026.10 | 2,116     | 1,272       | 1,137 / 1,573                    | 72%      | 1,302 / 1,573   | 83%      |
+| v2026.11 | 2,109     | 1,271       | 1,136 / 1,573                    | 72%      | 1,301 / 1,573   | 83%      |
 
 > **Exact name vs. including synonyms.** The "exact name" columns count a food-list species only when the reference holds a species of that exact name — the method used for every earlier row, so those rows compare directly. The "incl. synonyms" columns also count species the reference holds under their `build_name` (see "Synonyms" above). Earlier builds were not recomputed that way.
 
@@ -358,6 +360,7 @@ The pipeline targets all species in `human-foods.csv`, a curated list of 3,806 f
 | May 2026 | 3,390     | 2,337       | 1,168 / 2,095                     | 56%      | —               | —        |
 | Aug 2026 (Zenodo v2026.08) | 2,384 | 1,720 | 982 / 2,121             | 46%      | 1,042 / 2,121   | 49%      |
 | v2026.10 | 2,684     | 1,984       | 1,238 / 2,121                     | 58%      | 1,307 / 2,121   | 62%      |
+| v2026.11 | 2,684     | 1,984       | 1,238 / 2,121                     | 58%      | 1,307 / 2,121   | 62%      |
 
 > The Oct 2022 12SV5 database was a small food-filtered subset of the Schneider et al. database. The 2025 and May 2026 databases were built from scratch using the full pipeline.
 
@@ -371,7 +374,9 @@ The pipeline targets all species in `human-foods.csv`, a curated list of 3,806 f
 
 > **v2026.10 release (28 October 2026).** Files are now named `_v2026.10` to match the Zenodo version; the Aug 2026 release is kept in each `archive/aug2026/` folder (identical in content to the deposited files, but stored with LF line endings: the deposited 12SV5 and trnL g/h files are CRLF), and the QC gate finds it there as the previous build. Since that release, 12SV5 has grown from 2,384 to 2,684 sequences and trnL from 2,027 to 2,116. Besides the animal recoveries described above, two things were added. **(1) A name review.** The 149 food-list names that NCBI Taxonomy did not recognise were checked against GBIF and NCBI (`data/outputs/coverage-recheck/NAMES_resolution_Oct2026.csv`, one row per name). 15 misspellings were corrected in `human-foods.csv` (the original spelling is kept in the `notes` column), and 31 names were mapped to the name the reference uses through `build_name`, 5 of them rows that duplicate a correctly spelled row already on the list. 4 vertebrates and 5 plants gained sequence from the corrected names directly, and more through the plastome path below. Synonymies that GBIF asserted but that looked doubtful (e.g. *Melilotus macrorhizus*, *Omphalea megacarpa*, *Polyprion yanezi*) were left alone. 57 of the 101 unrecognised animals are molluscs, crustaceans or insects, which a Chordata-only 12SV5 reference cannot hold. **(2) A plastome path for trnL.** `Extend reference.Rmd` gained `SOURCE <- "plastome"`. A plant whose only trnL sequence sits inside a complete chloroplast genome was invisible to every earlier path: the 50 kb length cap removes the genome, and plastome titles never name the gene, so the marker search misses 96% of them. The new path searches by organism and title, and all 344 plants then still missing were checked. 73 had a plastome with a clean trnL amplicon (70–117 bp, the same range as the existing records) and were added as 83 sequences covering 76 taxa; 15 of them are filed by NCBI under another name (e.g. *Polianthes tuberosa* is *Agave amica*) and are mapped with `build_name`; two of these were among the 149 unrecognised names. Four `known-absent-species.csv` rows (*Alpinia officinarum*, *Amaranthus cruentus*, *A. dubius*, *Triticum carthlicum*) were superseded, as the QC gate flagged, and removed. **(3) An orientation fix.** The pipeline stores every amplicon forward-primer-first (steps A9 / B8), but `Extend reference.Rmd` had no such step, so any record taken from a minus-strand GenBank entry went in reverse-complemented. DADA2's `assignTaxonomy()` matches the forward strand only by default, so reads of those species could not be assigned to them. The Aug 2026 release (Zenodo v2026.08) contains 52 such 12SV5 records, all from the September recovery; the October recoveries raised the count to 355 12SV5 and 12 trnL records before this was found. All were reverse-complemented in v2026.10, 20 exact duplicates that this exposed were removed, and two 437 bp *Pseudophycis breviuscula* amplicons (the reference range is 71–180 bp) were dropped. `Extend reference.Rmd` now orients every amplicon and rejects out-of-range lengths, and the QC gate has a new check (9) that fails on any record starting with the reverse primer. `data/outputs/coverage-recheck/ORIENTATION_fix_Oct2026.csv` lists every record affected and whether it was in the deposited release. **(4) Two mislabelled trnL c/d records and line endings.** `JX390727.1` (labelled *Murraya koenigii*, in fact a peanut sequence) and `GU595140.1` (labelled *Secale cereale*, in fact rice) were in the trnL c/d database, including the 2026.08 release; both were removed (4,522 → 4,520 records, no species lost) and are now omitted by accession in step CD7. The same accessions were already omitted from g/h through `Manual renaming.csv`, but those rows are keyed to g/h amplicon sequences and cannot match c/d. Separately, the 2026.08 trnL g/h and 12SV5 files had Windows (CRLF) line endings, written by the laptop Extend workflow; all files are now LF, `Extend reference.Rmd` strips the carriage returns it would write, and the QC gate has a line-ending check (10).
 
-### Remaining gaps (v2026.10)
+> **v2026.11 release (4 November 2026).** Files are now named `_v2026.11`; the Zenodo v2026.10 release is kept in each `archive/oct2026/` folder. This release removes eight mislabelled records from trnL g/h (five of them also from trnL c/d, which never held the three PP0817xx records) and changes nothing in 12SV5. **How it was found.** A downstream wastewater dataset re-assigned with v2026.10 lost its most abundant lettuce ASV (a 50 bp sequence, over 160,000 reads) to class level. The g/h record `PP081760.1`, labelled *Lonicera japonica* (Caprifoliaceae), carries a lettuce-type sequence, so reads of lettuce matched records from two families and the taxonomy assignment collapsed. It arrived with the Aug 2026 build and is in the deposited 2026.08 and 2026.10 releases. **What was checked.** For every g/h record, the amplicon between the primer sites was compared across the whole database: seven groups of records from different families have identical sequence. Seven of the eight records below are in those groups and are the ones whose label is contradicted by the sequence; the eighth (`PP081791.1`) came from the same submission as `PP081760.1` and `PP081769.1`. Each was compared with its own species, genus and family and BLASTed against NCBI. None was checked against a physical voucher. The evidence for each is in `data/inputs/omit-accessions.csv`. **New in the Aug 2026 release:** `PP081760.1` (*Lonicera japonica*; lettuce-type), `PP081769.1` (*Coix lacryma-jobi*; identical to the ginger-family *Zingiber mioga*) and `PP081791.1` (*Aloe vera*; 100% identical to *Rorippa cantoniensis* in the mustard family, including a record from the same submission). **Present since at least the 2025 reference:** `GU134556.1` (*Elaeis guineensis*; identical to 13 Asteraceae records), `KX667944.1` (*Sambucus nigra*; identical to *Lathyrus sylvestris*), `MK797493.1` (*Peperomia pellucida*; identical to dozens of Moraceae records), `DQ221163.1` (*Sesamum indicum*; identical to Apocynaceae records) and `NC_057307.1` (*Eugenia brasiliensis*). All five were also flagged by the September 2026 label audit. **The RefSeq *Eugenia brasiliensis* record.** `NC_057307.1` is a RefSeq complete chloroplast genome, but it is not a *Eugenia* genome: its rbcL gene is 99-100% identical to Malpighiaceae in BLAST with no Myrtaceae among the top 30 hits, and its matK is 99% identical to *Aspidopterys concava* (Malpighiaceae). An independent *E. brasiliensis* plastome, `MN095407.1` (Rodrigues et al. 2020), is only 94% identical in rbcL and 84% in matK, and 11 other *E. brasiliensis* records from at least four separate submissions match it at 99.2-100%. The RefSeq record is marked provisional, is a copy of GenBank `MT900596.1`, and neither carries a voucher, isolate or publication. v2026.11 uses `MN095407.1` as the *E. brasiliensis* g/h record, so the species stays in the database; it is not in c/d, which is built by alignment rather than primer matching, so *E. brasiliensis* leaves c/d. **Effect.** trnL g/h goes from 2,116 to 2,109 sequences and from 1,272 to 1,271 taxa (*Peperomia pellucida* has no other g/h record and is listed in `known-absent-species.csv`); trnL c/d from 4,520 to 4,515 sequences and 1,173 to 1,172 taxa. The omissions are by accession in `data/inputs/omit-accessions.csv`, which the pipeline (steps A7, CD7 and B5), `Extend reference.Rmd` and the QC gate all read, so a rebuild or an Extend run cannot bring them back. **New QC check 11.** The gate now fails when a record that is new since the previous build has the same primer-trimmed amplicon as a record from a different family, and warns about groups that already existed. Run on the v2026.10 data against May 2026 it fails on `PP081760.1` and `PP081769.1`. On 12SV5 it warns about six pre-existing groups (for example *Epinephelus marginatus* `AM931025.1` with five Sciaenidae, and *Nesiarchus nasutus* `NC_022490.1` with four flatfish, both already flagged by the label audit) that have not been reviewed and are not changed in this release.
+
+### Remaining gaps (v2026.11)
 
 Most of the gap reflects species with little or no public sequence for the marker, but not all of it. In October 2026 each of the 1,248 species not in the reference was checked against NCBI (`data/outputs/coverage-recheck/GAP_check_Oct2026.csv`, one row per species), applying the same rules the build uses: sequences up to 50 kb, both primer sites (allowing the build's mismatch tolerance), no UNVERIFIED records, no ambiguity codes, and an on-target phylum. The 58 animals that passed were then added to the reference, the unrecognised names were reviewed, and the plastome path was run for plants (see the v2026.10 note above), so the table shows what remains. Counts for species whose name was resolved are reported against the corrected name.
 
@@ -384,17 +389,18 @@ Most of the gap reflects species with little or no public sequence for the marke
 | Non-vertebrate whose amplicon the Chordata filter excludes (crustaceans, a jellyfish) | — | 11 |
 | Hybrid, not mapped to a single parent | — | 3 |
 | Name resolved to an NCBI taxon, but no usable amplicon there | 6 | 11 |
+| Only record is a known mislabel, omitted in v2026.11 (*Peperomia pellucida*) | 1 | — |
 | Valid amplicon at NCBI, not yet added to the reference | 0 | 0 |
-| **Total missing** | **271** | **814** |
+| **Total missing** | **272** | **814** |
 
 The 58 animals were 53 that NCBI files under the name on the food list and 5 that it files under a different name: *Arripis georgianus* (NCBI: *A. georgiana*), *Crenimugil crenilabis* (*Moolgarda crenilabis*), *Cypselurus agoo* (*Cheilopogon agoo*), *Meuschenia scaber* (*M. scabra*) and *Torpedo nobiliana* (*Tetronarce nobiliana*). Each of the five is mapped to its food-list name by `build_name`. The yak had hundreds of valid records, which collapse to a single distinct amplicon. For plants, the 233 species with no record under 50 kb were re-searched as complete chloroplast genomes (see the v2026.10 note): 73 were added, and the 178 now listed as having no record have neither a marker record nor a plastome.
 
-**Plants without trnL sequences: 271 / 1,573 (17%)** (species not in the reference under either name)
+**Plants without trnL sequences: 272 / 1,573 (17%)** (species not in the reference under either name)
 
 | Source                                            | Missing species |
 |---------------------------------------------------|-----------------|
 | Lim, *Edible Medicinal and Non-Medicinal Plants*  | 95              |
-| Milla 2020 Crop Origins                           | 95              |
+| Milla 2020 Crop Origins                           | 96              |
 | BP (contributor)                                  | 22              |
 | Newton, *The Oldest Foods on Earth*               | 16              |
 | Peters, *Edible Wild Plants of Subsaharan Africa* | 10              |
@@ -417,7 +423,7 @@ The 58 animals were 53 that NCBI files under the name on the food list and 5 tha
 
 † Insects are not vertebrates and are therefore not targeted by the 12SV5 marker; these gaps are expected.
 
-Full lists of species without sequence coverage are in `data/outputs/plants_missing_trnL.csv` and `data/outputs/animals_missing_12SV5.csv`, regenerated in October 2026 against the current v2026.10 build and counting `build_name` matches as covered. The counts above come from the same calculation.
+Full lists of species without sequence coverage are in `data/outputs/plants_missing_trnL.csv` and `data/outputs/animals_missing_12SV5.csv`, regenerated in October 2026 against the v2026.10 build and updated for v2026.11 (one plant added, *Peperomia pellucida*) and counting `build_name` matches as covered. The counts above come from the same calculation.
 
 ------------------------------------------------------------------------
 

@@ -76,7 +76,7 @@
     <tr><td class="step">② RefSeq genomes</td><td>plastid</td><td>mitochondrial</td></tr>
     <tr><td class="step">③④ primers</td><td>trnL-g / trnL-h</td><td>V5F / V5R</td></tr>
     <tr><td class="step">⑦ phylum allowlist</td><td>Streptophyta + Cyanobacteriota</td><td>Chordata</td></tr>
-    <tr><td class="step">⑦b manual curation</td><td>yes — omissions (Manual renaming.csv) + variety renamings</td><td>n/a</td></tr>
+    <tr><td class="step">⑦b manual curation</td><td>yes — omissions (Manual renaming.csv, omit-accessions.csv) + variety renamings</td><td>n/a</td></tr>
     <tr><td class="step">⑩ output</td><td>trnLGH*.fasta</td><td>12Sv5*.fasta</td></tr>
   </table>
   <p style="font-size:0.76rem; color:#6b6b5e; margin:10px 0 0;">A third variant, <strong>trnL c/d (Part A-CD)</strong>, shares Part A's species list and NCBI pull but extracts the full intron by alignment rather than by primer matching; it is the dashed blue branch below. After a release, the dashed purple branch is how gaps are closed without a cluster rebuild.</p>
@@ -109,11 +109,11 @@ flowchart TD
     TAX -->|A6b/B6b · phylum allowlist| CLEAN["⑦ on-target only"]
 
     CLEAN -->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT["⑩ reference database"]
-    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>omissions from Manual renaming.csv<br/>+ hard-coded variety renamings"]
+    CLEAN -.->|trnL only| CUR["⑦b manual curation<br/>omissions from Manual renaming.csv<br/>and omit-accessions.csv<br/>+ hard-coded variety renamings"]
     CUR -.->|⑧ QC · ⑨ orientation · ⑩ dedup · add controls| OUT
     CTL -.->|add controls| OUT
 
-    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · orientation · count tolerance<br/>coverage ratchet vs the 2025 reference<br/>(known-absent-species.csv · build_name)"}
+    QC{"qc_reference_build.R<br/>controls · rank completeness · clade consistency<br/>accession integrity · orientation · count tolerance<br/>cross-family identity · coverage ratchet vs the 2025 reference<br/>(known-absent-species.csv · build_name)"}
     OUT --> QC
     QC -->|pass| SHIP["release<br/>files named _vYYYY.MM · previous release moved to archive/"]
     QC -->|fail, exit 1| BLOCK["do not ship"]

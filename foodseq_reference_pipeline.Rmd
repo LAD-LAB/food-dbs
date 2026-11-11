@@ -39,7 +39,7 @@ R_MODULE     <- "R/4.3.0"    # R module name; check with 'module avail R'
 
 # ── QC gate ──────────────────────────────────────────────────────────────────
 # Suffix of the last archived build to compare record counts and species lists
-# against (e.g. "_v2026.10") - this pipeline always writes date-less files (see
+# against (e.g. "_v2026.11") - this pipeline always writes date-less files (see
 # A10/CD10/B9), so it has no memory of its own of what "previous" means; this
 # is the only way the QC gate at the end of the run finds out. Leaving this as
 # "-" is safe, not silent: qc_reference_build.R refuses to compare a build
@@ -498,6 +498,14 @@ omit    <- filter(edits, type == "omit")
 trnL.df <- filter(trnL.df, !(accession %in% omit$accession & seq %in% omit$sequence))
 cat("After omissions:", nrow(trnL.df), "sequences\n")
 
+# Accession-level omissions: known mislabels listed in data/inputs/omit-accessions.csv
+# (rows whose markers include trnLGH). The file records, per accession, what the
+# sequence actually is and the evidence. Manual renaming.csv omit rows (above) are
+# keyed to amplicon sequence; these are not.
+omit_acc <- read_csv(file.path(REPO_DIR, "data", "inputs", "omit-accessions.csv"), show_col_types = FALSE)
+trnL.df  <- filter(trnL.df, !(accession %in% omit_acc$accession[grepl("trnLGH", omit_acc$markers)]))
+cat("After accession-level omissions:", nrow(trnL.df), "sequences\n")
+
 # Brassica oleracea variety renamings. Deliberately hard-coded: Manual renaming.csv
 # holds only "add" and "omit" rows, and these five are NOT read from it. Source
 # (BP, Jan 2023): each accession is identified to variety level in its cited
@@ -880,17 +888,16 @@ cat(nrow(trnLCD.df), "sequences retained\n")
 
 ```{r trnlcd_naming}
 # Omissions. A7's omit rows in Manual renaming.csv are keyed to g/h amplicon
-# SEQUENCES and can never match a c/d record, so the c/d records that must go are
-# listed here by accession. Both were checked against the c/d database itself
-# (Oct 2026), and both were still in the released 2026.08 database:
-#   JX390727.1  labelled Murraya koenigii: 99-100% identical to peanut (Arachis
-#               hypogaea) c/d records, 74.5% to other Murraya
-#   GU595140.1  labelled Secale cereale: 98.7-99.8% identical to rice (Oryza)
-#               records, 92.2% to other Secale
+# SEQUENCES and can never match a c/d record, so the c/d omissions are by accession,
+# from data/inputs/omit-accessions.csv (rows whose markers include trnLCD). That file
+# records what each sequence actually is and the evidence. JX390727.1 and GU595140.1
+# were found mislabelled in Oct 2026 and the rest in Nov 2026; all were still in the
+# released databases when found.
 # KF550171.1 (Allium schoenoprasum) is omitted from g/h for a doubled-length
 # amplicon, but its c/d region is normal (301 bp, 99.7% identical to other
 # Allium), so it is deliberately kept here.
-trnLCD_omit <- c("JX390727.1", "GU595140.1")
+omit_acc    <- read_csv(file.path(REPO_DIR, "data", "inputs", "omit-accessions.csv"), show_col_types = FALSE)
+trnLCD_omit <- omit_acc$accession[grepl("trnLCD", omit_acc$markers)]
 trnLCD.df   <- filter(trnLCD.df, !(accession %in% trnLCD_omit))
 cat("After c/d omissions:", nrow(trnLCD.df), "sequences\n")
 
@@ -1395,6 +1402,12 @@ s12v5.df <- bind_rows(
     data.frame(source = "RefSeq",  accession = names(refseq.12SV5), seq = as.character(refseq.12SV5))
 )
 cat(nrow(s12v5.df), "total sequences\n")
+
+# Accession-level omissions (known mislabels; rows of data/inputs/omit-accessions.csv
+# whose markers include 12SV5).
+omit_acc <- read_csv(file.path(REPO_DIR, "data", "inputs", "omit-accessions.csv"), show_col_types = FALSE)
+s12v5.df <- filter(s12v5.df, !(accession %in% omit_acc$accession[grepl("12SV5", omit_acc$markers)]))
+cat(nrow(s12v5.df), "sequences after accession-level omissions\n")
 ```
 
 ## B6. Taxonomy lookup
