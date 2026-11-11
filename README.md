@@ -73,7 +73,7 @@ This repository contains the latest FoodSeq reference databases for use with the
 | `asv` | Reference ASV sequence. |
 | `name` | Lowest common taxon the ASV resolves to. |
 | `taxon` | Every taxon the ASV matches, separated by `; `. Blank for rows with no reference taxon (controls, human, house mouse, and a few others). |
-| `common_name` | Names for every taxon in `taxon`. Often more specific than needed (e.g. *Canis lupus* → "wolf"). Blank for 848 of 2,169 12S rows, including all rows with a blank `taxon`. Not used by `assign_common_names()`. |
+| `common_name` | Names for every taxon in `taxon`. Often more specific than needed (e.g. *Canis lupus* → "wolf"). Not used by `assign_common_names()`. Not yet complete for the 12S file: 848 of 2,169 rows are blank. Most of these are less commonly eaten species (e.g. wrasses, groupers, parrotfish, skates, dolphins and seals) or subspecies of familiar foods (e.g. *Gallus gallus murghi*, *Oncorhynchus mykiss newberrii*), plus the rows with a blank `taxon`. Filling these rows is tracked in Linear as BINF-331. |
 | `conventional_name` | The curated shorthand grouping name used for analysis and plotting (e.g. *Canis lupus* → "dog"; *Plectropomus leopardus* → "coral trout"). Blank where no food name has been curated. |
 | `family` | Family of the matched taxa. |
 
